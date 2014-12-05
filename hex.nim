@@ -1,3 +1,5 @@
+# thanks to esbullington
+# https://github.com/esbullington/ 
 proc nibbleFromChar(c: char): int =
     case c
     of '0'..'9': result = (ord(c) - ord('0'))
