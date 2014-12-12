@@ -5,7 +5,6 @@ import
 const 
     CONSOLE_ENABLED = true
 
-# seul le format .nes est pris en charge
 proc initializeRom(): void =
     var romFile : TFile
     assert open(romFile, paramStr(1))  
