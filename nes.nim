@@ -5,9 +5,13 @@ import
 const 
     CONSOLE_ENABLED = true
 
+<<<<<<< HEAD
 var cycles : int
 
 proc initRom(): void =
+=======
+proc initializeRom(): void =
+>>>>>>> origin/master
     var romFile : TFile
     assert open(romFile, paramStr(1))  
     nesRom = loadINes(romFile) 
