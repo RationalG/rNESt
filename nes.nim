@@ -3,13 +3,11 @@ import
     cpu, rom, mem, ppu, screen
 
 const 
-    CONSOLE_ENABLED = true
+    CONSOLE_ENABLED = false
 
 var cycles : int
 
 proc initRom(): void =
-=======
-proc initializeRom(): void =
     var romFile : TFile
     assert open(romFile, paramStr(1))  
     nesRom = loadINes(romFile) 
