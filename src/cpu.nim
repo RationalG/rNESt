@@ -1,24 +1,21 @@
-import 
-    strutils, terminal, macros, queues, tables, rom, mem
+import strutils, macros, queues, tables
 
 type
-    PCPU* = ref TCPU
-    TCPU* = object of TObject
-        sp : TQueue[int]
-        a, x, y, pc : int
+    CPUObj* = object of RootObj
+        a, x, y, s, pc: int
         i, z, c, b, d, n, v : int
         opcodeCycles : int
 
 const
-    #- CPU consts - #
-    SP_SIZE = 256
-    SP_INITVAL = 0x1FD
     VECTOR_NMI = 0xFFFA
     VECTOR_IRQ = 0xFFFE
     VECTOR_RESET = 0xFFFC
-    DEBUG_ENABLED = true
+    # output : addressing mode, opcode
+    DEBUGGER_ENABLED = true
 
-var nesCpu* : PCPU
+var nesCpu* : CPUObj
+
+import debug, rom, mem
 
 #################################################
 #        6502 MOS PROCESSOR INSTRUCTIONS        #
@@ -60,7 +57,7 @@ proc opLdx(vByte: int): void =
 
 proc opLdy(vByte: int): void =
     # store pure value or value located at specified
-    # memory address into A register
+    # memory address into Y register
     nesCpu.y = mmioRead(vByte)
     # set zero flag as appropriate
     if nesCpu.y == 0: 
@@ -114,13 +111,49 @@ proc opTay(vByte: int): void =
         nesCpu.n = 0
 
 proc opTsx(vByte: int): void =
-    echo "tsx"
+    # pull the value from the stack pointer location
+    # pointed by S register and copy it to X register
+    nesCpu.x = mmioRead(nesCpu.s)
+    mmioWrite(nesCpu.s, 0)
+    nesCpu.s += 1
+
+proc opTxs(vByte: int): void =
+    # add X register value on top of the stack pointer
+    mmioWrite(nesCpu.s, nesCpu.x)
+    nesCpu.s -= 1
+
+proc opTxa(vByte: int): void =
+    # copy X register value into A register
+    nesCpu.a = nesCpu.x
+    # set zero flag as appropriate
+    if nesCpu.a == 0:
+        nesCpu.z = 1
+    else:
+        nesCpu.z = 0
+    # set negative flag as appropriate
+    if ((nesCpu.a and 0x80) == 0x80):
+        nesCpu.n = 1
+    else:
+        nesCpu.n = 0
 
 proc opAdc(vByte: int): void =
     echo "ADC"
+    # var unsigned = mmioRead(vByte)
+    # nesCpu.a += unsigned + nesCpu.c
 
 proc opDec(vByte: int): void =
-    echo "DEC"
+    var value = mmioRead(vByte) - 1
+    mmioWrite(vByte, value)
+    # set zero flag as appropriate
+    if value == 0:
+        nesCpu.z = 1
+    else:
+        nesCpu.z = 0
+    # set negative flag as appropriate
+    if ((value and 0x80) == 0x80):
+        nesCpu.n = 1
+    else:
+        nesCpu.n = 0
 
 proc opDex(vByte: int): void =
     # decrements X register value by one
@@ -229,10 +262,24 @@ proc opBvs(vByte: int): void =
         nesCpu.pc += unsigned
 
 proc opJmp(vByte: int): void =
+    #jump to the target address
     nes_cpu.pc = vByte
 
 proc opJsr(vByte: int): void =
-    echo "JSR"
+    # remember: a memory location can't hold
+    # more than 8 bits, so we must divide the 16-bits
+    # absolute address in two parts
+    var lowByte = (nesCpu.pc - 1) and 0xFF
+    var highByte = (nesCpu.pc - 1) shl 8
+    # save the return address by pushing it onto the
+    # stack. since it is divided in two parts, we must
+    # perform two writings
+    mmioWrite(nesCpu.s, lowByte)
+    nesCpu.s -= 1
+    mmioWrite(nesCpu.s, highByte)
+    nesCpu.s -= 1
+    # jump to the target address
+    nesCpu.pc = vByte
 
 proc opRti(vByte: int): void =
     echo "RTI"
@@ -319,7 +366,9 @@ proc absoluteIndexedX(): int {.discardable.} =
     echo "absolute X"
 
 proc absoluteIndexedY(): int {.discardable.} =
-    echo "absolute Y"
+    var address = getMemoryShortAt(nesCpu.pc + 1)
+    result = address + nesCpu.y
+    nesCpu.pc += 3
 
 proc indirect(): int {.discardable.} =
     result = getMemoryShortAt(nesCpu.pc + 1)
@@ -329,12 +378,14 @@ proc indirectIndexedX(): int {.discardable.} =
     echo "indirect x"
 
 proc indirectIndexedY(): int {.discardable.} =
-    echo "indirect y"
+    var address = mmioRead(nesCpu.pc + 1)
+    result = address + nesCpu.y
+    nesCpu.pc += 2
 
 proc implicit(): int {.discardable.} =
     # this addressing mode does not return any value
-    nesCpu.pc += 1
-    return 0
+    result = 0
+    nesCpu.pc += 1   
 
 proc accumulator(): int {.discardable.} =
     echo "accumulator"
@@ -346,7 +397,6 @@ proc relative(): int {.discardable.} =
 
 proc immediate(): int {.discardable.} =
     # return the next 8-bit value 
-    # which means it can't be an address
     result = mmioRead(nesCpu.pc + 1)
     nesCpu.pc += 2
 
@@ -357,9 +407,9 @@ proc immediate(): int {.discardable.} =
 let 
     opcodesDispatcher =
         {"LDA":opLda, "LDX":opLdx, "LDY":opLdy, "STA":opSta, 
-         "STY":opSty, "TAX":opTax, "TAY":opTax, "TSX":opTsx,
+         "STY":opSty, "TAX":opTax, "TAY":opTay, "TSX":opTsx,
          "ADC":opAdc, "DEC":opDec, "DEX":opDex, "DEY":opDey, 
-         "INC":opInc, "INX":opInx, "INY":opInx, "SBC":opSbc, 
+         "INC":opInc, "INX":opInx, "INY":opIny, "SBC":opSbc, 
          "BRK":opBrk, "ASL":opAsl, "BIT":opBit, "EOR":opEor,
          "LSR":opLsr, "ORA":opOra, "ROL":opRol, "ROR":opRor, 
          "BCC":opBcc, "BCS":opBcs, "BEQ":opBeq, "BMI":opBmi, 
@@ -369,7 +419,7 @@ let
          "CPX":opCpx, "CPY":opCpy, "SEC":opSec, "SED":opSed, 
          "PHA":opPha, "PHP":opPhp, "PLA":opPla, "PLP":opPlp,
          "STX":opStx, "TYA":opTya, "CMP":opCmp, "SEI":opSei, 
-         "NOP":opNop, "AND":opAnd}.toTable
+         "TXS":opTxs, "NOP":opNop, "AND":opAnd, "TXA":opTxa}.toTable
 
     addrModesDispatcher =
         {"/**":zeropage, "*/*":zeropageIndexedX, "**/":zeropageIndexedY,
@@ -468,107 +518,26 @@ let
           2, 5, 0, 0, 0, 4, 6, 0, 2, 4, 0, 0, 0, 4, 7, 0]
 
 proc initCpu*(): void =
-    new(nesCpu)
-    nesCpu.sp = initQueue[int](SP_SIZE)
-    nesCpu.sp.add(SP_INITVAL)
+    #new(nesCpu)
+    # the stack pointer size is 256 bytes
+    # it is accessible between $0100 & $01FF memory location
+    # S register always points towards the next free location
+    nesCpu.s = 0x1FD
+    # start at reset vector (defined in the rom program)
     nesCpu.pc = getMemoryShortAt(VECTOR_RESET)
-
-#################################################
-#                    DEBUG                      #
-#################################################
-proc setDebugHomeScreen(): void =
-    setCursorXPos(25)
-    echo "RationalNES v0.1 - Debugger\n\n\n"
-
-proc checkMemoryAt(address: int): int =
-    # check value at specified memory address
-    result = mmioRead(address)
-
-proc checkStatusRegister(): string =
-    # check NES cpu regiters values
-    setForegroundColor(fgCyan)
-    result = 
-        "- [$1 : $2] \n" % ["I flag : ", $nesCpu.i] &
-        "- [$1 : $2] \n" % ["Z flag : ", $nesCpu.z] &
-        "- [$1 : $2] \n" % ["C flag : ", $nesCpu.c] &
-        "- [$1 : $2] \n" % ["B flag : ", $nesCpu.b] & 
-        "- [$1 : $2] \n" % ["D flag : ", $nesCpu.d] &
-        "- [$1 : $2] \n" % ["N flag : ", $nesCpu.n] & 
-        "- [$1 : $2] \n" % ["V flag : ", $nesCpu.v]
-
-proc checkCPU(): string =
-    # check NES cpu regiters values
-    setForegroundColor(fgCyan)
-    result = 
-        "- [$1 : $2] \n" % ["A register : ", $nesCpu.a] &
-        "- [$1 : $2] \n" % ["X register : ", $nesCpu.x] &
-        "- [$1 : $2] \n" % ["Y register : ", $nesCpu.y] &
-        "- [$1 : $2] \n" % ["Stack Pointer : ", $nesCpu.sp] & 
-        "- [$1 : $2] \n" % ["Program Counter : ", $nesCpu.pc]
-
-proc parseSimpleCommand(command: string): void =
-    case command:     
-        of "sreg":
-            # check status register
-            echo checkStatusRegister()
-        of "cpu":
-            # check cpu registers
-            echo checkCpu()    
-        of  "exit":
-            # quit the program and reset console's colours
-            echo "program aborted"
-            system.addQuitProc(resetAttributes)
-            quit(0)
-        else:
-            return
-
-proc parseComplexCommand(command: seq[string]): void =
-    case command[0] & " " & command[1]:
-        of "check mem":
-            echo checkMemoryAt(parseInt(command[2]))
-        of "emit op":
-            var fetchedByte = addrModesDispatcher[command[3]]()
-            opcodesDispatcher[command[2]](fetchedByte)
-        else:
-            return
-
-proc startDebugSession*(isResetting: bool): void =
-    setForegroundColor(fgRed, true)
-    if isResetting == false:
-        eraseScreen()
-        setDebugHomeScreen()
-
-proc emitOutput(message: string): void =
-    setForegroundColor(fgYellow)
-    echo message & "\n"
-
-proc debugCpu*(opcode: string, mode: string): void =
-    emitOutput(opcode & " " & mode)
-    while(true):
-        startDebugSession(true)
-        var cmd = readLine(stdin)
-        if cmd == "" :
-            return
-        var commandSequence = cmd.split(' ')
-        case commandSequence.len:
-            of 1, 2:
-                parseSimpleCommand(cmd)
-            else:
-                parseComplexCommand(commandSequence)
 
 proc fetchExecuteOpcode*(): int =
     # fetch opcode from memory
     var opcode = mmioRead(nesCpu.pc)
     # use opcode to retrieve addressing mode & matching instruction
     var operation = opcodesTable[opcode]
-    var mode = addrModes[opcode]
-    
+    var mode = addrModes[opcode]  
     # use tables to make function calls
     var fetchedByte = addrModesDispatcher[mode]()
     opcodesDispatcher[operation](fetchedByte)
     nesCpu.opcodeCycles += cyclesTable[opcode]
 
-    if(DEBUG_ENABLED == true):
-        debugCpu(operation, mode)
+    if(DEBUGGER_ENABLED == true):
+        nesCpu.debug(operation, mode)
 
     return nesCpu.opcodeCycles

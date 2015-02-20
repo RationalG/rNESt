@@ -9,11 +9,11 @@ const
     PRG_PAGE_SIZE = 16384
 
 type
-    TROM* = object of TObject  
+    ROMObj* = object of RootObj 
         header: array[HEADER_SIZE, char]     
         prgBytes*: seq[char]
         chrBytes*: seq[char]
-    THEADER* = object of TObject
+    HEADERObj* = object of RootObj
         signature: string
         prgSize: int
         chrSize: int
@@ -21,11 +21,11 @@ type
         mapperBits: int
         mirrorBits: int
 
-var nes_rom* : TROM
+var nes_rom* : ROMObj
 
-proc loadINes*(romFile: TFile): TROM =  
-    var r : TROM
-    var h : THEADER
+proc loadINes*(romFile: File): ROMObj =  
+    var r : ROMObj
+    var h : HEADERObj
 
     discard readBuffer(romFile, addr(r.header), HEADER_SIZE)
 
@@ -41,7 +41,7 @@ proc loadINes*(romFile: TFile): TROM =
         echo("PRG size : ", h.prgSize/%PRG_PAGE_SIZE, " x 16kb pages : ", h.prgSize)
         echo("CHR size : ", h.chrSize/%CHR_PAGE_SIZE, " x 8kb pages :  ", h.chrSize)
     else :
-        echo("Error : unknown ROM format :(")
+        echo("Error : unknown ROM format")
         return
 
     r.prgBytes = newSeq[char](h.prgSize)

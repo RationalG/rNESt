@@ -1,15 +1,14 @@
 import 
     os, streams, strutils, parseutils, hex, macros,
-    cpu, rom, mem, ppu, screen
-
-const 
-    CONSOLE_ENABLED = false
+    cpu, rom, mem, ppu, debug
 
 var cycles : int
 
 proc initRom(): void =
-    var romFile : TFile
+    var romFile : File
+    #assuming we haven't any file error
     assert open(romFile, paramStr(1))  
+    #nesRom is imported from rom.nim
     nesRom = loadINes(romFile) 
 
 proc run() =
@@ -17,17 +16,12 @@ proc run() =
         cycles = fetchExecuteOpcode()
 
 proc main() = 
-    # power on NES components one by one
     #initScreen()
     initRom()
+    initPpu()
     initMem()
     initCpu()
-    initPpu()
-
-    # run CPU instruction step by step
-    # enables command line tool for the user
-    if CONSOLE_ENABLED == true:
-        startDebugSession(false)
+    
 
     # run the NES program
     run()
