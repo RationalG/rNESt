@@ -15,17 +15,20 @@ proc draw() =
     discard screen.fillRect(nil, DARK_BLUE)
     discard screen.flip
 
-proc update*(): void =
+proc tick*(): void =
     var eventType : sdl.TEvent
     var eventAddr = addr eventType
     
-    if sdl.pollEvent(eventAddr) > 0:
-        case eventAddr.kind
-        of KEYDOWN:
-            if evKeyboard(eventAddr).keysym.sym == K_ESCAPE:
-                quit(0)
-        else:
-            discard
+    while true:
+        if sdl.pollEvent(eventAddr) > 0:
+            case eventAddr.kind
+            of QUITEV:
+                break
+            of KEYDOWN:
+                if evKeyboard(eventAddr).keysym.sym == K_ESCAPE:
+                    break
+            else:
+                discard
 
-    draw()
+        draw()
 

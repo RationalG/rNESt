@@ -1,4 +1,5 @@
-import ppu, debug, rom
+import nes, cpu, rom
+
 # cpu writes to ppu through mmio bus
 # ppu posesses eight 8-bits registers 
     
@@ -8,6 +9,8 @@ type
         bank: seq[int]
 
 var cpuMemory* : CPUMemoryRef
+
+import ppu
 
 # load the NES program into memory
 proc setProgram*(program: pointer): void =
@@ -24,7 +27,7 @@ proc reflectValue(address, value: int): void =
 # allows an illegal write to 0x2002 which is a read-only memory location
 # this proc is intended to apply bitwise operation on ppu registers outside
 # the context of a NES program
-proc reflectBitwise*(address, bitId: int): void =
+proc reflectBitwise(address, bitId: int): void =
     var bit = cpuMemory.bank[address] and (1 shl bitId)
     if bit == 0 :
         cpuMemory.bank[address] = (cpuMemory.bank[address] or 1) shl bitId        

@@ -1,12 +1,10 @@
 import strutils, macros, queues, tables
-import mem, debug
 
 type
     CPUObj* = object of RootObj
         a, x, y, s, pc: int
         i, z, c, b, d, n, v : int
         opcodeCycles : int
-        zeropage : bool
 
 const
     VECTOR_NMI = 0xFFFA
@@ -17,78 +15,27 @@ const
 
 var nesCpu* : CPUObj
 
-proc pushOnStackRegister(value: int): void =
-    mmioWrite(nesCpu.s, value)
-    nesCpu.s -= 1
-
-proc pullFromStackRegister(): int =
-    result = mmioRead(nesCpu.s)
-    mmioWrite(nesCpu.s, 0)
-    nesCpu.s += 1
+import debug, rom, mem
 
 #################################################
 #        6502 MOS PROCESSOR INSTRUCTIONS        #
 #################################################
 
-proc opBrk(vByte: int): void =
-    # remember: a memory location can't hold
-    # more than 8 bits, so we must divide the 16-bits
-    # absolute address in two parts
-    var lowByte = (nesCpu.pc - 1) and 0xFF
-    var highByte = (nesCpu.pc - 1) shl 8
-    # save the return address by pushing it onto the
-    # stack. since it is divided in two parts, we must
-    # perform two writings
-    pushOnStackRegister(lowByte)
-    pushOnStackRegister(highByte)
-    # push also status register on the stack
-    var status = nesCpu.c + nesCpu.z + nesCpu.i +
-        nesCpu.d + nesCpu.v + nesCpu.n + nesCpu.b
-    pushOnStackRegister(status)
-    # enable break command
-    nesCpu.b = 1
-    # set program counter specified at
-    # IRQ vector ($FFFE)
-    nesCpu.pc = getMemoryShortAt(VECTOR_IRQ)
-
 proc opCld(vByte: int): void =
     # clear decimal flag
     nesCpu.d = 0
 
-proc opSei(vByte: int): void =
-    # set interrupt flag
-    nesCpu.i = 1
-
-proc opCli(vByte: int): void =
-    # clear interrupt flag
-    nesCpu.i = 0
-
-proc opClc(vByte: int): void =
-    # clear carry flag
-    nesCpu.c = 0
-
-proc opClv(vByte: int): void =
-    # clear overflow flag
-    nesCpu.v = 0
-
-proc opNop(vByte: int): void =
-    # does nothing
-    return
-
 proc opLda(vByte: int): void =
     # store pure value or value located at specified
     # memory address into A register
-    if vByte < 0x100 and nesCpu.zeropage == true:
-        nesCpu.a = vByte
-    else:
-        nesCpu.a = mmioRead(vByte)
+    nesCpu.a = mmioRead(vByte)
     # set zero flag as appropriate
     if nesCpu.a == 0: 
         nesCpu.z = 1
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.a and 0x80) == 0x80:
+    if ((nesCpu.a and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -96,17 +43,14 @@ proc opLda(vByte: int): void =
 proc opLdx(vByte: int): void =
     # store pure value or value located at specified
     # memory address into A register
-    if vByte < 0x100:
-        nesCpu.x = vByte
-    else:
-        nesCpu.x = mmioRead(vByte)
+    nesCpu.x = mmioRead(vByte)
     # set zero flag as appropriate
     if nesCpu.x == 0: 
         nesCpu.z = 1
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.x and 0x80) == 0x80:
+    if ((nesCpu.x and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -114,17 +58,14 @@ proc opLdx(vByte: int): void =
 proc opLdy(vByte: int): void =
     # store pure value or value located at specified
     # memory address into Y register
-    if vByte < 0x100:
-        nesCpu.y = vByte
-    else:
-        nesCpu.y = mmioRead(vByte)
+    nesCpu.y = mmioRead(vByte)
     # set zero flag as appropriate
     if nesCpu.y == 0: 
         nesCpu.z = 1
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.y and 0x80) == 0x80:
+    if ((nesCpu.y and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -150,7 +91,7 @@ proc opTax(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.x and 0x80) == 0x80:
+    if ((nesCpu.x and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -164,7 +105,7 @@ proc opTay(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.y and 0x80) == 0x80:
+    if ((nesCpu.y and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -172,11 +113,14 @@ proc opTay(vByte: int): void =
 proc opTsx(vByte: int): void =
     # pull the value from the stack pointer location
     # pointed by S register and copy it to X register
-    nesCpu.x = pullFromStackRegister()
+    nesCpu.x = mmioRead(nesCpu.s)
+    mmioWrite(nesCpu.s, 0)
+    nesCpu.s += 1
 
 proc opTxs(vByte: int): void =
     # add X register value on top of the stack pointer
-    pushOnStackRegister(nesCpu.x)
+    mmioWrite(nesCpu.s, nesCpu.x)
+    nesCpu.s -= 1
 
 proc opTxa(vByte: int): void =
     # copy X register value into A register
@@ -187,7 +131,7 @@ proc opTxa(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.a and 0x80) == 0x80:
+    if ((nesCpu.a and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -206,7 +150,7 @@ proc opDec(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (value and 0x80) == 0x80:
+    if ((value and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -220,7 +164,7 @@ proc opDex(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.x and 0x80) == 0x80:
+    if ((nesCpu.x and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
@@ -234,10 +178,46 @@ proc opDey(vByte: int): void =
     else:
         nesCpu.z = 0
     # set negative flag as appropriate
-    if (nesCpu.y and 0x80) == 0x80:
+    if ((nesCpu.y and 0x80) == 0x80):
         nesCpu.n = 1
     else:
         nesCpu.n = 0
+
+proc opInc(vByte: int): void =
+    echo "INC"
+
+proc opInx(vByte: int): void =
+    echo "INX"
+
+proc opIny(vByte: int): void =
+    echo "INY"
+
+proc opSbc(vByte: int): void =
+    echo "SBC"
+
+proc opBrk(vByte: int): void =
+    echo "BRK"
+
+proc opAsl(vByte: int): void =
+    echo "ASL"
+
+proc opBit(vByte: int): void =
+    echo "BIT"
+
+proc opEor(vByte: int): void =
+    echo "EOR"
+
+proc opLsr(vByte: int): void =
+    echo "LSR"
+
+proc opOra(vByte: int): void =
+    echo "ORA"
+
+proc opRol(vByte: int): void =
+    echo "ROL"
+
+proc opRor(vByte: int): void =
+    echo "ROR"
 
 proc opBcc(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
@@ -294,50 +274,36 @@ proc opJsr(vByte: int): void =
     # save the return address by pushing it onto the
     # stack. since it is divided in two parts, we must
     # perform two writings
-    pushOnStackRegister(lowByte)
-    pushOnStackRegister(highByte)
+    mmioWrite(nesCpu.s, lowByte)
+    nesCpu.s -= 1
+    mmioWrite(nesCpu.s, highByte)
+    nesCpu.s -= 1
     # jump to the target address
     nesCpu.pc = vByte
 
+proc opRti(vByte: int): void =
+    echo "RTI"
+
+proc opRts(vByte: int): void =
+    echo "RTS"
+
+proc opCli(vByte: int): void =
+    # clear interrupt flag
+    nesCpu.i = 0
+
+proc opClc(vByte: int): void =
+    # clear carry flag
+    nesCpu.c = 0
+
+proc opClv(vByte: int): void =
+    # clear overflow flag
+    nesCpu.v = 0
+
 proc opCpx(vByte: int): void =
-    # compare accumulator content with value
-    # or memory content
-    # set carry flag as appropriate
-    if nesCpu.x >= vByte:
-        nesCpu.c = 1
-    else: 
-        nesCpu.c = 0
-
-    # set zero flag as appropriate
-    if nesCpu.x == vByte:
-        nesCpu.z = 1
-    else:
-        nesCpu.z = 0
-
-    # set negative flag as appropriate
-    if (nesCpu.x and 0x80) == 0x80:
-        nesCpu.n = 1
-    else:
-        nesCpu.n = 0
+    echo "CPX"
 
 proc opCpy(vByte: int): void =
-    # compare accumulator content with value
-    # or memory content
-    # set carry flag as appropriate
-    if nesCpu.y >= vByte:
-        nesCpu.c = 1
-    else: 
-        nesCpu.c = 0
-    # set zero flag as appropriate
-    if nesCpu.y == vByte:
-        nesCpu.z = 1
-    else:
-        nesCpu.z = 0
-    # set negative flag as appropriate
-    if (nesCpu.y and 0x80) == 0x80:
-        nesCpu.n = 1
-    else:
-        nesCpu.n = 0
+    echo "CPY"
 
 proc opSec(vByte: int): void =
     # set carry flag
@@ -347,127 +313,31 @@ proc opSed(vByte: int): void =
     # set decimal flag
     nesCpu.d = 1
 
-proc opTya(vByte: int): void =
-    # copies the content of Y register to A register
-    nesCpu.a = nesCpu.y
-    # set zero flag as appropriate
-    if nesCpu.a == 0:
-        nesCpu.z = 1
-    else:
-        nesCpu.z = 0
-    # set negative flag as appropriate
-    if (nesCpu.a and 0x80) == 0x80:
-        nesCpu.n = 1
-    else:
-        nesCpu.n = 0
-
-proc opCmp(vByte: int): void =
-    # compare accumulator content with value
-    # or memory content
-    # set carry flag as appropriate
-    if nesCpu.a >= vByte:
-        nesCpu.c = 1
-    else: 
-        nesCpu.c = 0
-    # set zero flag as appropriate
-    if nesCpu.a == vByte:
-        nesCpu.z = 1
-    else:
-        nesCpu.z = 0
-    # set negative flag as appropriate
-    if (nesCpu.a and 0x80) == 0x80:
-        nesCpu.n = 1
-    else:
-        nesCpu.n = 0
-
 proc opPha(vByte: int): void =
-    # push accumulator content on stack
-    pushOnStackRegister(nesCpu.a)
+    echo "PHA"
 
 proc opPhp(vByte: int): void =
-    # push status register value on stack
-    var status = nesCpu.c + nesCpu.z + nesCpu.i +
-        nesCpu.d + nesCpu.v + nesCpu.n + nesCpu.b
-    pushOnStackRegister(status)
+    echo "PHP"
 
 proc opPla(vByte: int): void =
-    # pull 8-bit value from stack
-    nesCpu.a = pullFromStackRegister()
-    # set zero flag as appropriate
-    if nesCpu.a == 0:
-        nesCpu.z = 1
-    else:
-        nesCpu.z = 0
-    # set negative flag as appropriate
-    if (nesCpu.a and 0x80) == 0x80:
-        nesCpu.n = 1
-    else:
-        nesCpu.n = 0
+    echo "PLA"
 
 proc opPlp(vByte: int): void =
-    # pull 8-bit value from stack and store it
-    # as the new status register value
-    var value = mmioRead(nesCpu.s)
-    nesCpu.c = value and 1
-    nesCpu.z = (value shr 1) and 1
-    nesCpu.i = (value shr 2) and 1
-    nesCpu.d = (value shr 3) and 1
-    nesCpu.v = (value shr 6) and 1
-    nesCpu.n = (value shr 7) and 1
+    echo "PLP"
 
-#TODO
-proc opRti(vByte: int): void =
-    echo "RTI"
+proc opTya(vByte: int): void =
+    echo "TYA"
 
-#TODO
-proc opRts(vByte: int): void =
-    echo "RTS"
+proc opCmp(vByte: int): void =
+    echo "CMP"
 
-#TODO
-proc opInc(vByte: int): void =
-    echo "INC"
+proc opSei(vByte: int): void =
+    # set interrupt flag
+    nesCpu.i = 1
 
-#TODO
-proc opInx(vByte: int): void =
-    echo "INX"
+proc opNop(vByte: int): void =
+    echo "NOP"
 
-#TODO
-proc opIny(vByte: int): void =
-    echo "INY"
-
-#TODO
-proc opSbc(vByte: int): void =
-    echo "SBC"
-
-#TODO
-proc opAsl(vByte: int): void =
-    echo "ASL"
-
-#TODO
-proc opBit(vByte: int): void =
-    echo "BIT"
-
-#TODO
-proc opEor(vByte: int): void =
-    echo "EOR"
-
-#TODO
-proc opLsr(vByte: int): void =
-    echo "LSR"
-
-#TODO
-proc opOra(vByte: int): void =
-    echo "ORA"
-
-#TODO
-proc opRol(vByte: int): void =
-    echo "ROL"
-
-#TODO
-proc opRor(vByte: int): void =
-    echo "ROR"
-
-#TODO
 proc opAnd(vByte: int): void =
     echo "AND"
 
@@ -476,31 +346,15 @@ proc opAnd(vByte: int): void =
 #################################################
 
 proc zeropage(): int {.discardable.} =
-    # notify zero page addressing to the CPU
-    # so it can write to a memory location that is
-    # less than 8-bit
-    nesCpu.zeropage = true
-    # return the next byte after current byte
+    #return the next byte after current byte
     result = mmioRead(nesCpu.pc + 1)
     nes_cpu.pc += 2
 
 proc zeropageIndexedX(): int {.discardable.} =
-    # see zeropage proc above
-    nesCpu.zeropage = true
-    # only treats 8-bit values so can't go above $FF
-    var address : int8
-    address = getMemoryShortAt(nesCpu.pc + 1).toU8
-    address += nesCpu.x.toU8
-    result = address.toU32
+    echo "zeropage X"
 
 proc zeropageIndexedY(): int {.discardable.} =
-    # see zeropage proc above
-    nesCpu.zeropage = true
-    # only treats 8-bit values so can't go above $FF
-    var address : int8
-    address = getMemoryShortAt(nesCpu.pc + 1).toU8
-    address += nesCpu.y.toU8
-    result = address.toU32
+    echo "zeropage Y"
 
 proc absolute(): int {.discardable.} =
     # return the two next bytes after current byte
@@ -509,9 +363,7 @@ proc absolute(): int {.discardable.} =
     nesCpu.pc += 3
 
 proc absoluteIndexedX(): int {.discardable.} =
-    var address = getMemoryShortAt(nesCpu.pc + 1)
-    result = address + nesCpu.x
-    nesCpu.pc += 3
+    echo "absolute X"
 
 proc absoluteIndexedY(): int {.discardable.} =
     var address = getMemoryShortAt(nesCpu.pc + 1)
@@ -523,9 +375,7 @@ proc indirect(): int {.discardable.} =
     nesCpu.pc += 3
 
 proc indirectIndexedX(): int {.discardable.} =
-    var address = mmioRead(nesCpu.pc + 1)
-    result = address + nesCpu.x
-    nesCpu.pc += 2
+    echo "indirect x"
 
 proc indirectIndexedY(): int {.discardable.} =
     var address = mmioRead(nesCpu.pc + 1)
@@ -537,7 +387,6 @@ proc implicit(): int {.discardable.} =
     result = 0
     nesCpu.pc += 1   
 
-#TODO
 proc accumulator(): int {.discardable.} =
     echo "accumulator"
 
@@ -621,7 +470,7 @@ let
           "~/@", "~/@", "@/~", "???", "???", "@**", "@**", "???", #08-0F
           "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #10-17
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #18-1F
-          "@**", "*~*", "???", "???", "/**", "/**", "/**", "???", #20-27
+          "~/@", "*~*", "???", "???", "/**", "/**", "/**", "???", #20-27
           "~/@", "***", "@/~", "???", "@**", "@**", "@**", "???", #28-2F
           "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #30-37
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #38-3F
@@ -639,7 +488,7 @@ let
           "~/@", "**@", "~/@", "???", "???", "*@*", "???", "???", #98-9F
           "***", "*~*", "***", "???", "/**", "/**", "/**", "???", #A0-A7
           "~/@", "***", "~/@", "???", "@**", "@**", "@**", "???", #A8-AF
-          "@~/", "**~", "???", "???", "*/*", "*/*", "**/", "???", #B0-B7
+          "~/@", "**~", "???", "???", "*/*", "*/*", "**/", "???", #B0-B7
           "~/@", "**@", "~/@", "???", "*@*", "*@*", "**@", "???", #B8-BF
           "***", "*~*", "???", "???", "/**", "/**", "/**", "???", #C0-C7
           "~/@", "***", "~/@", "???", "@**", "@**", "@**", "???", #C8-CF
@@ -669,34 +518,26 @@ let
           2, 5, 0, 0, 0, 4, 6, 0, 2, 4, 0, 0, 0, 4, 7, 0]
 
 proc initCpu*(): void =
+    #new(nesCpu)
     # the stack pointer size is 256 bytes
     # it is accessible between $0100 & $01FF memory location
     # S register always points towards the next free location
     nesCpu.s = 0x1FD
     # start at reset vector (defined in the rom program)
     nesCpu.pc = getMemoryShortAt(VECTOR_RESET)
-    # disable zero page mode
-    nesCpu.zeropage = false
 
-proc update*(cpuCycles, divisor: int): void =
-    var cycles = (cpuCycles/divisor).toInt
+proc fetchExecuteOpcode*(): int =
+    # fetch opcode from memory
+    var opcode = mmioRead(nesCpu.pc)
+    # use opcode to retrieve addressing mode & matching instruction
+    var operation = opcodesTable[opcode]
+    var mode = addrModes[opcode]  
+    # use tables to make function calls
+    var fetchedByte = addrModesDispatcher[mode]()
+    opcodesDispatcher[operation](fetchedByte)
+    nesCpu.opcodeCycles += cyclesTable[opcode]
 
-    while cycles > 0:
-        # fetch opcode from memory
-        var opcode = mmioRead(nesCpu.pc)
-        # use opcode to retrieve addressing mode & matching instruction
-        var operation = opcodesTable[opcode]
-        var mode = addrModes[opcode]  
-        # use tables to make function calls
-        var fetchedByte = addrModesDispatcher[mode]()
-        opcodesDispatcher[operation](fetchedByte)
-        nesCpu.opcodeCycles += cyclesTable[opcode]
-        # reset zeropage hander
-        nesCpu.zeropage = false
-        # needed for cpu/ppu sync
-        cycles -= cyclesTable[opcode]
-        # debugger for step by step execution
-        if DEBUGGER_ENABLED == true :
-            nesCpu.debug(operation, mode)
-        if cycles <= 0 :
-            echo "cpu phase terminated"
+    if(DEBUGGER_ENABLED == true):
+        nesCpu.debug(operation, mode)
+
+    return nesCpu.opcodeCycles

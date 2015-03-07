@@ -1,10 +1,6 @@
-import os, streams, strutils, parseutils, hex, macros
-import rom, cpu, ppu, mem, screen
-
-const
-    SCANLINES_PER_FRAME = 262
-    CYCLES_PER_SCANLINE = 1364
-    NTSC_DIVISOR = 12
+import 
+    os, streams, strutils, parseutils, hex, macros,
+    cpu, rom, mem, ppu, debug
 
 var cycles : int
 
@@ -17,24 +13,16 @@ proc initRom(): void =
 
 proc run() =
     while true:
-        # 262 scanlines per frame
-        var scanlines = SCANLINES_PER_FRAME
-        # run CPU & PPU
-        while scanlines > 0:
-            #screen.update()
-            cpu.update(CYCLES_PER_SCANLINE, NTSC_DIVISOR)
-            ppu.update()  
-            scanlines -= 1
-            
+        cycles = fetchExecuteOpcode()
 
 proc main() = 
-    # initialize SDL
     #initScreen()
-    # initialize NES components
     initRom()
     initPpu()
     initMem()
     initCpu()
+    
+
     # run the NES program
     run()
 
