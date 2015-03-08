@@ -1,4 +1,4 @@
-import os, streams, strutils, parseutils, hex
+import os, streams, strutils, parseutils
 
 proc c_memcmp(a, b: cstring, size: int): cint {.header: "<string.h>", noSideEffect, importc: "memcmp".}
 
