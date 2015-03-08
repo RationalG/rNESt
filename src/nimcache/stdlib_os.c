@@ -215,8 +215,8 @@ N_NOINLINE(void, raiseDivByZero)(void);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
 static N_INLINE(NI, modInt)(NI a, NI b);
 N_NIMCALL(TGenericSeq*, incrSeq)(TGenericSeq* seq, NI elemsize);
-STRING_LITERAL(TMP377, "", 0);
-STRING_LITERAL(TMP378, "unknown OS error", 16);
+STRING_LITERAL(TMP359, "", 0);
+STRING_LITERAL(TMP360, "unknown OS error", 16);
 NIM_BOOL envcomputed_119607;
 TY13206* environment_119609;
 extern TFrame* frameptr_16242;
@@ -302,7 +302,7 @@ N_NIMCALL(NimStringDesc*, oserrormsg_111020)(NI32 errorcode) {
 	nimfr("osErrorMsg", "os.nim")
 	result = 0;
 	nimln(245, "os.nim");
-	result = copyString(((NimStringDesc*) &TMP377));
+	result = copyString(((NimStringDesc*) &TMP359));
 	nimln(247, "os.nim");
 	{
 		NI16* msgbuf;
@@ -432,7 +432,7 @@ N_NIMCALL(void, raiseoserror_111435)(NI32 errorcode) {
 		if (!(((*e).Sup.Sup.message) && ((*e).Sup.Sup.message)->Sup.len == 0)) goto LA3;
 		nimln(276, "os.nim");
 		LOC5 = 0;
-		LOC5 = (*e).Sup.Sup.message; (*e).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP378));
+		LOC5 = (*e).Sup.Sup.message; (*e).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP360));
 		if (LOC5) nimGCunrefNoCycle(LOC5);
 	}
 	LA3: ;
@@ -518,7 +518,7 @@ N_NIMCALL(TY13206*, nosparseCmdLine)(NimStringDesc* c) {
 	nimln(1474, "os.nim");
 	i = 0;
 	nimln(1475, "os.nim");
-	a = copyString(((NimStringDesc*) &TMP377));
+	a = copyString(((NimStringDesc*) &TMP359));
 	{
 		nimln(1476, "os.nim");
 		while (1) {
@@ -609,17 +609,17 @@ N_NIMCALL(TY13206*, nosparseCmdLine)(NimStringDesc* c) {
 							{
 								NI k_123025;
 								NI HEX3Atmp_123110;
-								NI TMP511;
-								NI TMP512;
+								NI TMP769;
+								NI TMP770;
 								NI res_123113;
 								k_123025 = 0;
 								HEX3Atmp_123110 = 0;
 								nimln(1491, "os.nim");
 								nimln(1491, "os.nim");
 								nimln(1491, "os.nim");
-								TMP511 = subInt(j, i);
-								TMP512 = divInt((NI64)(TMP511), 2);
-								HEX3Atmp_123110 = (NI64)(TMP512);
+								TMP769 = subInt(j, i);
+								TMP770 = divInt((NI64)(TMP769), 2);
+								HEX3Atmp_123110 = (NI64)(TMP770);
 								nimln(1576, "system.nim");
 								res_123113 = 1;
 								{
@@ -638,27 +638,27 @@ N_NIMCALL(TY13206*, nosparseCmdLine)(NimStringDesc* c) {
 							}
 							nimln(1492, "os.nim");
 							{
-								NI TMP513;
-								NI TMP514;
+								NI TMP771;
+								NI TMP772;
 								nimln(1492, "os.nim");
 								nimln(1492, "os.nim");
 								nimln(1492, "os.nim");
-								TMP513 = subInt(j, i);
-								TMP514 = modInt((NI64)(TMP513), 2);
-								if (!(((NI) ((NI64)(TMP514))) == 0)) goto LA30;
+								TMP771 = subInt(j, i);
+								TMP772 = modInt((NI64)(TMP771), 2);
+								if (!(((NI) ((NI64)(TMP772))) == 0)) goto LA30;
 								nimln(1493, "os.nim");
 								i = j;
 							}
 							goto LA28;
 							LA30: ;
 							{
-								NI TMP515;
+								NI TMP773;
 								nimln(1495, "os.nim");
 								a = addChar(a, 34);
 								nimln(1496, "os.nim");
 								nimln(1496, "os.nim");
-								TMP515 = addInt(j, 1);
-								i = (NI64)(TMP515);
+								TMP773 = addInt(j, 1);
+								i = (NI64)(TMP773);
 							}
 							LA28: ;
 						}
