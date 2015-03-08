@@ -1,4 +1,4 @@
-import os, streams, strutils, parseutils, hex, macros
+import os, streams, strutils, parseutils, macros
 import rom, cpu, ppu, mem, screen
 
 const
