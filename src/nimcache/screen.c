@@ -10,60 +10,60 @@
 #include <string.h>
 
 #include <stdlib.h>
-typedef struct tsurface234055 tsurface234055;
-typedef struct trect234027 trect234027;
-typedef struct tevent234019 tevent234019;
-typedef struct tkeyboardevent233346 tkeyboardevent233346;
-typedef struct tkeysym233336 tkeysym233336;
-typedef struct tpixelformat234045 tpixelformat234045;
-typedef struct tpalette234041 tpalette234041;
-typedef struct tcolor234033 tcolor234033;
-typedef N_CDECL_PTR(NI, TY237223) (NI32 flags);
-typedef N_CDECL_PTR(tsurface234055*, TY238125) (NI width, NI height, NI bpp, NU32 flags);
-typedef N_CDECL_PTR(NI, TY238405) (tsurface234055* dst, trect234027* dstrect, NI32 color);
-typedef N_CDECL_PTR(NI, TY238152) (tsurface234055* screen);
-typedef NU8 TY234075[20];
-struct  tevent234019  {
+typedef struct tsurface233055 tsurface233055;
+typedef struct trect233027 trect233027;
+typedef struct tevent233019 tevent233019;
+typedef struct tkeyboardevent232346 tkeyboardevent232346;
+typedef struct tkeysym232336 tkeysym232336;
+typedef struct tpixelformat233045 tpixelformat233045;
+typedef struct tpalette233041 tpalette233041;
+typedef struct tcolor233033 tcolor233033;
+typedef N_CDECL_PTR(NI, TY236223) (NI32 flags);
+typedef N_CDECL_PTR(tsurface233055*, TY237125) (NI width, NI height, NI bpp, NU32 flags);
+typedef N_CDECL_PTR(NI, TY237405) (tsurface233055* dst, trect233027* dstrect, NI32 color);
+typedef N_CDECL_PTR(NI, TY237152) (tsurface233055* screen);
+typedef NU8 TY233075[20];
+struct  tevent233019  {
 NU8 Kind;
-TY234075 Pad;
+TY233075 Pad;
 };
-typedef N_CDECL_PTR(NI, TY238011) (tevent234019* event);
-struct  tkeysym233336  {
+typedef N_CDECL_PTR(NI, TY237011) (tevent233019* event);
+struct  tkeysym232336  {
 NU8 Scancode;
 NI32 Sym;
 NI32 Modifier;
 NU16 Unicode;
 };
-struct  tkeyboardevent233346  {
+struct  tkeyboardevent232346  {
 NU8 Kind;
 NU8 Which;
 NU8 State;
-tkeysym233336 Keysym;
+tkeysym232336 Keysym;
 };
-struct  trect234027  {
+struct  trect233027  {
 NI16 X;
 NI16 Y;
 NU16 W;
 NU16 H;
 };
-struct  tsurface234055  {
+struct  tsurface233055  {
 NI32 Flags;
-tpixelformat234045* Format;
+tpixelformat233045* Format;
 int W;
 int H;
 NU16 Pitch;
 void* Pixels;
 int Offset;
 void* Hwdata;
-trect234027 Cliprect;
+trect233027 Cliprect;
 NI32 Unused1;
 NI32 Locked;
 void* Blitmap;
 int Formatversion;
 int Refcount;
 };
-struct  tpixelformat234045  {
-tpalette234041* Palette;
+struct  tpixelformat233045  {
+tpalette233041* Palette;
 NU8 Bitsperpixel;
 NU8 Bytesperpixel;
 NU8 Rloss;
@@ -81,30 +81,30 @@ NI32 Amask;
 NI32 Colorkey;
 NU8 Alpha;
 };
-struct  tpalette234041  {
+struct  tpalette233041  {
 NI Ncolors;
-tcolor234033* Colors;
+tcolor233033* Colors;
 };
-struct  tcolor234033  {
+struct  tcolor233033  {
 NU8 R;
 NU8 G;
 NU8 B;
 NU8 Unused;
 };
-N_NIMCALL(void, initscreen_241018)(void);
+N_NIMCALL(void, initscreen_240018)(void);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(void, draw_241026)(void);
-N_NIMCALL(void, update_241034)(void);
-N_NIMCALL(tkeyboardevent233346*, evkeyboard_234822)(tevent234019* event);
-tsurface234055* screen_241013;
-extern TY237223 Dl_237222;
-extern TY238125 Dl_238124;
+N_NIMCALL(void, draw_240026)(void);
+N_NIMCALL(void, update_240034)(void);
+N_NIMCALL(tkeyboardevent232346*, evkeyboard_233822)(tevent233019* event);
+tsurface233055* screen_240013;
+extern TY236223 Dl_236222;
+extern TY237125 Dl_237124;
 extern TFrame* frameptr_16242;
-extern TY238405 Dl_238404;
-extern TY238152 Dl_238151;
-extern TY238011 Dl_238010;
+extern TY237405 Dl_237404;
+extern TY237152 Dl_237151;
+extern TY237011 Dl_237010;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
 	NI LOC1;
@@ -133,36 +133,36 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(void, initscreen_241018)(void) {
+N_NIMCALL(void, initscreen_240018)(void) {
 	NI LOC1;
 	nimfr("initScreen", "screen.nim")
 	nimln(11, "screen.nim");
 	nimln(11, "screen.nim");
 	LOC1 = 0;
-	LOC1 = Dl_237222(((NI32) 32));
+	LOC1 = Dl_236222(((NI32) 32));
 	nimln(12, "screen.nim");
-	screen_241013 = Dl_238124(256, 240, 16, ((NU32) 0));
+	screen_240013 = Dl_237124(256, 240, 16, ((NU32) 0));
 	popFrame();
 }
 
-N_NIMCALL(void, draw_241026)(void) {
+N_NIMCALL(void, draw_240026)(void) {
 	NI LOC1;
 	NI LOC2;
 	nimfr("draw", "screen.nim")
 	nimln(15, "screen.nim");
 	nimln(15, "screen.nim");
 	LOC1 = 0;
-	LOC1 = Dl_238404(screen_241013, NIM_NIL, ((NI32) 170));
+	LOC1 = Dl_237404(screen_240013, NIM_NIL, ((NI32) 170));
 	nimln(16, "screen.nim");
 	nimln(16, "screen.nim");
 	LOC2 = 0;
-	LOC2 = Dl_238151(screen_241013);
+	LOC2 = Dl_237151(screen_240013);
 	popFrame();
 }
 
-N_NIMCALL(void, update_241034)(void) {
-	tevent234019 eventtype;
-	tevent234019* eventaddr;
+N_NIMCALL(void, update_240034)(void) {
+	tevent233019 eventtype;
+	tevent233019* eventaddr;
 	nimfr("update", "screen.nim")
 	memset((void*)(&eventtype), 0, sizeof(eventtype));
 	nimln(20, "screen.nim");
@@ -173,7 +173,7 @@ N_NIMCALL(void, update_241034)(void) {
 		nimln(22, "screen.nim");
 		nimln(22, "screen.nim");
 		LOC3 = 0;
-		LOC3 = Dl_238010(eventaddr);
+		LOC3 = Dl_237010(eventaddr);
 		if (!(0 < LOC3)) goto LA4;
 		nimln(23, "screen.nim");
 		switch ((*eventaddr).Kind) {
@@ -181,11 +181,11 @@ N_NIMCALL(void, update_241034)(void) {
 		{
 			nimln(25, "screen.nim");
 			{
-				tkeyboardevent233346* LOC9;
+				tkeyboardevent232346* LOC9;
 				nimln(25, "screen.nim");
 				nimln(25, "screen.nim");
 				LOC9 = 0;
-				LOC9 = evkeyboard_234822(eventaddr);
+				LOC9 = evkeyboard_233822(eventaddr);
 				if (!((*LOC9).Keysym.Sym == ((NI32) 27))) goto LA10;
 				nimln(26, "screen.nim");
 				exit(0);
@@ -201,7 +201,7 @@ N_NIMCALL(void, update_241034)(void) {
 	}
 	LA4: ;
 	nimln(30, "screen.nim");
-	draw_241026();
+	draw_240026();
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_screenInit)(void) {

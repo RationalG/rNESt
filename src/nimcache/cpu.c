@@ -10,22 +10,22 @@
 #include <stdio.h>
 
 #include <string.h>
-typedef struct cpuobj225005 cpuobj225005;
+typedef struct cpuobj224005 cpuobj224005;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct NimStringDesc NimStringDesc;
-typedef struct TY226211 TY226211;
-typedef struct table226214 table226214;
-typedef struct keyvaluepairseq226217 keyvaluepairseq226217;
-typedef struct keyvaluepair226220 keyvaluepair226220;
-typedef struct TY226803 TY226803;
-typedef struct table226806 table226806;
-typedef struct keyvaluepairseq226809 keyvaluepairseq226809;
-typedef struct keyvaluepair226812 keyvaluepair226812;
+typedef struct TY225211 TY225211;
+typedef struct table225214 table225214;
+typedef struct keyvaluepairseq225217 keyvaluepairseq225217;
+typedef struct keyvaluepair225220 keyvaluepair225220;
+typedef struct TY225803 TY225803;
+typedef struct table225806 table225806;
+typedef struct keyvaluepairseq225809 keyvaluepairseq225809;
+typedef struct keyvaluepair225812 keyvaluepair225812;
 typedef struct TY13206 TY13206;
-typedef struct TY222030 TY222030;
+typedef struct TY221030 TY221030;
 typedef N_NIMCALL_PTR(void, TY3089) (void* p, NI op);
 typedef N_NIMCALL_PTR(void*, TY3094) (void* p);
 struct  TNimType  {
@@ -41,7 +41,7 @@ TY3094 deepcopy;
 struct  TNimObject  {
 TNimType* m_type;
 };
-struct  cpuobj225005  {
+struct  cpuobj224005  {
   TNimObject Sup;
 NI A;
 NI X;
@@ -74,750 +74,750 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-typedef N_NIMCALL_PTR(void, TY225155) (NI vbyte);
-struct TY226211 {
+typedef N_NIMCALL_PTR(void, TY224155) (NI vbyte);
+struct TY225211 {
 NimStringDesc* Field0;
-TY225155 Field1;
+TY224155 Field1;
 };
-struct keyvaluepair226220 {
+struct keyvaluepair225220 {
 NU8 Field0;
 NimStringDesc* Field1;
-TY225155 Field2;
+TY224155 Field2;
 };
-struct  table226214  {
-keyvaluepairseq226217* Data;
+struct  table225214  {
+keyvaluepairseq225217* Data;
 NI Counter;
 };
-typedef N_NIMCALL_PTR(NI, TY225853) (void);
-struct TY226803 {
+typedef N_NIMCALL_PTR(NI, TY224853) (void);
+struct TY225803 {
 NimStringDesc* Field0;
-TY225853 Field1;
+TY224853 Field1;
 };
-struct keyvaluepair226812 {
+struct keyvaluepair225812 {
 NU8 Field0;
 NimStringDesc* Field1;
-TY225853 Field2;
+TY224853 Field2;
 };
-struct  table226806  {
-keyvaluepairseq226809* Data;
+struct  table225806  {
+keyvaluepairseq225809* Data;
 NI Counter;
 };
-typedef TY226211 TY226763[56];
-typedef TY226803 TY227363[13];
-struct keyvaluepairseq226217 {
+typedef TY225211 TY225763[56];
+typedef TY225803 TY226363[13];
+struct keyvaluepairseq225217 {
   TGenericSeq Sup;
-  keyvaluepair226220 data[SEQ_DECL_SIZE];
+  keyvaluepair225220 data[SEQ_DECL_SIZE];
 };
-struct keyvaluepairseq226809 {
+struct keyvaluepairseq225809 {
   TGenericSeq Sup;
-  keyvaluepair226812 data[SEQ_DECL_SIZE];
+  keyvaluepair225812 data[SEQ_DECL_SIZE];
 };
 struct TY13206 {
   TGenericSeq Sup;
   NimStringDesc* data[SEQ_DECL_SIZE];
 };
-struct TY222030 {
+struct TY221030 {
   TGenericSeq Sup;
   NI data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(void, pushonstackregister_225038)(NI value);
-N_NIMCALL(void, mmiowrite_224117)(NI address, NI value);
+N_NIMCALL(void, pushonstackregister_224038)(NI value);
+N_NIMCALL(void, mmiowrite_223117)(NI address, NI value);
 static N_INLINE(NI, subInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(NI, pullfromstackregister_225059)(void);
-N_NIMCALL(NI, mmioread_224136)(NI address);
+N_NIMCALL(NI, pullfromstackregister_224059)(void);
+N_NIMCALL(NI, mmioread_223136)(NI address);
 static N_INLINE(NI, addInt)(NI a, NI b);
-N_NIMCALL(void, opbrk_225086)(NI vbyte);
-N_NIMCALL(NI, getmemoryshortat_224154)(NI address);
-N_NIMCALL(void, opcld_225100)(NI vbyte);
-N_NIMCALL(void, opsei_225109)(NI vbyte);
-N_NIMCALL(void, opcli_225118)(NI vbyte);
-N_NIMCALL(void, opclc_225127)(NI vbyte);
-N_NIMCALL(void, opclv_225136)(NI vbyte);
-N_NIMCALL(void, opnop_225145)(NI vbyte);
-N_NIMCALL(void, oplda_225154)(NI vbyte);
-N_NIMCALL(void, opldx_225167)(NI vbyte);
-N_NIMCALL(void, opldy_225180)(NI vbyte);
-N_NIMCALL(void, opsta_225193)(NI vbyte);
-N_NIMCALL(void, opstx_225202)(NI vbyte);
-N_NIMCALL(void, opsty_225211)(NI vbyte);
-N_NIMCALL(void, optax_225220)(NI vbyte);
-N_NIMCALL(void, optay_225231)(NI vbyte);
-N_NIMCALL(void, optsx_225242)(NI vbyte);
-N_NIMCALL(void, optxs_225251)(NI vbyte);
-N_NIMCALL(void, optxa_225260)(NI vbyte);
-N_NIMCALL(void, opadc_225271)(NI vbyte);
-N_NIMCALL(void, opdec_225284)(NI vbyte);
-N_NIMCALL(void, opdex_225296)(NI vbyte);
-N_NIMCALL(void, opdey_225319)(NI vbyte);
-N_NIMCALL(void, opbcc_225342)(NI vbyte);
-N_NIMCALL(void, opbcs_225366)(NI vbyte);
-N_NIMCALL(void, opbeq_225390)(NI vbyte);
-N_NIMCALL(void, opbmi_225414)(NI vbyte);
-N_NIMCALL(void, opbne_225438)(NI vbyte);
-N_NIMCALL(void, opbpl_225462)(NI vbyte);
-N_NIMCALL(void, opbvc_225486)(NI vbyte);
-N_NIMCALL(void, opbvs_225510)(NI vbyte);
-N_NIMCALL(void, opjmp_225534)(NI vbyte);
-N_NIMCALL(void, opjsr_225543)(NI vbyte);
-N_NIMCALL(void, opcpx_225556)(NI vbyte);
-N_NIMCALL(void, opcpy_225567)(NI vbyte);
-N_NIMCALL(void, opsec_225578)(NI vbyte);
-N_NIMCALL(void, opsed_225587)(NI vbyte);
-N_NIMCALL(void, optya_225596)(NI vbyte);
-N_NIMCALL(void, opcmp_225607)(NI vbyte);
-N_NIMCALL(void, oppha_225618)(NI vbyte);
-N_NIMCALL(void, opphp_225627)(NI vbyte);
-N_NIMCALL(void, oppla_225637)(NI vbyte);
-N_NIMCALL(void, opplp_225648)(NI vbyte);
-N_NIMCALL(void, oprti_225664)(NI vbyte);
-N_NIMCALL(void, oprts_225677)(NI vbyte);
-N_NIMCALL(void, opinc_225690)(NI vbyte);
-N_NIMCALL(void, opinx_225703)(NI vbyte);
-N_NIMCALL(void, opiny_225716)(NI vbyte);
-N_NIMCALL(void, opsbc_225729)(NI vbyte);
-N_NIMCALL(void, opasl_225742)(NI vbyte);
-N_NIMCALL(void, opbit_225755)(NI vbyte);
-N_NIMCALL(void, opeor_225768)(NI vbyte);
-N_NIMCALL(void, oplsr_225781)(NI vbyte);
-N_NIMCALL(void, opora_225794)(NI vbyte);
-N_NIMCALL(void, oprol_225807)(NI vbyte);
-N_NIMCALL(void, opror_225820)(NI vbyte);
-N_NIMCALL(void, opand_225833)(NI vbyte);
-N_NIMCALL(NI, zeropage_225852)(void);
-N_NIMCALL(NI, zeropageindexedx_225873)(void);
-N_NIMCALL(NI, zeropageindexedy_225896)(void);
-N_NIMCALL(NI, absolute_225919)(void);
-N_NIMCALL(NI, absoluteindexedx_225940)(void);
-N_NIMCALL(NI, absoluteindexedy_225962)(void);
-N_NIMCALL(NI, indirect_225984)(void);
-N_NIMCALL(NI, indirectindexedx_226005)(void);
-N_NIMCALL(NI, indirectindexedy_226027)(void);
-N_NIMCALL(NI, implicit_226049)(void);
-N_NIMCALL(NI, accumulator_226070)(void);
-N_NIMCALL(NI, relative_226083)(void);
-N_NIMCALL(NI, immediate_226104)(void);
-N_NIMCALL(void, totable_226196)(TY226211* pairs_226209, NI pairs_226209Len0, table226214* Result);
-N_NIMCALL(void, inittable_226234)(NI initialsize_226239, table226214* Result);
-N_NIMCALL(void, HEX5BHEX5DHEX3D_226475)(table226214* t_226484, NimStringDesc* key_226488, TY225155 val_226490);
-N_NIMCALL(NI, rawget_226493)(table226214 t_226500, NimStringDesc* key_226503);
-N_NIMCALL(void, enlarge_226550)(table226214* t_226559);
-N_NIMCALL(void, rawinsert_226620)(table226214* t_226629, keyvaluepairseq226217** data_226637, NimStringDesc* key_226641, TY225155 val_226643);
-N_NIMCALL(void, totable_226788)(TY226803* pairs_226801, NI pairs_226801Len0, table226806* Result);
-N_NIMCALL(void, inittable_226826)(NI initialsize_226831, table226806* Result);
-N_NIMCALL(void, HEX5BHEX5DHEX3D_227075)(table226806* t_227084, NimStringDesc* key_227088, TY225853 val_227090);
-N_NIMCALL(NI, rawget_227093)(table226806 t_227100, NimStringDesc* key_227103);
-N_NIMCALL(void, enlarge_227150)(table226806* t_227159);
-N_NIMCALL(void, rawinsert_227220)(table226806* t_227229, keyvaluepairseq226809** data_227237, NimStringDesc* key_227241, TY225853 val_227243);
+N_NIMCALL(void, opbrk_224086)(NI vbyte);
+N_NIMCALL(NI, getmemoryshortat_223154)(NI address);
+N_NIMCALL(void, opcld_224100)(NI vbyte);
+N_NIMCALL(void, opsei_224109)(NI vbyte);
+N_NIMCALL(void, opcli_224118)(NI vbyte);
+N_NIMCALL(void, opclc_224127)(NI vbyte);
+N_NIMCALL(void, opclv_224136)(NI vbyte);
+N_NIMCALL(void, opnop_224145)(NI vbyte);
+N_NIMCALL(void, oplda_224154)(NI vbyte);
+N_NIMCALL(void, opldx_224167)(NI vbyte);
+N_NIMCALL(void, opldy_224180)(NI vbyte);
+N_NIMCALL(void, opsta_224193)(NI vbyte);
+N_NIMCALL(void, opstx_224202)(NI vbyte);
+N_NIMCALL(void, opsty_224211)(NI vbyte);
+N_NIMCALL(void, optax_224220)(NI vbyte);
+N_NIMCALL(void, optay_224231)(NI vbyte);
+N_NIMCALL(void, optsx_224242)(NI vbyte);
+N_NIMCALL(void, optxs_224251)(NI vbyte);
+N_NIMCALL(void, optxa_224260)(NI vbyte);
+N_NIMCALL(void, opadc_224271)(NI vbyte);
+N_NIMCALL(void, opdec_224284)(NI vbyte);
+N_NIMCALL(void, opdex_224296)(NI vbyte);
+N_NIMCALL(void, opdey_224319)(NI vbyte);
+N_NIMCALL(void, opbcc_224342)(NI vbyte);
+N_NIMCALL(void, opbcs_224366)(NI vbyte);
+N_NIMCALL(void, opbeq_224390)(NI vbyte);
+N_NIMCALL(void, opbmi_224414)(NI vbyte);
+N_NIMCALL(void, opbne_224438)(NI vbyte);
+N_NIMCALL(void, opbpl_224462)(NI vbyte);
+N_NIMCALL(void, opbvc_224486)(NI vbyte);
+N_NIMCALL(void, opbvs_224510)(NI vbyte);
+N_NIMCALL(void, opjmp_224534)(NI vbyte);
+N_NIMCALL(void, opjsr_224543)(NI vbyte);
+N_NIMCALL(void, opcpx_224556)(NI vbyte);
+N_NIMCALL(void, opcpy_224567)(NI vbyte);
+N_NIMCALL(void, opsec_224578)(NI vbyte);
+N_NIMCALL(void, opsed_224587)(NI vbyte);
+N_NIMCALL(void, optya_224596)(NI vbyte);
+N_NIMCALL(void, opcmp_224607)(NI vbyte);
+N_NIMCALL(void, oppha_224618)(NI vbyte);
+N_NIMCALL(void, opphp_224627)(NI vbyte);
+N_NIMCALL(void, oppla_224637)(NI vbyte);
+N_NIMCALL(void, opplp_224648)(NI vbyte);
+N_NIMCALL(void, oprti_224664)(NI vbyte);
+N_NIMCALL(void, oprts_224677)(NI vbyte);
+N_NIMCALL(void, opinc_224690)(NI vbyte);
+N_NIMCALL(void, opinx_224703)(NI vbyte);
+N_NIMCALL(void, opiny_224716)(NI vbyte);
+N_NIMCALL(void, opsbc_224729)(NI vbyte);
+N_NIMCALL(void, opasl_224742)(NI vbyte);
+N_NIMCALL(void, opbit_224755)(NI vbyte);
+N_NIMCALL(void, opeor_224768)(NI vbyte);
+N_NIMCALL(void, oplsr_224781)(NI vbyte);
+N_NIMCALL(void, opora_224794)(NI vbyte);
+N_NIMCALL(void, oprol_224807)(NI vbyte);
+N_NIMCALL(void, opror_224820)(NI vbyte);
+N_NIMCALL(void, opand_224833)(NI vbyte);
+N_NIMCALL(NI, zeropage_224852)(void);
+N_NIMCALL(NI, zeropageindexedx_224873)(void);
+N_NIMCALL(NI, zeropageindexedy_224896)(void);
+N_NIMCALL(NI, absolute_224919)(void);
+N_NIMCALL(NI, absoluteindexedx_224940)(void);
+N_NIMCALL(NI, absoluteindexedy_224962)(void);
+N_NIMCALL(NI, indirect_224984)(void);
+N_NIMCALL(NI, indirectindexedx_225005)(void);
+N_NIMCALL(NI, indirectindexedy_225027)(void);
+N_NIMCALL(NI, implicit_225049)(void);
+N_NIMCALL(NI, accumulator_225070)(void);
+N_NIMCALL(NI, relative_225083)(void);
+N_NIMCALL(NI, immediate_225104)(void);
+N_NIMCALL(void, totable_225196)(TY225211* pairs_225209, NI pairs_225209Len0, table225214* Result);
+N_NIMCALL(void, inittable_225234)(NI initialsize_225239, table225214* Result);
+N_NIMCALL(void, HEX5BHEX5DHEX3D_225475)(table225214* t_225484, NimStringDesc* key_225488, TY224155 val_225490);
+N_NIMCALL(NI, rawget_225493)(table225214 t_225500, NimStringDesc* key_225503);
+N_NIMCALL(void, enlarge_225550)(table225214* t_225559);
+N_NIMCALL(void, rawinsert_225620)(table225214* t_225629, keyvaluepairseq225217** data_225637, NimStringDesc* key_225641, TY224155 val_225643);
+N_NIMCALL(void, totable_225788)(TY225803* pairs_225801, NI pairs_225801Len0, table225806* Result);
+N_NIMCALL(void, inittable_225826)(NI initialsize_225831, table225806* Result);
+N_NIMCALL(void, HEX5BHEX5DHEX3D_226075)(table225806* t_226084, NimStringDesc* key_226088, TY224853 val_226090);
+N_NIMCALL(NI, rawget_226093)(table225806 t_226100, NimStringDesc* key_226103);
+N_NIMCALL(void, enlarge_226150)(table225806* t_226159);
+N_NIMCALL(void, rawinsert_226220)(table225806* t_226229, keyvaluepairseq225809** data_226237, NimStringDesc* key_226241, TY224853 val_226243);
 N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NOINLINE(void, chckNil)(void* p);
 N_NIMCALL(void, genericReset)(void* dest, TNimType* mt);
 N_NIMCALL(void, genericSeqAssign)(void* dest, void* src_81404, TNimType* mt);
-N_NIMCALL(void, initcpu_227639)(void);
-N_NIMCALL(TY225853, HEX5BHEX5D_227659)(table226806 t_227666, NimStringDesc* key_227669);
-N_NIMCALL(TY225155, HEX5BHEX5D_227692)(table226214 t_227699, NimStringDesc* key_227702);
-N_NIMCALL(void, debug_227747)(cpuobj225005* cpu_227751, NimStringDesc* opcode_227753, NimStringDesc* mode_227755);
-N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor);
+N_NIMCALL(void, initcpu_226639)(void);
+N_NIMCALL(TY224853, HEX5BHEX5D_226659)(table225806 t_226666, NimStringDesc* key_226669);
+N_NIMCALL(TY224155, HEX5BHEX5D_226692)(table225214 t_226699, NimStringDesc* key_226702);
+N_NIMCALL(void, debug_226747)(cpuobj224005* cpu_226751, NimStringDesc* opcode_226753, NimStringDesc* mode_226755);
+N_NIMCALL(void, update_226648)(NI cpucycles, NI divisor);
 static N_INLINE(NF, HEX2F_86004)(NI x, NI y);
 N_NOINLINE(void, raiseIndexError)(void);
-STRING_LITERAL(TMP468, "ADC", 3);
-STRING_LITERAL(TMP478, "RTI", 3);
-STRING_LITERAL(TMP479, "RTS", 3);
-STRING_LITERAL(TMP480, "INC", 3);
-STRING_LITERAL(TMP481, "INX", 3);
-STRING_LITERAL(TMP482, "INY", 3);
-STRING_LITERAL(TMP483, "SBC", 3);
-STRING_LITERAL(TMP484, "ASL", 3);
-STRING_LITERAL(TMP485, "BIT", 3);
-STRING_LITERAL(TMP486, "EOR", 3);
-STRING_LITERAL(TMP487, "LSR", 3);
-STRING_LITERAL(TMP488, "ORA", 3);
-STRING_LITERAL(TMP489, "ROL", 3);
-STRING_LITERAL(TMP490, "ROR", 3);
-STRING_LITERAL(TMP491, "AND", 3);
-STRING_LITERAL(TMP505, "accumulator", 11);
-STRING_LITERAL(TMP522, "LDA", 3);
-STRING_LITERAL(TMP523, "LDX", 3);
-STRING_LITERAL(TMP524, "LDY", 3);
-STRING_LITERAL(TMP525, "STA", 3);
-STRING_LITERAL(TMP526, "STY", 3);
-STRING_LITERAL(TMP527, "TAX", 3);
-STRING_LITERAL(TMP528, "TAY", 3);
-STRING_LITERAL(TMP529, "TSX", 3);
-STRING_LITERAL(TMP530, "DEC", 3);
-STRING_LITERAL(TMP531, "DEX", 3);
-STRING_LITERAL(TMP532, "DEY", 3);
-STRING_LITERAL(TMP533, "BRK", 3);
-STRING_LITERAL(TMP534, "BCC", 3);
-STRING_LITERAL(TMP535, "BCS", 3);
-STRING_LITERAL(TMP536, "BEQ", 3);
-STRING_LITERAL(TMP537, "BMI", 3);
-STRING_LITERAL(TMP538, "BNE", 3);
-STRING_LITERAL(TMP539, "BPL", 3);
-STRING_LITERAL(TMP540, "BVC", 3);
-STRING_LITERAL(TMP541, "BVS", 3);
-STRING_LITERAL(TMP542, "JMP", 3);
-STRING_LITERAL(TMP543, "JSR", 3);
-STRING_LITERAL(TMP544, "CLC", 3);
-STRING_LITERAL(TMP545, "CLD", 3);
-STRING_LITERAL(TMP546, "CLI", 3);
-STRING_LITERAL(TMP547, "CLV", 3);
-STRING_LITERAL(TMP548, "CPX", 3);
-STRING_LITERAL(TMP549, "CPY", 3);
-STRING_LITERAL(TMP550, "SEC", 3);
-STRING_LITERAL(TMP551, "SED", 3);
-STRING_LITERAL(TMP552, "PHA", 3);
-STRING_LITERAL(TMP553, "PHP", 3);
-STRING_LITERAL(TMP554, "PLA", 3);
-STRING_LITERAL(TMP555, "PLP", 3);
-STRING_LITERAL(TMP556, "STX", 3);
-STRING_LITERAL(TMP557, "TYA", 3);
-STRING_LITERAL(TMP558, "CMP", 3);
-STRING_LITERAL(TMP559, "SEI", 3);
-STRING_LITERAL(TMP560, "TXS", 3);
-STRING_LITERAL(TMP561, "NOP", 3);
-STRING_LITERAL(TMP562, "TXA", 3);
-STRING_LITERAL(TMP563, "/**", 3);
-STRING_LITERAL(TMP564, "*/*", 3);
-STRING_LITERAL(TMP565, "**/", 3);
-STRING_LITERAL(TMP566, "@**", 3);
-STRING_LITERAL(TMP567, "*@*", 3);
-STRING_LITERAL(TMP568, "**@", 3);
-STRING_LITERAL(TMP569, "~**", 3);
-STRING_LITERAL(TMP570, "*~*", 3);
-STRING_LITERAL(TMP571, "**~", 3);
-STRING_LITERAL(TMP572, "~/@", 3);
-STRING_LITERAL(TMP573, "@/~", 3);
-STRING_LITERAL(TMP574, "@~/", 3);
-STRING_LITERAL(TMP575, "***", 3);
-STRING_LITERAL(TMP577, "???", 3);
+STRING_LITERAL(TMP451, "ADC", 3);
+STRING_LITERAL(TMP461, "RTI", 3);
+STRING_LITERAL(TMP462, "RTS", 3);
+STRING_LITERAL(TMP463, "INC", 3);
+STRING_LITERAL(TMP464, "INX", 3);
+STRING_LITERAL(TMP465, "INY", 3);
+STRING_LITERAL(TMP466, "SBC", 3);
+STRING_LITERAL(TMP467, "ASL", 3);
+STRING_LITERAL(TMP468, "BIT", 3);
+STRING_LITERAL(TMP469, "EOR", 3);
+STRING_LITERAL(TMP470, "LSR", 3);
+STRING_LITERAL(TMP471, "ORA", 3);
+STRING_LITERAL(TMP472, "ROL", 3);
+STRING_LITERAL(TMP473, "ROR", 3);
+STRING_LITERAL(TMP474, "AND", 3);
+STRING_LITERAL(TMP488, "accumulator", 11);
+STRING_LITERAL(TMP505, "LDA", 3);
+STRING_LITERAL(TMP506, "LDX", 3);
+STRING_LITERAL(TMP507, "LDY", 3);
+STRING_LITERAL(TMP508, "STA", 3);
+STRING_LITERAL(TMP509, "STY", 3);
+STRING_LITERAL(TMP510, "TAX", 3);
+STRING_LITERAL(TMP511, "TAY", 3);
+STRING_LITERAL(TMP512, "TSX", 3);
+STRING_LITERAL(TMP513, "DEC", 3);
+STRING_LITERAL(TMP514, "DEX", 3);
+STRING_LITERAL(TMP515, "DEY", 3);
+STRING_LITERAL(TMP516, "BRK", 3);
+STRING_LITERAL(TMP517, "BCC", 3);
+STRING_LITERAL(TMP518, "BCS", 3);
+STRING_LITERAL(TMP519, "BEQ", 3);
+STRING_LITERAL(TMP520, "BMI", 3);
+STRING_LITERAL(TMP521, "BNE", 3);
+STRING_LITERAL(TMP522, "BPL", 3);
+STRING_LITERAL(TMP523, "BVC", 3);
+STRING_LITERAL(TMP524, "BVS", 3);
+STRING_LITERAL(TMP525, "JMP", 3);
+STRING_LITERAL(TMP526, "JSR", 3);
+STRING_LITERAL(TMP527, "CLC", 3);
+STRING_LITERAL(TMP528, "CLD", 3);
+STRING_LITERAL(TMP529, "CLI", 3);
+STRING_LITERAL(TMP530, "CLV", 3);
+STRING_LITERAL(TMP531, "CPX", 3);
+STRING_LITERAL(TMP532, "CPY", 3);
+STRING_LITERAL(TMP533, "SEC", 3);
+STRING_LITERAL(TMP534, "SED", 3);
+STRING_LITERAL(TMP535, "PHA", 3);
+STRING_LITERAL(TMP536, "PHP", 3);
+STRING_LITERAL(TMP537, "PLA", 3);
+STRING_LITERAL(TMP538, "PLP", 3);
+STRING_LITERAL(TMP539, "STX", 3);
+STRING_LITERAL(TMP540, "TYA", 3);
+STRING_LITERAL(TMP541, "CMP", 3);
+STRING_LITERAL(TMP542, "SEI", 3);
+STRING_LITERAL(TMP543, "TXS", 3);
+STRING_LITERAL(TMP544, "NOP", 3);
+STRING_LITERAL(TMP545, "TXA", 3);
+STRING_LITERAL(TMP546, "/**", 3);
+STRING_LITERAL(TMP547, "*/*", 3);
+STRING_LITERAL(TMP548, "**/", 3);
+STRING_LITERAL(TMP549, "@**", 3);
+STRING_LITERAL(TMP550, "*@*", 3);
+STRING_LITERAL(TMP551, "**@", 3);
+STRING_LITERAL(TMP552, "~**", 3);
+STRING_LITERAL(TMP553, "*~*", 3);
+STRING_LITERAL(TMP554, "**~", 3);
+STRING_LITERAL(TMP555, "~/@", 3);
+STRING_LITERAL(TMP556, "@/~", 3);
+STRING_LITERAL(TMP557, "@~/", 3);
+STRING_LITERAL(TMP558, "***", 3);
+STRING_LITERAL(TMP560, "???", 3);
 NIM_CONST struct {
   TGenericSeq Sup;
   NimStringDesc* data[256];
-} CNSTSEQ579 = {{256, 256}, {((NimStringDesc*) &TMP533),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP484),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP553),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP484),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP484),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP539),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP484),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP544),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP488),
-((NimStringDesc*) &TMP484),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP543),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP485),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP489),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP555),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP489),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP485),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP489),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP537),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP489),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP550),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP491),
-((NimStringDesc*) &TMP489),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP478),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP487),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP552),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP487),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP542),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP487),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP540),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP487),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP546),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP486),
-((NimStringDesc*) &TMP487),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP479),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP490),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP554),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP490),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP542),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP490),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP541),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP490),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP559),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP468),
-((NimStringDesc*) &TMP490),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP526),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP556),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP532),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP562),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP526),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP556),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP534),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP526),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP556),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP557),
-((NimStringDesc*) &TMP525),
+} CNSTSEQ562 = {{256, 256}, {((NimStringDesc*) &TMP516),
+((NimStringDesc*) &TMP471),
 ((NimStringDesc*) &TMP560),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP525),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP523),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP523),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP528),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP527),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP523),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP535),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP523),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP547),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP529),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP523),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP549),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP549),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP530),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP482),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP531),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP549),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP530),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP538),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP530),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP545),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP558),
-((NimStringDesc*) &TMP530),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP548),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP548),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP480),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP481),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP561),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP548),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP480),
-((NimStringDesc*) &TMP577),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP560),
 ((NimStringDesc*) &TMP536),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP480),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP551),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP483),
-((NimStringDesc*) &TMP480),
-((NimStringDesc*) &TMP577)}};
-NIM_CONST TY13206* TMP576 = ((TY13206*)&CNSTSEQ579);
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP522),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP527),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP471),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP526),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP468),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP472),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP538),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP472),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP468),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP472),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP520),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP472),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP533),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP472),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP461),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP535),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP525),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP523),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP529),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP469),
+((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP462),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP537),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP525),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP524),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP542),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP509),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP539),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP515),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP545),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP509),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP539),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP517),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP509),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP539),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP540),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP543),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP508),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP507),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP506),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP507),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP506),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP511),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP510),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP507),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP506),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP518),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP507),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP506),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP530),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP512),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP507),
+((NimStringDesc*) &TMP505),
+((NimStringDesc*) &TMP506),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP532),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP532),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP513),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP465),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP514),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP532),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP513),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP521),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP513),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP528),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP513),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP531),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP531),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP464),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP544),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP531),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP519),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP534),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP466),
+((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP560)}};
+NIM_CONST TY13206* TMP559 = ((TY13206*)&CNSTSEQ562);
 NIM_CONST struct {
   TGenericSeq Sup;
   NimStringDesc* data[256];
-} CNSTSEQ581 = {{256, 256}, {((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP573),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP574),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP573),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP573),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP573),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP569),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP565),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP574),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP565),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP563),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP575),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP566),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP571),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP568),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP577),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP577)}};
-NIM_CONST TY13206* TMP579 = ((TY13206*)&CNSTSEQ581);
+} CNSTSEQ564 = {{256, 256}, {((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP556),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP557),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP556),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP556),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP556),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP552),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP548),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP557),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP548),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP553),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP546),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP558),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP554),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP555),
+((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP560),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP550),
+((NimStringDesc*) &TMP560)}};
+NIM_CONST TY13206* TMP562 = ((TY13206*)&CNSTSEQ564);
 NIM_CONST struct {
   TGenericSeq Sup;
   NI data[256];
-} CNSTSEQ583 = {{256, 256}, {7,
+} CNSTSEQ566 = {{256, 256}, {7,
 6,
 0,
 0,
@@ -1073,25 +1073,25 @@ NIM_CONST struct {
 4,
 7,
 0}};
-NIM_CONST TY222030* TMP581 = ((TY222030*)&CNSTSEQ583);
-STRING_LITERAL(TMP598, "cpu phase terminated", 20);
-cpuobj225005 nescpu_225033;
+NIM_CONST TY221030* TMP564 = ((TY221030*)&CNSTSEQ566);
+STRING_LITERAL(TMP581, "cpu phase terminated", 20);
+cpuobj224005 nescpu_224033;
 extern TNimType NTI3211; /* RootObj */
-TNimType NTI225005; /* CPUObj */
+TNimType NTI224005; /* CPUObj */
 extern TNimType NTI108; /* int */
 extern TNimType NTI138; /* bool */
 extern TFrame* frameptr_16242;
-TNimType NTI225155; /* proc (int){.locks: 0.} */
-TNimType NTI225853; /* proc (): int{.locks: 0.} */
-table226214 opcodesdispatcher_226765;
-extern TNimType NTI226214; /* Table */
-table226806 addrmodesdispatcher_227365;
-extern TNimType NTI226806; /* Table */
-TY13206* opcodestable_227384;
+TNimType NTI224155; /* proc (int){.locks: 0.} */
+TNimType NTI224853; /* proc (): int{.locks: 0.} */
+table225214 opcodesdispatcher_225765;
+extern TNimType NTI225214; /* Table */
+table225806 addrmodesdispatcher_226365;
+extern TNimType NTI225806; /* Table */
+TY13206* opcodestable_226384;
 extern TNimType NTI13206; /* seq[string] */
-TY13206* addrmodes_227403;
-TY222030* cyclestable_227422;
-extern TNimType NTI222030; /* seq[int] */
+TY13206* addrmodes_226403;
+TY221030* cyclestable_226422;
+extern TNimType NTI221030; /* seq[int] */
 
 static N_INLINE(NI, subInt)(NI a, NI b) {
 	NI result;
@@ -1140,12 +1140,12 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(void, pushonstackregister_225038)(NI value) {
+N_NIMCALL(void, pushonstackregister_224038)(NI value) {
 	nimfr("pushOnStackRegister", "cpu.nim")
 	nimln(21, "cpu.nim");
-	mmiowrite_224117(nescpu_225033.S, value);
+	mmiowrite_223117(nescpu_224033.S, value);
 	nimln(22, "cpu.nim");
-	nescpu_225033.S = subInt(nescpu_225033.S, 1);
+	nescpu_224033.S = subInt(nescpu_224033.S, 1);
 	popFrame();
 }
 
@@ -1169,47 +1169,47 @@ static N_INLINE(NI, addInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(NI, pullfromstackregister_225059)(void) {
+N_NIMCALL(NI, pullfromstackregister_224059)(void) {
 	NI result;
 	nimfr("pullFromStackRegister", "cpu.nim")
 	result = 0;
 	nimln(25, "cpu.nim");
-	result = mmioread_224136(nescpu_225033.S);
+	result = mmioread_223136(nescpu_224033.S);
 	nimln(26, "cpu.nim");
-	mmiowrite_224117(nescpu_225033.S, 0);
+	mmiowrite_223117(nescpu_224033.S, 0);
 	nimln(27, "cpu.nim");
-	nescpu_225033.S = addInt(nescpu_225033.S, 1);
+	nescpu_224033.S = addInt(nescpu_224033.S, 1);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(void, opbrk_225086)(NI vbyte) {
+N_NIMCALL(void, opbrk_224086)(NI vbyte) {
 	NI lowbyte;
-	NI TMP460;
+	NI TMP443;
 	NI highbyte;
-	NI TMP461;
+	NI TMP444;
 	NI status;
-	NI TMP462;
-	NI TMP463;
-	NI TMP464;
-	NI TMP465;
-	NI TMP466;
-	NI TMP467;
+	NI TMP445;
+	NI TMP446;
+	NI TMP447;
+	NI TMP448;
+	NI TMP449;
+	NI TMP450;
 	nimfr("opBrk", "cpu.nim")
 	nimln(37, "cpu.nim");
 	nimln(37, "cpu.nim");
 	nimln(37, "cpu.nim");
-	TMP460 = subInt(nescpu_225033.Pc, 1);
-	lowbyte = (NI)((NI64)(TMP460) & 255);
+	TMP443 = subInt(nescpu_224033.Pc, 1);
+	lowbyte = (NI)((NI64)(TMP443) & 255);
 	nimln(38, "cpu.nim");
 	nimln(38, "cpu.nim");
 	nimln(38, "cpu.nim");
-	TMP461 = subInt(nescpu_225033.Pc, 1);
-	highbyte = (NI)((NU64)((NI64)(TMP461)) << (NU64)(8));
+	TMP444 = subInt(nescpu_224033.Pc, 1);
+	highbyte = (NI)((NU64)((NI64)(TMP444)) << (NU64)(8));
 	nimln(42, "cpu.nim");
-	pushonstackregister_225038(((NI) (lowbyte)));
+	pushonstackregister_224038(((NI) (lowbyte)));
 	nimln(43, "cpu.nim");
-	pushonstackregister_225038(highbyte);
+	pushonstackregister_224038(highbyte);
 	nimln(45, "cpu.nim");
 	nimln(46, "cpu.nim");
 	nimln(46, "cpu.nim");
@@ -1217,58 +1217,58 @@ N_NIMCALL(void, opbrk_225086)(NI vbyte) {
 	nimln(45, "cpu.nim");
 	nimln(45, "cpu.nim");
 	nimln(45, "cpu.nim");
-	TMP462 = addInt(nescpu_225033.C, nescpu_225033.Z);
-	TMP463 = addInt((NI64)(TMP462), nescpu_225033.I);
-	TMP464 = addInt((NI64)(TMP463), nescpu_225033.D);
-	TMP465 = addInt((NI64)(TMP464), nescpu_225033.V);
-	TMP466 = addInt((NI64)(TMP465), nescpu_225033.N);
-	TMP467 = addInt((NI64)(TMP466), nescpu_225033.B);
-	status = (NI64)(TMP467);
+	TMP445 = addInt(nescpu_224033.C, nescpu_224033.Z);
+	TMP446 = addInt((NI64)(TMP445), nescpu_224033.I);
+	TMP447 = addInt((NI64)(TMP446), nescpu_224033.D);
+	TMP448 = addInt((NI64)(TMP447), nescpu_224033.V);
+	TMP449 = addInt((NI64)(TMP448), nescpu_224033.N);
+	TMP450 = addInt((NI64)(TMP449), nescpu_224033.B);
+	status = (NI64)(TMP450);
 	nimln(47, "cpu.nim");
-	pushonstackregister_225038(status);
+	pushonstackregister_224038(status);
 	nimln(49, "cpu.nim");
-	nescpu_225033.B = 1;
+	nescpu_224033.B = 1;
 	nimln(52, "cpu.nim");
-	nescpu_225033.Pc = getmemoryshortat_224154(65534);
+	nescpu_224033.Pc = getmemoryshortat_223154(65534);
 	popFrame();
 }
 
-N_NIMCALL(void, opcld_225100)(NI vbyte) {
+N_NIMCALL(void, opcld_224100)(NI vbyte) {
 	nimfr("opCld", "cpu.nim")
 	nimln(56, "cpu.nim");
-	nescpu_225033.D = 0;
+	nescpu_224033.D = 0;
 	popFrame();
 }
 
-N_NIMCALL(void, opsei_225109)(NI vbyte) {
+N_NIMCALL(void, opsei_224109)(NI vbyte) {
 	nimfr("opSei", "cpu.nim")
 	nimln(60, "cpu.nim");
-	nescpu_225033.I = 1;
+	nescpu_224033.I = 1;
 	popFrame();
 }
 
-N_NIMCALL(void, opcli_225118)(NI vbyte) {
+N_NIMCALL(void, opcli_224118)(NI vbyte) {
 	nimfr("opCli", "cpu.nim")
 	nimln(64, "cpu.nim");
-	nescpu_225033.I = 0;
+	nescpu_224033.I = 0;
 	popFrame();
 }
 
-N_NIMCALL(void, opclc_225127)(NI vbyte) {
+N_NIMCALL(void, opclc_224127)(NI vbyte) {
 	nimfr("opClc", "cpu.nim")
 	nimln(68, "cpu.nim");
-	nescpu_225033.C = 0;
+	nescpu_224033.C = 0;
 	popFrame();
 }
 
-N_NIMCALL(void, opclv_225136)(NI vbyte) {
+N_NIMCALL(void, opclv_224136)(NI vbyte) {
 	nimfr("opClv", "cpu.nim")
 	nimln(72, "cpu.nim");
-	nescpu_225033.V = 0;
+	nescpu_224033.V = 0;
 	popFrame();
 }
 
-N_NIMCALL(void, opnop_225145)(NI vbyte) {
+N_NIMCALL(void, opnop_224145)(NI vbyte) {
 	nimfr("opNop", "cpu.nim")
 	nimln(76, "cpu.nim");
 	goto BeforeRet;
@@ -1276,7 +1276,7 @@ N_NIMCALL(void, opnop_225145)(NI vbyte) {
 	popFrame();
 }
 
-N_NIMCALL(void, oplda_225154)(NI vbyte) {
+N_NIMCALL(void, oplda_224154)(NI vbyte) {
 	nimfr("opLda", "cpu.nim")
 	nimln(81, "cpu.nim");
 	{
@@ -1287,324 +1287,324 @@ N_NIMCALL(void, oplda_225154)(NI vbyte) {
 		LOC3 = (vbyte < 256);
 		if (!(LOC3)) goto LA4;
 		nimln(81, "cpu.nim");
-		LOC3 = (nescpu_225033.Zeropage == NIM_TRUE);
+		LOC3 = (nescpu_224033.Zeropage == NIM_TRUE);
 		LA4: ;
 		if (!LOC3) goto LA5;
 		nimln(82, "cpu.nim");
-		nescpu_225033.A = vbyte;
+		nescpu_224033.A = vbyte;
 	}
 	goto LA1;
 	LA5: ;
 	{
 		nimln(84, "cpu.nim");
-		nescpu_225033.A = mmioread_224136(vbyte);
+		nescpu_224033.A = mmioread_223136(vbyte);
 	}
 	LA1: ;
 	nimln(86, "cpu.nim");
 	{
 		nimln(86, "cpu.nim");
-		if (!(nescpu_225033.A == 0)) goto LA10;
+		if (!(nescpu_224033.A == 0)) goto LA10;
 		nimln(87, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA8;
 	LA10: ;
 	{
 		nimln(89, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA8: ;
 	nimln(91, "cpu.nim");
 	{
 		nimln(91, "cpu.nim");
 		nimln(91, "cpu.nim");
-		if (!((NI)(nescpu_225033.A & 128) == 128)) goto LA15;
+		if (!((NI)(nescpu_224033.A & 128) == 128)) goto LA15;
 		nimln(92, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA13;
 	LA15: ;
 	{
 		nimln(94, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA13: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opldx_225167)(NI vbyte) {
+N_NIMCALL(void, opldx_224167)(NI vbyte) {
 	nimfr("opLdx", "cpu.nim")
 	nimln(99, "cpu.nim");
 	{
 		nimln(99, "cpu.nim");
 		if (!(vbyte < 256)) goto LA3;
 		nimln(100, "cpu.nim");
-		nescpu_225033.X = vbyte;
+		nescpu_224033.X = vbyte;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(102, "cpu.nim");
-		nescpu_225033.X = mmioread_224136(vbyte);
+		nescpu_224033.X = mmioread_223136(vbyte);
 	}
 	LA1: ;
 	nimln(104, "cpu.nim");
 	{
 		nimln(104, "cpu.nim");
-		if (!(nescpu_225033.X == 0)) goto LA8;
+		if (!(nescpu_224033.X == 0)) goto LA8;
 		nimln(105, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(107, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA6: ;
 	nimln(109, "cpu.nim");
 	{
 		nimln(109, "cpu.nim");
 		nimln(109, "cpu.nim");
-		if (!((NI)(nescpu_225033.X & 128) == 128)) goto LA13;
+		if (!((NI)(nescpu_224033.X & 128) == 128)) goto LA13;
 		nimln(110, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA11;
 	LA13: ;
 	{
 		nimln(112, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA11: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opldy_225180)(NI vbyte) {
+N_NIMCALL(void, opldy_224180)(NI vbyte) {
 	nimfr("opLdy", "cpu.nim")
 	nimln(117, "cpu.nim");
 	{
 		nimln(117, "cpu.nim");
 		if (!(vbyte < 256)) goto LA3;
 		nimln(118, "cpu.nim");
-		nescpu_225033.Y = vbyte;
+		nescpu_224033.Y = vbyte;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(120, "cpu.nim");
-		nescpu_225033.Y = mmioread_224136(vbyte);
+		nescpu_224033.Y = mmioread_223136(vbyte);
 	}
 	LA1: ;
 	nimln(122, "cpu.nim");
 	{
 		nimln(122, "cpu.nim");
-		if (!(nescpu_225033.Y == 0)) goto LA8;
+		if (!(nescpu_224033.Y == 0)) goto LA8;
 		nimln(123, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(125, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA6: ;
 	nimln(127, "cpu.nim");
 	{
 		nimln(127, "cpu.nim");
 		nimln(127, "cpu.nim");
-		if (!((NI)(nescpu_225033.Y & 128) == 128)) goto LA13;
+		if (!((NI)(nescpu_224033.Y & 128) == 128)) goto LA13;
 		nimln(128, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA11;
 	LA13: ;
 	{
 		nimln(130, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA11: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opsta_225193)(NI vbyte) {
+N_NIMCALL(void, opsta_224193)(NI vbyte) {
 	nimfr("opSta", "cpu.nim")
 	nimln(134, "cpu.nim");
-	mmiowrite_224117(vbyte, nescpu_225033.A);
+	mmiowrite_223117(vbyte, nescpu_224033.A);
 	popFrame();
 }
 
-N_NIMCALL(void, opstx_225202)(NI vbyte) {
+N_NIMCALL(void, opstx_224202)(NI vbyte) {
 	nimfr("opStx", "cpu.nim")
 	nimln(138, "cpu.nim");
-	mmiowrite_224117(vbyte, nescpu_225033.X);
+	mmiowrite_223117(vbyte, nescpu_224033.X);
 	popFrame();
 }
 
-N_NIMCALL(void, opsty_225211)(NI vbyte) {
+N_NIMCALL(void, opsty_224211)(NI vbyte) {
 	nimfr("opSty", "cpu.nim")
 	nimln(142, "cpu.nim");
-	mmiowrite_224117(vbyte, nescpu_225033.Y);
+	mmiowrite_223117(vbyte, nescpu_224033.Y);
 	popFrame();
 }
 
-N_NIMCALL(void, optax_225220)(NI vbyte) {
+N_NIMCALL(void, optax_224220)(NI vbyte) {
 	nimfr("opTax", "cpu.nim")
 	nimln(146, "cpu.nim");
-	nescpu_225033.X = nescpu_225033.A;
+	nescpu_224033.X = nescpu_224033.A;
 	nimln(148, "cpu.nim");
 	{
 		nimln(148, "cpu.nim");
-		if (!(nescpu_225033.X == 0)) goto LA3;
+		if (!(nescpu_224033.X == 0)) goto LA3;
 		nimln(149, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(151, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(153, "cpu.nim");
 	{
 		nimln(153, "cpu.nim");
 		nimln(153, "cpu.nim");
-		if (!((NI)(nescpu_225033.X & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.X & 128) == 128)) goto LA8;
 		nimln(154, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(156, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, optay_225231)(NI vbyte) {
+N_NIMCALL(void, optay_224231)(NI vbyte) {
 	nimfr("opTay", "cpu.nim")
 	nimln(160, "cpu.nim");
-	nescpu_225033.Y = nescpu_225033.A;
+	nescpu_224033.Y = nescpu_224033.A;
 	nimln(162, "cpu.nim");
 	{
 		nimln(162, "cpu.nim");
-		if (!(nescpu_225033.Y == 0)) goto LA3;
+		if (!(nescpu_224033.Y == 0)) goto LA3;
 		nimln(163, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(165, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(167, "cpu.nim");
 	{
 		nimln(167, "cpu.nim");
 		nimln(167, "cpu.nim");
-		if (!((NI)(nescpu_225033.Y & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.Y & 128) == 128)) goto LA8;
 		nimln(168, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(170, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, optsx_225242)(NI vbyte) {
+N_NIMCALL(void, optsx_224242)(NI vbyte) {
 	nimfr("opTsx", "cpu.nim")
 	nimln(175, "cpu.nim");
-	nescpu_225033.X = pullfromstackregister_225059();
+	nescpu_224033.X = pullfromstackregister_224059();
 	popFrame();
 }
 
-N_NIMCALL(void, optxs_225251)(NI vbyte) {
+N_NIMCALL(void, optxs_224251)(NI vbyte) {
 	nimfr("opTxs", "cpu.nim")
 	nimln(179, "cpu.nim");
-	pushonstackregister_225038(nescpu_225033.X);
+	pushonstackregister_224038(nescpu_224033.X);
 	popFrame();
 }
 
-N_NIMCALL(void, optxa_225260)(NI vbyte) {
+N_NIMCALL(void, optxa_224260)(NI vbyte) {
 	nimfr("opTxa", "cpu.nim")
 	nimln(183, "cpu.nim");
-	nescpu_225033.A = nescpu_225033.X;
+	nescpu_224033.A = nescpu_224033.X;
 	nimln(185, "cpu.nim");
 	{
 		nimln(185, "cpu.nim");
-		if (!(nescpu_225033.A == 0)) goto LA3;
+		if (!(nescpu_224033.A == 0)) goto LA3;
 		nimln(186, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(188, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(190, "cpu.nim");
 	{
 		nimln(190, "cpu.nim");
 		nimln(190, "cpu.nim");
-		if (!((NI)(nescpu_225033.A & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.A & 128) == 128)) goto LA8;
 		nimln(191, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(193, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opadc_225271)(NI vbyte) {
+N_NIMCALL(void, opadc_224271)(NI vbyte) {
 	nimfr("opAdc", "cpu.nim")
 	nimln(196, "cpu.nim");
 	nimln(196, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP468))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP451))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opdec_225284)(NI vbyte) {
+N_NIMCALL(void, opdec_224284)(NI vbyte) {
 	NI value;
 	NI LOC1;
-	NI TMP469;
+	NI TMP452;
 	nimfr("opDec", "cpu.nim")
 	nimln(201, "cpu.nim");
 	nimln(201, "cpu.nim");
 	nimln(201, "cpu.nim");
 	LOC1 = 0;
-	LOC1 = mmioread_224136(vbyte);
-	TMP469 = subInt(LOC1, 1);
-	value = (NI64)(TMP469);
+	LOC1 = mmioread_223136(vbyte);
+	TMP452 = subInt(LOC1, 1);
+	value = (NI64)(TMP452);
 	nimln(202, "cpu.nim");
-	mmiowrite_224117(vbyte, value);
+	mmiowrite_223117(vbyte, value);
 	nimln(204, "cpu.nim");
 	{
 		nimln(204, "cpu.nim");
 		if (!(value == 0)) goto LA4;
 		nimln(205, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA2;
 	LA4: ;
 	{
 		nimln(207, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA2: ;
 	nimln(209, "cpu.nim");
@@ -1613,463 +1613,463 @@ N_NIMCALL(void, opdec_225284)(NI vbyte) {
 		nimln(209, "cpu.nim");
 		if (!((NI)(value & 128) == 128)) goto LA9;
 		nimln(210, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA7;
 	LA9: ;
 	{
 		nimln(212, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA7: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opdex_225296)(NI vbyte) {
+N_NIMCALL(void, opdex_224296)(NI vbyte) {
 	nimfr("opDex", "cpu.nim")
 	nimln(216, "cpu.nim");
-	nescpu_225033.X = subInt(nescpu_225033.X, 1);
+	nescpu_224033.X = subInt(nescpu_224033.X, 1);
 	nimln(218, "cpu.nim");
 	{
 		nimln(218, "cpu.nim");
-		if (!(nescpu_225033.X == 0)) goto LA3;
+		if (!(nescpu_224033.X == 0)) goto LA3;
 		nimln(219, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(221, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(223, "cpu.nim");
 	{
 		nimln(223, "cpu.nim");
 		nimln(223, "cpu.nim");
-		if (!((NI)(nescpu_225033.X & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.X & 128) == 128)) goto LA8;
 		nimln(224, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(226, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opdey_225319)(NI vbyte) {
+N_NIMCALL(void, opdey_224319)(NI vbyte) {
 	nimfr("opDey", "cpu.nim")
 	nimln(230, "cpu.nim");
-	nescpu_225033.Y = subInt(nescpu_225033.Y, 1);
+	nescpu_224033.Y = subInt(nescpu_224033.Y, 1);
 	nimln(232, "cpu.nim");
 	{
 		nimln(232, "cpu.nim");
-		if (!(nescpu_225033.Y == 0)) goto LA3;
+		if (!(nescpu_224033.Y == 0)) goto LA3;
 		nimln(233, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(235, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(237, "cpu.nim");
 	{
 		nimln(237, "cpu.nim");
 		nimln(237, "cpu.nim");
-		if (!((NI)(nescpu_225033.Y & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.Y & 128) == 128)) goto LA8;
 		nimln(238, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(240, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbcc_225342)(NI vbyte) {
-	NI8 unsigned_225345;
+N_NIMCALL(void, opbcc_224342)(NI vbyte) {
+	NI8 unsigned_224345;
 	nimfr("opBcc", "cpu.nim")
 	nimln(243, "cpu.nim");
-	unsigned_225345 = ((NI8) (vbyte));
+	unsigned_224345 = ((NI8) (vbyte));
 	nimln(244, "cpu.nim");
 	{
 		nimln(244, "cpu.nim");
-		if (!(nescpu_225033.C == 0)) goto LA3;
+		if (!(nescpu_224033.C == 0)) goto LA3;
 		nimln(245, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225345)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224345)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbcs_225366)(NI vbyte) {
-	NI8 unsigned_225369;
+N_NIMCALL(void, opbcs_224366)(NI vbyte) {
+	NI8 unsigned_224369;
 	nimfr("opBcs", "cpu.nim")
 	nimln(248, "cpu.nim");
-	unsigned_225369 = ((NI8) (vbyte));
+	unsigned_224369 = ((NI8) (vbyte));
 	nimln(249, "cpu.nim");
 	{
 		nimln(249, "cpu.nim");
 		nimln(249, "cpu.nim");
-		if (!!((nescpu_225033.C == 0))) goto LA3;
+		if (!!((nescpu_224033.C == 0))) goto LA3;
 		nimln(250, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225369)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224369)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbeq_225390)(NI vbyte) {
-	NI8 unsigned_225393;
+N_NIMCALL(void, opbeq_224390)(NI vbyte) {
+	NI8 unsigned_224393;
 	nimfr("opBeq", "cpu.nim")
 	nimln(253, "cpu.nim");
-	unsigned_225393 = ((NI8) (vbyte));
+	unsigned_224393 = ((NI8) (vbyte));
 	nimln(254, "cpu.nim");
 	{
 		nimln(254, "cpu.nim");
 		nimln(254, "cpu.nim");
-		if (!!((nescpu_225033.Z == 0))) goto LA3;
+		if (!!((nescpu_224033.Z == 0))) goto LA3;
 		nimln(255, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225393)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224393)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbmi_225414)(NI vbyte) {
-	NI8 unsigned_225417;
+N_NIMCALL(void, opbmi_224414)(NI vbyte) {
+	NI8 unsigned_224417;
 	nimfr("opBmi", "cpu.nim")
 	nimln(260, "cpu.nim");
-	unsigned_225417 = ((NI8) (vbyte));
+	unsigned_224417 = ((NI8) (vbyte));
 	nimln(261, "cpu.nim");
 	{
 		nimln(261, "cpu.nim");
 		nimln(261, "cpu.nim");
-		if (!!((nescpu_225033.N == 0))) goto LA3;
+		if (!!((nescpu_224033.N == 0))) goto LA3;
 		nimln(262, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225417)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224417)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbne_225438)(NI vbyte) {
-	NI8 unsigned_225441;
+N_NIMCALL(void, opbne_224438)(NI vbyte) {
+	NI8 unsigned_224441;
 	nimfr("opBne", "cpu.nim")
 	nimln(265, "cpu.nim");
-	unsigned_225441 = ((NI8) (vbyte));
+	unsigned_224441 = ((NI8) (vbyte));
 	nimln(266, "cpu.nim");
 	{
 		nimln(266, "cpu.nim");
-		if (!(nescpu_225033.Z == 0)) goto LA3;
+		if (!(nescpu_224033.Z == 0)) goto LA3;
 		nimln(267, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225441)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224441)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbpl_225462)(NI vbyte) {
-	NI8 unsigned_225465;
+N_NIMCALL(void, opbpl_224462)(NI vbyte) {
+	NI8 unsigned_224465;
 	nimfr("opBpl", "cpu.nim")
 	nimln(270, "cpu.nim");
-	unsigned_225465 = ((NI8) (vbyte));
+	unsigned_224465 = ((NI8) (vbyte));
 	nimln(271, "cpu.nim");
 	{
 		nimln(271, "cpu.nim");
-		if (!(nescpu_225033.N == 0)) goto LA3;
+		if (!(nescpu_224033.N == 0)) goto LA3;
 		nimln(272, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225465)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224465)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbvc_225486)(NI vbyte) {
-	NI8 unsigned_225489;
+N_NIMCALL(void, opbvc_224486)(NI vbyte) {
+	NI8 unsigned_224489;
 	nimfr("opBvc", "cpu.nim")
 	nimln(275, "cpu.nim");
-	unsigned_225489 = ((NI8) (vbyte));
+	unsigned_224489 = ((NI8) (vbyte));
 	nimln(276, "cpu.nim");
 	{
 		nimln(276, "cpu.nim");
-		if (!(nescpu_225033.V == 0)) goto LA3;
+		if (!(nescpu_224033.V == 0)) goto LA3;
 		nimln(277, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225489)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224489)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opbvs_225510)(NI vbyte) {
-	NI8 unsigned_225513;
+N_NIMCALL(void, opbvs_224510)(NI vbyte) {
+	NI8 unsigned_224513;
 	nimfr("opBvs", "cpu.nim")
 	nimln(280, "cpu.nim");
-	unsigned_225513 = ((NI8) (vbyte));
+	unsigned_224513 = ((NI8) (vbyte));
 	nimln(281, "cpu.nim");
 	{
 		nimln(281, "cpu.nim");
 		nimln(281, "cpu.nim");
-		if (!!((nescpu_225033.V == 0))) goto LA3;
+		if (!!((nescpu_224033.V == 0))) goto LA3;
 		nimln(282, "cpu.nim");
-		nescpu_225033.Pc = addInt(nescpu_225033.Pc, ((NI) (unsigned_225513)));
+		nescpu_224033.Pc = addInt(nescpu_224033.Pc, ((NI) (unsigned_224513)));
 	}
 	LA3: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opjmp_225534)(NI vbyte) {
+N_NIMCALL(void, opjmp_224534)(NI vbyte) {
 	nimfr("opJmp", "cpu.nim")
 	nimln(286, "cpu.nim");
-	nescpu_225033.Pc = vbyte;
+	nescpu_224033.Pc = vbyte;
 	popFrame();
 }
 
-N_NIMCALL(void, opjsr_225543)(NI vbyte) {
+N_NIMCALL(void, opjsr_224543)(NI vbyte) {
 	NI lowbyte;
-	NI TMP470;
+	NI TMP453;
 	NI highbyte;
-	NI TMP471;
+	NI TMP454;
 	nimfr("opJsr", "cpu.nim")
 	nimln(292, "cpu.nim");
 	nimln(292, "cpu.nim");
 	nimln(292, "cpu.nim");
-	TMP470 = subInt(nescpu_225033.Pc, 1);
-	lowbyte = (NI)((NI64)(TMP470) & 255);
+	TMP453 = subInt(nescpu_224033.Pc, 1);
+	lowbyte = (NI)((NI64)(TMP453) & 255);
 	nimln(293, "cpu.nim");
 	nimln(293, "cpu.nim");
 	nimln(293, "cpu.nim");
-	TMP471 = subInt(nescpu_225033.Pc, 1);
-	highbyte = (NI)((NU64)((NI64)(TMP471)) << (NU64)(8));
+	TMP454 = subInt(nescpu_224033.Pc, 1);
+	highbyte = (NI)((NU64)((NI64)(TMP454)) << (NU64)(8));
 	nimln(297, "cpu.nim");
-	pushonstackregister_225038(((NI) (lowbyte)));
+	pushonstackregister_224038(((NI) (lowbyte)));
 	nimln(298, "cpu.nim");
-	pushonstackregister_225038(highbyte);
+	pushonstackregister_224038(highbyte);
 	nimln(300, "cpu.nim");
-	nescpu_225033.Pc = vbyte;
+	nescpu_224033.Pc = vbyte;
 	popFrame();
 }
 
-N_NIMCALL(void, opcpx_225556)(NI vbyte) {
+N_NIMCALL(void, opcpx_224556)(NI vbyte) {
 	nimfr("opCpx", "cpu.nim")
 	nimln(306, "cpu.nim");
 	{
 		nimln(306, "cpu.nim");
-		if (!(vbyte <= nescpu_225033.X)) goto LA3;
+		if (!(vbyte <= nescpu_224033.X)) goto LA3;
 		nimln(307, "cpu.nim");
-		nescpu_225033.C = 1;
+		nescpu_224033.C = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(309, "cpu.nim");
-		nescpu_225033.C = 0;
+		nescpu_224033.C = 0;
 	}
 	LA1: ;
 	nimln(312, "cpu.nim");
 	{
 		nimln(312, "cpu.nim");
-		if (!(nescpu_225033.X == vbyte)) goto LA8;
+		if (!(nescpu_224033.X == vbyte)) goto LA8;
 		nimln(313, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(315, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA6: ;
 	nimln(318, "cpu.nim");
 	{
 		nimln(318, "cpu.nim");
 		nimln(318, "cpu.nim");
-		if (!((NI)(nescpu_225033.X & 128) == 128)) goto LA13;
+		if (!((NI)(nescpu_224033.X & 128) == 128)) goto LA13;
 		nimln(319, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA11;
 	LA13: ;
 	{
 		nimln(321, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA11: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opcpy_225567)(NI vbyte) {
+N_NIMCALL(void, opcpy_224567)(NI vbyte) {
 	nimfr("opCpy", "cpu.nim")
 	nimln(327, "cpu.nim");
 	{
 		nimln(327, "cpu.nim");
-		if (!(vbyte <= nescpu_225033.Y)) goto LA3;
+		if (!(vbyte <= nescpu_224033.Y)) goto LA3;
 		nimln(328, "cpu.nim");
-		nescpu_225033.C = 1;
+		nescpu_224033.C = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(330, "cpu.nim");
-		nescpu_225033.C = 0;
+		nescpu_224033.C = 0;
 	}
 	LA1: ;
 	nimln(332, "cpu.nim");
 	{
 		nimln(332, "cpu.nim");
-		if (!(nescpu_225033.Y == vbyte)) goto LA8;
+		if (!(nescpu_224033.Y == vbyte)) goto LA8;
 		nimln(333, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(335, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA6: ;
 	nimln(337, "cpu.nim");
 	{
 		nimln(337, "cpu.nim");
 		nimln(337, "cpu.nim");
-		if (!((NI)(nescpu_225033.Y & 128) == 128)) goto LA13;
+		if (!((NI)(nescpu_224033.Y & 128) == 128)) goto LA13;
 		nimln(338, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA11;
 	LA13: ;
 	{
 		nimln(340, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA11: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opsec_225578)(NI vbyte) {
+N_NIMCALL(void, opsec_224578)(NI vbyte) {
 	nimfr("opSec", "cpu.nim")
 	nimln(344, "cpu.nim");
-	nescpu_225033.C = 1;
+	nescpu_224033.C = 1;
 	popFrame();
 }
 
-N_NIMCALL(void, opsed_225587)(NI vbyte) {
+N_NIMCALL(void, opsed_224587)(NI vbyte) {
 	nimfr("opSed", "cpu.nim")
 	nimln(348, "cpu.nim");
-	nescpu_225033.D = 1;
+	nescpu_224033.D = 1;
 	popFrame();
 }
 
-N_NIMCALL(void, optya_225596)(NI vbyte) {
+N_NIMCALL(void, optya_224596)(NI vbyte) {
 	nimfr("opTya", "cpu.nim")
 	nimln(352, "cpu.nim");
-	nescpu_225033.A = nescpu_225033.Y;
+	nescpu_224033.A = nescpu_224033.Y;
 	nimln(354, "cpu.nim");
 	{
 		nimln(354, "cpu.nim");
-		if (!(nescpu_225033.A == 0)) goto LA3;
+		if (!(nescpu_224033.A == 0)) goto LA3;
 		nimln(355, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(357, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(359, "cpu.nim");
 	{
 		nimln(359, "cpu.nim");
 		nimln(359, "cpu.nim");
-		if (!((NI)(nescpu_225033.A & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.A & 128) == 128)) goto LA8;
 		nimln(360, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(362, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opcmp_225607)(NI vbyte) {
+N_NIMCALL(void, opcmp_224607)(NI vbyte) {
 	nimfr("opCmp", "cpu.nim")
 	nimln(368, "cpu.nim");
 	{
 		nimln(368, "cpu.nim");
-		if (!(vbyte <= nescpu_225033.A)) goto LA3;
+		if (!(vbyte <= nescpu_224033.A)) goto LA3;
 		nimln(369, "cpu.nim");
-		nescpu_225033.C = 1;
+		nescpu_224033.C = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(371, "cpu.nim");
-		nescpu_225033.C = 0;
+		nescpu_224033.C = 0;
 	}
 	LA1: ;
 	nimln(373, "cpu.nim");
 	{
 		nimln(373, "cpu.nim");
-		if (!(nescpu_225033.A == vbyte)) goto LA8;
+		if (!(nescpu_224033.A == vbyte)) goto LA8;
 		nimln(374, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(376, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA6: ;
 	nimln(378, "cpu.nim");
 	{
 		nimln(378, "cpu.nim");
 		nimln(378, "cpu.nim");
-		if (!((NI)(nescpu_225033.A & 128) == 128)) goto LA13;
+		if (!((NI)(nescpu_224033.A & 128) == 128)) goto LA13;
 		nimln(379, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA11;
 	LA13: ;
 	{
 		nimln(381, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA11: ;
 	popFrame();
 }
 
-N_NIMCALL(void, oppha_225618)(NI vbyte) {
+N_NIMCALL(void, oppha_224618)(NI vbyte) {
 	nimfr("opPha", "cpu.nim")
 	nimln(385, "cpu.nim");
-	pushonstackregister_225038(nescpu_225033.A);
+	pushonstackregister_224038(nescpu_224033.A);
 	popFrame();
 }
 
-N_NIMCALL(void, opphp_225627)(NI vbyte) {
+N_NIMCALL(void, opphp_224627)(NI vbyte) {
 	NI status;
-	NI TMP472;
-	NI TMP473;
-	NI TMP474;
-	NI TMP475;
-	NI TMP476;
-	NI TMP477;
+	NI TMP455;
+	NI TMP456;
+	NI TMP457;
+	NI TMP458;
+	NI TMP459;
+	NI TMP460;
 	nimfr("opPhp", "cpu.nim")
 	nimln(389, "cpu.nim");
 	nimln(390, "cpu.nim");
@@ -2078,235 +2078,235 @@ N_NIMCALL(void, opphp_225627)(NI vbyte) {
 	nimln(389, "cpu.nim");
 	nimln(389, "cpu.nim");
 	nimln(389, "cpu.nim");
-	TMP472 = addInt(nescpu_225033.C, nescpu_225033.Z);
-	TMP473 = addInt((NI64)(TMP472), nescpu_225033.I);
-	TMP474 = addInt((NI64)(TMP473), nescpu_225033.D);
-	TMP475 = addInt((NI64)(TMP474), nescpu_225033.V);
-	TMP476 = addInt((NI64)(TMP475), nescpu_225033.N);
-	TMP477 = addInt((NI64)(TMP476), nescpu_225033.B);
-	status = (NI64)(TMP477);
+	TMP455 = addInt(nescpu_224033.C, nescpu_224033.Z);
+	TMP456 = addInt((NI64)(TMP455), nescpu_224033.I);
+	TMP457 = addInt((NI64)(TMP456), nescpu_224033.D);
+	TMP458 = addInt((NI64)(TMP457), nescpu_224033.V);
+	TMP459 = addInt((NI64)(TMP458), nescpu_224033.N);
+	TMP460 = addInt((NI64)(TMP459), nescpu_224033.B);
+	status = (NI64)(TMP460);
 	nimln(391, "cpu.nim");
-	pushonstackregister_225038(status);
+	pushonstackregister_224038(status);
 	popFrame();
 }
 
-N_NIMCALL(void, oppla_225637)(NI vbyte) {
+N_NIMCALL(void, oppla_224637)(NI vbyte) {
 	nimfr("opPla", "cpu.nim")
 	nimln(395, "cpu.nim");
-	nescpu_225033.A = pullfromstackregister_225059();
+	nescpu_224033.A = pullfromstackregister_224059();
 	nimln(397, "cpu.nim");
 	{
 		nimln(397, "cpu.nim");
-		if (!(nescpu_225033.A == 0)) goto LA3;
+		if (!(nescpu_224033.A == 0)) goto LA3;
 		nimln(398, "cpu.nim");
-		nescpu_225033.Z = 1;
+		nescpu_224033.Z = 1;
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(400, "cpu.nim");
-		nescpu_225033.Z = 0;
+		nescpu_224033.Z = 0;
 	}
 	LA1: ;
 	nimln(402, "cpu.nim");
 	{
 		nimln(402, "cpu.nim");
 		nimln(402, "cpu.nim");
-		if (!((NI)(nescpu_225033.A & 128) == 128)) goto LA8;
+		if (!((NI)(nescpu_224033.A & 128) == 128)) goto LA8;
 		nimln(403, "cpu.nim");
-		nescpu_225033.N = 1;
+		nescpu_224033.N = 1;
 	}
 	goto LA6;
 	LA8: ;
 	{
 		nimln(405, "cpu.nim");
-		nescpu_225033.N = 0;
+		nescpu_224033.N = 0;
 	}
 	LA6: ;
 	popFrame();
 }
 
-N_NIMCALL(void, opplp_225648)(NI vbyte) {
+N_NIMCALL(void, opplp_224648)(NI vbyte) {
 	NI value;
 	nimfr("opPlp", "cpu.nim")
 	nimln(410, "cpu.nim");
-	value = mmioread_224136(nescpu_225033.S);
+	value = mmioread_223136(nescpu_224033.S);
 	nimln(411, "cpu.nim");
 	nimln(411, "cpu.nim");
-	nescpu_225033.C = ((NI) ((NI)(value & 1)));
+	nescpu_224033.C = ((NI) ((NI)(value & 1)));
 	nimln(412, "cpu.nim");
 	nimln(412, "cpu.nim");
 	nimln(412, "cpu.nim");
-	nescpu_225033.Z = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(1)) & 1)));
+	nescpu_224033.Z = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(1)) & 1)));
 	nimln(413, "cpu.nim");
 	nimln(413, "cpu.nim");
 	nimln(413, "cpu.nim");
-	nescpu_225033.I = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(2)) & 1)));
+	nescpu_224033.I = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(2)) & 1)));
 	nimln(414, "cpu.nim");
 	nimln(414, "cpu.nim");
 	nimln(414, "cpu.nim");
-	nescpu_225033.D = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(3)) & 1)));
+	nescpu_224033.D = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(3)) & 1)));
 	nimln(415, "cpu.nim");
 	nimln(415, "cpu.nim");
 	nimln(415, "cpu.nim");
-	nescpu_225033.V = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(6)) & 1)));
+	nescpu_224033.V = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(6)) & 1)));
 	nimln(416, "cpu.nim");
 	nimln(416, "cpu.nim");
 	nimln(416, "cpu.nim");
-	nescpu_225033.N = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(7)) & 1)));
+	nescpu_224033.N = ((NI) ((NI)((NI)((NU64)(value) >> (NU64)(7)) & 1)));
 	popFrame();
 }
 
-N_NIMCALL(void, oprti_225664)(NI vbyte) {
+N_NIMCALL(void, oprti_224664)(NI vbyte) {
 	nimfr("opRti", "cpu.nim")
 	nimln(420, "cpu.nim");
 	nimln(420, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP478))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP461))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, oprts_225677)(NI vbyte) {
+N_NIMCALL(void, oprts_224677)(NI vbyte) {
 	nimfr("opRts", "cpu.nim")
 	nimln(424, "cpu.nim");
 	nimln(424, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP479))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP462))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opinc_225690)(NI vbyte) {
+N_NIMCALL(void, opinc_224690)(NI vbyte) {
 	nimfr("opInc", "cpu.nim")
 	nimln(428, "cpu.nim");
 	nimln(428, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP480))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP463))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opinx_225703)(NI vbyte) {
+N_NIMCALL(void, opinx_224703)(NI vbyte) {
 	nimfr("opInx", "cpu.nim")
 	nimln(432, "cpu.nim");
 	nimln(432, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP481))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP464))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opiny_225716)(NI vbyte) {
+N_NIMCALL(void, opiny_224716)(NI vbyte) {
 	nimfr("opIny", "cpu.nim")
 	nimln(436, "cpu.nim");
 	nimln(436, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP482))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP465))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opsbc_225729)(NI vbyte) {
+N_NIMCALL(void, opsbc_224729)(NI vbyte) {
 	nimfr("opSbc", "cpu.nim")
 	nimln(440, "cpu.nim");
 	nimln(440, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP483))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP466))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opasl_225742)(NI vbyte) {
+N_NIMCALL(void, opasl_224742)(NI vbyte) {
 	nimfr("opAsl", "cpu.nim")
 	nimln(444, "cpu.nim");
 	nimln(444, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP484))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP467))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opbit_225755)(NI vbyte) {
+N_NIMCALL(void, opbit_224755)(NI vbyte) {
 	nimfr("opBit", "cpu.nim")
 	nimln(448, "cpu.nim");
 	nimln(448, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP485))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP468))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opeor_225768)(NI vbyte) {
+N_NIMCALL(void, opeor_224768)(NI vbyte) {
 	nimfr("opEor", "cpu.nim")
 	nimln(452, "cpu.nim");
 	nimln(452, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP486))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP469))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, oplsr_225781)(NI vbyte) {
+N_NIMCALL(void, oplsr_224781)(NI vbyte) {
 	nimfr("opLsr", "cpu.nim")
 	nimln(456, "cpu.nim");
 	nimln(456, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP487))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP470))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opora_225794)(NI vbyte) {
+N_NIMCALL(void, opora_224794)(NI vbyte) {
 	nimfr("opOra", "cpu.nim")
 	nimln(460, "cpu.nim");
 	nimln(460, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP488))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP471))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, oprol_225807)(NI vbyte) {
+N_NIMCALL(void, oprol_224807)(NI vbyte) {
 	nimfr("opRol", "cpu.nim")
 	nimln(464, "cpu.nim");
 	nimln(464, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP489))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP472))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opror_225820)(NI vbyte) {
+N_NIMCALL(void, opror_224820)(NI vbyte) {
 	nimfr("opRor", "cpu.nim")
 	nimln(468, "cpu.nim");
 	nimln(468, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP490))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP473))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, opand_225833)(NI vbyte) {
+N_NIMCALL(void, opand_224833)(NI vbyte) {
 	nimfr("opAnd", "cpu.nim")
 	nimln(472, "cpu.nim");
 	nimln(472, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP491))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP474))->data);
 	popFrame();
 }
 
-N_NIMCALL(NI, zeropage_225852)(void) {
+N_NIMCALL(NI, zeropage_224852)(void) {
 	NI result;
-	NI TMP492;
+	NI TMP475;
 	nimfr("zeropage", "cpu.nim")
 	result = 0;
 	nimln(482, "cpu.nim");
-	nescpu_225033.Zeropage = NIM_TRUE;
+	nescpu_224033.Zeropage = NIM_TRUE;
 	nimln(484, "cpu.nim");
 	nimln(484, "cpu.nim");
-	TMP492 = addInt(nescpu_225033.Pc, 1);
-	result = mmioread_224136((NI64)(TMP492));
+	TMP475 = addInt(nescpu_224033.Pc, 1);
+	result = mmioread_223136((NI64)(TMP475));
 	nimln(485, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 2);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, zeropageindexedx_225873)(void) {
+N_NIMCALL(NI, zeropageindexedx_224873)(void) {
 	NI result;
 	NI8 address;
-	NI TMP493;
+	NI TMP476;
 	NI LOC1;
 	nimfr("zeropageIndexedX", "cpu.nim")
 	result = 0;
 	nimln(489, "cpu.nim");
-	nescpu_225033.Zeropage = NIM_TRUE;
+	nescpu_224033.Zeropage = NIM_TRUE;
 	address = 0;
 	nimln(492, "cpu.nim");
 	nimln(492, "cpu.nim");
 	nimln(492, "cpu.nim");
 	nimln(492, "cpu.nim");
-	TMP493 = addInt(nescpu_225033.Pc, 1);
+	TMP476 = addInt(nescpu_224033.Pc, 1);
 	LOC1 = 0;
-	LOC1 = getmemoryshortat_224154((NI64)(TMP493));
+	LOC1 = getmemoryshortat_223154((NI64)(TMP476));
 	address = ((NI8)(NU8)(NU)(LOC1));
 	nimln(493, "cpu.nim");
 	nimln(493, "cpu.nim");
-	address = addInt(address, ((NI8)(NU8)(NU)(nescpu_225033.X)));
+	address = addInt(address, ((NI8)(NU8)(NU)(nescpu_224033.X)));
 	nimln(494, "cpu.nim");
 	nimln(494, "cpu.nim");
 	result = ((NI) (((NI32)(NU32)(NU64)(((NI64) (address))))));
@@ -2314,27 +2314,27 @@ N_NIMCALL(NI, zeropageindexedx_225873)(void) {
 	return result;
 }
 
-N_NIMCALL(NI, zeropageindexedy_225896)(void) {
+N_NIMCALL(NI, zeropageindexedy_224896)(void) {
 	NI result;
 	NI8 address;
-	NI TMP494;
+	NI TMP477;
 	NI LOC1;
 	nimfr("zeropageIndexedY", "cpu.nim")
 	result = 0;
 	nimln(498, "cpu.nim");
-	nescpu_225033.Zeropage = NIM_TRUE;
+	nescpu_224033.Zeropage = NIM_TRUE;
 	address = 0;
 	nimln(501, "cpu.nim");
 	nimln(501, "cpu.nim");
 	nimln(501, "cpu.nim");
 	nimln(501, "cpu.nim");
-	TMP494 = addInt(nescpu_225033.Pc, 1);
+	TMP477 = addInt(nescpu_224033.Pc, 1);
 	LOC1 = 0;
-	LOC1 = getmemoryshortat_224154((NI64)(TMP494));
+	LOC1 = getmemoryshortat_223154((NI64)(TMP477));
 	address = ((NI8)(NU8)(NU)(LOC1));
 	nimln(502, "cpu.nim");
 	nimln(502, "cpu.nim");
-	address = addInt(address, ((NI8)(NU8)(NU)(nescpu_225033.Y)));
+	address = addInt(address, ((NI8)(NU8)(NU)(nescpu_224033.Y)));
 	nimln(503, "cpu.nim");
 	nimln(503, "cpu.nim");
 	result = ((NI) (((NI32)(NU32)(NU64)(((NI64) (address))))));
@@ -2342,181 +2342,181 @@ N_NIMCALL(NI, zeropageindexedy_225896)(void) {
 	return result;
 }
 
-N_NIMCALL(NI, absolute_225919)(void) {
+N_NIMCALL(NI, absolute_224919)(void) {
 	NI result;
-	NI TMP495;
+	NI TMP478;
 	nimfr("absolute", "cpu.nim")
 	result = 0;
 	nimln(508, "cpu.nim");
 	nimln(508, "cpu.nim");
-	TMP495 = addInt(nescpu_225033.Pc, 1);
-	result = getmemoryshortat_224154((NI64)(TMP495));
+	TMP478 = addInt(nescpu_224033.Pc, 1);
+	result = getmemoryshortat_223154((NI64)(TMP478));
 	nimln(509, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 3);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, absoluteindexedx_225940)(void) {
+N_NIMCALL(NI, absoluteindexedx_224940)(void) {
 	NI result;
 	NI address;
-	NI TMP496;
-	NI TMP497;
+	NI TMP479;
+	NI TMP480;
 	nimfr("absoluteIndexedX", "cpu.nim")
 	result = 0;
 	nimln(512, "cpu.nim");
 	nimln(512, "cpu.nim");
-	TMP496 = addInt(nescpu_225033.Pc, 1);
-	address = getmemoryshortat_224154((NI64)(TMP496));
+	TMP479 = addInt(nescpu_224033.Pc, 1);
+	address = getmemoryshortat_223154((NI64)(TMP479));
 	nimln(513, "cpu.nim");
 	nimln(513, "cpu.nim");
-	TMP497 = addInt(address, nescpu_225033.X);
-	result = (NI64)(TMP497);
+	TMP480 = addInt(address, nescpu_224033.X);
+	result = (NI64)(TMP480);
 	nimln(514, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 3);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, absoluteindexedy_225962)(void) {
+N_NIMCALL(NI, absoluteindexedy_224962)(void) {
 	NI result;
 	NI address;
-	NI TMP498;
-	NI TMP499;
+	NI TMP481;
+	NI TMP482;
 	nimfr("absoluteIndexedY", "cpu.nim")
 	result = 0;
 	nimln(517, "cpu.nim");
 	nimln(517, "cpu.nim");
-	TMP498 = addInt(nescpu_225033.Pc, 1);
-	address = getmemoryshortat_224154((NI64)(TMP498));
+	TMP481 = addInt(nescpu_224033.Pc, 1);
+	address = getmemoryshortat_223154((NI64)(TMP481));
 	nimln(518, "cpu.nim");
 	nimln(518, "cpu.nim");
-	TMP499 = addInt(address, nescpu_225033.Y);
-	result = (NI64)(TMP499);
+	TMP482 = addInt(address, nescpu_224033.Y);
+	result = (NI64)(TMP482);
 	nimln(519, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 3);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, indirect_225984)(void) {
+N_NIMCALL(NI, indirect_224984)(void) {
 	NI result;
-	NI TMP500;
+	NI TMP483;
 	nimfr("indirect", "cpu.nim")
 	result = 0;
 	nimln(522, "cpu.nim");
 	nimln(522, "cpu.nim");
-	TMP500 = addInt(nescpu_225033.Pc, 1);
-	result = getmemoryshortat_224154((NI64)(TMP500));
+	TMP483 = addInt(nescpu_224033.Pc, 1);
+	result = getmemoryshortat_223154((NI64)(TMP483));
 	nimln(523, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 3);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, indirectindexedx_226005)(void) {
+N_NIMCALL(NI, indirectindexedx_225005)(void) {
 	NI result;
 	NI address;
-	NI TMP501;
-	NI TMP502;
+	NI TMP484;
+	NI TMP485;
 	nimfr("indirectIndexedX", "cpu.nim")
 	result = 0;
 	nimln(526, "cpu.nim");
 	nimln(526, "cpu.nim");
-	TMP501 = addInt(nescpu_225033.Pc, 1);
-	address = mmioread_224136((NI64)(TMP501));
+	TMP484 = addInt(nescpu_224033.Pc, 1);
+	address = mmioread_223136((NI64)(TMP484));
 	nimln(527, "cpu.nim");
 	nimln(527, "cpu.nim");
-	TMP502 = addInt(address, nescpu_225033.X);
-	result = (NI64)(TMP502);
+	TMP485 = addInt(address, nescpu_224033.X);
+	result = (NI64)(TMP485);
 	nimln(528, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 2);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, indirectindexedy_226027)(void) {
+N_NIMCALL(NI, indirectindexedy_225027)(void) {
 	NI result;
 	NI address;
-	NI TMP503;
-	NI TMP504;
+	NI TMP486;
+	NI TMP487;
 	nimfr("indirectIndexedY", "cpu.nim")
 	result = 0;
 	nimln(531, "cpu.nim");
 	nimln(531, "cpu.nim");
-	TMP503 = addInt(nescpu_225033.Pc, 1);
-	address = mmioread_224136((NI64)(TMP503));
+	TMP486 = addInt(nescpu_224033.Pc, 1);
+	address = mmioread_223136((NI64)(TMP486));
 	nimln(532, "cpu.nim");
 	nimln(532, "cpu.nim");
-	TMP504 = addInt(address, nescpu_225033.Y);
-	result = (NI64)(TMP504);
+	TMP487 = addInt(address, nescpu_224033.Y);
+	result = (NI64)(TMP487);
 	nimln(533, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 2);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, implicit_226049)(void) {
+N_NIMCALL(NI, implicit_225049)(void) {
 	NI result;
 	nimfr("implicit", "cpu.nim")
 	result = 0;
 	nimln(537, "cpu.nim");
 	result = 0;
 	nimln(538, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 1);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 1);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, accumulator_226070)(void) {
+N_NIMCALL(NI, accumulator_225070)(void) {
 	NI result;
 	nimfr("accumulator", "cpu.nim")
 	result = 0;
 	nimln(542, "cpu.nim");
 	nimln(542, "cpu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP505))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP488))->data);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, relative_226083)(void) {
+N_NIMCALL(NI, relative_225083)(void) {
 	NI result;
-	NI TMP506;
+	NI TMP489;
 	nimfr("relative", "cpu.nim")
 	result = 0;
 	nimln(546, "cpu.nim");
 	nimln(546, "cpu.nim");
-	TMP506 = addInt(nescpu_225033.Pc, 1);
-	result = mmioread_224136((NI64)(TMP506));
+	TMP489 = addInt(nescpu_224033.Pc, 1);
+	result = mmioread_223136((NI64)(TMP489));
 	nimln(547, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 2);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, immediate_226104)(void) {
+N_NIMCALL(NI, immediate_225104)(void) {
 	NI result;
-	NI TMP507;
+	NI TMP490;
 	nimfr("immediate", "cpu.nim")
 	result = 0;
 	nimln(551, "cpu.nim");
 	nimln(551, "cpu.nim");
-	TMP507 = addInt(nescpu_225033.Pc, 1);
-	result = mmioread_224136((NI64)(TMP507));
+	TMP490 = addInt(nescpu_224033.Pc, 1);
+	result = mmioread_223136((NI64)(TMP490));
 	nimln(552, "cpu.nim");
-	nescpu_225033.Pc = addInt(nescpu_225033.Pc, 2);
+	nescpu_224033.Pc = addInt(nescpu_224033.Pc, 2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(void, initcpu_227639)(void) {
+N_NIMCALL(void, initcpu_226639)(void) {
 	nimfr("initCpu", "cpu.nim")
 	nimln(675, "cpu.nim");
-	nescpu_225033.S = 509;
+	nescpu_224033.S = 509;
 	nimln(677, "cpu.nim");
-	nescpu_225033.Pc = getmemoryshortat_224154(65532);
+	nescpu_224033.Pc = getmemoryshortat_223154(65532);
 	nimln(679, "cpu.nim");
-	nescpu_225033.Zeropage = NIM_FALSE;
+	nescpu_224033.Zeropage = NIM_FALSE;
 	popFrame();
 }
 
@@ -2533,7 +2533,7 @@ static N_INLINE(NF, HEX2F_86004)(NI x, NI y) {
 	return result;
 }
 
-N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor) {
+N_NIMCALL(void, update_226648)(NI cpucycles, NI divisor) {
 	NI cycles;
 	NF LOC1;
 	nimfr("update", "cpu.nim")
@@ -2550,41 +2550,41 @@ N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor) {
 			NimStringDesc* operation;
 			NimStringDesc* mode;
 			NI fetchedbyte;
-			TY225853 LOC4;
-			TY225155 LOC5;
+			TY224853 LOC4;
+			TY224155 LOC5;
 			nimln(684, "cpu.nim");
 			if (!(0 < cycles)) goto LA3;
 			nimln(686, "cpu.nim");
-			opcode = mmioread_224136(nescpu_225033.Pc);
+			opcode = mmioread_223136(nescpu_224033.Pc);
 			nimln(688, "cpu.nim");
-			if ((NU)(opcode) >= (NU)(opcodestable_227384->Sup.len)) raiseIndexError();
-			operation = copyString(opcodestable_227384->data[opcode]);
+			if ((NU)(opcode) >= (NU)(opcodestable_226384->Sup.len)) raiseIndexError();
+			operation = copyString(opcodestable_226384->data[opcode]);
 			nimln(689, "cpu.nim");
-			if ((NU)(opcode) >= (NU)(addrmodes_227403->Sup.len)) raiseIndexError();
-			mode = copyString(addrmodes_227403->data[opcode]);
+			if ((NU)(opcode) >= (NU)(addrmodes_226403->Sup.len)) raiseIndexError();
+			mode = copyString(addrmodes_226403->data[opcode]);
 			nimln(691, "cpu.nim");
 			nimln(691, "cpu.nim");
 			LOC4 = 0;
-			LOC4 = HEX5BHEX5D_227659(addrmodesdispatcher_227365, mode);
+			LOC4 = HEX5BHEX5D_226659(addrmodesdispatcher_226365, mode);
 			fetchedbyte = LOC4();
 			nimln(692, "cpu.nim");
 			nimln(692, "cpu.nim");
 			LOC5 = 0;
-			LOC5 = HEX5BHEX5D_227692(opcodesdispatcher_226765, operation);
+			LOC5 = HEX5BHEX5D_226692(opcodesdispatcher_225765, operation);
 			LOC5(fetchedbyte);
 			nimln(693, "cpu.nim");
-			if ((NU)(opcode) >= (NU)(cyclestable_227422->Sup.len)) raiseIndexError();
-			nescpu_225033.Opcodecycles = addInt(nescpu_225033.Opcodecycles, cyclestable_227422->data[opcode]);
+			if ((NU)(opcode) >= (NU)(cyclestable_226422->Sup.len)) raiseIndexError();
+			nescpu_224033.Opcodecycles = addInt(nescpu_224033.Opcodecycles, cyclestable_226422->data[opcode]);
 			nimln(695, "cpu.nim");
-			nescpu_225033.Zeropage = NIM_FALSE;
+			nescpu_224033.Zeropage = NIM_FALSE;
 			nimln(697, "cpu.nim");
-			if ((NU)(opcode) >= (NU)(cyclestable_227422->Sup.len)) raiseIndexError();
-			cycles = subInt(cycles, cyclestable_227422->data[opcode]);
+			if ((NU)(opcode) >= (NU)(cyclestable_226422->Sup.len)) raiseIndexError();
+			cycles = subInt(cycles, cyclestable_226422->data[opcode]);
 			nimln(699, "cpu.nim");
 			{
 				if (!NIM_TRUE) goto LA8;
 				nimln(700, "cpu.nim");
-				debug_227747((&nescpu_225033), operation, mode);
+				debug_226747((&nescpu_224033), operation, mode);
 			}
 			LA8: ;
 			nimln(701, "cpu.nim");
@@ -2593,7 +2593,7 @@ N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor) {
 				if (!(cycles <= 0)) goto LA12;
 				nimln(702, "cpu.nim");
 				nimln(702, "cpu.nim");
-				printf("%s\015\012", (((NimStringDesc*) &TMP598))->data);
+				printf("%s\015\012", (((NimStringDesc*) &TMP581))->data);
 			}
 			LA12: ;
 		} LA3: ;
@@ -2601,253 +2601,253 @@ N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor) {
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_cpuInit)(void) {
-	TY226763 LOC1;
-	TY227363 LOC2;
+	TY225763 LOC1;
+	TY226363 LOC2;
 	nimfr("cpu", "cpu.nim")
-	nescpu_225033.Sup.m_type = (&NTI225005);
+	nescpu_224033.Sup.m_type = (&NTI224005);
 	nimln(559, "cpu.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	LOC1[0].Field0 = copyString(((NimStringDesc*) &TMP522));
-	LOC1[0].Field1 = oplda_225154;
-	LOC1[1].Field0 = copyString(((NimStringDesc*) &TMP523));
-	LOC1[1].Field1 = opldx_225167;
-	LOC1[2].Field0 = copyString(((NimStringDesc*) &TMP524));
-	LOC1[2].Field1 = opldy_225180;
-	LOC1[3].Field0 = copyString(((NimStringDesc*) &TMP525));
-	LOC1[3].Field1 = opsta_225193;
-	LOC1[4].Field0 = copyString(((NimStringDesc*) &TMP526));
-	LOC1[4].Field1 = opsty_225211;
-	LOC1[5].Field0 = copyString(((NimStringDesc*) &TMP527));
-	LOC1[5].Field1 = optax_225220;
-	LOC1[6].Field0 = copyString(((NimStringDesc*) &TMP528));
-	LOC1[6].Field1 = optay_225231;
-	LOC1[7].Field0 = copyString(((NimStringDesc*) &TMP529));
-	LOC1[7].Field1 = optsx_225242;
-	LOC1[8].Field0 = copyString(((NimStringDesc*) &TMP468));
-	LOC1[8].Field1 = opadc_225271;
-	LOC1[9].Field0 = copyString(((NimStringDesc*) &TMP530));
-	LOC1[9].Field1 = opdec_225284;
-	LOC1[10].Field0 = copyString(((NimStringDesc*) &TMP531));
-	LOC1[10].Field1 = opdex_225296;
-	LOC1[11].Field0 = copyString(((NimStringDesc*) &TMP532));
-	LOC1[11].Field1 = opdey_225319;
-	LOC1[12].Field0 = copyString(((NimStringDesc*) &TMP480));
-	LOC1[12].Field1 = opinc_225690;
-	LOC1[13].Field0 = copyString(((NimStringDesc*) &TMP481));
-	LOC1[13].Field1 = opinx_225703;
-	LOC1[14].Field0 = copyString(((NimStringDesc*) &TMP482));
-	LOC1[14].Field1 = opiny_225716;
-	LOC1[15].Field0 = copyString(((NimStringDesc*) &TMP483));
-	LOC1[15].Field1 = opsbc_225729;
-	LOC1[16].Field0 = copyString(((NimStringDesc*) &TMP533));
-	LOC1[16].Field1 = opbrk_225086;
-	LOC1[17].Field0 = copyString(((NimStringDesc*) &TMP484));
-	LOC1[17].Field1 = opasl_225742;
-	LOC1[18].Field0 = copyString(((NimStringDesc*) &TMP485));
-	LOC1[18].Field1 = opbit_225755;
-	LOC1[19].Field0 = copyString(((NimStringDesc*) &TMP486));
-	LOC1[19].Field1 = opeor_225768;
-	LOC1[20].Field0 = copyString(((NimStringDesc*) &TMP487));
-	LOC1[20].Field1 = oplsr_225781;
-	LOC1[21].Field0 = copyString(((NimStringDesc*) &TMP488));
-	LOC1[21].Field1 = opora_225794;
-	LOC1[22].Field0 = copyString(((NimStringDesc*) &TMP489));
-	LOC1[22].Field1 = oprol_225807;
-	LOC1[23].Field0 = copyString(((NimStringDesc*) &TMP490));
-	LOC1[23].Field1 = opror_225820;
-	LOC1[24].Field0 = copyString(((NimStringDesc*) &TMP534));
-	LOC1[24].Field1 = opbcc_225342;
-	LOC1[25].Field0 = copyString(((NimStringDesc*) &TMP535));
-	LOC1[25].Field1 = opbcs_225366;
-	LOC1[26].Field0 = copyString(((NimStringDesc*) &TMP536));
-	LOC1[26].Field1 = opbeq_225390;
-	LOC1[27].Field0 = copyString(((NimStringDesc*) &TMP537));
-	LOC1[27].Field1 = opbmi_225414;
-	LOC1[28].Field0 = copyString(((NimStringDesc*) &TMP538));
-	LOC1[28].Field1 = opbne_225438;
-	LOC1[29].Field0 = copyString(((NimStringDesc*) &TMP539));
-	LOC1[29].Field1 = opbpl_225462;
-	LOC1[30].Field0 = copyString(((NimStringDesc*) &TMP540));
-	LOC1[30].Field1 = opbvc_225486;
-	LOC1[31].Field0 = copyString(((NimStringDesc*) &TMP541));
-	LOC1[31].Field1 = opbvs_225510;
-	LOC1[32].Field0 = copyString(((NimStringDesc*) &TMP542));
-	LOC1[32].Field1 = opjmp_225534;
-	LOC1[33].Field0 = copyString(((NimStringDesc*) &TMP543));
-	LOC1[33].Field1 = opjsr_225543;
-	LOC1[34].Field0 = copyString(((NimStringDesc*) &TMP478));
-	LOC1[34].Field1 = oprti_225664;
-	LOC1[35].Field0 = copyString(((NimStringDesc*) &TMP479));
-	LOC1[35].Field1 = oprts_225677;
-	LOC1[36].Field0 = copyString(((NimStringDesc*) &TMP544));
-	LOC1[36].Field1 = opclc_225127;
-	LOC1[37].Field0 = copyString(((NimStringDesc*) &TMP545));
-	LOC1[37].Field1 = opcld_225100;
-	LOC1[38].Field0 = copyString(((NimStringDesc*) &TMP546));
-	LOC1[38].Field1 = opcli_225118;
-	LOC1[39].Field0 = copyString(((NimStringDesc*) &TMP547));
-	LOC1[39].Field1 = opclv_225136;
-	LOC1[40].Field0 = copyString(((NimStringDesc*) &TMP548));
-	LOC1[40].Field1 = opcpx_225556;
-	LOC1[41].Field0 = copyString(((NimStringDesc*) &TMP549));
-	LOC1[41].Field1 = opcpy_225567;
-	LOC1[42].Field0 = copyString(((NimStringDesc*) &TMP550));
-	LOC1[42].Field1 = opsec_225578;
-	LOC1[43].Field0 = copyString(((NimStringDesc*) &TMP551));
-	LOC1[43].Field1 = opsed_225587;
-	LOC1[44].Field0 = copyString(((NimStringDesc*) &TMP552));
-	LOC1[44].Field1 = oppha_225618;
-	LOC1[45].Field0 = copyString(((NimStringDesc*) &TMP553));
-	LOC1[45].Field1 = opphp_225627;
-	LOC1[46].Field0 = copyString(((NimStringDesc*) &TMP554));
-	LOC1[46].Field1 = oppla_225637;
-	LOC1[47].Field0 = copyString(((NimStringDesc*) &TMP555));
-	LOC1[47].Field1 = opplp_225648;
-	LOC1[48].Field0 = copyString(((NimStringDesc*) &TMP556));
-	LOC1[48].Field1 = opstx_225202;
-	LOC1[49].Field0 = copyString(((NimStringDesc*) &TMP557));
-	LOC1[49].Field1 = optya_225596;
-	LOC1[50].Field0 = copyString(((NimStringDesc*) &TMP558));
-	LOC1[50].Field1 = opcmp_225607;
-	LOC1[51].Field0 = copyString(((NimStringDesc*) &TMP559));
-	LOC1[51].Field1 = opsei_225109;
-	LOC1[52].Field0 = copyString(((NimStringDesc*) &TMP560));
-	LOC1[52].Field1 = optxs_225251;
-	LOC1[53].Field0 = copyString(((NimStringDesc*) &TMP561));
-	LOC1[53].Field1 = opnop_225145;
-	LOC1[54].Field0 = copyString(((NimStringDesc*) &TMP491));
-	LOC1[54].Field1 = opand_225833;
-	LOC1[55].Field0 = copyString(((NimStringDesc*) &TMP562));
-	LOC1[55].Field1 = optxa_225260;
-	chckNil((void*)(&opcodesdispatcher_226765));
-	genericReset((void*)(&opcodesdispatcher_226765), (&NTI226214));
-	totable_226196(LOC1, 56, (&opcodesdispatcher_226765));
+	LOC1[0].Field0 = copyString(((NimStringDesc*) &TMP505));
+	LOC1[0].Field1 = oplda_224154;
+	LOC1[1].Field0 = copyString(((NimStringDesc*) &TMP506));
+	LOC1[1].Field1 = opldx_224167;
+	LOC1[2].Field0 = copyString(((NimStringDesc*) &TMP507));
+	LOC1[2].Field1 = opldy_224180;
+	LOC1[3].Field0 = copyString(((NimStringDesc*) &TMP508));
+	LOC1[3].Field1 = opsta_224193;
+	LOC1[4].Field0 = copyString(((NimStringDesc*) &TMP509));
+	LOC1[4].Field1 = opsty_224211;
+	LOC1[5].Field0 = copyString(((NimStringDesc*) &TMP510));
+	LOC1[5].Field1 = optax_224220;
+	LOC1[6].Field0 = copyString(((NimStringDesc*) &TMP511));
+	LOC1[6].Field1 = optay_224231;
+	LOC1[7].Field0 = copyString(((NimStringDesc*) &TMP512));
+	LOC1[7].Field1 = optsx_224242;
+	LOC1[8].Field0 = copyString(((NimStringDesc*) &TMP451));
+	LOC1[8].Field1 = opadc_224271;
+	LOC1[9].Field0 = copyString(((NimStringDesc*) &TMP513));
+	LOC1[9].Field1 = opdec_224284;
+	LOC1[10].Field0 = copyString(((NimStringDesc*) &TMP514));
+	LOC1[10].Field1 = opdex_224296;
+	LOC1[11].Field0 = copyString(((NimStringDesc*) &TMP515));
+	LOC1[11].Field1 = opdey_224319;
+	LOC1[12].Field0 = copyString(((NimStringDesc*) &TMP463));
+	LOC1[12].Field1 = opinc_224690;
+	LOC1[13].Field0 = copyString(((NimStringDesc*) &TMP464));
+	LOC1[13].Field1 = opinx_224703;
+	LOC1[14].Field0 = copyString(((NimStringDesc*) &TMP465));
+	LOC1[14].Field1 = opiny_224716;
+	LOC1[15].Field0 = copyString(((NimStringDesc*) &TMP466));
+	LOC1[15].Field1 = opsbc_224729;
+	LOC1[16].Field0 = copyString(((NimStringDesc*) &TMP516));
+	LOC1[16].Field1 = opbrk_224086;
+	LOC1[17].Field0 = copyString(((NimStringDesc*) &TMP467));
+	LOC1[17].Field1 = opasl_224742;
+	LOC1[18].Field0 = copyString(((NimStringDesc*) &TMP468));
+	LOC1[18].Field1 = opbit_224755;
+	LOC1[19].Field0 = copyString(((NimStringDesc*) &TMP469));
+	LOC1[19].Field1 = opeor_224768;
+	LOC1[20].Field0 = copyString(((NimStringDesc*) &TMP470));
+	LOC1[20].Field1 = oplsr_224781;
+	LOC1[21].Field0 = copyString(((NimStringDesc*) &TMP471));
+	LOC1[21].Field1 = opora_224794;
+	LOC1[22].Field0 = copyString(((NimStringDesc*) &TMP472));
+	LOC1[22].Field1 = oprol_224807;
+	LOC1[23].Field0 = copyString(((NimStringDesc*) &TMP473));
+	LOC1[23].Field1 = opror_224820;
+	LOC1[24].Field0 = copyString(((NimStringDesc*) &TMP517));
+	LOC1[24].Field1 = opbcc_224342;
+	LOC1[25].Field0 = copyString(((NimStringDesc*) &TMP518));
+	LOC1[25].Field1 = opbcs_224366;
+	LOC1[26].Field0 = copyString(((NimStringDesc*) &TMP519));
+	LOC1[26].Field1 = opbeq_224390;
+	LOC1[27].Field0 = copyString(((NimStringDesc*) &TMP520));
+	LOC1[27].Field1 = opbmi_224414;
+	LOC1[28].Field0 = copyString(((NimStringDesc*) &TMP521));
+	LOC1[28].Field1 = opbne_224438;
+	LOC1[29].Field0 = copyString(((NimStringDesc*) &TMP522));
+	LOC1[29].Field1 = opbpl_224462;
+	LOC1[30].Field0 = copyString(((NimStringDesc*) &TMP523));
+	LOC1[30].Field1 = opbvc_224486;
+	LOC1[31].Field0 = copyString(((NimStringDesc*) &TMP524));
+	LOC1[31].Field1 = opbvs_224510;
+	LOC1[32].Field0 = copyString(((NimStringDesc*) &TMP525));
+	LOC1[32].Field1 = opjmp_224534;
+	LOC1[33].Field0 = copyString(((NimStringDesc*) &TMP526));
+	LOC1[33].Field1 = opjsr_224543;
+	LOC1[34].Field0 = copyString(((NimStringDesc*) &TMP461));
+	LOC1[34].Field1 = oprti_224664;
+	LOC1[35].Field0 = copyString(((NimStringDesc*) &TMP462));
+	LOC1[35].Field1 = oprts_224677;
+	LOC1[36].Field0 = copyString(((NimStringDesc*) &TMP527));
+	LOC1[36].Field1 = opclc_224127;
+	LOC1[37].Field0 = copyString(((NimStringDesc*) &TMP528));
+	LOC1[37].Field1 = opcld_224100;
+	LOC1[38].Field0 = copyString(((NimStringDesc*) &TMP529));
+	LOC1[38].Field1 = opcli_224118;
+	LOC1[39].Field0 = copyString(((NimStringDesc*) &TMP530));
+	LOC1[39].Field1 = opclv_224136;
+	LOC1[40].Field0 = copyString(((NimStringDesc*) &TMP531));
+	LOC1[40].Field1 = opcpx_224556;
+	LOC1[41].Field0 = copyString(((NimStringDesc*) &TMP532));
+	LOC1[41].Field1 = opcpy_224567;
+	LOC1[42].Field0 = copyString(((NimStringDesc*) &TMP533));
+	LOC1[42].Field1 = opsec_224578;
+	LOC1[43].Field0 = copyString(((NimStringDesc*) &TMP534));
+	LOC1[43].Field1 = opsed_224587;
+	LOC1[44].Field0 = copyString(((NimStringDesc*) &TMP535));
+	LOC1[44].Field1 = oppha_224618;
+	LOC1[45].Field0 = copyString(((NimStringDesc*) &TMP536));
+	LOC1[45].Field1 = opphp_224627;
+	LOC1[46].Field0 = copyString(((NimStringDesc*) &TMP537));
+	LOC1[46].Field1 = oppla_224637;
+	LOC1[47].Field0 = copyString(((NimStringDesc*) &TMP538));
+	LOC1[47].Field1 = opplp_224648;
+	LOC1[48].Field0 = copyString(((NimStringDesc*) &TMP539));
+	LOC1[48].Field1 = opstx_224202;
+	LOC1[49].Field0 = copyString(((NimStringDesc*) &TMP540));
+	LOC1[49].Field1 = optya_224596;
+	LOC1[50].Field0 = copyString(((NimStringDesc*) &TMP541));
+	LOC1[50].Field1 = opcmp_224607;
+	LOC1[51].Field0 = copyString(((NimStringDesc*) &TMP542));
+	LOC1[51].Field1 = opsei_224109;
+	LOC1[52].Field0 = copyString(((NimStringDesc*) &TMP543));
+	LOC1[52].Field1 = optxs_224251;
+	LOC1[53].Field0 = copyString(((NimStringDesc*) &TMP544));
+	LOC1[53].Field1 = opnop_224145;
+	LOC1[54].Field0 = copyString(((NimStringDesc*) &TMP474));
+	LOC1[54].Field1 = opand_224833;
+	LOC1[55].Field0 = copyString(((NimStringDesc*) &TMP545));
+	LOC1[55].Field1 = optxa_224260;
+	chckNil((void*)(&opcodesdispatcher_225765));
+	genericReset((void*)(&opcodesdispatcher_225765), (&NTI225214));
+	totable_225196(LOC1, 56, (&opcodesdispatcher_225765));
 	nimln(575, "cpu.nim");
 	memset((void*)LOC2, 0, sizeof(LOC2));
-	LOC2[0].Field0 = copyString(((NimStringDesc*) &TMP563));
-	LOC2[0].Field1 = zeropage_225852;
-	LOC2[1].Field0 = copyString(((NimStringDesc*) &TMP564));
-	LOC2[1].Field1 = zeropageindexedx_225873;
-	LOC2[2].Field0 = copyString(((NimStringDesc*) &TMP565));
-	LOC2[2].Field1 = zeropageindexedy_225896;
-	LOC2[3].Field0 = copyString(((NimStringDesc*) &TMP566));
-	LOC2[3].Field1 = absolute_225919;
-	LOC2[4].Field0 = copyString(((NimStringDesc*) &TMP567));
-	LOC2[4].Field1 = absoluteindexedx_225940;
-	LOC2[5].Field0 = copyString(((NimStringDesc*) &TMP568));
-	LOC2[5].Field1 = absoluteindexedy_225962;
-	LOC2[6].Field0 = copyString(((NimStringDesc*) &TMP569));
-	LOC2[6].Field1 = indirect_225984;
-	LOC2[7].Field0 = copyString(((NimStringDesc*) &TMP570));
-	LOC2[7].Field1 = indirectindexedx_226005;
-	LOC2[8].Field0 = copyString(((NimStringDesc*) &TMP571));
-	LOC2[8].Field1 = indirectindexedy_226027;
-	LOC2[9].Field0 = copyString(((NimStringDesc*) &TMP572));
-	LOC2[9].Field1 = implicit_226049;
-	LOC2[10].Field0 = copyString(((NimStringDesc*) &TMP573));
-	LOC2[10].Field1 = accumulator_226070;
-	LOC2[11].Field0 = copyString(((NimStringDesc*) &TMP574));
-	LOC2[11].Field1 = relative_226083;
-	LOC2[12].Field0 = copyString(((NimStringDesc*) &TMP575));
-	LOC2[12].Field1 = immediate_226104;
-	chckNil((void*)(&addrmodesdispatcher_227365));
-	genericReset((void*)(&addrmodesdispatcher_227365), (&NTI226806));
-	totable_226788(LOC2, 13, (&addrmodesdispatcher_227365));
+	LOC2[0].Field0 = copyString(((NimStringDesc*) &TMP546));
+	LOC2[0].Field1 = zeropage_224852;
+	LOC2[1].Field0 = copyString(((NimStringDesc*) &TMP547));
+	LOC2[1].Field1 = zeropageindexedx_224873;
+	LOC2[2].Field0 = copyString(((NimStringDesc*) &TMP548));
+	LOC2[2].Field1 = zeropageindexedy_224896;
+	LOC2[3].Field0 = copyString(((NimStringDesc*) &TMP549));
+	LOC2[3].Field1 = absolute_224919;
+	LOC2[4].Field0 = copyString(((NimStringDesc*) &TMP550));
+	LOC2[4].Field1 = absoluteindexedx_224940;
+	LOC2[5].Field0 = copyString(((NimStringDesc*) &TMP551));
+	LOC2[5].Field1 = absoluteindexedy_224962;
+	LOC2[6].Field0 = copyString(((NimStringDesc*) &TMP552));
+	LOC2[6].Field1 = indirect_224984;
+	LOC2[7].Field0 = copyString(((NimStringDesc*) &TMP553));
+	LOC2[7].Field1 = indirectindexedx_225005;
+	LOC2[8].Field0 = copyString(((NimStringDesc*) &TMP554));
+	LOC2[8].Field1 = indirectindexedy_225027;
+	LOC2[9].Field0 = copyString(((NimStringDesc*) &TMP555));
+	LOC2[9].Field1 = implicit_225049;
+	LOC2[10].Field0 = copyString(((NimStringDesc*) &TMP556));
+	LOC2[10].Field1 = accumulator_225070;
+	LOC2[11].Field0 = copyString(((NimStringDesc*) &TMP557));
+	LOC2[11].Field1 = relative_225083;
+	LOC2[12].Field0 = copyString(((NimStringDesc*) &TMP558));
+	LOC2[12].Field1 = immediate_225104;
+	chckNil((void*)(&addrmodesdispatcher_226365));
+	genericReset((void*)(&addrmodesdispatcher_226365), (&NTI225806));
+	totable_225788(LOC2, 13, (&addrmodesdispatcher_226365));
 	nimln(581, "cpu.nim");
-	genericSeqAssign((&opcodestable_227384), TMP576, (&NTI13206));
+	genericSeqAssign((&opcodestable_226384), TMP559, (&NTI13206));
 	nimln(619, "cpu.nim");
-	genericSeqAssign((&addrmodes_227403), TMP579, (&NTI13206));
+	genericSeqAssign((&addrmodes_226403), TMP562, (&NTI13206));
 	nimln(653, "cpu.nim");
-	genericSeqAssign((&cyclestable_227422), TMP581, (&NTI222030));
+	genericSeqAssign((&cyclestable_226422), TMP564, (&NTI221030));
 	popFrame();
 }
 
 NIM_EXTERNC N_NOINLINE(void, HEX00_cpuDatInit)(void) {
-static TNimNode* TMP459[14];
-static TNimNode TMP324[15];
-NTI225005.size = sizeof(cpuobj225005);
-NTI225005.kind = 17;
-NTI225005.base = (&NTI3211);
-NTI225005.flags = 1;
-TMP459[0] = &TMP324[1];
-TMP324[1].kind = 1;
-TMP324[1].offset = offsetof(cpuobj225005, A);
-TMP324[1].typ = (&NTI108);
-TMP324[1].name = "a";
-TMP459[1] = &TMP324[2];
-TMP324[2].kind = 1;
-TMP324[2].offset = offsetof(cpuobj225005, X);
-TMP324[2].typ = (&NTI108);
-TMP324[2].name = "x";
-TMP459[2] = &TMP324[3];
-TMP324[3].kind = 1;
-TMP324[3].offset = offsetof(cpuobj225005, Y);
-TMP324[3].typ = (&NTI108);
-TMP324[3].name = "y";
-TMP459[3] = &TMP324[4];
-TMP324[4].kind = 1;
-TMP324[4].offset = offsetof(cpuobj225005, S);
-TMP324[4].typ = (&NTI108);
-TMP324[4].name = "s";
-TMP459[4] = &TMP324[5];
-TMP324[5].kind = 1;
-TMP324[5].offset = offsetof(cpuobj225005, Pc);
-TMP324[5].typ = (&NTI108);
-TMP324[5].name = "pc";
-TMP459[5] = &TMP324[6];
-TMP324[6].kind = 1;
-TMP324[6].offset = offsetof(cpuobj225005, I);
-TMP324[6].typ = (&NTI108);
-TMP324[6].name = "i";
-TMP459[6] = &TMP324[7];
-TMP324[7].kind = 1;
-TMP324[7].offset = offsetof(cpuobj225005, Z);
-TMP324[7].typ = (&NTI108);
-TMP324[7].name = "z";
-TMP459[7] = &TMP324[8];
-TMP324[8].kind = 1;
-TMP324[8].offset = offsetof(cpuobj225005, C);
-TMP324[8].typ = (&NTI108);
-TMP324[8].name = "c";
-TMP459[8] = &TMP324[9];
-TMP324[9].kind = 1;
-TMP324[9].offset = offsetof(cpuobj225005, B);
-TMP324[9].typ = (&NTI108);
-TMP324[9].name = "b";
-TMP459[9] = &TMP324[10];
-TMP324[10].kind = 1;
-TMP324[10].offset = offsetof(cpuobj225005, D);
-TMP324[10].typ = (&NTI108);
-TMP324[10].name = "d";
-TMP459[10] = &TMP324[11];
-TMP324[11].kind = 1;
-TMP324[11].offset = offsetof(cpuobj225005, N);
-TMP324[11].typ = (&NTI108);
-TMP324[11].name = "n";
-TMP459[11] = &TMP324[12];
-TMP324[12].kind = 1;
-TMP324[12].offset = offsetof(cpuobj225005, V);
-TMP324[12].typ = (&NTI108);
-TMP324[12].name = "v";
-TMP459[12] = &TMP324[13];
-TMP324[13].kind = 1;
-TMP324[13].offset = offsetof(cpuobj225005, Opcodecycles);
-TMP324[13].typ = (&NTI108);
-TMP324[13].name = "opcodeCycles";
-TMP459[13] = &TMP324[14];
-TMP324[14].kind = 1;
-TMP324[14].offset = offsetof(cpuobj225005, Zeropage);
-TMP324[14].typ = (&NTI138);
-TMP324[14].name = "zeropage";
-TMP324[0].len = 14; TMP324[0].kind = 2; TMP324[0].sons = &TMP459[0];
-NTI225005.node = &TMP324[0];
-NTI225155.size = sizeof(TY225155);
-NTI225155.kind = 25;
-NTI225155.base = 0;
-NTI225155.flags = 3;
-NTI225853.size = sizeof(TY225853);
-NTI225853.kind = 25;
-NTI225853.base = 0;
-NTI225853.flags = 3;
+static TNimNode* TMP442[14];
+static TNimNode TMP307[15];
+NTI224005.size = sizeof(cpuobj224005);
+NTI224005.kind = 17;
+NTI224005.base = (&NTI3211);
+NTI224005.flags = 1;
+TMP442[0] = &TMP307[1];
+TMP307[1].kind = 1;
+TMP307[1].offset = offsetof(cpuobj224005, A);
+TMP307[1].typ = (&NTI108);
+TMP307[1].name = "a";
+TMP442[1] = &TMP307[2];
+TMP307[2].kind = 1;
+TMP307[2].offset = offsetof(cpuobj224005, X);
+TMP307[2].typ = (&NTI108);
+TMP307[2].name = "x";
+TMP442[2] = &TMP307[3];
+TMP307[3].kind = 1;
+TMP307[3].offset = offsetof(cpuobj224005, Y);
+TMP307[3].typ = (&NTI108);
+TMP307[3].name = "y";
+TMP442[3] = &TMP307[4];
+TMP307[4].kind = 1;
+TMP307[4].offset = offsetof(cpuobj224005, S);
+TMP307[4].typ = (&NTI108);
+TMP307[4].name = "s";
+TMP442[4] = &TMP307[5];
+TMP307[5].kind = 1;
+TMP307[5].offset = offsetof(cpuobj224005, Pc);
+TMP307[5].typ = (&NTI108);
+TMP307[5].name = "pc";
+TMP442[5] = &TMP307[6];
+TMP307[6].kind = 1;
+TMP307[6].offset = offsetof(cpuobj224005, I);
+TMP307[6].typ = (&NTI108);
+TMP307[6].name = "i";
+TMP442[6] = &TMP307[7];
+TMP307[7].kind = 1;
+TMP307[7].offset = offsetof(cpuobj224005, Z);
+TMP307[7].typ = (&NTI108);
+TMP307[7].name = "z";
+TMP442[7] = &TMP307[8];
+TMP307[8].kind = 1;
+TMP307[8].offset = offsetof(cpuobj224005, C);
+TMP307[8].typ = (&NTI108);
+TMP307[8].name = "c";
+TMP442[8] = &TMP307[9];
+TMP307[9].kind = 1;
+TMP307[9].offset = offsetof(cpuobj224005, B);
+TMP307[9].typ = (&NTI108);
+TMP307[9].name = "b";
+TMP442[9] = &TMP307[10];
+TMP307[10].kind = 1;
+TMP307[10].offset = offsetof(cpuobj224005, D);
+TMP307[10].typ = (&NTI108);
+TMP307[10].name = "d";
+TMP442[10] = &TMP307[11];
+TMP307[11].kind = 1;
+TMP307[11].offset = offsetof(cpuobj224005, N);
+TMP307[11].typ = (&NTI108);
+TMP307[11].name = "n";
+TMP442[11] = &TMP307[12];
+TMP307[12].kind = 1;
+TMP307[12].offset = offsetof(cpuobj224005, V);
+TMP307[12].typ = (&NTI108);
+TMP307[12].name = "v";
+TMP442[12] = &TMP307[13];
+TMP307[13].kind = 1;
+TMP307[13].offset = offsetof(cpuobj224005, Opcodecycles);
+TMP307[13].typ = (&NTI108);
+TMP307[13].name = "opcodeCycles";
+TMP442[13] = &TMP307[14];
+TMP307[14].kind = 1;
+TMP307[14].offset = offsetof(cpuobj224005, Zeropage);
+TMP307[14].typ = (&NTI138);
+TMP307[14].name = "zeropage";
+TMP307[0].len = 14; TMP307[0].kind = 2; TMP307[0].sons = &TMP442[0];
+NTI224005.node = &TMP307[0];
+NTI224155.size = sizeof(TY224155);
+NTI224155.kind = 25;
+NTI224155.base = 0;
+NTI224155.flags = 3;
+NTI224853.size = sizeof(TY224853);
+NTI224853.kind = 25;
+NTI224853.base = 0;
+NTI224853.flags = 3;
 }
 

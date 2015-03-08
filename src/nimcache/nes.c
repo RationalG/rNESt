@@ -10,11 +10,11 @@
 #include <stdio.h>
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
-typedef struct romobj137027 romobj137027;
+typedef struct romobj136027 romobj136027;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
-typedef struct TY131128 TY131128;
+typedef struct TY136033 TY136033;
 struct  TGenericSeq  {
 NI len;
 NI reserved;
@@ -38,12 +38,12 @@ TY3094 deepcopy;
 struct  TNimObject  {
 TNimType* m_type;
 };
-typedef NIM_CHAR TY137030[16];
-struct  romobj137027  {
+typedef NIM_CHAR TY136030[16];
+struct  romobj136027  {
   TNimObject Sup;
-TY137030 Header;
-TY131128* Prgbytes;
-TY131128* Chrbytes;
+TY136030 Header;
+TY136033* Prgbytes;
+TY136033* Chrbytes;
 };
 struct  TNimNode  {
 NU8 kind;
@@ -53,29 +53,29 @@ NCSTRING name;
 NI len;
 TNimNode** sons;
 };
-struct TY131128 {
+struct TY136033 {
   TGenericSeq Sup;
   NIM_CHAR data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(void, initrom_242017)(void);
+N_NIMCALL(void, initrom_241017)(void);
 N_NIMCALL(NIM_BOOL, open_12603)(FILE** f, NimStringDesc* filename, NU8 mode, NI bufsize);
 N_NIMCALL(NimStringDesc*, nosparamStr)(NI i);
 N_NIMCALL(void, failedassertimpl_86825)(NimStringDesc* msg);
-N_NIMCALL(void, loadines_137051)(FILE* romfile, romobj137027* Result);
+N_NIMCALL(void, loadines_136244)(FILE* romfile, romobj136027* Result);
 N_NOINLINE(void, chckNil)(void* p);
 N_NIMCALL(void, genericReset)(void* dest, TNimType* mt);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(void, run_242209)(void);
-N_NIMCALL(void, update_227648)(NI cpucycles, NI divisor);
-N_NIMCALL(void, update_223821)(void);
+N_NIMCALL(void, run_241209)(void);
+N_NIMCALL(void, update_226648)(NI cpucycles, NI divisor);
+N_NIMCALL(void, update_222821)(void);
 static N_INLINE(NI, subInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
-N_NIMCALL(void, main_242245)(void);
-N_NIMCALL(void, initppu_223729)(void);
-N_NIMCALL(void, initmem_224187)(void);
-N_NIMCALL(void, initcpu_227639)(void);
+N_NIMCALL(void, main_241245)(void);
+N_NIMCALL(void, initppu_222729)(void);
+N_NIMCALL(void, initmem_223187)(void);
+N_NIMCALL(void, initcpu_226639)(void);
 static N_INLINE(void, initStackBottomWith)(void* locals);
 N_NOINLINE(void, setStackBottom)(void* thestackbottom);
 NIM_EXTERNC N_NOINLINE(void, systemInit)(void);
@@ -92,8 +92,6 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_osInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_osDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_streamsInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_streamsDatInit)(void);
-NIM_EXTERNC N_NOINLINE(void, HEX00_hexInit)(void);
-NIM_EXTERNC N_NOINLINE(void, HEX00_hexDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_macrosInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_macrosDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, HEX00_romInit)(void);
@@ -132,10 +130,10 @@ NIM_EXTERNC N_NOINLINE(void, HEX00_screenInit)(void);
 NIM_EXTERNC N_NOINLINE(void, HEX00_screenDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, nesInit)(void);
 NIM_EXTERNC N_NOINLINE(void, nesDatInit)(void);
-STRING_LITERAL(TMP774, "open(romFile, paramStr(1)) ", 27);
-NI cycles_242012;
-extern romobj137027 nesrom_137046;
-extern TNimType NTI137027; /* ROMObj */
+STRING_LITERAL(TMP757, "open(romFile, paramStr(1)) ", 27);
+NI cycles_241012;
+extern romobj136027 nesrom_136046;
+extern TNimType NTI136027; /* ROMObj */
 extern TFrame* frameptr_16242;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
@@ -165,7 +163,7 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(void, initrom_242017)(void) {
+N_NIMCALL(void, initrom_241017)(void) {
 	FILE* romfile;
 	nimfr("initRom", "nes.nim")
 	romfile = 0;
@@ -182,14 +180,14 @@ N_NIMCALL(void, initrom_242017)(void) {
 		LOC4 = open_12603(&romfile, LOC3, ((NU8) 0), -1);
 		if (!!(LOC4)) goto LA5;
 		nimln(14, "nes.nim");
-		failedassertimpl_86825(((NimStringDesc*) &TMP774));
+		failedassertimpl_86825(((NimStringDesc*) &TMP757));
 	}
 	LA5: ;
 	nimln(16, "nes.nim");
-	chckNil((void*)(&nesrom_137046));
-	genericReset((void*)(&nesrom_137046), (&NTI137027));
-	nesrom_137046.Sup.m_type = (&NTI137027);
-	loadines_137051(romfile, (&nesrom_137046));
+	chckNil((void*)(&nesrom_136046));
+	genericReset((void*)(&nesrom_136046), (&NTI136027));
+	nesrom_136046.Sup.m_type = (&NTI136027);
+	loadines_136244(romfile, (&nesrom_136046));
 	popFrame();
 }
 
@@ -213,7 +211,7 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, run_242209)(void) {
+N_NIMCALL(void, run_241209)(void) {
 	nimfr("run", "nes.nim")
 	{
 		nimln(19, "nes.nim");
@@ -227,9 +225,9 @@ N_NIMCALL(void, run_242209)(void) {
 					nimln(23, "nes.nim");
 					if (!(0 < scanlines)) goto LA4;
 					nimln(25, "nes.nim");
-					update_227648(1364, 12);
+					update_226648(1364, 12);
 					nimln(26, "nes.nim");
-					update_223821();
+					update_222821();
 					nimln(27, "nes.nim");
 					scanlines = subInt(scanlines, 1);
 				} LA4: ;
@@ -239,18 +237,18 @@ N_NIMCALL(void, run_242209)(void) {
 	popFrame();
 }
 
-N_NIMCALL(void, main_242245)(void) {
+N_NIMCALL(void, main_241245)(void) {
 	nimfr("main", "nes.nim")
 	nimln(34, "nes.nim");
-	initrom_242017();
+	initrom_241017();
 	nimln(35, "nes.nim");
-	initppu_223729();
+	initppu_222729();
 	nimln(36, "nes.nim");
-	initmem_224187();
+	initmem_223187();
 	nimln(37, "nes.nim");
-	initcpu_227639();
+	initcpu_226639();
 	nimln(39, "nes.nim");
-	run_242209();
+	run_241209();
 	popFrame();
 }
 
@@ -265,7 +263,6 @@ void PreMainInner() {
 	stdlib_timesDatInit();
 	stdlib_osDatInit();
 	stdlib_streamsDatInit();
-	HEX00_hexDatInit();
 	stdlib_macrosDatInit();
 	HEX00_romDatInit();
 	stdlib_mathDatInit();
@@ -291,7 +288,6 @@ void PreMainInner() {
 	stdlib_timesInit();
 	stdlib_osInit();
 	stdlib_streamsInit();
-	HEX00_hexInit();
 	stdlib_macrosInit();
 	HEX00_romInit();
 	stdlib_mathInit();
@@ -346,7 +342,7 @@ int main(int argc, char** args, char** env) {
 NIM_EXTERNC N_NOINLINE(void, nesInit)(void) {
 	nimfr("nes", "nes.nim")
 	nimln(41, "nes.nim");
-	main_242245();
+	main_241245();
 	popFrame();
 }
 

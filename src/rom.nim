@@ -1,4 +1,4 @@
-import os, streams, strutils, parseutils, hex
+import os, streams, strutils, parseutils
 
 proc c_memcmp(a, b: cstring, size: int): cint {.header: "<string.h>", noSideEffect, importc: "memcmp".}
 
@@ -22,6 +22,12 @@ type
         mirrorBits: int
 
 var nes_rom* : ROMObj
+
+proc seqToString(seq: seq[char]): string =
+    var result = ""
+    for i in seq :
+        result.add(i)
+    return $(result)
 
 proc loadINes*(romFile: File): ROMObj =  
     var r : ROMObj

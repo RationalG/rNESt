@@ -12,41 +12,41 @@
 #include <stdio.h>
 
 #include <io.h>
-typedef struct TY200006 TY200006;
-typedef struct tconsolescreenbufferinfo160718 tconsolescreenbufferinfo160718;
-typedef struct coord160706 coord160706;
-typedef struct smallrect160712 smallrect160712;
+typedef struct TY199006 TY199006;
+typedef struct tconsolescreenbufferinfo159718 tconsolescreenbufferinfo159718;
+typedef struct coord159706 coord159706;
+typedef struct smallrect159712 smallrect159712;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
-typedef N_STDCALL_PTR(NI, TY181624) (NI32 nstdhandle);
-typedef N_STDCALL_PTR(NI32, TY181701) (NI hsourceprocesshandle, NI hsourcehandle, NI htargetprocesshandle, NI* lptargethandle, NI32 dwdesiredaccess, NI32 binherithandle, NI32 dwoptions);
-typedef N_STDCALL_PTR(NI, TY181216) (void);
-struct TY200006 {
+typedef N_STDCALL_PTR(NI, TY180624) (NI32 nstdhandle);
+typedef N_STDCALL_PTR(NI32, TY180701) (NI hsourceprocesshandle, NI hsourcehandle, NI htargetprocesshandle, NI* lptargethandle, NI32 dwdesiredaccess, NI32 binherithandle, NI32 dwoptions);
+typedef N_STDCALL_PTR(NI, TY180216) (void);
+struct TY199006 {
 NI Field0;
 NI Field1;
 };
-struct  coord160706  {
+struct  coord159706  {
 NI16 X;
 NI16 Y;
 };
-struct  smallrect160712  {
+struct  smallrect159712  {
 NI16 Left;
 NI16 Top;
 NI16 Right;
 NI16 Bottom;
 };
-struct  tconsolescreenbufferinfo160718  {
-coord160706 Dwsize;
-coord160706 Dwcursorposition;
+struct  tconsolescreenbufferinfo159718  {
+coord159706 Dwsize;
+coord159706 Dwcursorposition;
 NI16 Wattributes;
-smallrect160712 Srwindow;
-coord160706 Dwmaximumwindowsize;
+smallrect159712 Srwindow;
+coord159706 Dwmaximumwindowsize;
 };
-typedef N_STDCALL_PTR(NI32, TY187363) (NI hconsoleoutput, tconsolescreenbufferinfo160718* lpconsolescreenbufferinfo);
-typedef N_STDCALL_PTR(NI32, TY187415) (NI hconsoleoutput, coord160706 dwcursorposition);
-typedef N_STDCALL_PTR(NI32, TY180456) (NI hconsoleoutput, NIM_CHAR ccharacter, NI32 nlength, coord160706 dwwritecoord, NI32* lpnumberofcharswritten);
-typedef N_STDCALL_PTR(NI32, TY187339) (NI hconsoleoutput, NI16 wattribute, NI32 nlength, coord160706 dwwritecoord, NI32* lpnumberofattrswritten);
-typedef N_STDCALL_PTR(NI32, TY187438) (NI hconsoleoutput, NI16 wattributes);
+typedef N_STDCALL_PTR(NI32, TY186363) (NI hconsoleoutput, tconsolescreenbufferinfo159718* lpconsolescreenbufferinfo);
+typedef N_STDCALL_PTR(NI32, TY186415) (NI hconsoleoutput, coord159706 dwcursorposition);
+typedef N_STDCALL_PTR(NI32, TY179456) (NI hconsoleoutput, NIM_CHAR ccharacter, NI32 nlength, coord159706 dwwritecoord, NI32* lpnumberofcharswritten);
+typedef N_STDCALL_PTR(NI32, TY186339) (NI hconsoleoutput, NI16 wattribute, NI32 nlength, coord159706 dwwritecoord, NI32* lpnumberofattrswritten);
+typedef N_STDCALL_PTR(NI32, TY186438) (NI hconsoleoutput, NI16 wattributes);
 struct  TGenericSeq  {
 NI len;
 NI reserved;
@@ -55,44 +55,44 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-typedef NI TY203404[8];
-typedef NI TY203605[8];
+typedef NI TY202404[8];
+typedef NI TY202605[8];
 N_NIMCALL(void, raiseoserror_111435)(NI32 errorcode);
 N_NIMCALL(NI32, oslasterror_111467)(void);
-N_NIMCALL(TY200006, getcursorpos_200004)(void);
+N_NIMCALL(TY199006, getcursorpos_199004)(void);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(NI16, getattributes_200019)(void);
-N_NIMCALL(void, setcursorpos_200212)(NI x, NI y);
+N_NIMCALL(NI16, getattributes_199019)(void);
+N_NIMCALL(void, setcursorpos_199212)(NI x, NI y);
 static N_INLINE(NI, chckRange)(NI i, NI a, NI b);
 N_NOINLINE(void, raiseRangeError)(NI64 val);
-N_NIMCALL(void, setcursorxpos_200409)(NI x);
-N_NIMCALL(void, setcursorypos_200612)(NI y);
-N_NIMCALL(void, cursorup_201004)(NI count);
+N_NIMCALL(void, setcursorxpos_199409)(NI x);
+N_NIMCALL(void, setcursorypos_199612)(NI y);
+N_NIMCALL(void, cursorup_200004)(NI count);
 static N_INLINE(NI, subInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
-N_NIMCALL(void, cursordown_201220)(NI count);
+N_NIMCALL(void, cursordown_200220)(NI count);
 static N_INLINE(NI, addInt)(NI a, NI b);
-N_NIMCALL(void, cursorforward_201420)(NI count);
-N_NIMCALL(void, cursorbackward_201620)(NI count);
-N_NIMCALL(void, eraseline_202004)(void);
+N_NIMCALL(void, cursorforward_200420)(NI count);
+N_NIMCALL(void, cursorbackward_200620)(NI count);
+N_NIMCALL(void, eraseline_201004)(void);
 N_NIMCALL(NI, mulInt)(NI a, NI b);
-N_NIMCALL(void, erasescreen_202218)(void);
-N_NOCONV(void, resetattributes_202417)(void);
-N_NIMCALL(void, setstyle_202801)(NU8 style);
-N_NIMCALL(void, writestyled_203060)(NimStringDesc* txt, NU8 style);
+N_NIMCALL(void, erasescreen_201218)(void);
+N_NOCONV(void, resetattributes_201417)(void);
+N_NIMCALL(void, setstyle_201801)(NU8 style);
+N_NIMCALL(void, writestyled_202060)(NimStringDesc* txt, NU8 style);
 N_NIMCALL(void, write_12865)(FILE* f, NimStringDesc* s);
-N_NIMCALL(void, setforegroundcolor_203238)(NU8 fg, NIM_BOOL bright);
+N_NIMCALL(void, setforegroundcolor_202238)(NU8 fg, NIM_BOOL bright);
 N_NOINLINE(void, raiseIndexError)(void);
-N_NIMCALL(void, setbackgroundcolor_203415)(NU8 bg, NIM_BOOL bright);
-N_NIMCALL(NIM_BOOL, isatty_203619)(FILE* f);
-N_NIMCALL(void, styledechoprocessarg_203813)(NimStringDesc* s);
-N_NIMCALL(void, styledechoprocessarg_203824)(NU8 style);
-N_NIMCALL(void, styledechoprocessarg_203834)(NU8 style);
-N_NIMCALL(void, styledechoprocessarg_203844)(NU8 color);
-N_NIMCALL(void, styledechoprocessarg_203853)(NU8 color);
-NIM_CONST TY203404 lookup_203403 = {0,
+N_NIMCALL(void, setbackgroundcolor_202415)(NU8 bg, NIM_BOOL bright);
+N_NIMCALL(NIM_BOOL, isatty_202619)(FILE* f);
+N_NIMCALL(void, styledechoprocessarg_202813)(NimStringDesc* s);
+N_NIMCALL(void, styledechoprocessarg_202824)(NU8 style);
+N_NIMCALL(void, styledechoprocessarg_202834)(NU8 style);
+N_NIMCALL(void, styledechoprocessarg_202844)(NU8 color);
+N_NIMCALL(void, styledechoprocessarg_202853)(NU8 color);
+NIM_CONST TY202404 lookup_202403 = {0,
 4,
 2,
 6,
@@ -101,7 +101,7 @@ NIM_CONST TY203404 lookup_203403 = {0,
 3,
 7}
 ;
-NIM_CONST TY203605 lookup_203604 = {0,
+NIM_CONST TY202605 lookup_202604 = {0,
 64,
 32,
 96,
@@ -110,17 +110,17 @@ NIM_CONST TY203605 lookup_203604 = {0,
 48,
 112}
 ;
-NI conhandle_200001;
-extern TY181624 Dl_181623;
-extern TY181701 Dl_181700;
-extern TY181216 Dl_181215;
-extern TY187363 Dl_187362;
+NI conhandle_199001;
+extern TY180624 Dl_180623;
+extern TY180701 Dl_180700;
+extern TY180216 Dl_180215;
+extern TY186363 Dl_186362;
 extern TFrame* frameptr_16242;
-NI16 oldattr_200028;
-extern TY187415 Dl_187414;
-extern TY180456 Dl_180455;
-extern TY187339 Dl_187338;
-extern TY187438 Dl_187437;
+NI16 oldattr_199028;
+extern TY186415 Dl_186414;
+extern TY179456 Dl_179455;
+extern TY186339 Dl_186338;
+extern TY186438 Dl_186437;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
 	NI LOC1;
@@ -149,9 +149,9 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(TY200006, getcursorpos_200004)(void) {
-	TY200006 result;
-	tconsolescreenbufferinfo160718 c;
+N_NIMCALL(TY199006, getcursorpos_199004)(void) {
+	TY199006 result;
+	tconsolescreenbufferinfo159718 c;
 	nimfr("getCursorPos", "terminal.nim")
 	memset((void*)(&result), 0, sizeof(result));
 	memset((void*)(&c), 0, sizeof(c));
@@ -162,7 +162,7 @@ N_NIMCALL(TY200006, getcursorpos_200004)(void) {
 		nimln(34, "terminal.nim");
 		nimln(34, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(conhandle_200001, (&c));
+		LOC3 = Dl_186362(conhandle_199001, (&c));
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(35, "terminal.nim");
 		nimln(35, "terminal.nim");
@@ -181,9 +181,9 @@ N_NIMCALL(TY200006, getcursorpos_200004)(void) {
 	return result;
 }
 
-N_NIMCALL(NI16, getattributes_200019)(void) {
+N_NIMCALL(NI16, getattributes_199019)(void) {
 	NI16 result;
-	tconsolescreenbufferinfo160718 c;
+	tconsolescreenbufferinfo159718 c;
 	nimfr("getAttributes", "terminal.nim")
 	result = 0;
 	memset((void*)(&c), 0, sizeof(c));
@@ -194,7 +194,7 @@ N_NIMCALL(NI16, getattributes_200019)(void) {
 		nimln(41, "terminal.nim");
 		nimln(41, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(conhandle_200001, (&c));
+		LOC3 = Dl_186362(conhandle_199001, (&c));
 		if (!!((LOC3 == ((NI32) 0)))) goto LA4;
 		nimln(42, "terminal.nim");
 		nimln(42, "terminal.nim");
@@ -235,8 +235,8 @@ static N_INLINE(NI, chckRange)(NI i, NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, setcursorpos_200212)(NI x, NI y) {
-	coord160706 c;
+N_NIMCALL(void, setcursorpos_199212)(NI x, NI y) {
+	coord159706 c;
 	nimfr("setCursorPos", "terminal.nim")
 	memset((void*)(&c), 0, sizeof(c));
 	nimln(53, "terminal.nim");
@@ -250,7 +250,7 @@ N_NIMCALL(void, setcursorpos_200212)(NI x, NI y) {
 		nimln(55, "terminal.nim");
 		nimln(55, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187414(conhandle_200001, c);
+		LOC3 = Dl_186414(conhandle_199001, c);
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(55, "terminal.nim");
 		nimln(55, "terminal.nim");
@@ -262,14 +262,14 @@ N_NIMCALL(void, setcursorpos_200212)(NI x, NI y) {
 	popFrame();
 }
 
-N_NIMCALL(void, setcursorxpos_200409)(NI x) {
-	tconsolescreenbufferinfo160718 scrbuf;
+N_NIMCALL(void, setcursorxpos_199409)(NI x) {
+	tconsolescreenbufferinfo159718 scrbuf;
 	NI hstdout;
-	coord160706 origin;
+	coord159706 origin;
 	nimfr("setCursorXPos", "terminal.nim")
 	memset((void*)(&scrbuf), 0, sizeof(scrbuf));
 	nimln(64, "terminal.nim");
-	hstdout = conhandle_200001;
+	hstdout = conhandle_199001;
 	nimln(65, "terminal.nim");
 	{
 		NI32 LOC3;
@@ -277,7 +277,7 @@ N_NIMCALL(void, setcursorxpos_200409)(NI x) {
 		nimln(65, "terminal.nim");
 		nimln(65, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(hstdout, (&scrbuf));
+		LOC3 = Dl_186362(hstdout, (&scrbuf));
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(66, "terminal.nim");
 		nimln(66, "terminal.nim");
@@ -297,7 +297,7 @@ N_NIMCALL(void, setcursorxpos_200409)(NI x) {
 		nimln(69, "terminal.nim");
 		nimln(69, "terminal.nim");
 		LOC9 = 0;
-		LOC9 = Dl_187414(conhandle_200001, origin);
+		LOC9 = Dl_186414(conhandle_199001, origin);
 		if (!(LOC9 == ((NI32) 0))) goto LA10;
 		nimln(70, "terminal.nim");
 		nimln(70, "terminal.nim");
@@ -309,14 +309,14 @@ N_NIMCALL(void, setcursorxpos_200409)(NI x) {
 	popFrame();
 }
 
-N_NIMCALL(void, setcursorypos_200612)(NI y) {
-	tconsolescreenbufferinfo160718 scrbuf;
+N_NIMCALL(void, setcursorypos_199612)(NI y) {
+	tconsolescreenbufferinfo159718 scrbuf;
 	NI hstdout;
-	coord160706 origin;
+	coord159706 origin;
 	nimfr("setCursorYPos", "terminal.nim")
 	memset((void*)(&scrbuf), 0, sizeof(scrbuf));
 	nimln(80, "terminal.nim");
-	hstdout = conhandle_200001;
+	hstdout = conhandle_199001;
 	nimln(81, "terminal.nim");
 	{
 		NI32 LOC3;
@@ -324,7 +324,7 @@ N_NIMCALL(void, setcursorypos_200612)(NI y) {
 		nimln(81, "terminal.nim");
 		nimln(81, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(hstdout, (&scrbuf));
+		LOC3 = Dl_186362(hstdout, (&scrbuf));
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(82, "terminal.nim");
 		nimln(82, "terminal.nim");
@@ -344,7 +344,7 @@ N_NIMCALL(void, setcursorypos_200612)(NI y) {
 		nimln(85, "terminal.nim");
 		nimln(85, "terminal.nim");
 		LOC9 = 0;
-		LOC9 = Dl_187414(conhandle_200001, origin);
+		LOC9 = Dl_186414(conhandle_199001, origin);
 		if (!(LOC9 == ((NI32) 0))) goto LA10;
 		nimln(86, "terminal.nim");
 		nimln(86, "terminal.nim");
@@ -376,15 +376,15 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, cursorup_201004)(NI count) {
-	TY200006 p;
+N_NIMCALL(void, cursorup_200004)(NI count) {
+	TY199006 p;
 	nimfr("cursorUp", "terminal.nim")
 	nimln(93, "terminal.nim");
-	p = getcursorpos_200004();
+	p = getcursorpos_199004();
 	nimln(94, "terminal.nim");
 	p.Field1 = subInt(p.Field1, count);
 	nimln(95, "terminal.nim");
-	setcursorpos_200212(p.Field0, p.Field1);
+	setcursorpos_199212(p.Field0, p.Field1);
 	popFrame();
 }
 
@@ -408,56 +408,56 @@ static N_INLINE(NI, addInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, cursordown_201220)(NI count) {
-	TY200006 p;
+N_NIMCALL(void, cursordown_200220)(NI count) {
+	TY199006 p;
 	nimfr("cursorDown", "terminal.nim")
 	nimln(102, "terminal.nim");
-	p = getcursorpos_200004();
+	p = getcursorpos_199004();
 	nimln(103, "terminal.nim");
 	p.Field1 = addInt(p.Field1, count);
 	nimln(104, "terminal.nim");
-	setcursorpos_200212(p.Field0, p.Field1);
+	setcursorpos_199212(p.Field0, p.Field1);
 	popFrame();
 }
 
-N_NIMCALL(void, cursorforward_201420)(NI count) {
-	TY200006 p;
+N_NIMCALL(void, cursorforward_200420)(NI count) {
+	TY199006 p;
 	nimfr("cursorForward", "terminal.nim")
 	nimln(111, "terminal.nim");
-	p = getcursorpos_200004();
+	p = getcursorpos_199004();
 	nimln(112, "terminal.nim");
 	p.Field0 = addInt(p.Field0, count);
 	nimln(113, "terminal.nim");
-	setcursorpos_200212(p.Field0, p.Field1);
+	setcursorpos_199212(p.Field0, p.Field1);
 	popFrame();
 }
 
-N_NIMCALL(void, cursorbackward_201620)(NI count) {
-	TY200006 p;
+N_NIMCALL(void, cursorbackward_200620)(NI count) {
+	TY199006 p;
 	nimfr("cursorBackward", "terminal.nim")
 	nimln(120, "terminal.nim");
-	p = getcursorpos_200004();
+	p = getcursorpos_199004();
 	nimln(121, "terminal.nim");
 	p.Field0 = subInt(p.Field0, count);
 	nimln(122, "terminal.nim");
-	setcursorpos_200212(p.Field0, p.Field1);
+	setcursorpos_199212(p.Field0, p.Field1);
 	popFrame();
 }
 
-N_NIMCALL(void, eraseline_202004)(void) {
-	tconsolescreenbufferinfo160718 scrbuf;
+N_NIMCALL(void, eraseline_201004)(void) {
+	tconsolescreenbufferinfo159718 scrbuf;
 	NI32 numwrote;
 	NI hstdout;
-	coord160706 origin;
+	coord159706 origin;
 	NI16 ht;
-	NI TMP361;
+	NI TMP344;
 	NI16 wt;
-	NI TMP362;
+	NI TMP345;
 	nimfr("eraseLine", "terminal.nim")
 	memset((void*)(&scrbuf), 0, sizeof(scrbuf));
 	numwrote = 0;
 	nimln(162, "terminal.nim");
-	hstdout = conhandle_200001;
+	hstdout = conhandle_199001;
 	nimln(163, "terminal.nim");
 	{
 		NI32 LOC3;
@@ -465,7 +465,7 @@ N_NIMCALL(void, eraseline_202004)(void) {
 		nimln(163, "terminal.nim");
 		nimln(163, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(hstdout, (&scrbuf));
+		LOC3 = Dl_186362(hstdout, (&scrbuf));
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(164, "terminal.nim");
 		nimln(164, "terminal.nim");
@@ -485,7 +485,7 @@ N_NIMCALL(void, eraseline_202004)(void) {
 		nimln(167, "terminal.nim");
 		nimln(167, "terminal.nim");
 		LOC9 = 0;
-		LOC9 = Dl_187414(conhandle_200001, origin);
+		LOC9 = Dl_186414(conhandle_199001, origin);
 		if (!(LOC9 == ((NI32) 0))) goto LA10;
 		nimln(168, "terminal.nim");
 		nimln(168, "terminal.nim");
@@ -496,26 +496,26 @@ N_NIMCALL(void, eraseline_202004)(void) {
 	LA10: ;
 	nimln(169, "terminal.nim");
 	nimln(169, "terminal.nim");
-	TMP361 = subInt(scrbuf.Dwsize.Y, origin.Y);
-	if (TMP361 < -32768 || TMP361 > 32767) raiseOverflow();
-	ht = (NI16)(TMP361);
+	TMP344 = subInt(scrbuf.Dwsize.Y, origin.Y);
+	if (TMP344 < -32768 || TMP344 > 32767) raiseOverflow();
+	ht = (NI16)(TMP344);
 	nimln(170, "terminal.nim");
 	nimln(170, "terminal.nim");
-	TMP362 = subInt(scrbuf.Dwsize.X, origin.X);
-	if (TMP362 < -32768 || TMP362 > 32767) raiseOverflow();
-	wt = (NI16)(TMP362);
+	TMP345 = subInt(scrbuf.Dwsize.X, origin.X);
+	if (TMP345 < -32768 || TMP345 > 32767) raiseOverflow();
+	wt = (NI16)(TMP345);
 	nimln(171, "terminal.nim");
 	{
-		NI TMP363;
+		NI TMP346;
 		NI32 LOC15;
 		NI32 LOC18;
 		nimln(172, "terminal.nim");
 		nimln(171, "terminal.nim");
 		nimln(171, "terminal.nim");
-		TMP363 = mulInt(ht, wt);
-		if (TMP363 < -32768 || TMP363 > 32767) raiseOverflow();
+		TMP346 = mulInt(ht, wt);
+		if (TMP346 < -32768 || TMP346 > 32767) raiseOverflow();
 		LOC15 = 0;
-		LOC15 = Dl_180455(hstdout, 32, ((NI32) ((NI16)(TMP363))), origin, (&numwrote));
+		LOC15 = Dl_179455(hstdout, 32, ((NI32) ((NI16)(TMP346))), origin, (&numwrote));
 		if (!(LOC15 == ((NI32) 0))) goto LA16;
 		nimln(173, "terminal.nim");
 		nimln(173, "terminal.nim");
@@ -526,16 +526,16 @@ N_NIMCALL(void, eraseline_202004)(void) {
 	LA16: ;
 	nimln(174, "terminal.nim");
 	{
-		NI TMP364;
+		NI TMP347;
 		NI32 LOC21;
 		NI32 LOC24;
 		nimln(175, "terminal.nim");
 		nimln(174, "terminal.nim");
 		nimln(174, "terminal.nim");
-		TMP364 = mulInt(ht, wt);
-		if (TMP364 < -32768 || TMP364 > 32767) raiseOverflow();
+		TMP347 = mulInt(ht, wt);
+		if (TMP347 < -32768 || TMP347 > 32767) raiseOverflow();
 		LOC21 = 0;
-		LOC21 = Dl_187338(hstdout, scrbuf.Wattributes, ((NI32) ((NI16)(TMP364))), scrbuf.Dwcursorposition, (&numwrote));
+		LOC21 = Dl_186338(hstdout, scrbuf.Wattributes, ((NI32) ((NI16)(TMP347))), scrbuf.Dwcursorposition, (&numwrote));
 		if (!(LOC21 == ((NI32) 0))) goto LA22;
 		nimln(176, "terminal.nim");
 		nimln(176, "terminal.nim");
@@ -547,17 +547,17 @@ N_NIMCALL(void, eraseline_202004)(void) {
 	popFrame();
 }
 
-N_NIMCALL(void, erasescreen_202218)(void) {
-	tconsolescreenbufferinfo160718 scrbuf;
+N_NIMCALL(void, erasescreen_201218)(void) {
+	tconsolescreenbufferinfo159718 scrbuf;
 	NI32 numwrote;
-	coord160706 origin;
+	coord159706 origin;
 	NI hstdout;
 	nimfr("eraseScreen", "terminal.nim")
 	memset((void*)(&scrbuf), 0, sizeof(scrbuf));
 	numwrote = 0;
 	memset((void*)(&origin), 0, sizeof(origin));
 	nimln(187, "terminal.nim");
-	hstdout = conhandle_200001;
+	hstdout = conhandle_199001;
 	nimln(188, "terminal.nim");
 	{
 		NI32 LOC3;
@@ -565,7 +565,7 @@ N_NIMCALL(void, erasescreen_202218)(void) {
 		nimln(188, "terminal.nim");
 		nimln(188, "terminal.nim");
 		LOC3 = 0;
-		LOC3 = Dl_187362(hstdout, (&scrbuf));
+		LOC3 = Dl_186362(hstdout, (&scrbuf));
 		if (!(LOC3 == ((NI32) 0))) goto LA4;
 		nimln(189, "terminal.nim");
 		nimln(189, "terminal.nim");
@@ -576,16 +576,16 @@ N_NIMCALL(void, erasescreen_202218)(void) {
 	LA4: ;
 	nimln(190, "terminal.nim");
 	{
-		NI TMP365;
+		NI TMP348;
 		NI32 LOC9;
 		NI32 LOC12;
 		nimln(191, "terminal.nim");
 		nimln(190, "terminal.nim");
 		nimln(190, "terminal.nim");
-		TMP365 = mulInt(scrbuf.Dwsize.X, scrbuf.Dwsize.Y);
-		if (TMP365 < -32768 || TMP365 > 32767) raiseOverflow();
+		TMP348 = mulInt(scrbuf.Dwsize.X, scrbuf.Dwsize.Y);
+		if (TMP348 < -32768 || TMP348 > 32767) raiseOverflow();
 		LOC9 = 0;
-		LOC9 = Dl_180455(hstdout, 32, ((NI32) ((NI16)(TMP365))), origin, (&numwrote));
+		LOC9 = Dl_179455(hstdout, 32, ((NI32) ((NI16)(TMP348))), origin, (&numwrote));
 		if (!(LOC9 == ((NI32) 0))) goto LA10;
 		nimln(192, "terminal.nim");
 		nimln(192, "terminal.nim");
@@ -596,16 +596,16 @@ N_NIMCALL(void, erasescreen_202218)(void) {
 	LA10: ;
 	nimln(193, "terminal.nim");
 	{
-		NI TMP366;
+		NI TMP349;
 		NI32 LOC15;
 		NI32 LOC18;
 		nimln(195, "terminal.nim");
 		nimln(193, "terminal.nim");
 		nimln(194, "terminal.nim");
-		TMP366 = mulInt(scrbuf.Dwsize.X, scrbuf.Dwsize.Y);
-		if (TMP366 < -32768 || TMP366 > 32767) raiseOverflow();
+		TMP349 = mulInt(scrbuf.Dwsize.X, scrbuf.Dwsize.Y);
+		if (TMP349 < -32768 || TMP349 > 32767) raiseOverflow();
 		LOC15 = 0;
-		LOC15 = Dl_187338(hstdout, scrbuf.Wattributes, ((NI32) ((NI16)(TMP366))), origin, (&numwrote));
+		LOC15 = Dl_186338(hstdout, scrbuf.Wattributes, ((NI32) ((NI16)(TMP349))), origin, (&numwrote));
 		if (!(LOC15 == ((NI32) 0))) goto LA16;
 		nimln(196, "terminal.nim");
 		nimln(196, "terminal.nim");
@@ -615,21 +615,21 @@ N_NIMCALL(void, erasescreen_202218)(void) {
 	}
 	LA16: ;
 	nimln(197, "terminal.nim");
-	setcursorxpos_200409(0);
+	setcursorxpos_199409(0);
 	popFrame();
 }
 
-N_NOCONV(void, resetattributes_202417)(void) {
+N_NOCONV(void, resetattributes_201417)(void) {
 	NI32 LOC1;
 	nimfr("resetAttributes", "terminal.nim")
 	nimln(205, "terminal.nim");
 	nimln(205, "terminal.nim");
 	LOC1 = 0;
-	LOC1 = Dl_187437(conhandle_200001, oldattr_200028);
+	LOC1 = Dl_186437(conhandle_199001, oldattr_199028);
 	popFrame();
 }
 
-N_NIMCALL(void, setstyle_202801)(NU8 style) {
+N_NIMCALL(void, setstyle_201801)(NU8 style) {
 	NI16 a;
 	NI32 LOC17;
 	nimfr("setStyle", "terminal.nim")
@@ -674,28 +674,28 @@ N_NIMCALL(void, setstyle_202801)(NU8 style) {
 	nimln(235, "terminal.nim");
 	nimln(235, "terminal.nim");
 	LOC17 = 0;
-	LOC17 = Dl_187437(conhandle_200001, a);
+	LOC17 = Dl_186437(conhandle_199001, a);
 	popFrame();
 }
 
-N_NIMCALL(void, writestyled_203060)(NimStringDesc* txt, NU8 style) {
+N_NIMCALL(void, writestyled_202060)(NimStringDesc* txt, NU8 style) {
 	NI16 old;
 	NI32 LOC1;
 	nimfr("writeStyled", "terminal.nim")
 	nimln(243, "terminal.nim");
-	old = getattributes_200019();
+	old = getattributes_199019();
 	nimln(244, "terminal.nim");
-	setstyle_202801(style);
+	setstyle_201801(style);
 	nimln(245, "terminal.nim");
 	write_12865(stdout, txt);
 	nimln(246, "terminal.nim");
 	nimln(246, "terminal.nim");
 	LOC1 = 0;
-	LOC1 = Dl_187437(conhandle_200001, old);
+	LOC1 = Dl_186437(conhandle_199001, old);
 	popFrame();
 }
 
-N_NIMCALL(void, setforegroundcolor_203238)(NU8 fg, NIM_BOOL bright) {
+N_NIMCALL(void, setforegroundcolor_202238)(NU8 fg, NIM_BOOL bright) {
 	NI16 old;
 	NI16 LOC1;
 	NI32 LOC6;
@@ -704,7 +704,7 @@ N_NIMCALL(void, setforegroundcolor_203238)(NU8 fg, NIM_BOOL bright) {
 	nimln(283, "terminal.nim");
 	nimln(283, "terminal.nim");
 	LOC1 = 0;
-	LOC1 = getattributes_200019();
+	LOC1 = getattributes_199019();
 	old = (NI16)(LOC1 & ((NI16) -8));
 	nimln(284, "terminal.nim");
 	{
@@ -720,11 +720,11 @@ N_NIMCALL(void, setforegroundcolor_203238)(NU8 fg, NIM_BOOL bright) {
 	nimln(295, "terminal.nim");
 	if (fg < 30 || fg > 37) raiseIndexError();
 	LOC6 = 0;
-	LOC6 = Dl_187437(conhandle_200001, ((NI16)(NU16)(NU)((NI)(((NI) (old)) | lookup_203403[(fg)- 30]))));
+	LOC6 = Dl_186437(conhandle_199001, ((NI16)(NU16)(NU)((NI)(((NI) (old)) | lookup_202403[(fg)- 30]))));
 	popFrame();
 }
 
-N_NIMCALL(void, setbackgroundcolor_203415)(NU8 bg, NIM_BOOL bright) {
+N_NIMCALL(void, setbackgroundcolor_202415)(NU8 bg, NIM_BOOL bright) {
 	NI16 old;
 	NI16 LOC1;
 	NI32 LOC6;
@@ -733,7 +733,7 @@ N_NIMCALL(void, setbackgroundcolor_203415)(NU8 bg, NIM_BOOL bright) {
 	nimln(304, "terminal.nim");
 	nimln(304, "terminal.nim");
 	LOC1 = 0;
-	LOC1 = getattributes_200019();
+	LOC1 = getattributes_199019();
 	old = (NI16)(LOC1 & ((NI16) -113));
 	nimln(305, "terminal.nim");
 	{
@@ -749,11 +749,11 @@ N_NIMCALL(void, setbackgroundcolor_203415)(NU8 bg, NIM_BOOL bright) {
 	nimln(316, "terminal.nim");
 	if (bg < 40 || bg > 47) raiseIndexError();
 	LOC6 = 0;
-	LOC6 = Dl_187437(conhandle_200001, ((NI16)(NU16)(NU)((NI)(((NI) (old)) | lookup_203604[(bg)- 40]))));
+	LOC6 = Dl_186437(conhandle_199001, ((NI16)(NU16)(NU)((NI)(((NI) (old)) | lookup_202604[(bg)- 40]))));
 	popFrame();
 }
 
-N_NIMCALL(NIM_BOOL, isatty_203619)(FILE* f) {
+N_NIMCALL(NIM_BOOL, isatty_202619)(FILE* f) {
 	NIM_BOOL result;
 	int LOC1;
 	int LOC2;
@@ -773,41 +773,41 @@ N_NIMCALL(NIM_BOOL, isatty_203619)(FILE* f) {
 	return result;
 }
 
-N_NIMCALL(void, styledechoprocessarg_203813)(NimStringDesc* s) {
+N_NIMCALL(void, styledechoprocessarg_202813)(NimStringDesc* s) {
 	nimfr("styledEchoProcessArg", "terminal.nim")
 	nimln(333, "terminal.nim");
 	write_12865(stdout, s);
 	popFrame();
 }
 
-N_NIMCALL(void, styledechoprocessarg_203824)(NU8 style) {
+N_NIMCALL(void, styledechoprocessarg_202824)(NU8 style) {
 	NU8 LOC1;
 	nimfr("styledEchoProcessArg", "terminal.nim")
 	nimln(334, "terminal.nim");
 	LOC1 = 0;
 	LOC1 |=(1<<((NI8)((style- 1))%(sizeof(NI8)*8)));
-	setstyle_202801(LOC1);
+	setstyle_201801(LOC1);
 	popFrame();
 }
 
-N_NIMCALL(void, styledechoprocessarg_203834)(NU8 style) {
+N_NIMCALL(void, styledechoprocessarg_202834)(NU8 style) {
 	nimfr("styledEchoProcessArg", "terminal.nim")
 	nimln(335, "terminal.nim");
-	setstyle_202801(style);
+	setstyle_201801(style);
 	popFrame();
 }
 
-N_NIMCALL(void, styledechoprocessarg_203844)(NU8 color) {
+N_NIMCALL(void, styledechoprocessarg_202844)(NU8 color) {
 	nimfr("styledEchoProcessArg", "terminal.nim")
 	nimln(336, "terminal.nim");
-	setforegroundcolor_203238(color, NIM_FALSE);
+	setforegroundcolor_202238(color, NIM_FALSE);
 	popFrame();
 }
 
-N_NIMCALL(void, styledechoprocessarg_203853)(NU8 color) {
+N_NIMCALL(void, styledechoprocessarg_202853)(NU8 color) {
 	nimfr("styledEchoProcessArg", "terminal.nim")
 	nimln(337, "terminal.nim");
-	setbackgroundcolor_203415(color, NIM_FALSE);
+	setbackgroundcolor_202415(color, NIM_FALSE);
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, stdlib_terminalInit)(void) {
@@ -815,7 +815,7 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_terminalInit)(void) {
 	{
 		NI htemp;
 		nimln(27, "terminal.nim");
-		htemp = Dl_181623(((NI32) -11));
+		htemp = Dl_180623(((NI32) -11));
 		nimln(28, "terminal.nim");
 		{
 			NI LOC4;
@@ -826,12 +826,12 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_terminalInit)(void) {
 			nimln(28, "terminal.nim");
 			nimln(28, "terminal.nim");
 			LOC4 = 0;
-			LOC4 = Dl_181215();
+			LOC4 = Dl_180215();
 			nimln(28, "terminal.nim");
 			LOC5 = 0;
-			LOC5 = Dl_181215();
+			LOC5 = Dl_180215();
 			LOC6 = 0;
-			LOC6 = Dl_181700(LOC4, htemp, LOC5, (&conhandle_200001), ((NI32) 0), ((NI32) 1), ((NI32) 2));
+			LOC6 = Dl_180700(LOC4, htemp, LOC5, (&conhandle_199001), ((NI32) 0), ((NI32) 1), ((NI32) 2));
 			if (!(LOC6 == ((NI32) 0))) goto LA7;
 			nimln(30, "terminal.nim");
 			nimln(30, "terminal.nim");
@@ -842,7 +842,7 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_terminalInit)(void) {
 		LA7: ;
 	}
 	nimln(46, "terminal.nim");
-	oldattr_200028 = getattributes_200019();
+	oldattr_199028 = getattributes_199019();
 	popFrame();
 }
 

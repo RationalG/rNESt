@@ -10,15 +10,15 @@
 #include <string.h>
 
 #include <stdio.h>
-typedef struct romobj137027 romobj137027;
+typedef struct romobj136027 romobj136027;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
-typedef struct TY131128 TY131128;
+typedef struct TY136033 TY136033;
 typedef struct TGenericSeq TGenericSeq;
-typedef struct slice86066 slice86066;
-typedef struct headerobj137029 headerobj137029;
 typedef struct NimStringDesc NimStringDesc;
+typedef struct slice86066 slice86066;
+typedef struct headerobj136029 headerobj136029;
 typedef N_NIMCALL_PTR(void, TY3089) (void* p, NI op);
 typedef N_NIMCALL_PTR(void*, TY3094) (void* p);
 struct  TNimType  {
@@ -34,16 +34,16 @@ TY3094 deepcopy;
 struct  TNimObject  {
 TNimType* m_type;
 };
-typedef NIM_CHAR TY137030[16];
+typedef NIM_CHAR TY136030[16];
 struct  TGenericSeq  {
 NI len;
 NI reserved;
 };
-struct  romobj137027  {
+struct  romobj136027  {
   TNimObject Sup;
-TY137030 Header;
-TY131128* Prgbytes;
-TY131128* Chrbytes;
+TY136030 Header;
+TY136033* Prgbytes;
+TY136033* Chrbytes;
 };
 struct  TNimNode  {
 NU8 kind;
@@ -53,15 +53,15 @@ NCSTRING name;
 NI len;
 TNimNode** sons;
 };
-struct  slice86066  {
-NI A;
-NI B;
-};
 struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-struct  headerobj137029  {
+struct  slice86066  {
+NI A;
+NI B;
+};
+struct  headerobj136029  {
   TNimObject Sup;
 NimStringDesc* Signature;
 NI Prgsize;
@@ -70,40 +70,81 @@ NU8 Mmbyte;
 NI Mapperbits;
 NI Mirrorbits;
 };
-struct TY131128 {
+struct TY136033 {
   TGenericSeq Sup;
   NIM_CHAR data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(TY131128*, HEX5BHEX5D_137072)(TY137030 a_137079, slice86066 x_137084);
-N_NIMCALL(void, loadines_137051)(FILE* romfile, romobj137027* Result);
-N_NIMCALL(NI, readbuffer_13027)(FILE* f, void* buffer, NI len);
-N_NIMCALL(NimStringDesc*, seqtostring_131281)(TY131128* seq);
-static N_INLINE(slice86066, HEX2EHEX2E_93099)(NI a_93103, NI b_93105);
+N_NIMCALL(void, TMP292)(void* p, NI op);
+N_NIMCALL(NimStringDesc*, seqtostring_136051)(TY136033* seq);
+N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
+N_NOINLINE(void, raiseIndexError)(void);
+N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
+static N_INLINE(NI, addInt)(NI a, NI b);
+N_NOINLINE(void, raiseOverflow)(void);
+N_NIMCALL(void, failedassertimpl_86825)(NimStringDesc* msg);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
+N_NIMCALL(TY136033*, HEX5BHEX5D_136265)(TY136030 a_136272, slice86066 x_136277);
+N_NIMCALL(TY136033*, newseq_136510)(NI len_136514);
+N_NIMCALL(void, loadines_136244)(FILE* romfile, romobj136027* Result);
+N_NIMCALL(NI, readbuffer_13027)(FILE* f, void* buffer, NI len);
+static N_INLINE(slice86066, HEX2EHEX2E_93099)(NI a_93103, NI b_93105);
 N_NIMCALL(NI, mulInt)(NI a, NI b);
 N_NIMCALL(NimStringDesc*, nimIntToStr)(NI x);
-N_NIMCALL(TY131128*, newseq_131123)(NI len_131127);
-N_NOINLINE(void, raiseIndexError)(void);
 N_NIMCALL(void, genericAssign)(void* dest, void* src, TNimType* mt);
-STRING_LITERAL(TMP318, "iNES format recognized !!!", 26);
-STRING_LITERAL(TMP319, "PRG size : ", 11);
-STRING_LITERAL(TMP320, " x 16kb pages : ", 16);
-STRING_LITERAL(TMP321, "CHR size : ", 11);
-STRING_LITERAL(TMP322, " x 8kb pages :  ", 16);
-STRING_LITERAL(TMP323, "Error : unknown ROM format", 26);
-romobj137027 nesrom_137046;
+STRING_LITERAL(TMP293, "", 0);
+STRING_LITERAL(TMP294, "(system.len|system.len|system.len|system.len|system.len|system."
+"len|...)(a) (system.==|system.==|system.==|system.==|system.==|s"
+"ystem.==|system.==|system.==|system.==|system.==|system.==|syste"
+"m.==|system.==|system.==|system.==|system.==|system.==|system.=="
+"|system.==|system.==|...)\015\012    L seq modified while iterating ov"
+"er it", 324);
+STRING_LITERAL(TMP301, "iNES format recognized !!!", 26);
+STRING_LITERAL(TMP302, "PRG size : ", 11);
+STRING_LITERAL(TMP303, " x 16kb pages : ", 16);
+STRING_LITERAL(TMP304, "CHR size : ", 11);
+STRING_LITERAL(TMP305, " x 8kb pages :  ", 16);
+STRING_LITERAL(TMP306, "Error : unknown ROM format", 26);
+romobj136027 nesrom_136046;
 extern TNimType NTI3211; /* RootObj */
-TNimType NTI137027; /* ROMObj */
+TNimType NTI136027; /* ROMObj */
 extern TNimType NTI147; /* char */
-TNimType NTI137030; /* array[0..15, char] */
-extern TNimType NTI131128; /* seq[char] */
-TNimType NTI137029; /* HeaderObj */
+TNimType NTI136030; /* array[0..15, char] */
+TNimType NTI136033; /* seq[char] */
+extern TFrame* frameptr_16242;
+TNimType NTI136029; /* HeaderObj */
 extern TNimType NTI149; /* string */
 extern TNimType NTI108; /* int */
 extern TNimType NTI3205; /* byte */
-extern TFrame* frameptr_16242;
+N_NIMCALL(void, TMP292)(void* p, NI op) {
+	TY136033* a;
+	NI LOC1;
+	a = (TY136033*)p;
+	LOC1 = 0;
+	for (LOC1 = 0; LOC1 < a->Sup.len; LOC1++) {
+	}
+}
+
+static N_INLINE(NI, addInt)(NI a, NI b) {
+	NI result;
+	result = 0;
+	result = (NI)((NU64)(a) + (NU64)(b));
+	{
+		NIM_BOOL LOC3;
+		LOC3 = 0;
+		LOC3 = (0 <= (NI)(result ^ a));
+		if (LOC3) goto LA4;
+		LOC3 = (0 <= (NI)(result ^ b));
+		LA4: ;
+		if (!LOC3) goto LA5;
+		goto BeforeRet;
+	}
+	LA5: ;
+	raiseOverflow();
+	BeforeRet: ;
+	return result;
+}
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
 	NI LOC1;
@@ -132,6 +173,58 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
+N_NIMCALL(NimStringDesc*, seqtostring_136051)(TY136033* seq) {
+	NimStringDesc* result_136055;
+	NimStringDesc* result;
+	nimfr("seqToString", "rom.nim")
+	result_136055 = 0;
+	nimln(27, "rom.nim");
+	result = copyString(((NimStringDesc*) &TMP293));
+	{
+		NIM_CHAR i_136222;
+		NI i_136226;
+		NI l_136228;
+		i_136222 = 0;
+		nimln(2986, "system.nim");
+		i_136226 = 0;
+		nimln(2987, "system.nim");
+		nimln(2987, "system.nim");
+		l_136228 = seq->Sup.len;
+		{
+			nimln(2988, "system.nim");
+			while (1) {
+				nimln(2988, "system.nim");
+				if (!(i_136226 < l_136228)) goto LA3;
+				nimln(2989, "system.nim");
+				if ((NU)(i_136226) >= (NU)(seq->Sup.len)) raiseIndexError();
+				i_136222 = seq->data[i_136226];
+				nimln(29, "rom.nim");
+				result = addChar(result, i_136222);
+				nimln(2990, "system.nim");
+				i_136226 = addInt(i_136226, 1);
+				nimln(2991, "system.nim");
+				{
+					nimln(2991, "system.nim");
+					nimln(2991, "system.nim");
+					nimln(2991, "system.nim");
+					if (!!((seq->Sup.len == l_136228))) goto LA6;
+					nimln(2991, "system.nim");
+					failedassertimpl_86825(((NimStringDesc*) &TMP294));
+				}
+				LA6: ;
+			} LA3: ;
+		}
+	}
+	nimln(30, "rom.nim");
+	nimln(30, "rom.nim");
+	nimln(30, "rom.nim");
+	result_136055 = copyString(result);
+	goto BeforeRet;
+	BeforeRet: ;
+	popFrame();
+	return result_136055;
+}
+
 static N_INLINE(slice86066, HEX2EHEX2E_93099)(NI a_93103, NI b_93105) {
 	slice86066 result;
 	nimfr("..", "system.nim")
@@ -144,186 +237,191 @@ static N_INLINE(slice86066, HEX2EHEX2E_93099)(NI a_93103, NI b_93105) {
 	return result;
 }
 
-N_NIMCALL(void, loadines_137051)(FILE* romfile, romobj137027* Result) {
-	romobj137027 r;
-	headerobj137029 h;
+N_NIMCALL(void, loadines_136244)(FILE* romfile, romobj136027* Result) {
+	romobj136027 r;
+	headerobj136029 h;
 	NI LOC1;
 	slice86066 LOC2;
-	TY131128* LOC3;
-	NI TMP316;
-	NI TMP317;
+	TY136033* LOC3;
+	NI TMP299;
+	NI TMP300;
 	NI LOC14;
 	NI LOC15;
 	nimfr("loadINes", "rom.nim")
 	memset((void*)(&r), 0, sizeof(r));
-	r.Sup.m_type = (&NTI137027);
+	r.Sup.m_type = (&NTI136027);
 	memset((void*)(&h), 0, sizeof(h));
-	h.Sup.m_type = (&NTI137029);
-	nimln(30, "rom.nim");
-	nimln(30, "rom.nim");
+	h.Sup.m_type = (&NTI136029);
+	nimln(36, "rom.nim");
+	nimln(36, "rom.nim");
 	LOC1 = 0;
 	LOC1 = readbuffer_13027(romfile, ((void*) (r.Header)), 16);
-	nimln(32, "rom.nim");
-	nimln(32, "rom.nim");
-	nimln(32, "rom.nim");
+	nimln(38, "rom.nim");
+	nimln(38, "rom.nim");
+	nimln(38, "rom.nim");
 	LOC2 = HEX2EHEX2E_93099(0, 3);
 	LOC3 = 0;
-	LOC3 = HEX5BHEX5D_137072(r.Header, LOC2);
-	h.Signature = seqtostring_131281(LOC3);
-	nimln(33, "rom.nim");
-	nimln(33, "rom.nim");
-	TMP316 = mulInt(((NI) (((NU8)(r.Header[(4)- 0])))), 16384);
-	h.Prgsize = (NI64)(TMP316);
-	nimln(34, "rom.nim");
-	nimln(34, "rom.nim");
-	TMP317 = mulInt(((NI) (((NU8)(r.Header[(5)- 0])))), 8192);
-	h.Chrsize = (NI64)(TMP317);
-	nimln(35, "rom.nim");
-	h.Mmbyte = ((NU8) (((NU8)(r.Header[(6)- 0]))));
-	nimln(36, "rom.nim");
-	nimln(36, "rom.nim");
-	nimln(36, "rom.nim");
-	h.Mapperbits = ((NI) ((NI)((NI)((NU64)(((NI) (h.Mmbyte))) >> (NU64)(4)) & 15)));
-	nimln(37, "rom.nim");
-	nimln(37, "rom.nim");
-	h.Mirrorbits = ((NI) ((NI)(((NI) (h.Mmbyte)) & 15)));
+	LOC3 = HEX5BHEX5D_136265(r.Header, LOC2);
+	h.Signature = seqtostring_136051(LOC3);
 	nimln(39, "rom.nim");
+	nimln(39, "rom.nim");
+	TMP299 = mulInt(((NI) (((NU8)(r.Header[(4)- 0])))), 16384);
+	h.Prgsize = (NI64)(TMP299);
+	nimln(40, "rom.nim");
+	nimln(40, "rom.nim");
+	TMP300 = mulInt(((NI) (((NU8)(r.Header[(5)- 0])))), 8192);
+	h.Chrsize = (NI64)(TMP300);
+	nimln(41, "rom.nim");
+	h.Mmbyte = ((NU8) (((NU8)(r.Header[(6)- 0]))));
+	nimln(42, "rom.nim");
+	nimln(42, "rom.nim");
+	nimln(42, "rom.nim");
+	h.Mapperbits = ((NI) ((NI)((NI)((NU64)(((NI) (h.Mmbyte))) >> (NU64)(4)) & 15)));
+	nimln(43, "rom.nim");
+	nimln(43, "rom.nim");
+	h.Mirrorbits = ((NI) ((NI)(((NI) (h.Mmbyte)) & 15)));
+	nimln(45, "rom.nim");
 	{
 		int LOC6;
 		NimStringDesc* LOC9;
 		NimStringDesc* LOC10;
 		NimStringDesc* LOC11;
 		NimStringDesc* LOC12;
-		nimln(39, "rom.nim");
-		nimln(39, "rom.nim");
+		nimln(45, "rom.nim");
+		nimln(45, "rom.nim");
 		LOC6 = 0;
 		LOC6 = memcmp(h.Signature->data, "NES\032", 4);
 		if (!(LOC6 == ((NI32) 0))) goto LA7;
-		nimln(40, "rom.nim");
-		nimln(40, "rom.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP318))->data);
-		nimln(41, "rom.nim");
-		nimln(41, "rom.nim");
-		nimln(41, "rom.nim");
-		nimln(41, "rom.nim");
+		nimln(46, "rom.nim");
+		nimln(46, "rom.nim");
+		printf("%s\015\012", (((NimStringDesc*) &TMP301))->data);
+		nimln(47, "rom.nim");
+		nimln(47, "rom.nim");
+		nimln(47, "rom.nim");
+		nimln(47, "rom.nim");
 		LOC9 = 0;
 		LOC9 = nimIntToStr((NI)((NU64)(h.Prgsize) / (NU64)(16384)));
-		nimln(41, "rom.nim");
-		nimln(41, "rom.nim");
+		nimln(47, "rom.nim");
+		nimln(47, "rom.nim");
 		LOC10 = 0;
 		LOC10 = nimIntToStr(h.Prgsize);
-		printf("%s%s%s%s\015\012", (((NimStringDesc*) &TMP319))->data, (LOC9)->data, (((NimStringDesc*) &TMP320))->data, (LOC10)->data);
-		nimln(42, "rom.nim");
-		nimln(42, "rom.nim");
-		nimln(42, "rom.nim");
-		nimln(42, "rom.nim");
+		printf("%s%s%s%s\015\012", (((NimStringDesc*) &TMP302))->data, (LOC9)->data, (((NimStringDesc*) &TMP303))->data, (LOC10)->data);
+		nimln(48, "rom.nim");
+		nimln(48, "rom.nim");
+		nimln(48, "rom.nim");
+		nimln(48, "rom.nim");
 		LOC11 = 0;
 		LOC11 = nimIntToStr((NI)((NU64)(h.Chrsize) / (NU64)(8192)));
-		nimln(42, "rom.nim");
-		nimln(42, "rom.nim");
+		nimln(48, "rom.nim");
+		nimln(48, "rom.nim");
 		LOC12 = 0;
 		LOC12 = nimIntToStr(h.Chrsize);
-		printf("%s%s%s%s\015\012", (((NimStringDesc*) &TMP321))->data, (LOC11)->data, (((NimStringDesc*) &TMP322))->data, (LOC12)->data);
+		printf("%s%s%s%s\015\012", (((NimStringDesc*) &TMP304))->data, (LOC11)->data, (((NimStringDesc*) &TMP305))->data, (LOC12)->data);
 	}
 	goto LA4;
 	LA7: ;
 	{
-		nimln(44, "rom.nim");
-		nimln(44, "rom.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP323))->data);
-		nimln(45, "rom.nim");
+		nimln(50, "rom.nim");
+		nimln(50, "rom.nim");
+		printf("%s\015\012", (((NimStringDesc*) &TMP306))->data);
+		nimln(51, "rom.nim");
 		goto BeforeRet;
 	}
 	LA4: ;
-	nimln(47, "rom.nim");
-	r.Prgbytes = newseq_131123(h.Prgsize);
-	nimln(48, "rom.nim");
-	r.Chrbytes = newseq_131123(h.Chrsize);
-	nimln(50, "rom.nim");
-	nimln(50, "rom.nim");
+	nimln(53, "rom.nim");
+	r.Prgbytes = newseq_136510(h.Prgsize);
+	nimln(54, "rom.nim");
+	r.Chrbytes = newseq_136510(h.Chrsize);
+	nimln(56, "rom.nim");
+	nimln(56, "rom.nim");
 	if ((NU)(0) >= (NU)(r.Prgbytes->Sup.len)) raiseIndexError();
 	LOC14 = 0;
 	LOC14 = readbuffer_13027(romfile, ((void*) ((&r.Prgbytes->data[0]))), h.Prgsize);
-	nimln(51, "rom.nim");
-	nimln(51, "rom.nim");
+	nimln(57, "rom.nim");
+	nimln(57, "rom.nim");
 	if ((NU)(0) >= (NU)(r.Chrbytes->Sup.len)) raiseIndexError();
 	LOC15 = 0;
 	LOC15 = readbuffer_13027(romfile, ((void*) ((&r.Chrbytes->data[0]))), h.Chrsize);
-	nimln(53, "rom.nim");
-	nimln(53, "rom.nim");
-	genericAssign((void*)Result, (void*)(&r), (&NTI137027));
+	nimln(59, "rom.nim");
+	nimln(59, "rom.nim");
+	genericAssign((void*)Result, (void*)(&r), (&NTI136027));
 	goto BeforeRet;
 	BeforeRet: ;
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_romInit)(void) {
 	nimfr("rom", "rom.nim")
-	nesrom_137046.Sup.m_type = (&NTI137027);
+	nesrom_136046.Sup.m_type = (&NTI136027);
 	popFrame();
 }
 
 NIM_EXTERNC N_NOINLINE(void, HEX00_romDatInit)(void) {
-static TNimNode* TMP311[3];
-static TNimNode* TMP315[6];
-static TNimNode TMP309[11];
-NTI137027.size = sizeof(romobj137027);
-NTI137027.kind = 17;
-NTI137027.base = (&NTI3211);
-TMP311[0] = &TMP309[1];
-NTI137030.size = sizeof(TY137030);
-NTI137030.kind = 16;
-NTI137030.base = (&NTI147);
-NTI137030.flags = 3;
-TMP309[1].kind = 1;
-TMP309[1].offset = offsetof(romobj137027, Header);
-TMP309[1].typ = (&NTI137030);
-TMP309[1].name = "header";
-TMP311[1] = &TMP309[2];
-TMP309[2].kind = 1;
-TMP309[2].offset = offsetof(romobj137027, Prgbytes);
-TMP309[2].typ = (&NTI131128);
-TMP309[2].name = "prgBytes";
-TMP311[2] = &TMP309[3];
-TMP309[3].kind = 1;
-TMP309[3].offset = offsetof(romobj137027, Chrbytes);
-TMP309[3].typ = (&NTI131128);
-TMP309[3].name = "chrBytes";
-TMP309[0].len = 3; TMP309[0].kind = 2; TMP309[0].sons = &TMP311[0];
-NTI137027.node = &TMP309[0];
-NTI137029.size = sizeof(headerobj137029);
-NTI137029.kind = 17;
-NTI137029.base = (&NTI3211);
-TMP315[0] = &TMP309[5];
-TMP309[5].kind = 1;
-TMP309[5].offset = offsetof(headerobj137029, Signature);
-TMP309[5].typ = (&NTI149);
-TMP309[5].name = "signature";
-TMP315[1] = &TMP309[6];
-TMP309[6].kind = 1;
-TMP309[6].offset = offsetof(headerobj137029, Prgsize);
-TMP309[6].typ = (&NTI108);
-TMP309[6].name = "prgSize";
-TMP315[2] = &TMP309[7];
-TMP309[7].kind = 1;
-TMP309[7].offset = offsetof(headerobj137029, Chrsize);
-TMP309[7].typ = (&NTI108);
-TMP309[7].name = "chrSize";
-TMP315[3] = &TMP309[8];
-TMP309[8].kind = 1;
-TMP309[8].offset = offsetof(headerobj137029, Mmbyte);
-TMP309[8].typ = (&NTI3205);
-TMP309[8].name = "mmByte";
-TMP315[4] = &TMP309[9];
-TMP309[9].kind = 1;
-TMP309[9].offset = offsetof(headerobj137029, Mapperbits);
-TMP309[9].typ = (&NTI108);
-TMP309[9].name = "mapperBits";
-TMP315[5] = &TMP309[10];
-TMP309[10].kind = 1;
-TMP309[10].offset = offsetof(headerobj137029, Mirrorbits);
-TMP309[10].typ = (&NTI108);
-TMP309[10].name = "mirrorBits";
-TMP309[4].len = 6; TMP309[4].kind = 2; TMP309[4].sons = &TMP315[0];
-NTI137029.node = &TMP309[4];
+static TNimNode* TMP291[3];
+static TNimNode* TMP298[6];
+static TNimNode TMP289[11];
+NTI136027.size = sizeof(romobj136027);
+NTI136027.kind = 17;
+NTI136027.base = (&NTI3211);
+TMP291[0] = &TMP289[1];
+NTI136030.size = sizeof(TY136030);
+NTI136030.kind = 16;
+NTI136030.base = (&NTI147);
+NTI136030.flags = 3;
+TMP289[1].kind = 1;
+TMP289[1].offset = offsetof(romobj136027, Header);
+TMP289[1].typ = (&NTI136030);
+TMP289[1].name = "header";
+TMP291[1] = &TMP289[2];
+NTI136033.size = sizeof(TY136033*);
+NTI136033.kind = 24;
+NTI136033.base = (&NTI147);
+NTI136033.flags = 2;
+NTI136033.marker = TMP292;
+TMP289[2].kind = 1;
+TMP289[2].offset = offsetof(romobj136027, Prgbytes);
+TMP289[2].typ = (&NTI136033);
+TMP289[2].name = "prgBytes";
+TMP291[2] = &TMP289[3];
+TMP289[3].kind = 1;
+TMP289[3].offset = offsetof(romobj136027, Chrbytes);
+TMP289[3].typ = (&NTI136033);
+TMP289[3].name = "chrBytes";
+TMP289[0].len = 3; TMP289[0].kind = 2; TMP289[0].sons = &TMP291[0];
+NTI136027.node = &TMP289[0];
+NTI136029.size = sizeof(headerobj136029);
+NTI136029.kind = 17;
+NTI136029.base = (&NTI3211);
+TMP298[0] = &TMP289[5];
+TMP289[5].kind = 1;
+TMP289[5].offset = offsetof(headerobj136029, Signature);
+TMP289[5].typ = (&NTI149);
+TMP289[5].name = "signature";
+TMP298[1] = &TMP289[6];
+TMP289[6].kind = 1;
+TMP289[6].offset = offsetof(headerobj136029, Prgsize);
+TMP289[6].typ = (&NTI108);
+TMP289[6].name = "prgSize";
+TMP298[2] = &TMP289[7];
+TMP289[7].kind = 1;
+TMP289[7].offset = offsetof(headerobj136029, Chrsize);
+TMP289[7].typ = (&NTI108);
+TMP289[7].name = "chrSize";
+TMP298[3] = &TMP289[8];
+TMP289[8].kind = 1;
+TMP289[8].offset = offsetof(headerobj136029, Mmbyte);
+TMP289[8].typ = (&NTI3205);
+TMP289[8].name = "mmByte";
+TMP298[4] = &TMP289[9];
+TMP289[9].kind = 1;
+TMP289[9].offset = offsetof(headerobj136029, Mapperbits);
+TMP289[9].typ = (&NTI108);
+TMP289[9].name = "mapperBits";
+TMP298[5] = &TMP289[10];
+TMP289[10].kind = 1;
+TMP289[10].offset = offsetof(headerobj136029, Mirrorbits);
+TMP289[10].typ = (&NTI108);
+TMP289[10].name = "mirrorBits";
+TMP289[4].len = 6; TMP289[4].kind = 2; TMP289[4].sons = &TMP298[0];
+NTI136029.node = &TMP289[4];
 }
 

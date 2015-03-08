@@ -16,26 +16,26 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-static N_INLINE(NI, HEX21HEX26_143019)(NI h, NI val);
+static N_INLINE(NI, HEX21HEX26_142019)(NI h, NI val);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-static N_INLINE(NI, HEX21HEX24_143048)(NI h);
-N_NIMCALL(NI, hashdata_143076)(void* data, NI size);
+static N_INLINE(NI, HEX21HEX24_142048)(NI h);
+N_NIMCALL(NI, hashdata_142076)(void* data, NI size);
 static N_INLINE(NI, addInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 static N_INLINE(NI, subInt)(NI a, NI b);
-static N_INLINE(NI, hash_143401)(void* x);
-static N_INLINE(NI, hash_143804)(NI x);
-static N_INLINE(NI, hash_143814)(NI64 x);
-static N_INLINE(NI, hash_143824)(NIM_CHAR x);
-N_NIMCALL(NI, hash_143842)(NimStringDesc* x);
+static N_INLINE(NI, hash_142401)(void* x);
+static N_INLINE(NI, hash_142804)(NI x);
+static N_INLINE(NI, hash_142814)(NI64 x);
+static N_INLINE(NI, hash_142824)(NIM_CHAR x);
+N_NIMCALL(NI, hash_142842)(NimStringDesc* x);
 N_NOINLINE(void, raiseIndexError)(void);
-N_NIMCALL(NI, hashignorestyle_143888)(NimStringDesc* x);
+N_NIMCALL(NI, hashignorestyle_142888)(NimStringDesc* x);
 static N_INLINE(NI, chckRange)(NI i, NI a, NI b);
 N_NOINLINE(void, raiseRangeError)(NI64 val);
-N_NIMCALL(NI, hashignorecase_143980)(NimStringDesc* x);
-static N_INLINE(NI, hash_144082)(NF x);
+N_NIMCALL(NI, hashignorecase_142980)(NimStringDesc* x);
+static N_INLINE(NI, hash_143082)(NF x);
 extern TFrame* frameptr_16242;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
@@ -65,7 +65,7 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-static N_INLINE(NI, HEX21HEX26_143019)(NI h, NI val) {
+static N_INLINE(NI, HEX21HEX26_142019)(NI h, NI val) {
 	NI result;
 	nimfr("!&", "hashes.nim")
 	result = 0;
@@ -84,7 +84,7 @@ static N_INLINE(NI, HEX21HEX26_143019)(NI h, NI val) {
 	return result;
 }
 
-static N_INLINE(NI, HEX21HEX24_143048)(NI h) {
+static N_INLINE(NI, HEX21HEX24_142048)(NI h) {
 	NI result;
 	nimfr("!$", "hashes.nim")
 	result = 0;
@@ -144,7 +144,7 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(NI, hashdata_143076)(void* data, NI size) {
+N_NIMCALL(NI, hashdata_142076)(void* data, NI size) {
 	NI result;
 	NI h;
 	NCSTRING p;
@@ -167,7 +167,7 @@ N_NIMCALL(NI, hashdata_143076)(void* data, NI size) {
 			if (!(0 < s)) goto LA2;
 			nimln(73, "hashes.nim");
 			nimln(73, "hashes.nim");
-			h = HEX21HEX26_143019(h, ((NI) (((NU8)(p[i])))));
+			h = HEX21HEX26_142019(h, ((NI) (((NU8)(p[i])))));
 			nimln(74, "hashes.nim");
 			i = addInt(i, 1);
 			nimln(75, "hashes.nim");
@@ -175,12 +175,12 @@ N_NIMCALL(NI, hashdata_143076)(void* data, NI size) {
 		} LA2: ;
 	}
 	nimln(76, "hashes.nim");
-	result = HEX21HEX24_143048(h);
+	result = HEX21HEX24_142048(h);
 	popFrame();
 	return result;
 }
 
-static N_INLINE(NI, hash_143401)(void* x) {
+static N_INLINE(NI, hash_142401)(void* x) {
 	NI result;
 	nimfr("hash", "hashes.nim")
 	result = 0;
@@ -191,7 +191,7 @@ static N_INLINE(NI, hash_143401)(void* x) {
 	return result;
 }
 
-static N_INLINE(NI, hash_143804)(NI x) {
+static N_INLINE(NI, hash_142804)(NI x) {
 	NI result;
 	nimfr("hash", "hashes.nim")
 	result = 0;
@@ -201,7 +201,7 @@ static N_INLINE(NI, hash_143804)(NI x) {
 	return result;
 }
 
-static N_INLINE(NI, hash_143814)(NI64 x) {
+static N_INLINE(NI, hash_142814)(NI64 x) {
 	NI result;
 	nimfr("hash", "hashes.nim")
 	result = 0;
@@ -212,7 +212,7 @@ static N_INLINE(NI, hash_143814)(NI64 x) {
 	return result;
 }
 
-static N_INLINE(NI, hash_143824)(NIM_CHAR x) {
+static N_INLINE(NI, hash_142824)(NIM_CHAR x) {
 	NI result;
 	nimfr("hash", "hashes.nim")
 	result = 0;
@@ -223,7 +223,7 @@ static N_INLINE(NI, hash_143824)(NIM_CHAR x) {
 	return result;
 }
 
-N_NIMCALL(NI, hash_143842)(NimStringDesc* x) {
+N_NIMCALL(NI, hash_142842)(NimStringDesc* x) {
 	NI result;
 	NI h;
 	nimfr("hash", "hashes.nim")
@@ -231,37 +231,37 @@ N_NIMCALL(NI, hash_143842)(NimStringDesc* x) {
 	nimln(119, "hashes.nim");
 	h = 0;
 	{
-		NI i_143857;
-		NI HEX3Atmp_143868;
-		NI TMP334;
-		NI res_143871;
-		i_143857 = 0;
-		HEX3Atmp_143868 = 0;
+		NI i_142857;
+		NI HEX3Atmp_142868;
+		NI TMP317;
+		NI res_142871;
+		i_142857 = 0;
+		HEX3Atmp_142868 = 0;
 		nimln(120, "hashes.nim");
 		nimln(120, "hashes.nim");
 		nimln(120, "hashes.nim");
-		TMP334 = subInt(x->Sup.len, 1);
-		HEX3Atmp_143868 = (NI64)(TMP334);
+		TMP317 = subInt(x->Sup.len, 1);
+		HEX3Atmp_142868 = (NI64)(TMP317);
 		nimln(1576, "system.nim");
-		res_143871 = 0;
+		res_142871 = 0;
 		{
 			nimln(1577, "system.nim");
 			while (1) {
 				nimln(1577, "system.nim");
-				if (!(res_143871 <= HEX3Atmp_143868)) goto LA3;
+				if (!(res_142871 <= HEX3Atmp_142868)) goto LA3;
 				nimln(1576, "system.nim");
-				i_143857 = res_143871;
+				i_142857 = res_142871;
 				nimln(121, "hashes.nim");
 				nimln(121, "hashes.nim");
-				if ((NU)(i_143857) > (NU)(x->Sup.len)) raiseIndexError();
-				h = HEX21HEX26_143019(h, ((NI) (((NU8)(x->data[i_143857])))));
+				if ((NU)(i_142857) > (NU)(x->Sup.len)) raiseIndexError();
+				h = HEX21HEX26_142019(h, ((NI) (((NU8)(x->data[i_142857])))));
 				nimln(1579, "system.nim");
-				res_143871 = addInt(res_143871, 1);
+				res_142871 = addInt(res_142871, 1);
 			} LA3: ;
 		}
 	}
 	nimln(122, "hashes.nim");
-	result = HEX21HEX24_143048(h);
+	result = HEX21HEX24_142048(h);
 	popFrame();
 	return result;
 }
@@ -290,7 +290,7 @@ static N_INLINE(NI, chckRange)(NI i, NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(NI, hashignorestyle_143888)(NimStringDesc* x) {
+N_NIMCALL(NI, hashignorestyle_142888)(NimStringDesc* x) {
 	NI result;
 	NI h;
 	nimfr("hashIgnoreStyle", "hashes.nim")
@@ -298,31 +298,31 @@ N_NIMCALL(NI, hashignorestyle_143888)(NimStringDesc* x) {
 	nimln(126, "hashes.nim");
 	h = 0;
 	{
-		NI i_143903;
-		NI HEX3Atmp_143957;
-		NI TMP335;
-		NI res_143960;
-		i_143903 = 0;
-		HEX3Atmp_143957 = 0;
+		NI i_142903;
+		NI HEX3Atmp_142957;
+		NI TMP318;
+		NI res_142960;
+		i_142903 = 0;
+		HEX3Atmp_142957 = 0;
 		nimln(127, "hashes.nim");
 		nimln(127, "hashes.nim");
 		nimln(127, "hashes.nim");
-		TMP335 = subInt(x->Sup.len, 1);
-		HEX3Atmp_143957 = (NI64)(TMP335);
+		TMP318 = subInt(x->Sup.len, 1);
+		HEX3Atmp_142957 = (NI64)(TMP318);
 		nimln(1576, "system.nim");
-		res_143960 = 0;
+		res_142960 = 0;
 		{
 			nimln(1577, "system.nim");
 			while (1) {
 				nimln(1577, "system.nim");
-				if (!(res_143960 <= HEX3Atmp_143957)) goto LA3;
+				if (!(res_142960 <= HEX3Atmp_142957)) goto LA3;
 				nimln(1576, "system.nim");
-				i_143903 = res_143960;
+				i_142903 = res_142960;
 				{
 					NIM_CHAR c;
 					nimln(128, "hashes.nim");
-					if ((NU)(i_143903) > (NU)(x->Sup.len)) raiseIndexError();
-					c = x->data[i_143903];
+					if ((NU)(i_142903) > (NU)(x->Sup.len)) raiseIndexError();
+					c = x->data[i_142903];
 					nimln(129, "hashes.nim");
 					{
 						nimln(129, "hashes.nim");
@@ -333,33 +333,33 @@ N_NIMCALL(NI, hashignorestyle_143888)(NimStringDesc* x) {
 					LA7: ;
 					nimln(131, "hashes.nim");
 					{
-						NI TMP336;
+						NI TMP319;
 						nimln(131, "hashes.nim");
 						if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA11;
 						nimln(132, "hashes.nim");
 						nimln(132, "hashes.nim");
 						nimln(132, "hashes.nim");
 						nimln(132, "hashes.nim");
-						TMP336 = addInt(((NI) (((NU8)(c)))), 32);
-						c = ((NIM_CHAR) (((NI)chckRange((NI64)(TMP336), 0, 255))));
+						TMP319 = addInt(((NI) (((NU8)(c)))), 32);
+						c = ((NIM_CHAR) (((NI)chckRange((NI64)(TMP319), 0, 255))));
 					}
 					LA11: ;
 					nimln(133, "hashes.nim");
 					nimln(133, "hashes.nim");
-					h = HEX21HEX26_143019(h, ((NI) (((NU8)(c)))));
+					h = HEX21HEX26_142019(h, ((NI) (((NU8)(c)))));
 				} LA4: ;
 				nimln(1579, "system.nim");
-				res_143960 = addInt(res_143960, 1);
+				res_142960 = addInt(res_142960, 1);
 			} LA3: ;
 		}
 	}
 	nimln(134, "hashes.nim");
-	result = HEX21HEX24_143048(h);
+	result = HEX21HEX24_142048(h);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, hashignorecase_143980)(NimStringDesc* x) {
+N_NIMCALL(NI, hashignorecase_142980)(NimStringDesc* x) {
 	NI result;
 	NI h;
 	nimfr("hashIgnoreCase", "hashes.nim")
@@ -367,58 +367,58 @@ N_NIMCALL(NI, hashignorecase_143980)(NimStringDesc* x) {
 	nimln(138, "hashes.nim");
 	h = 0;
 	{
-		NI i_143995;
-		NI HEX3Atmp_144048;
-		NI TMP337;
-		NI res_144051;
-		i_143995 = 0;
-		HEX3Atmp_144048 = 0;
+		NI i_142995;
+		NI HEX3Atmp_143048;
+		NI TMP320;
+		NI res_143051;
+		i_142995 = 0;
+		HEX3Atmp_143048 = 0;
 		nimln(139, "hashes.nim");
 		nimln(139, "hashes.nim");
 		nimln(139, "hashes.nim");
-		TMP337 = subInt(x->Sup.len, 1);
-		HEX3Atmp_144048 = (NI64)(TMP337);
+		TMP320 = subInt(x->Sup.len, 1);
+		HEX3Atmp_143048 = (NI64)(TMP320);
 		nimln(1576, "system.nim");
-		res_144051 = 0;
+		res_143051 = 0;
 		{
 			nimln(1577, "system.nim");
 			while (1) {
 				NIM_CHAR c;
 				nimln(1577, "system.nim");
-				if (!(res_144051 <= HEX3Atmp_144048)) goto LA3;
+				if (!(res_143051 <= HEX3Atmp_143048)) goto LA3;
 				nimln(1576, "system.nim");
-				i_143995 = res_144051;
+				i_142995 = res_143051;
 				nimln(140, "hashes.nim");
-				if ((NU)(i_143995) > (NU)(x->Sup.len)) raiseIndexError();
-				c = x->data[i_143995];
+				if ((NU)(i_142995) > (NU)(x->Sup.len)) raiseIndexError();
+				c = x->data[i_142995];
 				nimln(141, "hashes.nim");
 				{
-					NI TMP338;
+					NI TMP321;
 					nimln(141, "hashes.nim");
 					if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA6;
 					nimln(142, "hashes.nim");
 					nimln(142, "hashes.nim");
 					nimln(142, "hashes.nim");
 					nimln(142, "hashes.nim");
-					TMP338 = addInt(((NI) (((NU8)(c)))), 32);
-					c = ((NIM_CHAR) (((NI)chckRange((NI64)(TMP338), 0, 255))));
+					TMP321 = addInt(((NI) (((NU8)(c)))), 32);
+					c = ((NIM_CHAR) (((NI)chckRange((NI64)(TMP321), 0, 255))));
 				}
 				LA6: ;
 				nimln(143, "hashes.nim");
 				nimln(143, "hashes.nim");
-				h = HEX21HEX26_143019(h, ((NI) (((NU8)(c)))));
+				h = HEX21HEX26_142019(h, ((NI) (((NU8)(c)))));
 				nimln(1579, "system.nim");
-				res_144051 = addInt(res_144051, 1);
+				res_143051 = addInt(res_143051, 1);
 			} LA3: ;
 		}
 	}
 	nimln(144, "hashes.nim");
-	result = HEX21HEX24_143048(h);
+	result = HEX21HEX24_142048(h);
 	popFrame();
 	return result;
 }
 
-static N_INLINE(NI, hash_144082)(NF x) {
+static N_INLINE(NI, hash_143082)(NF x) {
 	NI result;
 	NF y;
 	nimfr("hash", "hashes.nim")

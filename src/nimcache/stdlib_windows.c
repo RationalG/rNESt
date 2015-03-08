@@ -8,9 +8,9 @@
 #include "nimbase.h"
 typedef struct TGenericSeq TGenericSeq;
 typedef struct NimStringDesc NimStringDesc;
-typedef struct tconsolescreenbufferinfo160718 tconsolescreenbufferinfo160718;
-typedef struct coord160706 coord160706;
-typedef struct smallrect160712 smallrect160712;
+typedef struct tconsolescreenbufferinfo159718 tconsolescreenbufferinfo159718;
+typedef struct coord159706 coord159706;
+typedef struct smallrect159712 smallrect159712;
 struct  TGenericSeq  {
 NI len;
 NI reserved;
@@ -19,30 +19,30 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-typedef N_STDCALL_PTR(NI, TY181624) (NI32 nstdhandle);
-typedef N_STDCALL_PTR(NI32, TY181701) (NI hsourceprocesshandle, NI hsourcehandle, NI htargetprocesshandle, NI* lptargethandle, NI32 dwdesiredaccess, NI32 binherithandle, NI32 dwoptions);
-typedef N_STDCALL_PTR(NI, TY181216) (void);
-typedef N_STDCALL_PTR(NI32, TY187363) (NI hconsoleoutput, tconsolescreenbufferinfo160718* lpconsolescreenbufferinfo);
-struct  coord160706  {
+typedef N_STDCALL_PTR(NI, TY180624) (NI32 nstdhandle);
+typedef N_STDCALL_PTR(NI32, TY180701) (NI hsourceprocesshandle, NI hsourcehandle, NI htargetprocesshandle, NI* lptargethandle, NI32 dwdesiredaccess, NI32 binherithandle, NI32 dwoptions);
+typedef N_STDCALL_PTR(NI, TY180216) (void);
+typedef N_STDCALL_PTR(NI32, TY186363) (NI hconsoleoutput, tconsolescreenbufferinfo159718* lpconsolescreenbufferinfo);
+struct  coord159706  {
 NI16 X;
 NI16 Y;
 };
-typedef N_STDCALL_PTR(NI32, TY187415) (NI hconsoleoutput, coord160706 dwcursorposition);
-typedef N_STDCALL_PTR(NI32, TY180456) (NI hconsoleoutput, NIM_CHAR ccharacter, NI32 nlength, coord160706 dwwritecoord, NI32* lpnumberofcharswritten);
-typedef N_STDCALL_PTR(NI32, TY187339) (NI hconsoleoutput, NI16 wattribute, NI32 nlength, coord160706 dwwritecoord, NI32* lpnumberofattrswritten);
-typedef N_STDCALL_PTR(NI32, TY187438) (NI hconsoleoutput, NI16 wattributes);
-struct  smallrect160712  {
+typedef N_STDCALL_PTR(NI32, TY186415) (NI hconsoleoutput, coord159706 dwcursorposition);
+typedef N_STDCALL_PTR(NI32, TY179456) (NI hconsoleoutput, NIM_CHAR ccharacter, NI32 nlength, coord159706 dwwritecoord, NI32* lpnumberofcharswritten);
+typedef N_STDCALL_PTR(NI32, TY186339) (NI hconsoleoutput, NI16 wattribute, NI32 nlength, coord159706 dwwritecoord, NI32* lpnumberofattrswritten);
+typedef N_STDCALL_PTR(NI32, TY186438) (NI hconsoleoutput, NI16 wattributes);
+struct  smallrect159712  {
 NI16 Left;
 NI16 Top;
 NI16 Right;
 NI16 Bottom;
 };
-struct  tconsolescreenbufferinfo160718  {
-coord160706 Dwsize;
-coord160706 Dwcursorposition;
+struct  tconsolescreenbufferinfo159718  {
+coord159706 Dwsize;
+coord159706 Dwcursorposition;
 NI16 Wattributes;
-smallrect160712 Srwindow;
-coord160706 Dwmaximumwindowsize;
+smallrect159712 Srwindow;
+coord159706 Dwmaximumwindowsize;
 };
 N_NIMCALL(void*, nimLoadLibrary)(NimStringDesc* path);
 N_NOINLINE(void, nimLoadLibraryError)(NimStringDesc* path);
@@ -50,17 +50,17 @@ N_NIMCALL(void*, nimGetProcAddr)(void* lib, NCSTRING name);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-STRING_LITERAL(TMP356, "kernel32", 8);
-STRING_LITERAL(TMP357, "kernel32", 8);
-static void* TMP355;
-TY181624 Dl_181623;
-TY181701 Dl_181700;
-TY181216 Dl_181215;
-TY187363 Dl_187362;
-TY187415 Dl_187414;
-TY180456 Dl_180455;
-TY187339 Dl_187338;
-TY187438 Dl_187437;
+STRING_LITERAL(TMP339, "kernel32", 8);
+STRING_LITERAL(TMP340, "kernel32", 8);
+static void* TMP338;
+TY180624 Dl_180623;
+TY180701 Dl_180700;
+TY180216 Dl_180215;
+TY186363 Dl_186362;
+TY186415 Dl_186414;
+TY179456 Dl_179455;
+TY186339 Dl_186338;
+TY186438 Dl_186437;
 extern TFrame* frameptr_16242;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
@@ -95,15 +95,15 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_windowsInit)(void) {
 }
 
 NIM_EXTERNC N_NOINLINE(void, stdlib_windowsDatInit)(void) {
-if (!((TMP355 = nimLoadLibrary((NimStringDesc*) &TMP356))
-)) nimLoadLibraryError((NimStringDesc*) &TMP357);
-	Dl_181623 = (TY181624) nimGetProcAddr(TMP355, "GetStdHandle");
-	Dl_181700 = (TY181701) nimGetProcAddr(TMP355, "DuplicateHandle");
-	Dl_181215 = (TY181216) nimGetProcAddr(TMP355, "GetCurrentProcess");
-	Dl_187362 = (TY187363) nimGetProcAddr(TMP355, "GetConsoleScreenBufferInfo");
-	Dl_187414 = (TY187415) nimGetProcAddr(TMP355, "SetConsoleCursorPosition");
-	Dl_180455 = (TY180456) nimGetProcAddr(TMP355, "FillConsoleOutputCharacterA");
-	Dl_187338 = (TY187339) nimGetProcAddr(TMP355, "FillConsoleOutputAttribute");
-	Dl_187437 = (TY187438) nimGetProcAddr(TMP355, "SetConsoleTextAttribute");
+if (!((TMP338 = nimLoadLibrary((NimStringDesc*) &TMP339))
+)) nimLoadLibraryError((NimStringDesc*) &TMP340);
+	Dl_180623 = (TY180624) nimGetProcAddr(TMP338, "GetStdHandle");
+	Dl_180700 = (TY180701) nimGetProcAddr(TMP338, "DuplicateHandle");
+	Dl_180215 = (TY180216) nimGetProcAddr(TMP338, "GetCurrentProcess");
+	Dl_186362 = (TY186363) nimGetProcAddr(TMP338, "GetConsoleScreenBufferInfo");
+	Dl_186414 = (TY186415) nimGetProcAddr(TMP338, "SetConsoleCursorPosition");
+	Dl_179455 = (TY179456) nimGetProcAddr(TMP338, "FillConsoleOutputCharacterA");
+	Dl_186338 = (TY186339) nimGetProcAddr(TMP338, "FillConsoleOutputAttribute");
+	Dl_186437 = (TY186438) nimGetProcAddr(TMP338, "SetConsoleTextAttribute");
 }
 

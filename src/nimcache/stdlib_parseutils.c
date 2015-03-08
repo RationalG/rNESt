@@ -203,7 +203,7 @@ static N_INLINE(tcell44933*, usrtocell_48646)(void* usr);
 static N_INLINE(void, rtladdzct_50204)(tcell44933* c);
 N_NOINLINE(void, addzct_48617)(tcellseq44949* s, tcell44933* c);
 N_NIMCALL(void, raiseException)(Exception* e, NCSTRING ename);
-STRING_LITERAL(TMP450, "overflow", 8);
+STRING_LITERAL(TMP433, "overflow", 8);
 extern TFrame* frameptr_16242;
 extern TNimType NTI22401; /* ref OverflowError */
 extern TNimType NTI3243; /* OverflowError */
@@ -342,8 +342,8 @@ N_NIMCALL(NI, rawparseint_92808)(NimStringDesc* s, NI64* b, NI start) {
 	LA1: ;
 	nimln(200, "parseutils.nim");
 	{
-		NI64 TMP448;
-		NI TMP449;
+		NI64 TMP431;
+		NI TMP432;
 		nimln(200, "parseutils.nim");
 		if ((NU)(i) > (NU)(s->Sup.len)) raiseIndexError();
 		if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA10;
@@ -352,22 +352,22 @@ N_NIMCALL(NI, rawparseint_92808)(NimStringDesc* s, NI64* b, NI start) {
 		{
 			nimln(202, "parseutils.nim");
 			while (1) {
-				NI64 TMP445;
-				NI TMP446;
-				NI64 TMP447;
+				NI64 TMP428;
+				NI TMP429;
+				NI64 TMP430;
 				nimln(202, "parseutils.nim");
 				if ((NU)(i) > (NU)(s->Sup.len)) raiseIndexError();
 				if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA13;
 				nimln(203, "parseutils.nim");
 				nimln(203, "parseutils.nim");
 				nimln(203, "parseutils.nim");
-				TMP445 = mulInt64((*b), IL64(10));
+				TMP428 = mulInt64((*b), IL64(10));
 				nimln(203, "parseutils.nim");
 				nimln(203, "parseutils.nim");
 				if ((NU)(i) > (NU)(s->Sup.len)) raiseIndexError();
-				TMP446 = subInt(((NI) (((NU8)(s->data[i])))), 48);
-				TMP447 = subInt64((NI64)(TMP445), ((NI64) ((NI64)(TMP446))));
-				(*b) = (NI64)(TMP447);
+				TMP429 = subInt(((NI) (((NU8)(s->data[i])))), 48);
+				TMP430 = subInt64((NI64)(TMP428), ((NI64) ((NI64)(TMP429))));
+				(*b) = (NI64)(TMP430);
 				nimln(204, "parseutils.nim");
 				i = addInt(i, 1);
 				{
@@ -384,12 +384,12 @@ N_NIMCALL(NI, rawparseint_92808)(NimStringDesc* s, NI64* b, NI start) {
 		}
 		nimln(206, "parseutils.nim");
 		nimln(206, "parseutils.nim");
-		TMP448 = mulInt64((*b), sign);
-		(*b) = (NI64)(TMP448);
+		TMP431 = mulInt64((*b), sign);
+		(*b) = (NI64)(TMP431);
 		nimln(207, "parseutils.nim");
 		nimln(207, "parseutils.nim");
-		TMP449 = subInt(i, start);
-		result = (NI64)(TMP449);
+		TMP432 = subInt(i, start);
+		result = (NI64)(TMP432);
 	}
 	LA10: ;
 	popFrame();
@@ -482,7 +482,7 @@ N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, NI* number, NI start) {
 		(*e_92969).Sup.Sup.Sup.m_type = (&NTI3243);
 		nimln(2150, "system.nim");
 		LOC9 = 0;
-		LOC9 = (*e_92969).Sup.Sup.message; (*e_92969).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP450));
+		LOC9 = (*e_92969).Sup.Sup.message; (*e_92969).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP433));
 		if (LOC9) nimGCunrefNoCycle(LOC9);
 		nimln(230, "parseutils.nim");
 		raiseException((Exception*)e_92969, "OverflowError");

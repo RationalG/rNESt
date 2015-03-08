@@ -8,14 +8,14 @@
 #include "nimbase.h"
 typedef struct TGenericSeq TGenericSeq;
 typedef struct NimStringDesc NimStringDesc;
-typedef struct tsurface234055 tsurface234055;
-typedef struct trect234027 trect234027;
-typedef struct tevent234019 tevent234019;
-typedef struct tkeyboardevent233346 tkeyboardevent233346;
-typedef struct tpixelformat234045 tpixelformat234045;
-typedef struct tkeysym233336 tkeysym233336;
-typedef struct tpalette234041 tpalette234041;
-typedef struct tcolor234033 tcolor234033;
+typedef struct tsurface233055 tsurface233055;
+typedef struct trect233027 trect233027;
+typedef struct tevent233019 tevent233019;
+typedef struct tkeyboardevent232346 tkeyboardevent232346;
+typedef struct tpixelformat233045 tpixelformat233045;
+typedef struct tkeysym232336 tkeysym232336;
+typedef struct tpalette233041 tpalette233041;
+typedef struct tcolor233033 tcolor233033;
 struct  TGenericSeq  {
 NI len;
 NI reserved;
@@ -24,52 +24,52 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-typedef N_CDECL_PTR(NI, TY237223) (NI32 flags);
-typedef N_CDECL_PTR(tsurface234055*, TY238125) (NI width, NI height, NI bpp, NU32 flags);
-typedef N_CDECL_PTR(NI, TY238405) (tsurface234055* dst, trect234027* dstrect, NI32 color);
-typedef N_CDECL_PTR(NI, TY238152) (tsurface234055* screen);
-typedef N_CDECL_PTR(NI, TY238011) (tevent234019* event);
-typedef NU8 TY234075[20];
-struct  tevent234019  {
+typedef N_CDECL_PTR(NI, TY236223) (NI32 flags);
+typedef N_CDECL_PTR(tsurface233055*, TY237125) (NI width, NI height, NI bpp, NU32 flags);
+typedef N_CDECL_PTR(NI, TY237405) (tsurface233055* dst, trect233027* dstrect, NI32 color);
+typedef N_CDECL_PTR(NI, TY237152) (tsurface233055* screen);
+typedef N_CDECL_PTR(NI, TY237011) (tevent233019* event);
+typedef NU8 TY233075[20];
+struct  tevent233019  {
 NU8 Kind;
-TY234075 Pad;
+TY233075 Pad;
 };
-struct  trect234027  {
+struct  trect233027  {
 NI16 X;
 NI16 Y;
 NU16 W;
 NU16 H;
 };
-struct  tsurface234055  {
+struct  tsurface233055  {
 NI32 Flags;
-tpixelformat234045* Format;
+tpixelformat233045* Format;
 int W;
 int H;
 NU16 Pitch;
 void* Pixels;
 int Offset;
 void* Hwdata;
-trect234027 Cliprect;
+trect233027 Cliprect;
 NI32 Unused1;
 NI32 Locked;
 void* Blitmap;
 int Formatversion;
 int Refcount;
 };
-struct  tkeysym233336  {
+struct  tkeysym232336  {
 NU8 Scancode;
 NI32 Sym;
 NI32 Modifier;
 NU16 Unicode;
 };
-struct  tkeyboardevent233346  {
+struct  tkeyboardevent232346  {
 NU8 Kind;
 NU8 Which;
 NU8 State;
-tkeysym233336 Keysym;
+tkeysym232336 Keysym;
 };
-struct  tpixelformat234045  {
-tpalette234041* Palette;
+struct  tpixelformat233045  {
+tpalette233041* Palette;
 NU8 Bitsperpixel;
 NU8 Bytesperpixel;
 NU8 Rloss;
@@ -87,11 +87,11 @@ NI32 Amask;
 NI32 Colorkey;
 NU8 Alpha;
 };
-struct  tpalette234041  {
+struct  tpalette233041  {
 NI Ncolors;
-tcolor234033* Colors;
+tcolor233033* Colors;
 };
-struct  tcolor234033  {
+struct  tcolor233033  {
 NU8 R;
 NU8 G;
 NU8 B;
@@ -104,16 +104,16 @@ N_NIMCALL(void, failedassertimpl_86825)(NimStringDesc* msg);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-STRING_LITERAL(TMP766, "SDL.dll", 7);
-STRING_LITERAL(TMP767, "SDL.dll", 7);
-STRING_LITERAL(TMP768, "(system.contains|system.contains|system.contains|...)({KEYDOWN,"
+STRING_LITERAL(TMP749, "SDL.dll", 7);
+STRING_LITERAL(TMP750, "SDL.dll", 7);
+STRING_LITERAL(TMP751, "(system.contains|system.contains|system.contains|...)({KEYDOWN,"
 " KEYUP}, \015\012    event.kind) ", 90);
-static void* TMP765;
-TY237223 Dl_237222;
-TY238125 Dl_238124;
-TY238405 Dl_238404;
-TY238152 Dl_238151;
-TY238011 Dl_238010;
+static void* TMP748;
+TY236223 Dl_236222;
+TY237125 Dl_237124;
+TY237405 Dl_237404;
+TY237152 Dl_237151;
+TY237011 Dl_237010;
 extern TFrame* frameptr_16242;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
@@ -143,8 +143,8 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(tkeyboardevent233346*, evkeyboard_234822)(tevent234019* event) {
-	tkeyboardevent233346* result;
+N_NIMCALL(tkeyboardevent232346*, evkeyboard_233822)(tevent233019* event) {
+	tkeyboardevent232346* result;
 	nimfr("evKeyboard", "sdl.nim")
 	result = 0;
 	nimln(1287, "sdl.nim");
@@ -153,11 +153,11 @@ N_NIMCALL(tkeyboardevent233346*, evkeyboard_234822)(tevent234019* event) {
 		nimln(1287, "sdl.nim");
 		if (!!(((12 &(1<<(((*event).Kind)&31)))!=0))) goto LA3;
 		nimln(1287, "sdl.nim");
-		failedassertimpl_86825(((NimStringDesc*) &TMP768));
+		failedassertimpl_86825(((NimStringDesc*) &TMP751));
 	}
 	LA3: ;
 	nimln(1288, "sdl.nim");
-	result = ((tkeyboardevent233346*) (event));
+	result = ((tkeyboardevent232346*) (event));
 	popFrame();
 	return result;
 }
@@ -167,12 +167,12 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_sdlInit)(void) {
 }
 
 NIM_EXTERNC N_NOINLINE(void, stdlib_sdlDatInit)(void) {
-if (!((TMP765 = nimLoadLibrary((NimStringDesc*) &TMP766))
-)) nimLoadLibraryError((NimStringDesc*) &TMP767);
-	Dl_237222 = (TY237223) nimGetProcAddr(TMP765, "SDL_Init");
-	Dl_238124 = (TY238125) nimGetProcAddr(TMP765, "SDL_SetVideoMode");
-	Dl_238404 = (TY238405) nimGetProcAddr(TMP765, "SDL_FillRect");
-	Dl_238151 = (TY238152) nimGetProcAddr(TMP765, "SDL_Flip");
-	Dl_238010 = (TY238011) nimGetProcAddr(TMP765, "SDL_PollEvent");
+if (!((TMP748 = nimLoadLibrary((NimStringDesc*) &TMP749))
+)) nimLoadLibraryError((NimStringDesc*) &TMP750);
+	Dl_236222 = (TY236223) nimGetProcAddr(TMP748, "SDL_Init");
+	Dl_237124 = (TY237125) nimGetProcAddr(TMP748, "SDL_SetVideoMode");
+	Dl_237404 = (TY237405) nimGetProcAddr(TMP748, "SDL_FillRect");
+	Dl_237151 = (TY237152) nimGetProcAddr(TMP748, "SDL_Flip");
+	Dl_237010 = (TY237011) nimGetProcAddr(TMP748, "SDL_PollEvent");
 }
 

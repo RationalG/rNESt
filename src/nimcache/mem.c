@@ -10,13 +10,13 @@
 #include <string.h>
 
 #include <stdio.h>
-typedef struct cpumemoryobj224007 cpumemoryobj224007;
-typedef struct TY131128 TY131128;
+typedef struct cpumemoryobj223007 cpumemoryobj223007;
+typedef struct TY136033 TY136033;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
-typedef struct TY222030 TY222030;
+typedef struct TY221030 TY221030;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct tcell44933 tcell44933;
 typedef struct tcellseq44949 tcellseq44949;
@@ -31,7 +31,7 @@ typedef struct tintset26417 tintset26417;
 typedef struct ttrunk26413 ttrunk26413;
 typedef struct tavlnode27208 tavlnode27208;
 typedef struct tgcstat47014 tgcstat47014;
-typedef struct romobj137027 romobj137027;
+typedef struct romobj136027 romobj136027;
 typedef struct tbasechunk26438 tbasechunk26438;
 typedef struct tfreecell26430 tfreecell26430;
 struct  TGenericSeq  {
@@ -53,9 +53,9 @@ TY3094 deepcopy;
 struct  TNimObject  {
 TNimType* m_type;
 };
-struct  cpumemoryobj224007  {
+struct  cpumemoryobj223007  {
   TNimObject Sup;
-TY222030* Bank;
+TY221030* Bank;
 };
 struct  NimStringDesc  {
   TGenericSeq Sup;
@@ -125,12 +125,12 @@ NI Recgclock;
 tmemregion27210 Region;
 tgcstat47014 Stat;
 };
-typedef NIM_CHAR TY137030[16];
-struct  romobj137027  {
+typedef NIM_CHAR TY136030[16];
+struct  romobj136027  {
   TNimObject Sup;
-TY137030 Header;
-TY131128* Prgbytes;
-TY131128* Chrbytes;
+TY136030 Header;
+TY136033* Prgbytes;
+TY136033* Chrbytes;
 };
 typedef NI TY26420[8];
 struct  tpagedesc44941  {
@@ -180,35 +180,35 @@ struct  tfreecell26430  {
 tfreecell26430* Next;
 NI Zerofield;
 };
-struct TY131128 {
+struct TY136033 {
   TGenericSeq Sup;
   NIM_CHAR data[SEQ_DECL_SIZE];
 };
-struct TY222030 {
+struct TY221030 {
   TGenericSeq Sup;
   NI data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(void, setprogram_224018)(void* program);
-N_NIMCALL(TY131128*, newseq_131123)(NI len_131127);
+N_NIMCALL(void, setprogram_223018)(void* program);
+N_NIMCALL(TY136033*, newseq_136510)(NI len_136514);
 N_NOINLINE(void, raiseIndexError)(void);
 static N_INLINE(NI, addInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(void, reflectvalue_224096)(NI address, NI value);
-N_NIMCALL(void, updateregisters_223554)(NI address, NI value);
-N_NIMCALL(void, reflectbitwise_224106)(NI address, NI bitid);
-N_NIMCALL(void, transmittoregister_223533)(NI address, NI value);
-N_NIMCALL(void, mmiowrite_224117)(NI address, NI value);
-N_NIMCALL(NI, mmioread_224136)(NI address);
-N_NIMCALL(NI, readstatus_223429)(void);
-N_NIMCALL(NI, getmemoryshortat_224154)(NI address);
-N_NIMCALL(void*, getmemoryaddressat_224166)(NI address);
-N_NIMCALL(NI, checkfromdebug_224177)(NI address);
-N_NIMCALL(void, initmem_224187)(void);
+N_NIMCALL(void, reflectvalue_223096)(NI address, NI value);
+N_NIMCALL(void, updateregisters_222554)(NI address, NI value);
+N_NIMCALL(void, reflectbitwise_223106)(NI address, NI bitid);
+N_NIMCALL(void, transmittoregister_222533)(NI address, NI value);
+N_NIMCALL(void, mmiowrite_223117)(NI address, NI value);
+N_NIMCALL(NI, mmioread_223136)(NI address);
+N_NIMCALL(NI, readstatus_222429)(void);
+N_NIMCALL(NI, getmemoryshortat_223154)(NI address);
+N_NIMCALL(void*, getmemoryaddressat_223166)(NI address);
+N_NIMCALL(NI, checkfromdebug_223177)(NI address);
+N_NIMCALL(void, initmem_223187)(void);
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
-N_NIMCALL(void, TMP458)(void* p, NI op);
+N_NIMCALL(void, TMP441)(void* p, NI op);
 static N_INLINE(void, nimGCunref)(void* p);
 static N_INLINE(void, decref_50604)(tcell44933* c);
 static N_INLINE(void, rtladdzct_50204)(tcell44933* c);
@@ -218,17 +218,17 @@ static N_INLINE(void, rtladdcycleroot_49429)(tcell44933* c);
 N_NOINLINE(void, incl_45671)(tcellset44945* s, tcell44933* cell);
 static N_INLINE(tcell44933*, usrtocell_48646)(void* usr);
 N_NIMCALL(void*, newObjRC1)(TNimType* typ, NI size);
-N_NIMCALL(TY222030*, newseq_223747)(NI len_223751);
+N_NIMCALL(TY221030*, newseq_222747)(NI len_222751);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
-STRING_LITERAL(TMP456, "Invalid address", 15);
-cpumemoryobj224007* cpumemory_224013;
+STRING_LITERAL(TMP439, "Invalid address", 15);
+cpumemoryobj223007* cpumemory_223013;
 extern TFrame* frameptr_16242;
 extern TNimType NTI3211; /* RootObj */
-TNimType NTI224007; /* CPUMemoryObj */
-extern TNimType NTI222030; /* seq[int] */
-TNimType NTI224005; /* CPUMemoryRef */
+TNimType NTI223007; /* CPUMemoryObj */
+extern TNimType NTI221030; /* seq[int] */
+TNimType NTI223005; /* CPUMemoryRef */
 extern tgcheap47016 gch_47044;
-extern romobj137027 nesrom_137046;
+extern romobj136027 nesrom_136046;
 
 static N_INLINE(NI, addInt)(NI a, NI b) {
 	NI result;
@@ -277,93 +277,93 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(void, setprogram_224018)(void* program) {
-	TY131128* temporarybank;
+N_NIMCALL(void, setprogram_223018)(void* program) {
+	TY136033* temporarybank;
 	nimfr("setProgram", "mem.nim")
 	nimln(14, "mem.nim");
-	temporarybank = newseq_131123(65536);
+	temporarybank = newseq_136510(65536);
 	nimln(15, "mem.nim");
 	if ((NU)(32768) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
 	memcpy(((void*) ((&temporarybank->data[32768]))), program, 32768);
 	{
-		NI i_224074;
-		NIM_CHAR value_224075;
-		NI i_224080;
-		i_224074 = 0;
-		value_224075 = 0;
+		NI i_223074;
+		NIM_CHAR value_223075;
+		NI i_223080;
+		i_223074 = 0;
+		value_223075 = 0;
 		nimln(1704, "system.nim");
-		i_224080 = 0;
+		i_223080 = 0;
 		{
 			nimln(1705, "system.nim");
 			while (1) {
 				nimln(1705, "system.nim");
 				nimln(1705, "system.nim");
-				if (!(i_224080 < temporarybank->Sup.len)) goto LA3;
+				if (!(i_223080 < temporarybank->Sup.len)) goto LA3;
 				nimln(1704, "system.nim");
-				i_224074 = i_224080;
+				i_223074 = i_223080;
 				nimln(1706, "system.nim");
-				if ((NU)(i_224080) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
-				value_224075 = temporarybank->data[i_224080];
+				if ((NU)(i_223080) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
+				value_223075 = temporarybank->data[i_223080];
 				nimln(17, "mem.nim");
-				if ((NU)(i_224074) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-				(*cpumemory_224013).Bank->data[i_224074] = ((NI) (((NU8)(value_224075))));
+				if ((NU)(i_223074) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+				(*cpumemory_223013).Bank->data[i_223074] = ((NI) (((NU8)(value_223075))));
 				nimln(1707, "system.nim");
-				i_224080 = addInt(i_224080, 1);
+				i_223080 = addInt(i_223080, 1);
 			} LA3: ;
 		}
 	}
 	popFrame();
 }
 
-N_NIMCALL(void, reflectvalue_224096)(NI address, NI value) {
+N_NIMCALL(void, reflectvalue_223096)(NI address, NI value) {
 	nimfr("reflectValue", "mem.nim")
 	nimln(21, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	(*cpumemory_224013).Bank->data[address] = value;
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	(*cpumemory_223013).Bank->data[address] = value;
 	nimln(22, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	updateregisters_223554(address, (*cpumemory_224013).Bank->data[address]);
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	updateregisters_222554(address, (*cpumemory_223013).Bank->data[address]);
 	popFrame();
 }
 
-N_NIMCALL(void, reflectbitwise_224106)(NI address, NI bitid) {
+N_NIMCALL(void, reflectbitwise_223106)(NI address, NI bitid) {
 	NI bit;
 	nimfr("reflectBitwise", "mem.nim")
 	nimln(28, "mem.nim");
 	nimln(28, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
 	nimln(28, "mem.nim");
-	bit = (NI)((*cpumemory_224013).Bank->data[address] & (NI)((NU64)(1) << (NU64)(bitid)));
+	bit = (NI)((*cpumemory_223013).Bank->data[address] & (NI)((NU64)(1) << (NU64)(bitid)));
 	nimln(29, "mem.nim");
 	{
 		nimln(29, "mem.nim");
 		if (!(bit == 0)) goto LA3;
 		nimln(30, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
 		nimln(30, "mem.nim");
 		nimln(30, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-		(*cpumemory_224013).Bank->data[address] = (NI)((NU64)((NI)((*cpumemory_224013).Bank->data[address] | 1)) << (NU64)(bitid));
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+		(*cpumemory_223013).Bank->data[address] = (NI)((NU64)((NI)((*cpumemory_223013).Bank->data[address] | 1)) << (NU64)(bitid));
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(32, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
 		nimln(32, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
 		nimln(32, "mem.nim");
 		nimln(32, "mem.nim");
-		(*cpumemory_224013).Bank->data[address] = (NI)((*cpumemory_224013).Bank->data[address] & (NI)((NU64) ~((NI)((NU64)(1) << (NU64)(bitid)))));
+		(*cpumemory_223013).Bank->data[address] = (NI)((*cpumemory_223013).Bank->data[address] & (NI)((NU64) ~((NI)((NU64)(1) << (NU64)(bitid)))));
 	}
 	LA1: ;
 	nimln(33, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	transmittoregister_223533(address, (*cpumemory_224013).Bank->data[address]);
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	transmittoregister_222533(address, (*cpumemory_223013).Bank->data[address]);
 	popFrame();
 }
 
-N_NIMCALL(void, mmiowrite_224117)(NI address, NI value) {
+N_NIMCALL(void, mmiowrite_223117)(NI address, NI value) {
 	nimfr("mmioWrite", "mem.nim")
 	nimln(39, "mem.nim");
 	switch (address) {
@@ -371,29 +371,29 @@ N_NIMCALL(void, mmiowrite_224117)(NI address, NI value) {
 	case 8200 ... 65536:
 	{
 		nimln(41, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-		(*cpumemory_224013).Bank->data[address] = value;
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+		(*cpumemory_223013).Bank->data[address] = value;
 	}
 	break;
 	case 8192:
 	case 8199:
 	{
 		nimln(43, "mem.nim");
-		reflectvalue_224096(address, value);
+		reflectvalue_223096(address, value);
 	}
 	break;
 	default:
 	{
 		nimln(45, "mem.nim");
 		nimln(45, "mem.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP456))->data);
+		printf("%s\015\012", (((NimStringDesc*) &TMP439))->data);
 	}
 	break;
 	}
 	popFrame();
 }
 
-N_NIMCALL(NI, mmioread_224136)(NI address) {
+N_NIMCALL(NI, mmioread_223136)(NI address) {
 	NI result;
 	nimfr("mmioRead", "mem.nim")
 	result = 0;
@@ -403,21 +403,21 @@ N_NIMCALL(NI, mmioread_224136)(NI address) {
 	case 8195 ... 65536:
 	{
 		nimln(52, "mem.nim");
-		if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-		result = (*cpumemory_224013).Bank->data[address];
+		if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+		result = (*cpumemory_223013).Bank->data[address];
 	}
 	break;
 	case 8194:
 	{
 		nimln(54, "mem.nim");
-		result = readstatus_223429();
+		result = readstatus_222429();
 	}
 	break;
 	default:
 	{
 		nimln(56, "mem.nim");
 		nimln(56, "mem.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP456))->data);
+		printf("%s\015\012", (((NimStringDesc*) &TMP439))->data);
 		nimln(57, "mem.nim");
 		nimln(57, "mem.nim");
 		result = 0;
@@ -430,22 +430,22 @@ N_NIMCALL(NI, mmioread_224136)(NI address) {
 	return result;
 }
 
-N_NIMCALL(NI, getmemoryshortat_224154)(NI address) {
+N_NIMCALL(NI, getmemoryshortat_223154)(NI address) {
 	NI result;
 	NI lowbyte;
 	NI highbyte;
-	NI TMP457;
+	NI TMP440;
 	nimfr("getMemoryShortAt", "mem.nim")
 	result = 0;
 	nimln(60, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	lowbyte = (*cpumemory_224013).Bank->data[address];
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	lowbyte = (*cpumemory_223013).Bank->data[address];
 	nimln(61, "mem.nim");
 	nimln(61, "mem.nim");
 	nimln(61, "mem.nim");
-	TMP457 = addInt(address, 1);
-	if ((NU)((NI64)(TMP457)) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	highbyte = (NI)((NU64)((*cpumemory_224013).Bank->data[(NI64)(TMP457)]) << (NU64)(8));
+	TMP440 = addInt(address, 1);
+	if ((NU)((NI64)(TMP440)) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	highbyte = (NI)((NU64)((*cpumemory_223013).Bank->data[(NI64)(TMP440)]) << (NU64)(8));
 	nimln(62, "mem.nim");
 	nimln(62, "mem.nim");
 	nimln(62, "mem.nim");
@@ -456,36 +456,36 @@ N_NIMCALL(NI, getmemoryshortat_224154)(NI address) {
 	return result;
 }
 
-N_NIMCALL(void*, getmemoryaddressat_224166)(NI address) {
+N_NIMCALL(void*, getmemoryaddressat_223166)(NI address) {
 	void* result;
 	nimfr("getMemoryAddressAt", "mem.nim")
 	result = 0;
 	nimln(65, "mem.nim");
 	nimln(65, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	result = ((void*) ((&(*cpumemory_224013).Bank->data[address])));
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	result = ((void*) ((&(*cpumemory_223013).Bank->data[address])));
 	goto BeforeRet;
 	BeforeRet: ;
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, checkfromdebug_224177)(NI address) {
+N_NIMCALL(NI, checkfromdebug_223177)(NI address) {
 	NI result;
 	nimfr("checkFromDebug", "mem.nim")
 	result = 0;
 	nimln(68, "mem.nim");
 	nimln(68, "mem.nim");
-	if ((NU)(address) >= (NU)((*cpumemory_224013).Bank->Sup.len)) raiseIndexError();
-	result = (*cpumemory_224013).Bank->data[address];
+	if ((NU)(address) >= (NU)((*cpumemory_223013).Bank->Sup.len)) raiseIndexError();
+	result = (*cpumemory_223013).Bank->data[address];
 	goto BeforeRet;
 	BeforeRet: ;
 	popFrame();
 	return result;
 }
-N_NIMCALL(void, TMP458)(void* p, NI op) {
-	cpumemoryobj224007* a;
-	a = (cpumemoryobj224007*)p;
+N_NIMCALL(void, TMP441)(void* p, NI op) {
+	cpumemoryobj223007* a;
+	a = (cpumemoryobj223007*)p;
 	nimGCvisit((void*)(*a).Bank, op);
 }
 
@@ -617,19 +617,19 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 	popFrame();
 }
 
-N_NIMCALL(void, initmem_224187)(void) {
+N_NIMCALL(void, initmem_223187)(void) {
 	nimfr("initMem", "mem.nim")
 	nimln(71, "mem.nim");
-	if (cpumemory_224013) nimGCunref(cpumemory_224013);
-	cpumemory_224013 = (cpumemoryobj224007*) newObjRC1((&NTI224005), sizeof(cpumemoryobj224007));
-	(*cpumemory_224013).Sup.m_type = (&NTI224007);
+	if (cpumemory_223013) nimGCunref(cpumemory_223013);
+	cpumemory_223013 = (cpumemoryobj223007*) newObjRC1((&NTI223005), sizeof(cpumemoryobj223007));
+	(*cpumemory_223013).Sup.m_type = (&NTI223007);
 	nimln(73, "mem.nim");
-	asgnRefNoCycle((void**) (&(*cpumemory_224013).Bank), newseq_223747(65536));
+	asgnRefNoCycle((void**) (&(*cpumemory_223013).Bank), newseq_222747(65536));
 	nimln(75, "mem.nim");
-	if ((NU)(0) >= (NU)(nesrom_137046.Prgbytes->Sup.len)) raiseIndexError();
-	setprogram_224018(((void*) ((&nesrom_137046.Prgbytes->data[0]))));
+	if ((NU)(0) >= (NU)(nesrom_136046.Prgbytes->Sup.len)) raiseIndexError();
+	setprogram_223018(((void*) ((&nesrom_136046.Prgbytes->data[0]))));
 	nimln(77, "mem.nim");
-	reflectbitwise_224106(8194, 7);
+	reflectbitwise_223106(8194, 7);
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_memInit)(void) {
@@ -638,18 +638,18 @@ NIM_EXTERNC N_NOINLINE(void, HEX00_memInit)(void) {
 }
 
 NIM_EXTERNC N_NOINLINE(void, HEX00_memDatInit)(void) {
-static TNimNode TMP345[1];
-NTI224007.size = sizeof(cpumemoryobj224007);
-NTI224007.kind = 17;
-NTI224007.base = (&NTI3211);
-TMP345[0].kind = 1;
-TMP345[0].offset = offsetof(cpumemoryobj224007, Bank);
-TMP345[0].typ = (&NTI222030);
-TMP345[0].name = "bank";
-NTI224007.node = &TMP345[0];
-NTI224005.size = sizeof(cpumemoryobj224007*);
-NTI224005.kind = 22;
-NTI224005.base = (&NTI224007);
-NTI224005.marker = TMP458;
+static TNimNode TMP328[1];
+NTI223007.size = sizeof(cpumemoryobj223007);
+NTI223007.kind = 17;
+NTI223007.base = (&NTI3211);
+TMP328[0].kind = 1;
+TMP328[0].offset = offsetof(cpumemoryobj223007, Bank);
+TMP328[0].typ = (&NTI221030);
+TMP328[0].name = "bank";
+NTI223007.node = &TMP328[0];
+NTI223005.size = sizeof(cpumemoryobj223007*);
+NTI223005.kind = 22;
+NTI223005.base = (&NTI223007);
+NTI223005.marker = TMP441;
 }
 

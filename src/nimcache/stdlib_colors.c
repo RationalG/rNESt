@@ -8,8 +8,8 @@
 #include "nimbase.h"
 
 #include <string.h>
-typedef struct TY240184 TY240184;
-typedef struct TY240556 TY240556;
+typedef struct TY239184 TY239184;
+typedef struct TY239556 TY239556;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct valueerror3249 valueerror3249;
@@ -32,7 +32,7 @@ typedef struct tavlnode27208 tavlnode27208;
 typedef struct tgcstat47014 tgcstat47014;
 typedef struct tbasechunk26438 tbasechunk26438;
 typedef struct tfreecell26430 tfreecell26430;
-struct TY240184 {
+struct TY239184 {
 NI Field0;
 NI Field1;
 NI Field2;
@@ -45,11 +45,11 @@ struct  NimStringDesc  {
   TGenericSeq Sup;
 NIM_CHAR data[SEQ_DECL_SIZE];
 };
-struct TY240556 {
+struct TY239556 {
 NimStringDesc* Field0;
 NI Field1;
 };
-typedef TY240556 TY240555[140];
+typedef TY239556 TY239555[140];
 typedef N_NIMCALL_PTR(void, TY3089) (void* p, NI op);
 typedef N_NIMCALL_PTR(void*, TY3094) (void* p);
 struct  TNimType  {
@@ -187,21 +187,21 @@ struct  tfreecell26430  {
 tfreecell26430* Next;
 NI Zerofield;
 };
-static N_INLINE(NI, satplus_240065)(NI a, NI b);
+static N_INLINE(NI, satplus_239065)(NI a, NI b);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-static N_INLINE(NI, satminus_240088)(NI a, NI b);
-N_NIMCALL(NI, HEX2B_240109)(NI a, NI b);
-N_NIMCALL(NI, HEX2D_240145)(NI a, NI b);
-N_NIMCALL(TY240184, extractrgb_240181)(NI a);
-N_NIMCALL(NI, intensity_240206)(NI a, NF f);
-N_NIMCALL(NimStringDesc*, HEX24_240700)(NI c);
+static N_INLINE(NI, satminus_239088)(NI a, NI b);
+N_NIMCALL(NI, HEX2B_239109)(NI a, NI b);
+N_NIMCALL(NI, HEX2D_239145)(NI a, NI b);
+N_NIMCALL(TY239184, extractrgb_239181)(NI a);
+N_NIMCALL(NI, intensity_239206)(NI a, NF f);
+N_NIMCALL(NimStringDesc*, HEX24_239700)(NI c);
 static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c);
 N_NIMCALL(NimStringDesc*, nsuToHex)(NI64 x, NI len);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
-N_NIMCALL(NI, binarystrsearch_240712)(TY240556* x, NI xLen0, NimStringDesc* y);
+N_NIMCALL(NI, binarystrsearch_239712)(TY239556* x, NI xLen0, NimStringDesc* y);
 static N_INLINE(NI, subInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 static N_INLINE(NI, addInt)(NI a, NI b);
@@ -209,7 +209,7 @@ static N_INLINE(NI, divInt)(NI a, NI b);
 N_NOINLINE(void, raiseDivByZero)(void);
 N_NIMCALL(NI, cmp_4517)(NimStringDesc* x, NimStringDesc* y);
 N_NOINLINE(void, raiseIndexError)(void);
-N_NIMCALL(NI, parsecolor_240747)(NimStringDesc* name);
+N_NIMCALL(NI, parsecolor_239747)(NimStringDesc* name);
 N_NIMCALL(NI, nsuParseHexInt)(NimStringDesc* s);
 N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
@@ -217,991 +217,991 @@ static N_INLINE(tcell44933*, usrtocell_48646)(void* usr);
 static N_INLINE(void, rtladdzct_50204)(tcell44933* c);
 N_NOINLINE(void, addzct_48617)(tcellseq44949* s, tcell44933* c);
 N_NIMCALL(void, raiseException)(Exception* e, NCSTRING ename);
-N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name);
-N_NIMCALL(NI, rgb_240831)(NI r, NI g, NI b);
-STRING_LITERAL(TMP607, "aliceblue", 9);
-STRING_LITERAL(TMP608, "antiquewhite", 12);
-STRING_LITERAL(TMP609, "aqua", 4);
-STRING_LITERAL(TMP610, "aquamarine", 10);
-STRING_LITERAL(TMP611, "azure", 5);
-STRING_LITERAL(TMP612, "beige", 5);
-STRING_LITERAL(TMP613, "bisque", 6);
-STRING_LITERAL(TMP614, "black", 5);
-STRING_LITERAL(TMP615, "blanchedalmond", 14);
-STRING_LITERAL(TMP616, "blue", 4);
-STRING_LITERAL(TMP617, "blueviolet", 10);
-STRING_LITERAL(TMP618, "brown", 5);
-STRING_LITERAL(TMP619, "burlywood", 9);
-STRING_LITERAL(TMP620, "cadetblue", 9);
-STRING_LITERAL(TMP621, "chartreuse", 10);
-STRING_LITERAL(TMP622, "chocolate", 9);
-STRING_LITERAL(TMP623, "coral", 5);
-STRING_LITERAL(TMP624, "cornflowerblue", 14);
-STRING_LITERAL(TMP625, "cornsilk", 8);
-STRING_LITERAL(TMP626, "crimson", 7);
-STRING_LITERAL(TMP627, "cyan", 4);
-STRING_LITERAL(TMP628, "darkblue", 8);
-STRING_LITERAL(TMP629, "darkcyan", 8);
-STRING_LITERAL(TMP630, "darkgoldenrod", 13);
-STRING_LITERAL(TMP631, "darkgray", 8);
-STRING_LITERAL(TMP632, "darkgreen", 9);
-STRING_LITERAL(TMP633, "darkkhaki", 9);
-STRING_LITERAL(TMP634, "darkmagenta", 11);
-STRING_LITERAL(TMP635, "darkolivegreen", 14);
-STRING_LITERAL(TMP636, "darkorange", 10);
-STRING_LITERAL(TMP637, "darkorchid", 10);
-STRING_LITERAL(TMP638, "darkred", 7);
-STRING_LITERAL(TMP639, "darksalmon", 10);
-STRING_LITERAL(TMP640, "darkseagreen", 12);
-STRING_LITERAL(TMP641, "darkslateblue", 13);
-STRING_LITERAL(TMP642, "darkslategray", 13);
-STRING_LITERAL(TMP643, "darkturquoise", 13);
-STRING_LITERAL(TMP644, "darkviolet", 10);
-STRING_LITERAL(TMP645, "deeppink", 8);
-STRING_LITERAL(TMP646, "deepskyblue", 11);
-STRING_LITERAL(TMP647, "dimgray", 7);
-STRING_LITERAL(TMP648, "dodgerblue", 10);
-STRING_LITERAL(TMP649, "firebrick", 9);
-STRING_LITERAL(TMP650, "floralwhite", 11);
-STRING_LITERAL(TMP651, "forestgreen", 11);
-STRING_LITERAL(TMP652, "fuchsia", 7);
-STRING_LITERAL(TMP653, "gainsboro", 9);
-STRING_LITERAL(TMP654, "ghostwhite", 10);
-STRING_LITERAL(TMP655, "gold", 4);
-STRING_LITERAL(TMP656, "goldenrod", 9);
-STRING_LITERAL(TMP657, "gray", 4);
-STRING_LITERAL(TMP658, "green", 5);
-STRING_LITERAL(TMP659, "greenyellow", 11);
-STRING_LITERAL(TMP660, "honeydew", 8);
-STRING_LITERAL(TMP661, "hotpink", 7);
-STRING_LITERAL(TMP662, "indianred", 9);
-STRING_LITERAL(TMP663, "indigo", 6);
-STRING_LITERAL(TMP664, "ivory", 5);
-STRING_LITERAL(TMP665, "khaki", 5);
-STRING_LITERAL(TMP666, "lavender", 8);
-STRING_LITERAL(TMP667, "lavenderblush", 13);
-STRING_LITERAL(TMP668, "lawngreen", 9);
-STRING_LITERAL(TMP669, "lemonchiffon", 12);
-STRING_LITERAL(TMP670, "lightblue", 9);
-STRING_LITERAL(TMP671, "lightcoral", 10);
-STRING_LITERAL(TMP672, "lightcyan", 9);
-STRING_LITERAL(TMP673, "lightgoldenrodyellow", 20);
-STRING_LITERAL(TMP674, "lightgrey", 9);
-STRING_LITERAL(TMP675, "lightgreen", 10);
-STRING_LITERAL(TMP676, "lightpink", 9);
-STRING_LITERAL(TMP677, "lightsalmon", 11);
-STRING_LITERAL(TMP678, "lightseagreen", 13);
-STRING_LITERAL(TMP679, "lightskyblue", 12);
-STRING_LITERAL(TMP680, "lightslategray", 14);
-STRING_LITERAL(TMP681, "lightsteelblue", 14);
-STRING_LITERAL(TMP682, "lightyellow", 11);
-STRING_LITERAL(TMP683, "lime", 4);
-STRING_LITERAL(TMP684, "limegreen", 9);
-STRING_LITERAL(TMP685, "linen", 5);
-STRING_LITERAL(TMP686, "magenta", 7);
-STRING_LITERAL(TMP687, "maroon", 6);
-STRING_LITERAL(TMP688, "mediumaquamarine", 16);
-STRING_LITERAL(TMP689, "mediumblue", 10);
-STRING_LITERAL(TMP690, "mediumorchid", 12);
-STRING_LITERAL(TMP691, "mediumpurple", 12);
-STRING_LITERAL(TMP692, "mediumseagreen", 14);
-STRING_LITERAL(TMP693, "mediumslateblue", 15);
-STRING_LITERAL(TMP694, "mediumspringgreen", 17);
-STRING_LITERAL(TMP695, "mediumturquoise", 15);
-STRING_LITERAL(TMP696, "mediumvioletred", 15);
-STRING_LITERAL(TMP697, "midnightblue", 12);
-STRING_LITERAL(TMP698, "mintcream", 9);
-STRING_LITERAL(TMP699, "mistyrose", 9);
-STRING_LITERAL(TMP700, "moccasin", 8);
-STRING_LITERAL(TMP701, "navajowhite", 11);
-STRING_LITERAL(TMP702, "navy", 4);
-STRING_LITERAL(TMP703, "oldlace", 7);
-STRING_LITERAL(TMP704, "olive", 5);
-STRING_LITERAL(TMP705, "olivedrab", 9);
-STRING_LITERAL(TMP706, "orange", 6);
-STRING_LITERAL(TMP707, "orangered", 9);
-STRING_LITERAL(TMP708, "orchid", 6);
-STRING_LITERAL(TMP709, "palegoldenrod", 13);
-STRING_LITERAL(TMP710, "palegreen", 9);
-STRING_LITERAL(TMP711, "paleturquoise", 13);
-STRING_LITERAL(TMP712, "palevioletred", 13);
-STRING_LITERAL(TMP713, "papayawhip", 10);
-STRING_LITERAL(TMP714, "peachpuff", 9);
-STRING_LITERAL(TMP715, "peru", 4);
-STRING_LITERAL(TMP716, "pink", 4);
-STRING_LITERAL(TMP717, "plum", 4);
-STRING_LITERAL(TMP718, "powderblue", 10);
-STRING_LITERAL(TMP719, "purple", 6);
-STRING_LITERAL(TMP720, "red", 3);
-STRING_LITERAL(TMP721, "rosybrown", 9);
-STRING_LITERAL(TMP722, "royalblue", 9);
-STRING_LITERAL(TMP723, "saddlebrown", 11);
-STRING_LITERAL(TMP724, "salmon", 6);
-STRING_LITERAL(TMP725, "sandybrown", 10);
-STRING_LITERAL(TMP726, "seagreen", 8);
-STRING_LITERAL(TMP727, "seashell", 8);
-STRING_LITERAL(TMP728, "sienna", 6);
-STRING_LITERAL(TMP729, "silver", 6);
-STRING_LITERAL(TMP730, "skyblue", 7);
-STRING_LITERAL(TMP731, "slateblue", 9);
-STRING_LITERAL(TMP732, "slategray", 9);
-STRING_LITERAL(TMP733, "snow", 4);
-STRING_LITERAL(TMP734, "springgreen", 11);
-STRING_LITERAL(TMP735, "steelblue", 9);
-STRING_LITERAL(TMP736, "tan", 3);
-STRING_LITERAL(TMP737, "teal", 4);
-STRING_LITERAL(TMP738, "thistle", 7);
-STRING_LITERAL(TMP739, "tomato", 6);
-STRING_LITERAL(TMP740, "turquoise", 9);
-STRING_LITERAL(TMP741, "violet", 6);
-STRING_LITERAL(TMP742, "wheat", 5);
-STRING_LITERAL(TMP743, "white", 5);
-STRING_LITERAL(TMP744, "whitesmoke", 10);
-STRING_LITERAL(TMP745, "yellow", 6);
-STRING_LITERAL(TMP746, "yellowgreen", 11);
-NIM_CONST TY240555 colornames_240554 = {{((NimStringDesc*) &TMP607),
+N_NIMCALL(NIM_BOOL, iscolor_239781)(NimStringDesc* name);
+N_NIMCALL(NI, rgb_239831)(NI r, NI g, NI b);
+STRING_LITERAL(TMP590, "aliceblue", 9);
+STRING_LITERAL(TMP591, "antiquewhite", 12);
+STRING_LITERAL(TMP592, "aqua", 4);
+STRING_LITERAL(TMP593, "aquamarine", 10);
+STRING_LITERAL(TMP594, "azure", 5);
+STRING_LITERAL(TMP595, "beige", 5);
+STRING_LITERAL(TMP596, "bisque", 6);
+STRING_LITERAL(TMP597, "black", 5);
+STRING_LITERAL(TMP598, "blanchedalmond", 14);
+STRING_LITERAL(TMP599, "blue", 4);
+STRING_LITERAL(TMP600, "blueviolet", 10);
+STRING_LITERAL(TMP601, "brown", 5);
+STRING_LITERAL(TMP602, "burlywood", 9);
+STRING_LITERAL(TMP603, "cadetblue", 9);
+STRING_LITERAL(TMP604, "chartreuse", 10);
+STRING_LITERAL(TMP605, "chocolate", 9);
+STRING_LITERAL(TMP606, "coral", 5);
+STRING_LITERAL(TMP607, "cornflowerblue", 14);
+STRING_LITERAL(TMP608, "cornsilk", 8);
+STRING_LITERAL(TMP609, "crimson", 7);
+STRING_LITERAL(TMP610, "cyan", 4);
+STRING_LITERAL(TMP611, "darkblue", 8);
+STRING_LITERAL(TMP612, "darkcyan", 8);
+STRING_LITERAL(TMP613, "darkgoldenrod", 13);
+STRING_LITERAL(TMP614, "darkgray", 8);
+STRING_LITERAL(TMP615, "darkgreen", 9);
+STRING_LITERAL(TMP616, "darkkhaki", 9);
+STRING_LITERAL(TMP617, "darkmagenta", 11);
+STRING_LITERAL(TMP618, "darkolivegreen", 14);
+STRING_LITERAL(TMP619, "darkorange", 10);
+STRING_LITERAL(TMP620, "darkorchid", 10);
+STRING_LITERAL(TMP621, "darkred", 7);
+STRING_LITERAL(TMP622, "darksalmon", 10);
+STRING_LITERAL(TMP623, "darkseagreen", 12);
+STRING_LITERAL(TMP624, "darkslateblue", 13);
+STRING_LITERAL(TMP625, "darkslategray", 13);
+STRING_LITERAL(TMP626, "darkturquoise", 13);
+STRING_LITERAL(TMP627, "darkviolet", 10);
+STRING_LITERAL(TMP628, "deeppink", 8);
+STRING_LITERAL(TMP629, "deepskyblue", 11);
+STRING_LITERAL(TMP630, "dimgray", 7);
+STRING_LITERAL(TMP631, "dodgerblue", 10);
+STRING_LITERAL(TMP632, "firebrick", 9);
+STRING_LITERAL(TMP633, "floralwhite", 11);
+STRING_LITERAL(TMP634, "forestgreen", 11);
+STRING_LITERAL(TMP635, "fuchsia", 7);
+STRING_LITERAL(TMP636, "gainsboro", 9);
+STRING_LITERAL(TMP637, "ghostwhite", 10);
+STRING_LITERAL(TMP638, "gold", 4);
+STRING_LITERAL(TMP639, "goldenrod", 9);
+STRING_LITERAL(TMP640, "gray", 4);
+STRING_LITERAL(TMP641, "green", 5);
+STRING_LITERAL(TMP642, "greenyellow", 11);
+STRING_LITERAL(TMP643, "honeydew", 8);
+STRING_LITERAL(TMP644, "hotpink", 7);
+STRING_LITERAL(TMP645, "indianred", 9);
+STRING_LITERAL(TMP646, "indigo", 6);
+STRING_LITERAL(TMP647, "ivory", 5);
+STRING_LITERAL(TMP648, "khaki", 5);
+STRING_LITERAL(TMP649, "lavender", 8);
+STRING_LITERAL(TMP650, "lavenderblush", 13);
+STRING_LITERAL(TMP651, "lawngreen", 9);
+STRING_LITERAL(TMP652, "lemonchiffon", 12);
+STRING_LITERAL(TMP653, "lightblue", 9);
+STRING_LITERAL(TMP654, "lightcoral", 10);
+STRING_LITERAL(TMP655, "lightcyan", 9);
+STRING_LITERAL(TMP656, "lightgoldenrodyellow", 20);
+STRING_LITERAL(TMP657, "lightgrey", 9);
+STRING_LITERAL(TMP658, "lightgreen", 10);
+STRING_LITERAL(TMP659, "lightpink", 9);
+STRING_LITERAL(TMP660, "lightsalmon", 11);
+STRING_LITERAL(TMP661, "lightseagreen", 13);
+STRING_LITERAL(TMP662, "lightskyblue", 12);
+STRING_LITERAL(TMP663, "lightslategray", 14);
+STRING_LITERAL(TMP664, "lightsteelblue", 14);
+STRING_LITERAL(TMP665, "lightyellow", 11);
+STRING_LITERAL(TMP666, "lime", 4);
+STRING_LITERAL(TMP667, "limegreen", 9);
+STRING_LITERAL(TMP668, "linen", 5);
+STRING_LITERAL(TMP669, "magenta", 7);
+STRING_LITERAL(TMP670, "maroon", 6);
+STRING_LITERAL(TMP671, "mediumaquamarine", 16);
+STRING_LITERAL(TMP672, "mediumblue", 10);
+STRING_LITERAL(TMP673, "mediumorchid", 12);
+STRING_LITERAL(TMP674, "mediumpurple", 12);
+STRING_LITERAL(TMP675, "mediumseagreen", 14);
+STRING_LITERAL(TMP676, "mediumslateblue", 15);
+STRING_LITERAL(TMP677, "mediumspringgreen", 17);
+STRING_LITERAL(TMP678, "mediumturquoise", 15);
+STRING_LITERAL(TMP679, "mediumvioletred", 15);
+STRING_LITERAL(TMP680, "midnightblue", 12);
+STRING_LITERAL(TMP681, "mintcream", 9);
+STRING_LITERAL(TMP682, "mistyrose", 9);
+STRING_LITERAL(TMP683, "moccasin", 8);
+STRING_LITERAL(TMP684, "navajowhite", 11);
+STRING_LITERAL(TMP685, "navy", 4);
+STRING_LITERAL(TMP686, "oldlace", 7);
+STRING_LITERAL(TMP687, "olive", 5);
+STRING_LITERAL(TMP688, "olivedrab", 9);
+STRING_LITERAL(TMP689, "orange", 6);
+STRING_LITERAL(TMP690, "orangered", 9);
+STRING_LITERAL(TMP691, "orchid", 6);
+STRING_LITERAL(TMP692, "palegoldenrod", 13);
+STRING_LITERAL(TMP693, "palegreen", 9);
+STRING_LITERAL(TMP694, "paleturquoise", 13);
+STRING_LITERAL(TMP695, "palevioletred", 13);
+STRING_LITERAL(TMP696, "papayawhip", 10);
+STRING_LITERAL(TMP697, "peachpuff", 9);
+STRING_LITERAL(TMP698, "peru", 4);
+STRING_LITERAL(TMP699, "pink", 4);
+STRING_LITERAL(TMP700, "plum", 4);
+STRING_LITERAL(TMP701, "powderblue", 10);
+STRING_LITERAL(TMP702, "purple", 6);
+STRING_LITERAL(TMP703, "red", 3);
+STRING_LITERAL(TMP704, "rosybrown", 9);
+STRING_LITERAL(TMP705, "royalblue", 9);
+STRING_LITERAL(TMP706, "saddlebrown", 11);
+STRING_LITERAL(TMP707, "salmon", 6);
+STRING_LITERAL(TMP708, "sandybrown", 10);
+STRING_LITERAL(TMP709, "seagreen", 8);
+STRING_LITERAL(TMP710, "seashell", 8);
+STRING_LITERAL(TMP711, "sienna", 6);
+STRING_LITERAL(TMP712, "silver", 6);
+STRING_LITERAL(TMP713, "skyblue", 7);
+STRING_LITERAL(TMP714, "slateblue", 9);
+STRING_LITERAL(TMP715, "slategray", 9);
+STRING_LITERAL(TMP716, "snow", 4);
+STRING_LITERAL(TMP717, "springgreen", 11);
+STRING_LITERAL(TMP718, "steelblue", 9);
+STRING_LITERAL(TMP719, "tan", 3);
+STRING_LITERAL(TMP720, "teal", 4);
+STRING_LITERAL(TMP721, "thistle", 7);
+STRING_LITERAL(TMP722, "tomato", 6);
+STRING_LITERAL(TMP723, "turquoise", 9);
+STRING_LITERAL(TMP724, "violet", 6);
+STRING_LITERAL(TMP725, "wheat", 5);
+STRING_LITERAL(TMP726, "white", 5);
+STRING_LITERAL(TMP727, "whitesmoke", 10);
+STRING_LITERAL(TMP728, "yellow", 6);
+STRING_LITERAL(TMP729, "yellowgreen", 11);
+NIM_CONST TY239555 colornames_239554 = {{((NimStringDesc*) &TMP590),
 15792383}
 ,
-{((NimStringDesc*) &TMP608),
+{((NimStringDesc*) &TMP591),
 16444375}
 ,
-{((NimStringDesc*) &TMP609),
+{((NimStringDesc*) &TMP592),
 65535}
 ,
-{((NimStringDesc*) &TMP610),
+{((NimStringDesc*) &TMP593),
 8388564}
 ,
-{((NimStringDesc*) &TMP611),
+{((NimStringDesc*) &TMP594),
 15794175}
 ,
-{((NimStringDesc*) &TMP612),
+{((NimStringDesc*) &TMP595),
 16119260}
 ,
-{((NimStringDesc*) &TMP613),
+{((NimStringDesc*) &TMP596),
 16770244}
 ,
-{((NimStringDesc*) &TMP614),
+{((NimStringDesc*) &TMP597),
 0}
 ,
-{((NimStringDesc*) &TMP615),
+{((NimStringDesc*) &TMP598),
 16772045}
 ,
-{((NimStringDesc*) &TMP616),
+{((NimStringDesc*) &TMP599),
 255}
 ,
-{((NimStringDesc*) &TMP617),
+{((NimStringDesc*) &TMP600),
 9055202}
 ,
-{((NimStringDesc*) &TMP618),
+{((NimStringDesc*) &TMP601),
 10824234}
 ,
-{((NimStringDesc*) &TMP619),
+{((NimStringDesc*) &TMP602),
 14596231}
 ,
-{((NimStringDesc*) &TMP620),
+{((NimStringDesc*) &TMP603),
 6266528}
 ,
-{((NimStringDesc*) &TMP621),
+{((NimStringDesc*) &TMP604),
 8388352}
 ,
-{((NimStringDesc*) &TMP622),
+{((NimStringDesc*) &TMP605),
 13789470}
 ,
-{((NimStringDesc*) &TMP623),
+{((NimStringDesc*) &TMP606),
 16744272}
 ,
-{((NimStringDesc*) &TMP624),
+{((NimStringDesc*) &TMP607),
 6591981}
 ,
-{((NimStringDesc*) &TMP625),
+{((NimStringDesc*) &TMP608),
 16775388}
 ,
-{((NimStringDesc*) &TMP626),
+{((NimStringDesc*) &TMP609),
 14423100}
 ,
-{((NimStringDesc*) &TMP627),
+{((NimStringDesc*) &TMP610),
 65535}
 ,
-{((NimStringDesc*) &TMP628),
+{((NimStringDesc*) &TMP611),
 139}
 ,
-{((NimStringDesc*) &TMP629),
+{((NimStringDesc*) &TMP612),
 35723}
 ,
-{((NimStringDesc*) &TMP630),
+{((NimStringDesc*) &TMP613),
 12092939}
 ,
-{((NimStringDesc*) &TMP631),
+{((NimStringDesc*) &TMP614),
 11119017}
 ,
-{((NimStringDesc*) &TMP632),
+{((NimStringDesc*) &TMP615),
 25600}
 ,
-{((NimStringDesc*) &TMP633),
+{((NimStringDesc*) &TMP616),
 12433259}
 ,
-{((NimStringDesc*) &TMP634),
+{((NimStringDesc*) &TMP617),
 9109643}
 ,
-{((NimStringDesc*) &TMP635),
+{((NimStringDesc*) &TMP618),
 5597999}
 ,
-{((NimStringDesc*) &TMP636),
+{((NimStringDesc*) &TMP619),
 16747520}
 ,
-{((NimStringDesc*) &TMP637),
+{((NimStringDesc*) &TMP620),
 10040012}
 ,
-{((NimStringDesc*) &TMP638),
+{((NimStringDesc*) &TMP621),
 9109504}
 ,
-{((NimStringDesc*) &TMP639),
+{((NimStringDesc*) &TMP622),
 15308410}
 ,
-{((NimStringDesc*) &TMP640),
+{((NimStringDesc*) &TMP623),
 9419919}
 ,
-{((NimStringDesc*) &TMP641),
+{((NimStringDesc*) &TMP624),
 4734347}
 ,
-{((NimStringDesc*) &TMP642),
+{((NimStringDesc*) &TMP625),
 3100495}
 ,
-{((NimStringDesc*) &TMP643),
+{((NimStringDesc*) &TMP626),
 52945}
 ,
-{((NimStringDesc*) &TMP644),
+{((NimStringDesc*) &TMP627),
 9699539}
 ,
-{((NimStringDesc*) &TMP645),
+{((NimStringDesc*) &TMP628),
 16716947}
 ,
-{((NimStringDesc*) &TMP646),
+{((NimStringDesc*) &TMP629),
 49151}
 ,
-{((NimStringDesc*) &TMP647),
+{((NimStringDesc*) &TMP630),
 6908265}
 ,
-{((NimStringDesc*) &TMP648),
+{((NimStringDesc*) &TMP631),
 2003199}
 ,
-{((NimStringDesc*) &TMP649),
+{((NimStringDesc*) &TMP632),
 11674146}
 ,
-{((NimStringDesc*) &TMP650),
+{((NimStringDesc*) &TMP633),
 16775920}
 ,
-{((NimStringDesc*) &TMP651),
+{((NimStringDesc*) &TMP634),
 2263842}
 ,
-{((NimStringDesc*) &TMP652),
+{((NimStringDesc*) &TMP635),
 16711935}
 ,
-{((NimStringDesc*) &TMP653),
+{((NimStringDesc*) &TMP636),
 14474460}
 ,
-{((NimStringDesc*) &TMP654),
+{((NimStringDesc*) &TMP637),
 16316671}
 ,
-{((NimStringDesc*) &TMP655),
+{((NimStringDesc*) &TMP638),
 16766720}
 ,
-{((NimStringDesc*) &TMP656),
+{((NimStringDesc*) &TMP639),
 14329120}
 ,
-{((NimStringDesc*) &TMP657),
+{((NimStringDesc*) &TMP640),
 8421504}
 ,
-{((NimStringDesc*) &TMP658),
+{((NimStringDesc*) &TMP641),
 32768}
 ,
-{((NimStringDesc*) &TMP659),
+{((NimStringDesc*) &TMP642),
 11403055}
 ,
-{((NimStringDesc*) &TMP660),
+{((NimStringDesc*) &TMP643),
 15794160}
 ,
-{((NimStringDesc*) &TMP661),
+{((NimStringDesc*) &TMP644),
 16738740}
 ,
-{((NimStringDesc*) &TMP662),
+{((NimStringDesc*) &TMP645),
 13458524}
 ,
-{((NimStringDesc*) &TMP663),
+{((NimStringDesc*) &TMP646),
 4915330}
 ,
-{((NimStringDesc*) &TMP664),
+{((NimStringDesc*) &TMP647),
 16777200}
 ,
-{((NimStringDesc*) &TMP665),
+{((NimStringDesc*) &TMP648),
 15787660}
 ,
-{((NimStringDesc*) &TMP666),
+{((NimStringDesc*) &TMP649),
 15132410}
 ,
-{((NimStringDesc*) &TMP667),
+{((NimStringDesc*) &TMP650),
 16773365}
 ,
-{((NimStringDesc*) &TMP668),
+{((NimStringDesc*) &TMP651),
 8190976}
 ,
-{((NimStringDesc*) &TMP669),
+{((NimStringDesc*) &TMP652),
 16775885}
 ,
-{((NimStringDesc*) &TMP670),
+{((NimStringDesc*) &TMP653),
 11393254}
 ,
-{((NimStringDesc*) &TMP671),
+{((NimStringDesc*) &TMP654),
 15761536}
 ,
-{((NimStringDesc*) &TMP672),
+{((NimStringDesc*) &TMP655),
 14745599}
 ,
-{((NimStringDesc*) &TMP673),
+{((NimStringDesc*) &TMP656),
 16448210}
 ,
-{((NimStringDesc*) &TMP674),
+{((NimStringDesc*) &TMP657),
 13882323}
 ,
-{((NimStringDesc*) &TMP675),
+{((NimStringDesc*) &TMP658),
 9498256}
 ,
-{((NimStringDesc*) &TMP676),
+{((NimStringDesc*) &TMP659),
 16758465}
 ,
-{((NimStringDesc*) &TMP677),
+{((NimStringDesc*) &TMP660),
 16752762}
 ,
-{((NimStringDesc*) &TMP678),
+{((NimStringDesc*) &TMP661),
 2142890}
 ,
-{((NimStringDesc*) &TMP679),
+{((NimStringDesc*) &TMP662),
 8900346}
 ,
-{((NimStringDesc*) &TMP680),
+{((NimStringDesc*) &TMP663),
 7833753}
 ,
-{((NimStringDesc*) &TMP681),
+{((NimStringDesc*) &TMP664),
 11584734}
 ,
-{((NimStringDesc*) &TMP682),
+{((NimStringDesc*) &TMP665),
 16777184}
 ,
-{((NimStringDesc*) &TMP683),
+{((NimStringDesc*) &TMP666),
 65280}
 ,
-{((NimStringDesc*) &TMP684),
+{((NimStringDesc*) &TMP667),
 3329330}
 ,
-{((NimStringDesc*) &TMP685),
+{((NimStringDesc*) &TMP668),
 16445670}
 ,
-{((NimStringDesc*) &TMP686),
+{((NimStringDesc*) &TMP669),
 16711935}
 ,
-{((NimStringDesc*) &TMP687),
+{((NimStringDesc*) &TMP670),
 8388608}
 ,
-{((NimStringDesc*) &TMP688),
+{((NimStringDesc*) &TMP671),
 6737322}
 ,
-{((NimStringDesc*) &TMP689),
+{((NimStringDesc*) &TMP672),
 205}
 ,
-{((NimStringDesc*) &TMP690),
+{((NimStringDesc*) &TMP673),
 12211667}
 ,
-{((NimStringDesc*) &TMP691),
+{((NimStringDesc*) &TMP674),
 9662680}
 ,
-{((NimStringDesc*) &TMP692),
+{((NimStringDesc*) &TMP675),
 3978097}
 ,
-{((NimStringDesc*) &TMP693),
+{((NimStringDesc*) &TMP676),
 8087790}
 ,
-{((NimStringDesc*) &TMP694),
+{((NimStringDesc*) &TMP677),
 64154}
 ,
-{((NimStringDesc*) &TMP695),
+{((NimStringDesc*) &TMP678),
 4772300}
 ,
-{((NimStringDesc*) &TMP696),
+{((NimStringDesc*) &TMP679),
 13047173}
 ,
-{((NimStringDesc*) &TMP697),
+{((NimStringDesc*) &TMP680),
 1644912}
 ,
-{((NimStringDesc*) &TMP698),
+{((NimStringDesc*) &TMP681),
 16121850}
 ,
-{((NimStringDesc*) &TMP699),
+{((NimStringDesc*) &TMP682),
 16770273}
 ,
-{((NimStringDesc*) &TMP700),
+{((NimStringDesc*) &TMP683),
 16770229}
 ,
-{((NimStringDesc*) &TMP701),
+{((NimStringDesc*) &TMP684),
 16768685}
 ,
-{((NimStringDesc*) &TMP702),
+{((NimStringDesc*) &TMP685),
 128}
 ,
-{((NimStringDesc*) &TMP703),
+{((NimStringDesc*) &TMP686),
 16643558}
 ,
-{((NimStringDesc*) &TMP704),
+{((NimStringDesc*) &TMP687),
 8421376}
 ,
-{((NimStringDesc*) &TMP705),
+{((NimStringDesc*) &TMP688),
 7048739}
 ,
-{((NimStringDesc*) &TMP706),
+{((NimStringDesc*) &TMP689),
 16753920}
 ,
-{((NimStringDesc*) &TMP707),
+{((NimStringDesc*) &TMP690),
 16729344}
 ,
-{((NimStringDesc*) &TMP708),
+{((NimStringDesc*) &TMP691),
 14315734}
 ,
-{((NimStringDesc*) &TMP709),
+{((NimStringDesc*) &TMP692),
 15657130}
 ,
-{((NimStringDesc*) &TMP710),
+{((NimStringDesc*) &TMP693),
 10025880}
 ,
-{((NimStringDesc*) &TMP711),
+{((NimStringDesc*) &TMP694),
 11529966}
 ,
-{((NimStringDesc*) &TMP712),
+{((NimStringDesc*) &TMP695),
 14184595}
 ,
-{((NimStringDesc*) &TMP713),
+{((NimStringDesc*) &TMP696),
 16773077}
 ,
-{((NimStringDesc*) &TMP714),
+{((NimStringDesc*) &TMP697),
 16767673}
 ,
-{((NimStringDesc*) &TMP715),
+{((NimStringDesc*) &TMP698),
 13468991}
 ,
-{((NimStringDesc*) &TMP716),
+{((NimStringDesc*) &TMP699),
 16761035}
 ,
-{((NimStringDesc*) &TMP717),
+{((NimStringDesc*) &TMP700),
 14524637}
 ,
-{((NimStringDesc*) &TMP718),
+{((NimStringDesc*) &TMP701),
 11591910}
 ,
-{((NimStringDesc*) &TMP719),
+{((NimStringDesc*) &TMP702),
 8388736}
 ,
-{((NimStringDesc*) &TMP720),
+{((NimStringDesc*) &TMP703),
 16711680}
 ,
-{((NimStringDesc*) &TMP721),
+{((NimStringDesc*) &TMP704),
 12357519}
 ,
-{((NimStringDesc*) &TMP722),
+{((NimStringDesc*) &TMP705),
 4286945}
 ,
-{((NimStringDesc*) &TMP723),
+{((NimStringDesc*) &TMP706),
 9127187}
 ,
-{((NimStringDesc*) &TMP724),
+{((NimStringDesc*) &TMP707),
 16416882}
 ,
-{((NimStringDesc*) &TMP725),
+{((NimStringDesc*) &TMP708),
 16032864}
 ,
-{((NimStringDesc*) &TMP726),
+{((NimStringDesc*) &TMP709),
 3050327}
 ,
-{((NimStringDesc*) &TMP727),
+{((NimStringDesc*) &TMP710),
 16774638}
 ,
-{((NimStringDesc*) &TMP728),
+{((NimStringDesc*) &TMP711),
 10506797}
 ,
-{((NimStringDesc*) &TMP729),
+{((NimStringDesc*) &TMP712),
 12632256}
 ,
-{((NimStringDesc*) &TMP730),
+{((NimStringDesc*) &TMP713),
 8900331}
 ,
-{((NimStringDesc*) &TMP731),
+{((NimStringDesc*) &TMP714),
 6970061}
 ,
-{((NimStringDesc*) &TMP732),
+{((NimStringDesc*) &TMP715),
 7372944}
 ,
-{((NimStringDesc*) &TMP733),
+{((NimStringDesc*) &TMP716),
 16775930}
 ,
-{((NimStringDesc*) &TMP734),
+{((NimStringDesc*) &TMP717),
 65407}
 ,
-{((NimStringDesc*) &TMP735),
+{((NimStringDesc*) &TMP718),
 4620980}
 ,
-{((NimStringDesc*) &TMP736),
+{((NimStringDesc*) &TMP719),
 13808780}
 ,
-{((NimStringDesc*) &TMP737),
+{((NimStringDesc*) &TMP720),
 32896}
 ,
-{((NimStringDesc*) &TMP738),
+{((NimStringDesc*) &TMP721),
 14204888}
 ,
-{((NimStringDesc*) &TMP739),
+{((NimStringDesc*) &TMP722),
 16737095}
 ,
-{((NimStringDesc*) &TMP740),
+{((NimStringDesc*) &TMP723),
 4251856}
 ,
-{((NimStringDesc*) &TMP741),
+{((NimStringDesc*) &TMP724),
 15631086}
 ,
-{((NimStringDesc*) &TMP742),
+{((NimStringDesc*) &TMP725),
 16113331}
 ,
-{((NimStringDesc*) &TMP743),
+{((NimStringDesc*) &TMP726),
 16777215}
 ,
-{((NimStringDesc*) &TMP744),
+{((NimStringDesc*) &TMP727),
 16119285}
 ,
-{((NimStringDesc*) &TMP745),
+{((NimStringDesc*) &TMP728),
 16776960}
 ,
-{((NimStringDesc*) &TMP746),
+{((NimStringDesc*) &TMP729),
 10145074}
 }
 ;
-NIM_CONST TY240555 TMP762 = {{((NimStringDesc*) &TMP607),
+NIM_CONST TY239555 TMP745 = {{((NimStringDesc*) &TMP590),
 15792383}
 ,
-{((NimStringDesc*) &TMP608),
+{((NimStringDesc*) &TMP591),
 16444375}
 ,
-{((NimStringDesc*) &TMP609),
+{((NimStringDesc*) &TMP592),
 65535}
 ,
-{((NimStringDesc*) &TMP610),
+{((NimStringDesc*) &TMP593),
 8388564}
 ,
-{((NimStringDesc*) &TMP611),
+{((NimStringDesc*) &TMP594),
 15794175}
 ,
-{((NimStringDesc*) &TMP612),
+{((NimStringDesc*) &TMP595),
 16119260}
 ,
-{((NimStringDesc*) &TMP613),
+{((NimStringDesc*) &TMP596),
 16770244}
 ,
-{((NimStringDesc*) &TMP614),
+{((NimStringDesc*) &TMP597),
 0}
 ,
-{((NimStringDesc*) &TMP615),
+{((NimStringDesc*) &TMP598),
 16772045}
 ,
-{((NimStringDesc*) &TMP616),
+{((NimStringDesc*) &TMP599),
 255}
 ,
-{((NimStringDesc*) &TMP617),
+{((NimStringDesc*) &TMP600),
 9055202}
 ,
-{((NimStringDesc*) &TMP618),
+{((NimStringDesc*) &TMP601),
 10824234}
 ,
-{((NimStringDesc*) &TMP619),
+{((NimStringDesc*) &TMP602),
 14596231}
 ,
-{((NimStringDesc*) &TMP620),
+{((NimStringDesc*) &TMP603),
 6266528}
 ,
-{((NimStringDesc*) &TMP621),
+{((NimStringDesc*) &TMP604),
 8388352}
 ,
-{((NimStringDesc*) &TMP622),
+{((NimStringDesc*) &TMP605),
 13789470}
 ,
-{((NimStringDesc*) &TMP623),
+{((NimStringDesc*) &TMP606),
 16744272}
 ,
-{((NimStringDesc*) &TMP624),
+{((NimStringDesc*) &TMP607),
 6591981}
 ,
-{((NimStringDesc*) &TMP625),
+{((NimStringDesc*) &TMP608),
 16775388}
 ,
-{((NimStringDesc*) &TMP626),
+{((NimStringDesc*) &TMP609),
 14423100}
 ,
-{((NimStringDesc*) &TMP627),
+{((NimStringDesc*) &TMP610),
 65535}
 ,
-{((NimStringDesc*) &TMP628),
+{((NimStringDesc*) &TMP611),
 139}
 ,
-{((NimStringDesc*) &TMP629),
+{((NimStringDesc*) &TMP612),
 35723}
 ,
-{((NimStringDesc*) &TMP630),
+{((NimStringDesc*) &TMP613),
 12092939}
 ,
-{((NimStringDesc*) &TMP631),
+{((NimStringDesc*) &TMP614),
 11119017}
 ,
-{((NimStringDesc*) &TMP632),
+{((NimStringDesc*) &TMP615),
 25600}
 ,
-{((NimStringDesc*) &TMP633),
+{((NimStringDesc*) &TMP616),
 12433259}
 ,
-{((NimStringDesc*) &TMP634),
+{((NimStringDesc*) &TMP617),
 9109643}
 ,
-{((NimStringDesc*) &TMP635),
+{((NimStringDesc*) &TMP618),
 5597999}
 ,
-{((NimStringDesc*) &TMP636),
+{((NimStringDesc*) &TMP619),
 16747520}
 ,
-{((NimStringDesc*) &TMP637),
+{((NimStringDesc*) &TMP620),
 10040012}
 ,
-{((NimStringDesc*) &TMP638),
+{((NimStringDesc*) &TMP621),
 9109504}
 ,
-{((NimStringDesc*) &TMP639),
+{((NimStringDesc*) &TMP622),
 15308410}
 ,
-{((NimStringDesc*) &TMP640),
+{((NimStringDesc*) &TMP623),
 9419919}
 ,
-{((NimStringDesc*) &TMP641),
+{((NimStringDesc*) &TMP624),
 4734347}
 ,
-{((NimStringDesc*) &TMP642),
+{((NimStringDesc*) &TMP625),
 3100495}
 ,
-{((NimStringDesc*) &TMP643),
+{((NimStringDesc*) &TMP626),
 52945}
 ,
-{((NimStringDesc*) &TMP644),
+{((NimStringDesc*) &TMP627),
 9699539}
 ,
-{((NimStringDesc*) &TMP645),
+{((NimStringDesc*) &TMP628),
 16716947}
 ,
-{((NimStringDesc*) &TMP646),
+{((NimStringDesc*) &TMP629),
 49151}
 ,
-{((NimStringDesc*) &TMP647),
+{((NimStringDesc*) &TMP630),
 6908265}
 ,
-{((NimStringDesc*) &TMP648),
+{((NimStringDesc*) &TMP631),
 2003199}
 ,
-{((NimStringDesc*) &TMP649),
+{((NimStringDesc*) &TMP632),
 11674146}
 ,
-{((NimStringDesc*) &TMP650),
+{((NimStringDesc*) &TMP633),
 16775920}
 ,
-{((NimStringDesc*) &TMP651),
+{((NimStringDesc*) &TMP634),
 2263842}
 ,
-{((NimStringDesc*) &TMP652),
+{((NimStringDesc*) &TMP635),
 16711935}
 ,
-{((NimStringDesc*) &TMP653),
+{((NimStringDesc*) &TMP636),
 14474460}
 ,
-{((NimStringDesc*) &TMP654),
+{((NimStringDesc*) &TMP637),
 16316671}
 ,
-{((NimStringDesc*) &TMP655),
+{((NimStringDesc*) &TMP638),
 16766720}
 ,
-{((NimStringDesc*) &TMP656),
+{((NimStringDesc*) &TMP639),
 14329120}
 ,
-{((NimStringDesc*) &TMP657),
+{((NimStringDesc*) &TMP640),
 8421504}
 ,
-{((NimStringDesc*) &TMP658),
+{((NimStringDesc*) &TMP641),
 32768}
 ,
-{((NimStringDesc*) &TMP659),
+{((NimStringDesc*) &TMP642),
 11403055}
 ,
-{((NimStringDesc*) &TMP660),
+{((NimStringDesc*) &TMP643),
 15794160}
 ,
-{((NimStringDesc*) &TMP661),
+{((NimStringDesc*) &TMP644),
 16738740}
 ,
-{((NimStringDesc*) &TMP662),
+{((NimStringDesc*) &TMP645),
 13458524}
 ,
-{((NimStringDesc*) &TMP663),
+{((NimStringDesc*) &TMP646),
 4915330}
 ,
-{((NimStringDesc*) &TMP664),
+{((NimStringDesc*) &TMP647),
 16777200}
 ,
-{((NimStringDesc*) &TMP665),
+{((NimStringDesc*) &TMP648),
 15787660}
 ,
-{((NimStringDesc*) &TMP666),
+{((NimStringDesc*) &TMP649),
 15132410}
 ,
-{((NimStringDesc*) &TMP667),
+{((NimStringDesc*) &TMP650),
 16773365}
 ,
-{((NimStringDesc*) &TMP668),
+{((NimStringDesc*) &TMP651),
 8190976}
 ,
-{((NimStringDesc*) &TMP669),
+{((NimStringDesc*) &TMP652),
 16775885}
 ,
-{((NimStringDesc*) &TMP670),
+{((NimStringDesc*) &TMP653),
 11393254}
 ,
-{((NimStringDesc*) &TMP671),
+{((NimStringDesc*) &TMP654),
 15761536}
 ,
-{((NimStringDesc*) &TMP672),
+{((NimStringDesc*) &TMP655),
 14745599}
 ,
-{((NimStringDesc*) &TMP673),
+{((NimStringDesc*) &TMP656),
 16448210}
 ,
-{((NimStringDesc*) &TMP674),
+{((NimStringDesc*) &TMP657),
 13882323}
 ,
-{((NimStringDesc*) &TMP675),
+{((NimStringDesc*) &TMP658),
 9498256}
 ,
-{((NimStringDesc*) &TMP676),
+{((NimStringDesc*) &TMP659),
 16758465}
 ,
-{((NimStringDesc*) &TMP677),
+{((NimStringDesc*) &TMP660),
 16752762}
 ,
-{((NimStringDesc*) &TMP678),
+{((NimStringDesc*) &TMP661),
 2142890}
 ,
-{((NimStringDesc*) &TMP679),
+{((NimStringDesc*) &TMP662),
 8900346}
 ,
-{((NimStringDesc*) &TMP680),
+{((NimStringDesc*) &TMP663),
 7833753}
 ,
-{((NimStringDesc*) &TMP681),
+{((NimStringDesc*) &TMP664),
 11584734}
 ,
-{((NimStringDesc*) &TMP682),
+{((NimStringDesc*) &TMP665),
 16777184}
 ,
-{((NimStringDesc*) &TMP683),
+{((NimStringDesc*) &TMP666),
 65280}
 ,
-{((NimStringDesc*) &TMP684),
+{((NimStringDesc*) &TMP667),
 3329330}
 ,
-{((NimStringDesc*) &TMP685),
+{((NimStringDesc*) &TMP668),
 16445670}
 ,
-{((NimStringDesc*) &TMP686),
+{((NimStringDesc*) &TMP669),
 16711935}
 ,
-{((NimStringDesc*) &TMP687),
+{((NimStringDesc*) &TMP670),
 8388608}
 ,
-{((NimStringDesc*) &TMP688),
+{((NimStringDesc*) &TMP671),
 6737322}
 ,
-{((NimStringDesc*) &TMP689),
+{((NimStringDesc*) &TMP672),
 205}
 ,
-{((NimStringDesc*) &TMP690),
+{((NimStringDesc*) &TMP673),
 12211667}
 ,
-{((NimStringDesc*) &TMP691),
+{((NimStringDesc*) &TMP674),
 9662680}
 ,
-{((NimStringDesc*) &TMP692),
+{((NimStringDesc*) &TMP675),
 3978097}
 ,
-{((NimStringDesc*) &TMP693),
+{((NimStringDesc*) &TMP676),
 8087790}
 ,
-{((NimStringDesc*) &TMP694),
+{((NimStringDesc*) &TMP677),
 64154}
 ,
-{((NimStringDesc*) &TMP695),
+{((NimStringDesc*) &TMP678),
 4772300}
 ,
-{((NimStringDesc*) &TMP696),
+{((NimStringDesc*) &TMP679),
 13047173}
 ,
-{((NimStringDesc*) &TMP697),
+{((NimStringDesc*) &TMP680),
 1644912}
 ,
-{((NimStringDesc*) &TMP698),
+{((NimStringDesc*) &TMP681),
 16121850}
 ,
-{((NimStringDesc*) &TMP699),
+{((NimStringDesc*) &TMP682),
 16770273}
 ,
-{((NimStringDesc*) &TMP700),
+{((NimStringDesc*) &TMP683),
 16770229}
 ,
-{((NimStringDesc*) &TMP701),
+{((NimStringDesc*) &TMP684),
 16768685}
 ,
-{((NimStringDesc*) &TMP702),
+{((NimStringDesc*) &TMP685),
 128}
 ,
-{((NimStringDesc*) &TMP703),
+{((NimStringDesc*) &TMP686),
 16643558}
 ,
-{((NimStringDesc*) &TMP704),
+{((NimStringDesc*) &TMP687),
 8421376}
 ,
-{((NimStringDesc*) &TMP705),
+{((NimStringDesc*) &TMP688),
 7048739}
 ,
-{((NimStringDesc*) &TMP706),
+{((NimStringDesc*) &TMP689),
 16753920}
 ,
-{((NimStringDesc*) &TMP707),
+{((NimStringDesc*) &TMP690),
 16729344}
 ,
-{((NimStringDesc*) &TMP708),
+{((NimStringDesc*) &TMP691),
 14315734}
 ,
-{((NimStringDesc*) &TMP709),
+{((NimStringDesc*) &TMP692),
 15657130}
 ,
-{((NimStringDesc*) &TMP710),
+{((NimStringDesc*) &TMP693),
 10025880}
 ,
-{((NimStringDesc*) &TMP711),
+{((NimStringDesc*) &TMP694),
 11529966}
 ,
-{((NimStringDesc*) &TMP712),
+{((NimStringDesc*) &TMP695),
 14184595}
 ,
-{((NimStringDesc*) &TMP713),
+{((NimStringDesc*) &TMP696),
 16773077}
 ,
-{((NimStringDesc*) &TMP714),
+{((NimStringDesc*) &TMP697),
 16767673}
 ,
-{((NimStringDesc*) &TMP715),
+{((NimStringDesc*) &TMP698),
 13468991}
 ,
-{((NimStringDesc*) &TMP716),
+{((NimStringDesc*) &TMP699),
 16761035}
 ,
-{((NimStringDesc*) &TMP717),
+{((NimStringDesc*) &TMP700),
 14524637}
 ,
-{((NimStringDesc*) &TMP718),
+{((NimStringDesc*) &TMP701),
 11591910}
 ,
-{((NimStringDesc*) &TMP719),
+{((NimStringDesc*) &TMP702),
 8388736}
 ,
-{((NimStringDesc*) &TMP720),
+{((NimStringDesc*) &TMP703),
 16711680}
 ,
-{((NimStringDesc*) &TMP721),
+{((NimStringDesc*) &TMP704),
 12357519}
 ,
-{((NimStringDesc*) &TMP722),
+{((NimStringDesc*) &TMP705),
 4286945}
 ,
-{((NimStringDesc*) &TMP723),
+{((NimStringDesc*) &TMP706),
 9127187}
 ,
-{((NimStringDesc*) &TMP724),
+{((NimStringDesc*) &TMP707),
 16416882}
 ,
-{((NimStringDesc*) &TMP725),
+{((NimStringDesc*) &TMP708),
 16032864}
 ,
-{((NimStringDesc*) &TMP726),
+{((NimStringDesc*) &TMP709),
 3050327}
 ,
-{((NimStringDesc*) &TMP727),
+{((NimStringDesc*) &TMP710),
 16774638}
 ,
-{((NimStringDesc*) &TMP728),
+{((NimStringDesc*) &TMP711),
 10506797}
 ,
-{((NimStringDesc*) &TMP729),
+{((NimStringDesc*) &TMP712),
 12632256}
 ,
-{((NimStringDesc*) &TMP730),
+{((NimStringDesc*) &TMP713),
 8900331}
 ,
-{((NimStringDesc*) &TMP731),
+{((NimStringDesc*) &TMP714),
 6970061}
 ,
-{((NimStringDesc*) &TMP732),
+{((NimStringDesc*) &TMP715),
 7372944}
 ,
-{((NimStringDesc*) &TMP733),
+{((NimStringDesc*) &TMP716),
 16775930}
 ,
-{((NimStringDesc*) &TMP734),
+{((NimStringDesc*) &TMP717),
 65407}
 ,
-{((NimStringDesc*) &TMP735),
+{((NimStringDesc*) &TMP718),
 4620980}
 ,
-{((NimStringDesc*) &TMP736),
+{((NimStringDesc*) &TMP719),
 13808780}
 ,
-{((NimStringDesc*) &TMP737),
+{((NimStringDesc*) &TMP720),
 32896}
 ,
-{((NimStringDesc*) &TMP738),
+{((NimStringDesc*) &TMP721),
 14204888}
 ,
-{((NimStringDesc*) &TMP739),
+{((NimStringDesc*) &TMP722),
 16737095}
 ,
-{((NimStringDesc*) &TMP740),
+{((NimStringDesc*) &TMP723),
 4251856}
 ,
-{((NimStringDesc*) &TMP741),
+{((NimStringDesc*) &TMP724),
 15631086}
 ,
-{((NimStringDesc*) &TMP742),
+{((NimStringDesc*) &TMP725),
 16113331}
 ,
-{((NimStringDesc*) &TMP743),
+{((NimStringDesc*) &TMP726),
 16777215}
 ,
-{((NimStringDesc*) &TMP744),
+{((NimStringDesc*) &TMP727),
 16119285}
 ,
-{((NimStringDesc*) &TMP745),
+{((NimStringDesc*) &TMP728),
 16776960}
 ,
-{((NimStringDesc*) &TMP746),
+{((NimStringDesc*) &TMP729),
 10145074}
 }
 ;
-STRING_LITERAL(TMP763, "unkown color: ", 14);
+STRING_LITERAL(TMP746, "unkown color: ", 14);
 extern TFrame* frameptr_16242;
 extern TNimType NTI21601; /* ref ValueError */
 extern TNimType NTI3249; /* ValueError */
@@ -1234,7 +1234,7 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-static N_INLINE(NI, satplus_240065)(NI a, NI b) {
+static N_INLINE(NI, satplus_239065)(NI a, NI b) {
 	NI result;
 	nimfr("satPlus", "colors.nim")
 	result = 0;
@@ -1253,7 +1253,7 @@ static N_INLINE(NI, satplus_240065)(NI a, NI b) {
 	return result;
 }
 
-static N_INLINE(NI, satminus_240088)(NI a, NI b) {
+static N_INLINE(NI, satminus_239088)(NI a, NI b) {
 	NI result;
 	nimfr("satMinus", "colors.nim")
 	result = 0;
@@ -1272,7 +1272,7 @@ static N_INLINE(NI, satminus_240088)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(NI, HEX2B_240109)(NI a, NI b) {
+N_NIMCALL(NI, HEX2B_239109)(NI a, NI b) {
 	NI result;
 	NI ar;
 	NI ag;
@@ -1313,20 +1313,20 @@ N_NIMCALL(NI, HEX2B_240109)(NI a, NI b) {
 	nimln(33, "colors.nim");
 	nimln(33, "colors.nim");
 	LOC1 = 0;
-	LOC1 = satplus_240065(((NI) (ar)), ((NI) (br)));
+	LOC1 = satplus_239065(((NI) (ar)), ((NI) (br)));
 	nimln(33, "colors.nim");
 	nimln(33, "colors.nim");
 	LOC2 = 0;
-	LOC2 = satplus_240065(((NI) (ag)), ((NI) (bg)));
+	LOC2 = satplus_239065(((NI) (ag)), ((NI) (bg)));
 	nimln(33, "colors.nim");
 	LOC3 = 0;
-	LOC3 = satplus_240065(((NI) (ab)), ((NI) (bb)));
+	LOC3 = satplus_239065(((NI) (ab)), ((NI) (bb)));
 	result = (NI)((NI)((NI)((NU64)(LOC1) << (NU64)(16)) | (NI)((NU64)(LOC2) << (NU64)(8))) | LOC3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NI, HEX2D_240145)(NI a, NI b) {
+N_NIMCALL(NI, HEX2D_239145)(NI a, NI b) {
 	NI result;
 	NI ar;
 	NI ag;
@@ -1367,21 +1367,21 @@ N_NIMCALL(NI, HEX2D_240145)(NI a, NI b) {
 	nimln(33, "colors.nim");
 	nimln(33, "colors.nim");
 	LOC1 = 0;
-	LOC1 = satminus_240088(((NI) (ar)), ((NI) (br)));
+	LOC1 = satminus_239088(((NI) (ar)), ((NI) (br)));
 	nimln(33, "colors.nim");
 	nimln(33, "colors.nim");
 	LOC2 = 0;
-	LOC2 = satminus_240088(((NI) (ag)), ((NI) (bg)));
+	LOC2 = satminus_239088(((NI) (ag)), ((NI) (bg)));
 	nimln(33, "colors.nim");
 	LOC3 = 0;
-	LOC3 = satminus_240088(((NI) (ab)), ((NI) (bb)));
+	LOC3 = satminus_239088(((NI) (ab)), ((NI) (bb)));
 	result = (NI)((NI)((NI)((NU64)(LOC1) << (NU64)(16)) | (NI)((NU64)(LOC2) << (NU64)(8))) | LOC3);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(TY240184, extractrgb_240181)(NI a) {
-	TY240184 result;
+N_NIMCALL(TY239184, extractrgb_239181)(NI a) {
+	TY239184 result;
 	nimfr("extractRGB", "colors.nim")
 	memset((void*)(&result), 0, sizeof(result));
 	nimln(55, "colors.nim");
@@ -1399,7 +1399,7 @@ N_NIMCALL(TY240184, extractrgb_240181)(NI a) {
 	return result;
 }
 
-N_NIMCALL(NI, intensity_240206)(NI a, NF f) {
+N_NIMCALL(NI, intensity_239206)(NI a, NF f) {
 	NI result;
 	NI r;
 	NI g;
@@ -1471,7 +1471,7 @@ static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
 	(*dest).Sup.len += (*src).Sup.len;
 }
 
-N_NIMCALL(NimStringDesc*, HEX24_240700)(NI c) {
+N_NIMCALL(NimStringDesc*, HEX24_239700)(NI c) {
 	NimStringDesc* result;
 	NimStringDesc* LOC1;
 	NimStringDesc* LOC2;
@@ -1556,11 +1556,11 @@ static N_INLINE(NI, divInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(NI, binarystrsearch_240712)(TY240556* x, NI xLen0, NimStringDesc* y) {
+N_NIMCALL(NI, binarystrsearch_239712)(TY239556* x, NI xLen0, NimStringDesc* y) {
 	NI result;
 	NI a;
 	NI b;
-	NI TMP750;
+	NI TMP733;
 	nimfr("binaryStrSearch", "colors.nim")
 	result = 0;
 	nimln(378, "colors.nim");
@@ -1568,46 +1568,46 @@ N_NIMCALL(NI, binarystrsearch_240712)(TY240556* x, NI xLen0, NimStringDesc* y) {
 	nimln(379, "colors.nim");
 	nimln(379, "colors.nim");
 	nimln(379, "colors.nim");
-	TMP750 = subInt(xLen0, 1);
-	b = (NI64)(TMP750);
+	TMP733 = subInt(xLen0, 1);
+	b = (NI64)(TMP733);
 	{
 		nimln(380, "colors.nim");
 		while (1) {
 			NI mid;
-			NI TMP751;
-			NI TMP752;
+			NI TMP734;
+			NI TMP735;
 			NI c;
 			nimln(380, "colors.nim");
 			if (!(a <= b)) goto LA2;
 			nimln(381, "colors.nim");
 			nimln(381, "colors.nim");
 			nimln(381, "colors.nim");
-			TMP751 = addInt(a, b);
-			TMP752 = divInt((NI64)(TMP751), 2);
-			mid = (NI64)(TMP752);
+			TMP734 = addInt(a, b);
+			TMP735 = divInt((NI64)(TMP734), 2);
+			mid = (NI64)(TMP735);
 			nimln(382, "colors.nim");
 			if ((NU)(mid) >= (NU)(xLen0)) raiseIndexError();
 			c = cmp_4517(x[mid].Field0, y);
 			nimln(383, "colors.nim");
 			{
-				NI TMP753;
+				NI TMP736;
 				nimln(383, "colors.nim");
 				if (!(c < 0)) goto LA5;
 				nimln(383, "colors.nim");
 				nimln(383, "colors.nim");
-				TMP753 = addInt(mid, 1);
-				a = (NI64)(TMP753);
+				TMP736 = addInt(mid, 1);
+				a = (NI64)(TMP736);
 			}
 			goto LA3;
 			LA5: ;
 			{
-				NI TMP754;
+				NI TMP737;
 				nimln(384, "colors.nim");
 				if (!(0 < c)) goto LA8;
 				nimln(384, "colors.nim");
 				nimln(384, "colors.nim");
-				TMP754 = subInt(mid, 1);
-				b = (NI64)(TMP754);
+				TMP737 = subInt(mid, 1);
+				b = (NI64)(TMP737);
 			}
 			goto LA3;
 			LA8: ;
@@ -1685,7 +1685,7 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 	popFrame();
 }
 
-N_NIMCALL(NI, parsecolor_240747)(NimStringDesc* name) {
+N_NIMCALL(NI, parsecolor_239747)(NimStringDesc* name) {
 	NI result;
 	nimfr("parseColor", "colors.nim")
 	result = 0;
@@ -1703,38 +1703,38 @@ N_NIMCALL(NI, parsecolor_240747)(NimStringDesc* name) {
 	{
 		NI idx;
 		nimln(394, "colors.nim");
-		idx = binarystrsearch_240712(TMP762, 140, name);
+		idx = binarystrsearch_239712(TMP745, 140, name);
 		nimln(395, "colors.nim");
 		{
-			valueerror3249* e_240755;
+			valueerror3249* e_239755;
 			NimStringDesc* LOC10;
 			nimln(395, "colors.nim");
 			if (!(idx < 0)) goto LA8;
-			e_240755 = 0;
+			e_239755 = 0;
 			nimln(2149, "system.nim");
-			e_240755 = (valueerror3249*) newObj((&NTI21601), sizeof(valueerror3249));
-			(*e_240755).Sup.Sup.m_type = (&NTI3249);
+			e_239755 = (valueerror3249*) newObj((&NTI21601), sizeof(valueerror3249));
+			(*e_239755).Sup.Sup.m_type = (&NTI3249);
 			nimln(2150, "system.nim");
 			nimln(395, "colors.nim");
 			LOC10 = 0;
 			LOC10 = rawNewString(name->Sup.len + 14);
-appendString(LOC10, ((NimStringDesc*) &TMP763));
+appendString(LOC10, ((NimStringDesc*) &TMP746));
 appendString(LOC10, name);
-			asgnRefNoCycle((void**) (&(*e_240755).Sup.message), LOC10);
+			asgnRefNoCycle((void**) (&(*e_239755).Sup.message), LOC10);
 			nimln(395, "colors.nim");
-			raiseException((Exception*)e_240755, "ValueError");
+			raiseException((Exception*)e_239755, "ValueError");
 		}
 		LA8: ;
 		nimln(396, "colors.nim");
 		if ((NU)(idx) > (NU)(139)) raiseIndexError();
-		result = colornames_240554[(idx)- 0].Field1;
+		result = colornames_239554[(idx)- 0].Field1;
 	}
 	LA1: ;
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name) {
+N_NIMCALL(NIM_BOOL, iscolor_239781)(NimStringDesc* name) {
 	NIM_BOOL result;
 	nimfr("isColor", "colors.nim")
 	result = 0;
@@ -1744,32 +1744,32 @@ N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name) {
 		if ((NU)(0) > (NU)(name->Sup.len)) raiseIndexError();
 		if (!((NU8)(name->data[0]) == (NU8)(35))) goto LA3;
 		{
-			NI i_240795;
-			NI HEX3Atmp_240811;
-			NI TMP764;
-			NI res_240814;
-			i_240795 = 0;
-			HEX3Atmp_240811 = 0;
+			NI i_239795;
+			NI HEX3Atmp_239811;
+			NI TMP747;
+			NI res_239814;
+			i_239795 = 0;
+			HEX3Atmp_239811 = 0;
 			nimln(402, "colors.nim");
 			nimln(402, "colors.nim");
 			nimln(402, "colors.nim");
-			TMP764 = subInt(name->Sup.len, 1);
-			HEX3Atmp_240811 = (NI64)(TMP764);
+			TMP747 = subInt(name->Sup.len, 1);
+			HEX3Atmp_239811 = (NI64)(TMP747);
 			nimln(1576, "system.nim");
-			res_240814 = 1;
+			res_239814 = 1;
 			{
 				nimln(1577, "system.nim");
 				while (1) {
 					nimln(1577, "system.nim");
-					if (!(res_240814 <= HEX3Atmp_240811)) goto LA7;
+					if (!(res_239814 <= HEX3Atmp_239811)) goto LA7;
 					nimln(1576, "system.nim");
-					i_240795 = res_240814;
+					i_239795 = res_239814;
 					nimln(403, "colors.nim");
 					{
 						nimln(403, "colors.nim");
 						nimln(403, "colors.nim");
-						if ((NU)(i_240795) > (NU)(name->Sup.len)) raiseIndexError();
-						if (!!((((NU8)(name->data[i_240795])) >= ((NU8)(48)) && ((NU8)(name->data[i_240795])) <= ((NU8)(57)) || ((NU8)(name->data[i_240795])) >= ((NU8)(97)) && ((NU8)(name->data[i_240795])) <= ((NU8)(102)) || ((NU8)(name->data[i_240795])) >= ((NU8)(65)) && ((NU8)(name->data[i_240795])) <= ((NU8)(70))))) goto LA10;
+						if ((NU)(i_239795) > (NU)(name->Sup.len)) raiseIndexError();
+						if (!!((((NU8)(name->data[i_239795])) >= ((NU8)(48)) && ((NU8)(name->data[i_239795])) <= ((NU8)(57)) || ((NU8)(name->data[i_239795])) >= ((NU8)(97)) && ((NU8)(name->data[i_239795])) <= ((NU8)(102)) || ((NU8)(name->data[i_239795])) >= ((NU8)(65)) && ((NU8)(name->data[i_239795])) <= ((NU8)(70))))) goto LA10;
 						nimln(403, "colors.nim");
 						nimln(403, "colors.nim");
 						result = NIM_FALSE;
@@ -1777,7 +1777,7 @@ N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name) {
 					}
 					LA10: ;
 					nimln(1579, "system.nim");
-					res_240814 = addInt(res_240814, 1);
+					res_239814 = addInt(res_239814, 1);
 				} LA7: ;
 			}
 		}
@@ -1792,7 +1792,7 @@ N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name) {
 		nimln(406, "colors.nim");
 		nimln(406, "colors.nim");
 		LOC13 = 0;
-		LOC13 = binarystrsearch_240712(TMP762, 140, name);
+		LOC13 = binarystrsearch_239712(TMP745, 140, name);
 		result = (0 <= LOC13);
 	}
 	LA1: ;
@@ -1801,7 +1801,7 @@ N_NIMCALL(NIM_BOOL, iscolor_240781)(NimStringDesc* name) {
 	return result;
 }
 
-N_NIMCALL(NI, rgb_240831)(NI r, NI g, NI b) {
+N_NIMCALL(NI, rgb_239831)(NI r, NI g, NI b) {
 	NI result;
 	nimfr("rgb", "colors.nim")
 	result = 0;

@@ -10,18 +10,18 @@
 #include <string.h>
 
 #include <stdio.h>
-typedef struct ppuobj222012 ppuobj222012;
+typedef struct ppuobj221012 ppuobj221012;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
-typedef struct TY222030 TY222030;
+typedef struct TY221030 TY221030;
 typedef struct TGenericSeq TGenericSeq;
-typedef struct maskobj222016 maskobj222016;
-typedef struct ppumemoryobj222020 ppumemoryobj222020;
-typedef struct scrollerobj222018 scrollerobj222018;
-typedef struct controllerobj222014 controllerobj222014;
+typedef struct maskobj221016 maskobj221016;
+typedef struct ppumemoryobj221020 ppumemoryobj221020;
+typedef struct scrollerobj221018 scrollerobj221018;
+typedef struct controllerobj221014 controllerobj221014;
 typedef struct NimStringDesc NimStringDesc;
-typedef struct TY131128 TY131128;
+typedef struct TY136033 TY136033;
 typedef struct tcell44933 tcell44933;
 typedef struct tcellseq44949 tcellseq44949;
 typedef struct tgcheap47016 tgcheap47016;
@@ -35,7 +35,7 @@ typedef struct tintset26417 tintset26417;
 typedef struct ttrunk26413 ttrunk26413;
 typedef struct tavlnode27208 tavlnode27208;
 typedef struct tgcstat47014 tgcstat47014;
-typedef struct romobj137027 romobj137027;
+typedef struct romobj136027 romobj136027;
 typedef struct tbasechunk26438 tbasechunk26438;
 typedef struct tfreecell26430 tfreecell26430;
 typedef N_NIMCALL_PTR(void, TY3089) (void* p, NI op);
@@ -57,7 +57,7 @@ struct  TGenericSeq  {
 NI len;
 NI reserved;
 };
-struct  ppuobj222012  {
+struct  ppuobj221012  {
   TNimObject Sup;
 NIM_BOOL Unlocked;
 NI Controller;
@@ -68,8 +68,8 @@ NI Oamdata;
 NI Oamdma;
 NI Vramaddress;
 NI Vramdata;
-TY222030* Spritememory;
-TY222030* Virtualmemory;
+TY221030* Spritememory;
+TY221030* Virtualmemory;
 NI Scrollerwritecount;
 NI Vramaddresswritecount;
 NI Scanline;
@@ -82,7 +82,7 @@ NCSTRING name;
 NI len;
 TNimNode** sons;
 };
-struct  maskobj222016  {
+struct  maskobj221016  {
   TNimObject Sup;
 NI Grayscale;
 NI Partialbackground;
@@ -91,16 +91,16 @@ NI Background;
 NI Sprites;
 NI Color;
 };
-struct  ppumemoryobj222020  {
+struct  ppumemoryobj221020  {
   TNimObject Sup;
-TY222030* Bank;
+TY221030* Bank;
 };
-struct  scrollerobj222018  {
+struct  scrollerobj221018  {
   TNimObject Sup;
 NI Xcoordinate;
 NI Ycoordinate;
 };
-struct  controllerobj222014  {
+struct  controllerobj221014  {
   TNimObject Sup;
 NI Generatenmi;
 NI Masterslave;
@@ -170,12 +170,12 @@ NI Recgclock;
 tmemregion27210 Region;
 tgcstat47014 Stat;
 };
-typedef NIM_CHAR TY137030[16];
-struct  romobj137027  {
+typedef NIM_CHAR TY136030[16];
+struct  romobj136027  {
   TNimObject Sup;
-TY137030 Header;
-TY131128* Prgbytes;
-TY131128* Chrbytes;
+TY136030 Header;
+TY136033* Prgbytes;
+TY136033* Chrbytes;
 };
 typedef NI TY26420[8];
 struct  tpagedesc44941  {
@@ -225,26 +225,26 @@ struct  tfreecell26430  {
 tfreecell26430* Next;
 NI Zerofield;
 };
-struct TY222030 {
+struct TY221030 {
   TGenericSeq Sup;
   NI data[SEQ_DECL_SIZE];
 };
-struct TY131128 {
+struct TY136033 {
   TGenericSeq Sup;
   NIM_CHAR data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(void, TMP433)(void* p, NI op);
-N_NIMCALL(void, debug_222092)(controllerobj222014* processor_222096);
-N_NIMCALL(void, updatecontroller_222081)(NI value);
+N_NIMCALL(void, TMP416)(void* p, NI op);
+N_NIMCALL(void, debug_221092)(controllerobj221014* processor_221096);
+N_NIMCALL(void, updatecontroller_221081)(NI value);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_18801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(void, updatemask_223414)(NI value);
-N_NIMCALL(NI, readstatus_223429)(void);
-N_NIMCALL(void, writesramaddress_223438)(NI value);
-N_NIMCALL(NI, loadsram_223447)(void);
+N_NIMCALL(void, updatemask_222414)(NI value);
+N_NIMCALL(NI, readstatus_222429)(void);
+N_NIMCALL(void, writesramaddress_222438)(NI value);
+N_NIMCALL(NI, loadsram_222447)(void);
 N_NOINLINE(void, raiseIndexError)(void);
-N_NIMCALL(void, writevramaddress_223456)(NI value);
+N_NIMCALL(void, writevramaddress_222456)(NI value);
 static N_INLINE(NI, addInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 N_NIMCALL(NI, nsuParseInt)(NimStringDesc* s);
@@ -252,48 +252,48 @@ N_NIMCALL(NimStringDesc*, nimIntToStr)(NI x);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 static N_INLINE(NI, subInt)(NI a, NI b);
-N_NIMCALL(NI, loadvram_223489)(TY222030* bank);
-N_NIMCALL(void, writescroll_223500)(NI value);
-N_NIMCALL(void, transmittoregister_223533)(NI address, NI value);
-N_NIMCALL(void, updateregisters_223554)(NI address, NI value);
-N_NIMCALL(void, renderbackground_223574)(void);
-N_NIMCALL(void, rendersprites_223586)(void);
-N_NIMCALL(NIM_BOOL, isenabledbackground_223598)(void);
-N_NIMCALL(NIM_BOOL, isenabledsprites_223607)(void);
-N_NIMCALL(void, setchr_223616)(void* chr);
-N_NIMCALL(TY131128*, newseq_131123)(NI len_131127);
-N_NIMCALL(TY222030*, newseq_223747)(NI len_223751);
-N_NIMCALL(void, initppu_223729)(void);
+N_NIMCALL(NI, loadvram_222489)(TY221030* bank);
+N_NIMCALL(void, writescroll_222500)(NI value);
+N_NIMCALL(void, transmittoregister_222533)(NI address, NI value);
+N_NIMCALL(void, updateregisters_222554)(NI address, NI value);
+N_NIMCALL(void, renderbackground_222574)(void);
+N_NIMCALL(void, rendersprites_222586)(void);
+N_NIMCALL(NIM_BOOL, isenabledbackground_222598)(void);
+N_NIMCALL(NIM_BOOL, isenabledsprites_222607)(void);
+N_NIMCALL(void, setchr_222616)(void* chr);
+N_NIMCALL(TY136033*, newseq_136510)(NI len_136514);
+N_NIMCALL(TY221030*, newseq_222747)(NI len_222751);
+N_NIMCALL(void, initppu_222729)(void);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
 static N_INLINE(tcell44933*, usrtocell_48646)(void* usr);
 static N_INLINE(void, rtladdzct_50204)(tcell44933* c);
 N_NOINLINE(void, addzct_48617)(tcellseq44949* s, tcell44933* c);
-N_NIMCALL(void, update_223821)(void);
-STRING_LITERAL(TMP452, "Invalid address (transmit)", 26);
-STRING_LITERAL(TMP453, "Invalid address (update)", 24);
-STRING_LITERAL(TMP454, "draw bg", 7);
-STRING_LITERAL(TMP455, "draw sprites", 12);
-ppuobj222012 nesppu_222056;
+N_NIMCALL(void, update_222821)(void);
+STRING_LITERAL(TMP435, "Invalid address (transmit)", 26);
+STRING_LITERAL(TMP436, "Invalid address (update)", 24);
+STRING_LITERAL(TMP437, "draw bg", 7);
+STRING_LITERAL(TMP438, "draw sprites", 12);
+ppuobj221012 nesppu_221056;
 extern TNimType NTI3211; /* RootObj */
-TNimType NTI222012; /* PPUObj */
+TNimType NTI221012; /* PPUObj */
 extern TNimType NTI138; /* bool */
 extern TNimType NTI108; /* int */
-TNimType NTI222030; /* seq[int] */
-maskobj222016 ppumask_222061;
-TNimType NTI222016; /* MaskObj */
-ppumemoryobj222020 ppumemory_222066;
-TNimType NTI222020; /* PPUMemoryObj */
-scrollerobj222018 ppuscroller_222071;
-TNimType NTI222018; /* ScrollerObj */
-controllerobj222014 ppucontroller_222076;
-TNimType NTI222014; /* ControllerObj */
+TNimType NTI221030; /* seq[int] */
+maskobj221016 ppumask_221061;
+TNimType NTI221016; /* MaskObj */
+ppumemoryobj221020 ppumemory_221066;
+TNimType NTI221020; /* PPUMemoryObj */
+scrollerobj221018 ppuscroller_221071;
+TNimType NTI221018; /* ScrollerObj */
+controllerobj221014 ppucontroller_221076;
+TNimType NTI221014; /* ControllerObj */
 extern TFrame* frameptr_16242;
 extern tgcheap47016 gch_47044;
-extern romobj137027 nesrom_137046;
-N_NIMCALL(void, TMP433)(void* p, NI op) {
-	TY222030* a;
+extern romobj136027 nesrom_136046;
+N_NIMCALL(void, TMP416)(void* p, NI op) {
+	TY221030* a;
 	NI LOC1;
-	a = (TY222030*)p;
+	a = (TY221030*)p;
 	LOC1 = 0;
 	for (LOC1 = 0; LOC1 < a->Sup.len; LOC1++) {
 	}
@@ -326,116 +326,116 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_16242 = (*frameptr_16242).prev;
 }
 
-N_NIMCALL(void, updatecontroller_222081)(NI value) {
+N_NIMCALL(void, updatecontroller_221081)(NI value) {
 	nimfr("updateController", "ppu.nim")
 	nimln(40, "ppu.nim");
 	{
 		nimln(40, "ppu.nim");
 		nimln(40, "ppu.nim");
-		if (!!((value == nesppu_222056.Controller))) goto LA3;
+		if (!!((value == nesppu_221056.Controller))) goto LA3;
 		nimln(41, "ppu.nim");
-		nesppu_222056.Controller = value;
+		nesppu_221056.Controller = value;
 	}
 	LA3: ;
 	nimln(43, "ppu.nim");
 	nimln(43, "ppu.nim");
-	ppucontroller_222076.Nametableaddress = ((NI) ((NI)(nesppu_222056.Controller & 3)));
+	ppucontroller_221076.Nametableaddress = ((NI) ((NI)(nesppu_221056.Controller & 3)));
 	nimln(44, "ppu.nim");
 	nimln(44, "ppu.nim");
 	nimln(44, "ppu.nim");
-	ppucontroller_222076.Vramincrement = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(2)) & 1)));
+	ppucontroller_221076.Vramincrement = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(2)) & 1)));
 	nimln(45, "ppu.nim");
 	nimln(45, "ppu.nim");
 	nimln(45, "ppu.nim");
-	ppucontroller_222076.Spriteaddress = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(3)) & 1)));
+	ppucontroller_221076.Spriteaddress = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(3)) & 1)));
 	nimln(46, "ppu.nim");
 	nimln(46, "ppu.nim");
 	nimln(46, "ppu.nim");
-	ppucontroller_222076.Bgaddress = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(4)) & 1)));
+	ppucontroller_221076.Bgaddress = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(4)) & 1)));
 	nimln(47, "ppu.nim");
 	nimln(47, "ppu.nim");
 	nimln(47, "ppu.nim");
-	ppucontroller_222076.Spritesize = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(5)) & 1)));
+	ppucontroller_221076.Spritesize = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(5)) & 1)));
 	nimln(48, "ppu.nim");
 	nimln(48, "ppu.nim");
 	nimln(48, "ppu.nim");
-	ppucontroller_222076.Masterslave = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(6)) & 1)));
+	ppucontroller_221076.Masterslave = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(6)) & 1)));
 	nimln(49, "ppu.nim");
 	nimln(49, "ppu.nim");
 	nimln(49, "ppu.nim");
-	ppucontroller_222076.Generatenmi = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Controller) >> (NU64)(7)) & 1)));
+	ppucontroller_221076.Generatenmi = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Controller) >> (NU64)(7)) & 1)));
 	nimln(50, "ppu.nim");
-	debug_222092((&ppucontroller_222076));
+	debug_221092((&ppucontroller_221076));
 	popFrame();
 }
 
-N_NIMCALL(void, updatemask_223414)(NI value) {
+N_NIMCALL(void, updatemask_222414)(NI value) {
 	nimfr("updateMask", "ppu.nim")
 	nimln(54, "ppu.nim");
 	{
 		nimln(54, "ppu.nim");
 		nimln(54, "ppu.nim");
-		if (!!((value == nesppu_222056.Mask))) goto LA3;
+		if (!!((value == nesppu_221056.Mask))) goto LA3;
 		nimln(55, "ppu.nim");
-		nesppu_222056.Mask = value;
+		nesppu_221056.Mask = value;
 	}
 	LA3: ;
 	nimln(57, "ppu.nim");
 	nimln(57, "ppu.nim");
-	ppumask_222061.Grayscale = ((NI) ((NI)(nesppu_222056.Mask & 1)));
+	ppumask_221061.Grayscale = ((NI) ((NI)(nesppu_221056.Mask & 1)));
 	nimln(58, "ppu.nim");
 	nimln(58, "ppu.nim");
 	nimln(58, "ppu.nim");
-	ppumask_222061.Partialbackground = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Mask) >> (NU64)(1)) & 1)));
+	ppumask_221061.Partialbackground = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Mask) >> (NU64)(1)) & 1)));
 	nimln(59, "ppu.nim");
 	nimln(59, "ppu.nim");
 	nimln(59, "ppu.nim");
-	ppumask_222061.Partialsprites = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Mask) >> (NU64)(2)) & 1)));
+	ppumask_221061.Partialsprites = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Mask) >> (NU64)(2)) & 1)));
 	nimln(60, "ppu.nim");
 	nimln(60, "ppu.nim");
 	nimln(60, "ppu.nim");
-	ppumask_222061.Background = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Mask) >> (NU64)(3)) & 1)));
+	ppumask_221061.Background = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Mask) >> (NU64)(3)) & 1)));
 	nimln(61, "ppu.nim");
 	nimln(61, "ppu.nim");
 	nimln(61, "ppu.nim");
-	ppumask_222061.Sprites = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Mask) >> (NU64)(4)) & 1)));
+	ppumask_221061.Sprites = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Mask) >> (NU64)(4)) & 1)));
 	nimln(62, "ppu.nim");
 	nimln(62, "ppu.nim");
 	nimln(62, "ppu.nim");
-	ppumask_222061.Color = ((NI) ((NI)((NI)((NU64)(nesppu_222056.Mask) >> (NU64)(5)) & 7)));
+	ppumask_221061.Color = ((NI) ((NI)((NI)((NU64)(nesppu_221056.Mask) >> (NU64)(5)) & 7)));
 	popFrame();
 }
 
-N_NIMCALL(NI, readstatus_223429)(void) {
+N_NIMCALL(NI, readstatus_222429)(void) {
 	NI result;
 	nimfr("readStatus", "ppu.nim")
 	result = 0;
 	nimln(67, "ppu.nim");
-	result = nesppu_222056.Status;
+	result = nesppu_221056.Status;
 	nimln(71, "ppu.nim");
-	ppuscroller_222071.Xcoordinate = 0;
+	ppuscroller_221071.Xcoordinate = 0;
 	nimln(72, "ppu.nim");
-	ppuscroller_222071.Ycoordinate = 0;
+	ppuscroller_221071.Ycoordinate = 0;
 	nimln(73, "ppu.nim");
-	nesppu_222056.Vramaddress = 0;
+	nesppu_221056.Vramaddress = 0;
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(void, writesramaddress_223438)(NI value) {
+N_NIMCALL(void, writesramaddress_222438)(NI value) {
 	nimfr("writeSRAMAddress", "ppu.nim")
 	nimln(76, "ppu.nim");
-	nesppu_222056.Oamaddress = value;
+	nesppu_221056.Oamaddress = value;
 	popFrame();
 }
 
-N_NIMCALL(NI, loadsram_223447)(void) {
+N_NIMCALL(NI, loadsram_222447)(void) {
 	NI result;
 	nimfr("loadSRAM", "ppu.nim")
 	result = 0;
 	nimln(79, "ppu.nim");
-	if ((NU)(nesppu_222056.Oamaddress) >= (NU)(nesppu_222056.Spritememory->Sup.len)) raiseIndexError();
-	result = nesppu_222056.Spritememory->data[nesppu_222056.Oamaddress];
+	if ((NU)(nesppu_221056.Oamaddress) >= (NU)(nesppu_221056.Spritememory->Sup.len)) raiseIndexError();
+	result = nesppu_221056.Spritememory->data[nesppu_221056.Oamaddress];
 	popFrame();
 	return result;
 }
@@ -485,16 +485,16 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, writevramaddress_223456)(NI value) {
+N_NIMCALL(void, writevramaddress_222456)(NI value) {
 	nimfr("writeVRAMAddress", "ppu.nim")
 	nimln(82, "ppu.nim");
 	{
 		nimln(82, "ppu.nim");
-		if (!(nesppu_222056.Vramaddresswritecount == 0)) goto LA3;
+		if (!(nesppu_221056.Vramaddresswritecount == 0)) goto LA3;
 		nimln(83, "ppu.nim");
-		nesppu_222056.Vramaddress = value;
+		nesppu_221056.Vramaddress = value;
 		nimln(84, "ppu.nim");
-		nesppu_222056.Vramaddresswritecount = addInt(nesppu_222056.Vramaddresswritecount, 1);
+		nesppu_221056.Vramaddresswritecount = addInt(nesppu_221056.Vramaddresswritecount, 1);
 	}
 	goto LA1;
 	LA3: ;
@@ -507,132 +507,132 @@ N_NIMCALL(void, writevramaddress_223456)(NI value) {
 		LOC6 = 0;
 		nimln(86, "ppu.nim");
 		LOC7 = 0;
-		LOC7 = nimIntToStr(nesppu_222056.Vramaddress);
+		LOC7 = nimIntToStr(nesppu_221056.Vramaddress);
 		nimln(86, "ppu.nim");
 		LOC8 = 0;
 		LOC8 = nimIntToStr(value);
 		LOC6 = rawNewString(LOC7->Sup.len + LOC8->Sup.len + 0);
 appendString(LOC6, LOC7);
 appendString(LOC6, LOC8);
-		nesppu_222056.Vramaddress = nsuParseInt(LOC6);
+		nesppu_221056.Vramaddress = nsuParseInt(LOC6);
 		nimln(87, "ppu.nim");
-		nesppu_222056.Vramaddresswritecount = subInt(nesppu_222056.Vramaddresswritecount, 1);
+		nesppu_221056.Vramaddresswritecount = subInt(nesppu_221056.Vramaddresswritecount, 1);
 	}
 	LA1: ;
 	popFrame();
 }
 
-N_NIMCALL(NI, loadvram_223489)(TY222030* bank) {
+N_NIMCALL(NI, loadvram_222489)(TY221030* bank) {
 	NI result;
 	nimfr("loadVRAM", "ppu.nim")
 	result = 0;
 	nimln(90, "ppu.nim");
-	if ((NU)(nesppu_222056.Vramaddress) >= (NU)(bank->Sup.len)) raiseIndexError();
-	result = bank->data[nesppu_222056.Vramaddress];
+	if ((NU)(nesppu_221056.Vramaddress) >= (NU)(bank->Sup.len)) raiseIndexError();
+	result = bank->data[nesppu_221056.Vramaddress];
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(void, writescroll_223500)(NI value) {
+N_NIMCALL(void, writescroll_222500)(NI value) {
 	nimfr("writeScroll", "ppu.nim")
 	nimln(93, "ppu.nim");
 	{
 		nimln(93, "ppu.nim");
-		if (!(nesppu_222056.Scrollerwritecount == 0)) goto LA3;
+		if (!(nesppu_221056.Scrollerwritecount == 0)) goto LA3;
 		nimln(94, "ppu.nim");
-		ppuscroller_222071.Xcoordinate = value;
+		ppuscroller_221071.Xcoordinate = value;
 		nimln(95, "ppu.nim");
-		nesppu_222056.Scrollerwritecount = addInt(nesppu_222056.Scrollerwritecount, 1);
+		nesppu_221056.Scrollerwritecount = addInt(nesppu_221056.Scrollerwritecount, 1);
 	}
 	goto LA1;
 	LA3: ;
 	{
 		nimln(97, "ppu.nim");
-		ppuscroller_222071.Ycoordinate = value;
+		ppuscroller_221071.Ycoordinate = value;
 		nimln(98, "ppu.nim");
-		nesppu_222056.Scrollerwritecount = subInt(nesppu_222056.Scrollerwritecount, 1);
+		nesppu_221056.Scrollerwritecount = subInt(nesppu_221056.Scrollerwritecount, 1);
 	}
 	LA1: ;
 	popFrame();
 }
 
-N_NIMCALL(void, transmittoregister_223533)(NI address, NI value) {
+N_NIMCALL(void, transmittoregister_222533)(NI address, NI value) {
 	nimfr("transmitToRegister", "ppu.nim")
 	nimln(101, "ppu.nim");
 	switch (address) {
 	case 8192:
 	{
 		nimln(102, "ppu.nim");
-		nesppu_222056.Controller = value;
+		nesppu_221056.Controller = value;
 	}
 	break;
 	case 8193:
 	{
 		nimln(103, "ppu.nim");
-		nesppu_222056.Mask = value;
+		nesppu_221056.Mask = value;
 	}
 	break;
 	case 8194:
 	{
 		nimln(104, "ppu.nim");
-		nesppu_222056.Status = value;
+		nesppu_221056.Status = value;
 	}
 	break;
 	case 8195:
 	{
 		nimln(105, "ppu.nim");
-		nesppu_222056.Oamaddress = value;
+		nesppu_221056.Oamaddress = value;
 	}
 	break;
 	case 8196:
 	{
 		nimln(106, "ppu.nim");
-		nesppu_222056.Oamdata = value;
+		nesppu_221056.Oamdata = value;
 	}
 	break;
 	case 8198:
 	{
 		nimln(107, "ppu.nim");
-		nesppu_222056.Vramdata = value;
+		nesppu_221056.Vramdata = value;
 	}
 	break;
 	case 16404:
 	{
 		nimln(108, "ppu.nim");
-		nesppu_222056.Oamdma = value;
+		nesppu_221056.Oamdma = value;
 	}
 	break;
 	default:
 	{
 		nimln(109, "ppu.nim");
 		nimln(109, "ppu.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP452))->data);
+		printf("%s\015\012", (((NimStringDesc*) &TMP435))->data);
 	}
 	break;
 	}
 	popFrame();
 }
 
-N_NIMCALL(void, updateregisters_223554)(NI address, NI value) {
+N_NIMCALL(void, updateregisters_222554)(NI address, NI value) {
 	nimfr("updateRegisters", "ppu.nim")
 	nimln(112, "ppu.nim");
 	switch (address) {
 	case 8192:
 	{
 		nimln(113, "ppu.nim");
-		updatecontroller_222081(value);
+		updatecontroller_221081(value);
 	}
 	break;
 	case 8193:
 	{
 		nimln(114, "ppu.nim");
-		updatemask_223414(value);
+		updatemask_222414(value);
 	}
 	break;
 	case 8195:
 	{
 		nimln(115, "ppu.nim");
-		writesramaddress_223438(value);
+		writesramaddress_222438(value);
 	}
 	break;
 	case 8196:
@@ -640,49 +640,49 @@ N_NIMCALL(void, updateregisters_223554)(NI address, NI value) {
 		NI LOC5;
 		nimln(116, "ppu.nim");
 		LOC5 = 0;
-		LOC5 = loadsram_223447();
+		LOC5 = loadsram_222447();
 	}
 	break;
 	case 8197:
 	{
 		nimln(117, "ppu.nim");
-		writescroll_223500(value);
+		writescroll_222500(value);
 	}
 	break;
 	case 8198:
 	{
 		nimln(118, "ppu.nim");
-		writevramaddress_223456(value);
+		writevramaddress_222456(value);
 	}
 	break;
 	default:
 	{
 		nimln(120, "ppu.nim");
 		nimln(120, "ppu.nim");
-		printf("%s\015\012", (((NimStringDesc*) &TMP453))->data);
+		printf("%s\015\012", (((NimStringDesc*) &TMP436))->data);
 	}
 	break;
 	}
 	popFrame();
 }
 
-N_NIMCALL(void, renderbackground_223574)(void) {
+N_NIMCALL(void, renderbackground_222574)(void) {
 	nimfr("renderBackground", "ppu.nim")
 	nimln(123, "ppu.nim");
 	nimln(123, "ppu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP454))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP437))->data);
 	popFrame();
 }
 
-N_NIMCALL(void, rendersprites_223586)(void) {
+N_NIMCALL(void, rendersprites_222586)(void) {
 	nimfr("renderSprites", "ppu.nim")
 	nimln(126, "ppu.nim");
 	nimln(126, "ppu.nim");
-	printf("%s\015\012", (((NimStringDesc*) &TMP455))->data);
+	printf("%s\015\012", (((NimStringDesc*) &TMP438))->data);
 	popFrame();
 }
 
-N_NIMCALL(NIM_BOOL, isenabledbackground_223598)(void) {
+N_NIMCALL(NIM_BOOL, isenabledbackground_222598)(void) {
 	NIM_BOOL result;
 	nimfr("isEnabledBackground", "ppu.nim")
 	result = 0;
@@ -691,7 +691,7 @@ N_NIMCALL(NIM_BOOL, isenabledbackground_223598)(void) {
 	nimln(130, "ppu.nim");
 	{
 		nimln(130, "ppu.nim");
-		if (!(ppumask_222061.Background == 1)) goto LA3;
+		if (!(ppumask_221061.Background == 1)) goto LA3;
 		nimln(131, "ppu.nim");
 		result = NIM_TRUE;
 	}
@@ -700,7 +700,7 @@ N_NIMCALL(NIM_BOOL, isenabledbackground_223598)(void) {
 	return result;
 }
 
-N_NIMCALL(NIM_BOOL, isenabledsprites_223607)(void) {
+N_NIMCALL(NIM_BOOL, isenabledsprites_222607)(void) {
 	NIM_BOOL result;
 	nimfr("isEnabledSprites", "ppu.nim")
 	result = 0;
@@ -709,7 +709,7 @@ N_NIMCALL(NIM_BOOL, isenabledsprites_223607)(void) {
 	nimln(135, "ppu.nim");
 	{
 		nimln(135, "ppu.nim");
-		if (!(ppumask_222061.Sprites == 1)) goto LA3;
+		if (!(ppumask_221061.Sprites == 1)) goto LA3;
 		nimln(136, "ppu.nim");
 		result = NIM_TRUE;
 	}
@@ -718,38 +718,38 @@ N_NIMCALL(NIM_BOOL, isenabledsprites_223607)(void) {
 	return result;
 }
 
-N_NIMCALL(void, setchr_223616)(void* chr) {
-	TY131128* temporarybank;
+N_NIMCALL(void, setchr_222616)(void* chr) {
+	TY136033* temporarybank;
 	nimfr("setChr", "ppu.nim")
 	nimln(139, "ppu.nim");
-	temporarybank = newseq_131123(8192);
+	temporarybank = newseq_136510(8192);
 	nimln(140, "ppu.nim");
 	if ((NU)(0) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
 	memcpy(((void*) ((&temporarybank->data[0]))), chr, 8192);
 	{
-		NI i_223707;
-		NIM_CHAR value_223708;
-		NI i_223713;
-		i_223707 = 0;
-		value_223708 = 0;
+		NI i_222707;
+		NIM_CHAR value_222708;
+		NI i_222713;
+		i_222707 = 0;
+		value_222708 = 0;
 		nimln(1704, "system.nim");
-		i_223713 = 0;
+		i_222713 = 0;
 		{
 			nimln(1705, "system.nim");
 			while (1) {
 				nimln(1705, "system.nim");
 				nimln(1705, "system.nim");
-				if (!(i_223713 < temporarybank->Sup.len)) goto LA3;
+				if (!(i_222713 < temporarybank->Sup.len)) goto LA3;
 				nimln(1704, "system.nim");
-				i_223707 = i_223713;
+				i_222707 = i_222713;
 				nimln(1706, "system.nim");
-				if ((NU)(i_223713) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
-				value_223708 = temporarybank->data[i_223713];
+				if ((NU)(i_222713) >= (NU)(temporarybank->Sup.len)) raiseIndexError();
+				value_222708 = temporarybank->data[i_222713];
 				nimln(142, "ppu.nim");
-				if ((NU)(i_223707) >= (NU)(ppumemory_222066.Bank->Sup.len)) raiseIndexError();
-				ppumemory_222066.Bank->data[i_223707] = ((NI) (((NU8)(value_223708))));
+				if ((NU)(i_222707) >= (NU)(ppumemory_221066.Bank->Sup.len)) raiseIndexError();
+				ppumemory_221066.Bank->data[i_222707] = ((NI) (((NU8)(value_222708))));
 				nimln(1707, "system.nim");
-				i_223713 = addInt(i_223713, 1);
+				i_222713 = addInt(i_222713, 1);
 			} LA3: ;
 		}
 	}
@@ -814,31 +814,31 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 	popFrame();
 }
 
-N_NIMCALL(void, initppu_223729)(void) {
+N_NIMCALL(void, initppu_222729)(void) {
 	nimfr("initPpu", "ppu.nim")
 	nimln(146, "ppu.nim");
-	asgnRefNoCycle((void**) (&ppumemory_222066.Bank), newseq_223747(16384));
+	asgnRefNoCycle((void**) (&ppumemory_221066.Bank), newseq_222747(16384));
 	nimln(147, "ppu.nim");
-	asgnRefNoCycle((void**) (&nesppu_222056.Spritememory), newseq_223747(256));
+	asgnRefNoCycle((void**) (&nesppu_221056.Spritememory), newseq_222747(256));
 	nimln(149, "ppu.nim");
-	if ((NU)(0) >= (NU)(nesrom_137046.Chrbytes->Sup.len)) raiseIndexError();
-	setchr_223616(((void*) ((&nesrom_137046.Chrbytes->data[0]))));
+	if ((NU)(0) >= (NU)(nesrom_136046.Chrbytes->Sup.len)) raiseIndexError();
+	setchr_222616(((void*) ((&nesrom_136046.Chrbytes->data[0]))));
 	popFrame();
 }
 
-N_NIMCALL(void, update_223821)(void) {
+N_NIMCALL(void, update_222821)(void) {
 	nimfr("update", "ppu.nim")
 	nimln(152, "ppu.nim");
-	nesppu_222056.Scanline = addInt(nesppu_222056.Scanline, 1);
+	nesppu_221056.Scanline = addInt(nesppu_221056.Scanline, 1);
 	nimln(154, "ppu.nim");
 	{
 		NIM_BOOL LOC3;
 		nimln(154, "ppu.nim");
 		LOC3 = 0;
-		LOC3 = isenabledbackground_223598();
+		LOC3 = isenabledbackground_222598();
 		if (!LOC3) goto LA4;
 		nimln(155, "ppu.nim");
-		renderbackground_223574();
+		renderbackground_222574();
 	}
 	LA4: ;
 	nimln(157, "ppu.nim");
@@ -846,210 +846,210 @@ N_NIMCALL(void, update_223821)(void) {
 		NIM_BOOL LOC8;
 		nimln(157, "ppu.nim");
 		LOC8 = 0;
-		LOC8 = isenabledsprites_223607();
+		LOC8 = isenabledsprites_222607();
 		if (!LOC8) goto LA9;
 		nimln(158, "ppu.nim");
-		rendersprites_223586();
+		rendersprites_222586();
 	}
 	LA9: ;
 	popFrame();
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_ppuInit)(void) {
 	nimfr("ppu", "ppu.nim")
-	nesppu_222056.Sup.m_type = (&NTI222012);
-	ppumask_222061.Sup.m_type = (&NTI222016);
-	ppumemory_222066.Sup.m_type = (&NTI222020);
-	ppuscroller_222071.Sup.m_type = (&NTI222018);
-	ppucontroller_222076.Sup.m_type = (&NTI222014);
+	nesppu_221056.Sup.m_type = (&NTI221012);
+	ppumask_221061.Sup.m_type = (&NTI221016);
+	ppumemory_221066.Sup.m_type = (&NTI221020);
+	ppuscroller_221071.Sup.m_type = (&NTI221018);
+	ppucontroller_221076.Sup.m_type = (&NTI221014);
 	popFrame();
 }
 
 NIM_EXTERNC N_NOINLINE(void, HEX00_ppuDatInit)(void) {
-static TNimNode* TMP432[14];
-static TNimNode* TMP434[6];
-static TNimNode* TMP435[2];
-static TNimNode* TMP436[7];
-static TNimNode TMP347[34];
-NTI222012.size = sizeof(ppuobj222012);
-NTI222012.kind = 17;
-NTI222012.base = (&NTI3211);
-TMP432[0] = &TMP347[1];
-TMP347[1].kind = 1;
-TMP347[1].offset = offsetof(ppuobj222012, Unlocked);
-TMP347[1].typ = (&NTI138);
-TMP347[1].name = "unlocked";
-TMP432[1] = &TMP347[2];
-TMP347[2].kind = 1;
-TMP347[2].offset = offsetof(ppuobj222012, Controller);
-TMP347[2].typ = (&NTI108);
-TMP347[2].name = "controller";
-TMP432[2] = &TMP347[3];
-TMP347[3].kind = 1;
-TMP347[3].offset = offsetof(ppuobj222012, Mask);
-TMP347[3].typ = (&NTI108);
-TMP347[3].name = "mask";
-TMP432[3] = &TMP347[4];
-TMP347[4].kind = 1;
-TMP347[4].offset = offsetof(ppuobj222012, Status);
-TMP347[4].typ = (&NTI108);
-TMP347[4].name = "status";
-TMP432[4] = &TMP347[5];
-TMP347[5].kind = 1;
-TMP347[5].offset = offsetof(ppuobj222012, Oamaddress);
-TMP347[5].typ = (&NTI108);
-TMP347[5].name = "oamAddress";
-TMP432[5] = &TMP347[6];
-TMP347[6].kind = 1;
-TMP347[6].offset = offsetof(ppuobj222012, Oamdata);
-TMP347[6].typ = (&NTI108);
-TMP347[6].name = "oamData";
-TMP432[6] = &TMP347[7];
-TMP347[7].kind = 1;
-TMP347[7].offset = offsetof(ppuobj222012, Oamdma);
-TMP347[7].typ = (&NTI108);
-TMP347[7].name = "oamDMA";
-TMP432[7] = &TMP347[8];
-TMP347[8].kind = 1;
-TMP347[8].offset = offsetof(ppuobj222012, Vramaddress);
-TMP347[8].typ = (&NTI108);
-TMP347[8].name = "vramAddress";
-TMP432[8] = &TMP347[9];
-TMP347[9].kind = 1;
-TMP347[9].offset = offsetof(ppuobj222012, Vramdata);
-TMP347[9].typ = (&NTI108);
-TMP347[9].name = "vramData";
-TMP432[9] = &TMP347[10];
-NTI222030.size = sizeof(TY222030*);
-NTI222030.kind = 24;
-NTI222030.base = (&NTI108);
-NTI222030.flags = 2;
-NTI222030.marker = TMP433;
-TMP347[10].kind = 1;
-TMP347[10].offset = offsetof(ppuobj222012, Spritememory);
-TMP347[10].typ = (&NTI222030);
-TMP347[10].name = "spriteMemory";
-TMP432[10] = &TMP347[11];
-TMP347[11].kind = 1;
-TMP347[11].offset = offsetof(ppuobj222012, Virtualmemory);
-TMP347[11].typ = (&NTI222030);
-TMP347[11].name = "virtualMemory";
-TMP432[11] = &TMP347[12];
-TMP347[12].kind = 1;
-TMP347[12].offset = offsetof(ppuobj222012, Scrollerwritecount);
-TMP347[12].typ = (&NTI108);
-TMP347[12].name = "scrollerWriteCount";
-TMP432[12] = &TMP347[13];
-TMP347[13].kind = 1;
-TMP347[13].offset = offsetof(ppuobj222012, Vramaddresswritecount);
-TMP347[13].typ = (&NTI108);
-TMP347[13].name = "vramAddressWriteCount";
-TMP432[13] = &TMP347[14];
-TMP347[14].kind = 1;
-TMP347[14].offset = offsetof(ppuobj222012, Scanline);
-TMP347[14].typ = (&NTI108);
-TMP347[14].name = "scanline";
-TMP347[0].len = 14; TMP347[0].kind = 2; TMP347[0].sons = &TMP432[0];
-NTI222012.node = &TMP347[0];
-NTI222016.size = sizeof(maskobj222016);
-NTI222016.kind = 17;
-NTI222016.base = (&NTI3211);
-NTI222016.flags = 1;
-TMP434[0] = &TMP347[16];
-TMP347[16].kind = 1;
-TMP347[16].offset = offsetof(maskobj222016, Grayscale);
-TMP347[16].typ = (&NTI108);
-TMP347[16].name = "grayscale";
-TMP434[1] = &TMP347[17];
-TMP347[17].kind = 1;
-TMP347[17].offset = offsetof(maskobj222016, Partialbackground);
-TMP347[17].typ = (&NTI108);
-TMP347[17].name = "partialBackground";
-TMP434[2] = &TMP347[18];
-TMP347[18].kind = 1;
-TMP347[18].offset = offsetof(maskobj222016, Partialsprites);
-TMP347[18].typ = (&NTI108);
-TMP347[18].name = "partialSprites";
-TMP434[3] = &TMP347[19];
-TMP347[19].kind = 1;
-TMP347[19].offset = offsetof(maskobj222016, Background);
-TMP347[19].typ = (&NTI108);
-TMP347[19].name = "background";
-TMP434[4] = &TMP347[20];
-TMP347[20].kind = 1;
-TMP347[20].offset = offsetof(maskobj222016, Sprites);
-TMP347[20].typ = (&NTI108);
-TMP347[20].name = "sprites";
-TMP434[5] = &TMP347[21];
-TMP347[21].kind = 1;
-TMP347[21].offset = offsetof(maskobj222016, Color);
-TMP347[21].typ = (&NTI108);
-TMP347[21].name = "color";
-TMP347[15].len = 6; TMP347[15].kind = 2; TMP347[15].sons = &TMP434[0];
-NTI222016.node = &TMP347[15];
-NTI222020.size = sizeof(ppumemoryobj222020);
-NTI222020.kind = 17;
-NTI222020.base = (&NTI3211);
-TMP347[22].kind = 1;
-TMP347[22].offset = offsetof(ppumemoryobj222020, Bank);
-TMP347[22].typ = (&NTI222030);
-TMP347[22].name = "bank";
-NTI222020.node = &TMP347[22];
-NTI222018.size = sizeof(scrollerobj222018);
-NTI222018.kind = 17;
-NTI222018.base = (&NTI3211);
-NTI222018.flags = 1;
-TMP435[0] = &TMP347[24];
-TMP347[24].kind = 1;
-TMP347[24].offset = offsetof(scrollerobj222018, Xcoordinate);
-TMP347[24].typ = (&NTI108);
-TMP347[24].name = "xCoordinate";
-TMP435[1] = &TMP347[25];
-TMP347[25].kind = 1;
-TMP347[25].offset = offsetof(scrollerobj222018, Ycoordinate);
-TMP347[25].typ = (&NTI108);
-TMP347[25].name = "yCoordinate";
-TMP347[23].len = 2; TMP347[23].kind = 2; TMP347[23].sons = &TMP435[0];
-NTI222018.node = &TMP347[23];
-NTI222014.size = sizeof(controllerobj222014);
-NTI222014.kind = 17;
-NTI222014.base = (&NTI3211);
-NTI222014.flags = 1;
-TMP436[0] = &TMP347[27];
-TMP347[27].kind = 1;
-TMP347[27].offset = offsetof(controllerobj222014, Generatenmi);
-TMP347[27].typ = (&NTI108);
-TMP347[27].name = "generateNMI";
-TMP436[1] = &TMP347[28];
-TMP347[28].kind = 1;
-TMP347[28].offset = offsetof(controllerobj222014, Masterslave);
-TMP347[28].typ = (&NTI108);
-TMP347[28].name = "masterSlave";
-TMP436[2] = &TMP347[29];
-TMP347[29].kind = 1;
-TMP347[29].offset = offsetof(controllerobj222014, Spritesize);
-TMP347[29].typ = (&NTI108);
-TMP347[29].name = "spriteSize";
-TMP436[3] = &TMP347[30];
-TMP347[30].kind = 1;
-TMP347[30].offset = offsetof(controllerobj222014, Bgaddress);
-TMP347[30].typ = (&NTI108);
-TMP347[30].name = "bgAddress";
-TMP436[4] = &TMP347[31];
-TMP347[31].kind = 1;
-TMP347[31].offset = offsetof(controllerobj222014, Spriteaddress);
-TMP347[31].typ = (&NTI108);
-TMP347[31].name = "spriteAddress";
-TMP436[5] = &TMP347[32];
-TMP347[32].kind = 1;
-TMP347[32].offset = offsetof(controllerobj222014, Vramincrement);
-TMP347[32].typ = (&NTI108);
-TMP347[32].name = "VRAMincrement";
-TMP436[6] = &TMP347[33];
-TMP347[33].kind = 1;
-TMP347[33].offset = offsetof(controllerobj222014, Nametableaddress);
-TMP347[33].typ = (&NTI108);
-TMP347[33].name = "nameTableAddress";
-TMP347[26].len = 7; TMP347[26].kind = 2; TMP347[26].sons = &TMP436[0];
-NTI222014.node = &TMP347[26];
+static TNimNode* TMP415[14];
+static TNimNode* TMP417[6];
+static TNimNode* TMP418[2];
+static TNimNode* TMP419[7];
+static TNimNode TMP330[34];
+NTI221012.size = sizeof(ppuobj221012);
+NTI221012.kind = 17;
+NTI221012.base = (&NTI3211);
+TMP415[0] = &TMP330[1];
+TMP330[1].kind = 1;
+TMP330[1].offset = offsetof(ppuobj221012, Unlocked);
+TMP330[1].typ = (&NTI138);
+TMP330[1].name = "unlocked";
+TMP415[1] = &TMP330[2];
+TMP330[2].kind = 1;
+TMP330[2].offset = offsetof(ppuobj221012, Controller);
+TMP330[2].typ = (&NTI108);
+TMP330[2].name = "controller";
+TMP415[2] = &TMP330[3];
+TMP330[3].kind = 1;
+TMP330[3].offset = offsetof(ppuobj221012, Mask);
+TMP330[3].typ = (&NTI108);
+TMP330[3].name = "mask";
+TMP415[3] = &TMP330[4];
+TMP330[4].kind = 1;
+TMP330[4].offset = offsetof(ppuobj221012, Status);
+TMP330[4].typ = (&NTI108);
+TMP330[4].name = "status";
+TMP415[4] = &TMP330[5];
+TMP330[5].kind = 1;
+TMP330[5].offset = offsetof(ppuobj221012, Oamaddress);
+TMP330[5].typ = (&NTI108);
+TMP330[5].name = "oamAddress";
+TMP415[5] = &TMP330[6];
+TMP330[6].kind = 1;
+TMP330[6].offset = offsetof(ppuobj221012, Oamdata);
+TMP330[6].typ = (&NTI108);
+TMP330[6].name = "oamData";
+TMP415[6] = &TMP330[7];
+TMP330[7].kind = 1;
+TMP330[7].offset = offsetof(ppuobj221012, Oamdma);
+TMP330[7].typ = (&NTI108);
+TMP330[7].name = "oamDMA";
+TMP415[7] = &TMP330[8];
+TMP330[8].kind = 1;
+TMP330[8].offset = offsetof(ppuobj221012, Vramaddress);
+TMP330[8].typ = (&NTI108);
+TMP330[8].name = "vramAddress";
+TMP415[8] = &TMP330[9];
+TMP330[9].kind = 1;
+TMP330[9].offset = offsetof(ppuobj221012, Vramdata);
+TMP330[9].typ = (&NTI108);
+TMP330[9].name = "vramData";
+TMP415[9] = &TMP330[10];
+NTI221030.size = sizeof(TY221030*);
+NTI221030.kind = 24;
+NTI221030.base = (&NTI108);
+NTI221030.flags = 2;
+NTI221030.marker = TMP416;
+TMP330[10].kind = 1;
+TMP330[10].offset = offsetof(ppuobj221012, Spritememory);
+TMP330[10].typ = (&NTI221030);
+TMP330[10].name = "spriteMemory";
+TMP415[10] = &TMP330[11];
+TMP330[11].kind = 1;
+TMP330[11].offset = offsetof(ppuobj221012, Virtualmemory);
+TMP330[11].typ = (&NTI221030);
+TMP330[11].name = "virtualMemory";
+TMP415[11] = &TMP330[12];
+TMP330[12].kind = 1;
+TMP330[12].offset = offsetof(ppuobj221012, Scrollerwritecount);
+TMP330[12].typ = (&NTI108);
+TMP330[12].name = "scrollerWriteCount";
+TMP415[12] = &TMP330[13];
+TMP330[13].kind = 1;
+TMP330[13].offset = offsetof(ppuobj221012, Vramaddresswritecount);
+TMP330[13].typ = (&NTI108);
+TMP330[13].name = "vramAddressWriteCount";
+TMP415[13] = &TMP330[14];
+TMP330[14].kind = 1;
+TMP330[14].offset = offsetof(ppuobj221012, Scanline);
+TMP330[14].typ = (&NTI108);
+TMP330[14].name = "scanline";
+TMP330[0].len = 14; TMP330[0].kind = 2; TMP330[0].sons = &TMP415[0];
+NTI221012.node = &TMP330[0];
+NTI221016.size = sizeof(maskobj221016);
+NTI221016.kind = 17;
+NTI221016.base = (&NTI3211);
+NTI221016.flags = 1;
+TMP417[0] = &TMP330[16];
+TMP330[16].kind = 1;
+TMP330[16].offset = offsetof(maskobj221016, Grayscale);
+TMP330[16].typ = (&NTI108);
+TMP330[16].name = "grayscale";
+TMP417[1] = &TMP330[17];
+TMP330[17].kind = 1;
+TMP330[17].offset = offsetof(maskobj221016, Partialbackground);
+TMP330[17].typ = (&NTI108);
+TMP330[17].name = "partialBackground";
+TMP417[2] = &TMP330[18];
+TMP330[18].kind = 1;
+TMP330[18].offset = offsetof(maskobj221016, Partialsprites);
+TMP330[18].typ = (&NTI108);
+TMP330[18].name = "partialSprites";
+TMP417[3] = &TMP330[19];
+TMP330[19].kind = 1;
+TMP330[19].offset = offsetof(maskobj221016, Background);
+TMP330[19].typ = (&NTI108);
+TMP330[19].name = "background";
+TMP417[4] = &TMP330[20];
+TMP330[20].kind = 1;
+TMP330[20].offset = offsetof(maskobj221016, Sprites);
+TMP330[20].typ = (&NTI108);
+TMP330[20].name = "sprites";
+TMP417[5] = &TMP330[21];
+TMP330[21].kind = 1;
+TMP330[21].offset = offsetof(maskobj221016, Color);
+TMP330[21].typ = (&NTI108);
+TMP330[21].name = "color";
+TMP330[15].len = 6; TMP330[15].kind = 2; TMP330[15].sons = &TMP417[0];
+NTI221016.node = &TMP330[15];
+NTI221020.size = sizeof(ppumemoryobj221020);
+NTI221020.kind = 17;
+NTI221020.base = (&NTI3211);
+TMP330[22].kind = 1;
+TMP330[22].offset = offsetof(ppumemoryobj221020, Bank);
+TMP330[22].typ = (&NTI221030);
+TMP330[22].name = "bank";
+NTI221020.node = &TMP330[22];
+NTI221018.size = sizeof(scrollerobj221018);
+NTI221018.kind = 17;
+NTI221018.base = (&NTI3211);
+NTI221018.flags = 1;
+TMP418[0] = &TMP330[24];
+TMP330[24].kind = 1;
+TMP330[24].offset = offsetof(scrollerobj221018, Xcoordinate);
+TMP330[24].typ = (&NTI108);
+TMP330[24].name = "xCoordinate";
+TMP418[1] = &TMP330[25];
+TMP330[25].kind = 1;
+TMP330[25].offset = offsetof(scrollerobj221018, Ycoordinate);
+TMP330[25].typ = (&NTI108);
+TMP330[25].name = "yCoordinate";
+TMP330[23].len = 2; TMP330[23].kind = 2; TMP330[23].sons = &TMP418[0];
+NTI221018.node = &TMP330[23];
+NTI221014.size = sizeof(controllerobj221014);
+NTI221014.kind = 17;
+NTI221014.base = (&NTI3211);
+NTI221014.flags = 1;
+TMP419[0] = &TMP330[27];
+TMP330[27].kind = 1;
+TMP330[27].offset = offsetof(controllerobj221014, Generatenmi);
+TMP330[27].typ = (&NTI108);
+TMP330[27].name = "generateNMI";
+TMP419[1] = &TMP330[28];
+TMP330[28].kind = 1;
+TMP330[28].offset = offsetof(controllerobj221014, Masterslave);
+TMP330[28].typ = (&NTI108);
+TMP330[28].name = "masterSlave";
+TMP419[2] = &TMP330[29];
+TMP330[29].kind = 1;
+TMP330[29].offset = offsetof(controllerobj221014, Spritesize);
+TMP330[29].typ = (&NTI108);
+TMP330[29].name = "spriteSize";
+TMP419[3] = &TMP330[30];
+TMP330[30].kind = 1;
+TMP330[30].offset = offsetof(controllerobj221014, Bgaddress);
+TMP330[30].typ = (&NTI108);
+TMP330[30].name = "bgAddress";
+TMP419[4] = &TMP330[31];
+TMP330[31].kind = 1;
+TMP330[31].offset = offsetof(controllerobj221014, Spriteaddress);
+TMP330[31].typ = (&NTI108);
+TMP330[31].name = "spriteAddress";
+TMP419[5] = &TMP330[32];
+TMP330[32].kind = 1;
+TMP330[32].offset = offsetof(controllerobj221014, Vramincrement);
+TMP330[32].typ = (&NTI108);
+TMP330[32].name = "VRAMincrement";
+TMP419[6] = &TMP330[33];
+TMP330[33].kind = 1;
+TMP330[33].offset = offsetof(controllerobj221014, Nametableaddress);
+TMP330[33].typ = (&NTI108);
+TMP330[33].name = "nameTableAddress";
+TMP330[26].len = 7; TMP330[26].kind = 2; TMP330[26].sons = &TMP419[0];
+NTI221014.node = &TMP330[26];
 }
 

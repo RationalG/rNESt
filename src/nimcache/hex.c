@@ -225,9 +225,6 @@ static N_INLINE(NI, divInt)(NI a, NI b);
 N_NOINLINE(void, raiseDivByZero)(void);
 static N_INLINE(NI, chckRange)(NI i, NI a, NI b);
 N_NOINLINE(void, raiseRangeError)(NI64 val);
-N_NIMCALL(NimStringDesc*, seqtostring_131281)(TY131128* seq);
-N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
-N_NIMCALL(void, failedassertimpl_86825)(NimStringDesc* msg);
 NIM_CONST TY131074 bytemap_131073 = {48,
 49,
 50,
@@ -246,13 +243,6 @@ NIM_CONST TY131074 bytemap_131073 = {48,
 102}
 ;
 STRING_LITERAL(TMP291, "Hex string character out of range for valid hex char", 52);
-STRING_LITERAL(TMP301, "", 0);
-STRING_LITERAL(TMP302, "(system.len|system.len|system.len|system.len|system.len|system."
-"len|...)(a) (system.==|system.==|system.==|system.==|system.==|s"
-"ystem.==|system.==|system.==|system.==|system.==|system.==|syste"
-"m.==|system.==|system.==|system.==|system.==|system.==|system.=="
-"|system.==|system.==|...)\015\012    L seq modified while iterating ov"
-"er it", 324);
 extern TFrame* frameptr_16242;
 extern TSafePoint* exchandler_16243;
 extern TNimType NTI3249; /* ValueError */
@@ -744,58 +734,6 @@ N_NIMCALL(NimStringDesc*, decode_131214)(NimStringDesc* str) {
 	BeforeRet: ;
 	popFrame();
 	return result;
-}
-
-N_NIMCALL(NimStringDesc*, seqtostring_131281)(TY131128* seq) {
-	NimStringDesc* result_131285;
-	NimStringDesc* result;
-	nimfr("seqToString", "hex.nim")
-	result_131285 = 0;
-	nimln(42, "hex.nim");
-	result = copyString(((NimStringDesc*) &TMP301));
-	{
-		NIM_CHAR i_131422;
-		NI i_131426;
-		NI l_131428;
-		i_131422 = 0;
-		nimln(2986, "system.nim");
-		i_131426 = 0;
-		nimln(2987, "system.nim");
-		nimln(2987, "system.nim");
-		l_131428 = seq->Sup.len;
-		{
-			nimln(2988, "system.nim");
-			while (1) {
-				nimln(2988, "system.nim");
-				if (!(i_131426 < l_131428)) goto LA3;
-				nimln(2989, "system.nim");
-				if ((NU)(i_131426) >= (NU)(seq->Sup.len)) raiseIndexError();
-				i_131422 = seq->data[i_131426];
-				nimln(44, "hex.nim");
-				result = addChar(result, i_131422);
-				nimln(2990, "system.nim");
-				i_131426 = addInt(i_131426, 1);
-				nimln(2991, "system.nim");
-				{
-					nimln(2991, "system.nim");
-					nimln(2991, "system.nim");
-					nimln(2991, "system.nim");
-					if (!!((seq->Sup.len == l_131428))) goto LA6;
-					nimln(2991, "system.nim");
-					failedassertimpl_86825(((NimStringDesc*) &TMP302));
-				}
-				LA6: ;
-			} LA3: ;
-		}
-	}
-	nimln(45, "hex.nim");
-	nimln(45, "hex.nim");
-	nimln(45, "hex.nim");
-	result_131285 = copyString(result);
-	goto BeforeRet;
-	BeforeRet: ;
-	popFrame();
-	return result_131285;
 }
 NIM_EXTERNC N_NOINLINE(void, HEX00_hexInit)(void) {
 	nimfr("hex", "hex.nim")
