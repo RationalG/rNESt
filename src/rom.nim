@@ -23,6 +23,12 @@ type
 
 var nes_rom* : ROMObj
 
+proc seqToString(seq: seq[char]): string =
+    var result = ""
+    for i in seq :
+        result.add(i)
+    return $(result)
+
 proc loadINes*(romFile: File): ROMObj =  
     var r : ROMObj
     var h : HeaderObj
