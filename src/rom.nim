@@ -13,7 +13,7 @@ type
         header: array[HEADER_SIZE, char]     
         prgBytes*: seq[char]
         chrBytes*: seq[char]
-    HEADERObj* = object of RootObj
+    HeaderObj* = object of RootObj
         signature: string
         prgSize: int
         chrSize: int
@@ -25,7 +25,7 @@ var nes_rom* : ROMObj
 
 proc loadINes*(romFile: File): ROMObj =  
     var r : ROMObj
-    var h : HEADERObj
+    var h : HeaderObj
 
     discard readBuffer(romFile, addr(r.header), HEADER_SIZE)
 

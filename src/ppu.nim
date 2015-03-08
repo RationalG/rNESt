@@ -1,15 +1,22 @@
 import strutils
+import debug, rom, mem
+
+const
+    VBLANK_START = 241
+    VBLANK_END = 262
 
 type
     PPUObj* = object of RootObj
+        unlocked: bool
         controller, mask, status: int
-        oamAddress, oamData: int
+        oamAddress, oamData, oamDMA: int
         vramAddress, vramData: int
         spriteMemory, virtualMemory: seq[int]
         scrollerWriteCount, vramAddressWriteCount: int
+        scanline: int
 
     ControllerObj* = object of RootObj
-        generateNMI, masterSlave, spriteSize, backgroundAddress: int
+        generateNMI, masterSlave, spriteSize, bgAddress: int
         spriteAddress, VRAMincrement, nameTableAddress: int
 
     MaskObj* = object of RootObj
@@ -28,8 +35,7 @@ var ppuMemory : PPUMemoryObj
 var ppuScroller : ScrollerObj
 var ppuController : ControllerObj
 
-import mem
-
+# update controllers flags from memory content
 proc updateController*(value: int): void =
     if value != nesPpu.controller: 
         nesPpu.controller = value
@@ -37,11 +43,13 @@ proc updateController*(value: int): void =
     ppuController.nameTableAddress = nesPpu.controller and 3
     ppuController.VRAMincrement = (nesPpu.controller shr 2) and 1
     ppuController.spriteAddress = (nesPpu.controller shr 3) and 1
-    ppuController.backgroundAddress = (nesPpu.controller shr 4) and 1
+    ppuController.bgAddress = (nesPpu.controller shr 4) and 1
     ppuController.spriteSize = (nesPpu.controller shr 5) and 1
     ppuController.masterSlave = (nesPpu.controller shr 6) and 1
     ppuController.generateNMI = (nesPpu.controller shr 7) and 1
+    debug(ppuController)
 
+# update mask flags from memory content
 proc updateMask*(value: int): void =
     if value != nesPpu.mask: 
         nesPpu.mask = value
@@ -53,6 +61,8 @@ proc updateMask*(value: int): void =
     ppuMask.sprites = (nesPpu.mask shr 4) and 1
     ppuMask.color = (nesPpu.mask shr 5) and 7
 
+# return status register to memory as a result for
+# the cpu
 proc readStatus*(): int =
     result = nesPpu.status
     # switch V-blank off
@@ -61,7 +71,7 @@ proc readStatus*(): int =
     ppuScroller.xCoordinate = 0
     ppuScroller.yCoordinate = 0
     nesPpu.vramAddress = 0
-
+ 
 proc writeSRAMAddress*(value: int): void =
     nesPpu.oamAddress = value
 
@@ -95,6 +105,7 @@ proc transmitToRegister*(address, value: int): void =
         of 0x2003: nesPpu.oamAddress = value
         of 0x2004: nesPpu.oamData = value
         of 0x2006: nesPpu.vramData = value
+        of 0x4014: nesPpu.oamDMA = value
         else: echo "Invalid address (transmit)"
 
 proc updateRegisters*(address, value: int): void =
@@ -108,7 +119,41 @@ proc updateRegisters*(address, value: int): void =
         #of 0x2007: loadVRAM(cpuMemory.bank)
         else: echo "Invalid address (update)"
 
+proc renderBackground(): void = 
+    echo "draw bg"
+
+proc renderSprites(): void = 
+    echo "draw sprites"
+
+proc isEnabledBackground(): bool = 
+    result = false
+    if ppuMask.background == 1:
+        result = true
+
+proc isEnabledSprites(): bool =
+    result = false
+    if ppuMask.sprites == 1:
+        result = true
+
+proc setChr(chr: pointer): void =
+    var temporaryBank = newSeq[char](0x2000)
+    copyMem(addr(temporaryBank[0x0000]), chr, 0x2000)
+    for i, value in temporaryBank:
+        ppuMemory.bank[i] = cast[int](value)
+
 proc initPpu*(): void =
     # initialize sections of memory
     ppuMemory.bank = newSeq[int](0x4000)
     nesPpu.spriteMemory = newSeq[int](0x100)
+    # load chr in PPU memory
+    setChr(addr(nesRom.chrBytes[0]))
+
+proc update*(): void =
+    nesPpu.scanline += 1
+
+    if isEnabledBackground():
+        renderBackground()
+
+    if isEnabledSprites():
+        renderSprites()
+
