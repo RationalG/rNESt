@@ -5,37 +5,33 @@ const
     SCANLINES_PER_FRAME = 262
     CYCLES_PER_SCANLINE = 1364
     NTSC_DIVISOR = 12
-
+    
 var cycles : int
 
+# take charge of rom & its data before it gets transfered
+# into NES memory
 proc initRom(): void =
     var romFile : File
-    #assuming we haven't any file error
     assert open(romFile, paramStr(1))  
-    #nesRom is imported from rom.nim
     nesRom = loadINes(romFile) 
 
+# execution loop
 proc run() =
     while true:
-        # 262 scanlines per frame
         var scanlines = SCANLINES_PER_FRAME
-        # run CPU & PPU
         while scanlines > 0:
             #screen.update()
             cpu.update(CYCLES_PER_SCANLINE, NTSC_DIVISOR)
             ppu.update()  
             scanlines -= 1
-            
 
+# initialize all NES components & SDL screen
 proc main() = 
-    # initialize SDL
     #initScreen()
-    # initialize NES components
     initRom()
     initPpu()
     initMem()
     initCpu()
-    # run the NES program
     run()
 
 main()

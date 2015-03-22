@@ -1,6 +1,4 @@
 import ppu, debug, rom
-# cpu writes to ppu through mmio bus
-# ppu posesses eight 8-bits registers 
     
 type
     CPUMemoryRef* = ref CpuMemoryObj
@@ -10,9 +8,15 @@ type
 var cpuMemory* : CPUMemoryRef
 
 # load the NES program into memory
-proc setProgram*(program: pointer): void =
+# if program's size fits in only one PRG page, we must copy
+# it twice so it can fit the entire PRG region in NES memory
+proc setProgram*(program: pointer, size: int): void =
     var temporaryBank = newSeq[char](0x10000)
-    copyMem(addr(temporaryBank[0x8000]), program, 0x8000)
+    if size < 0x8000 :
+        copyMem(addr(temporaryBank[0x8000]), program, 0x4000)
+        copyMem(addr(temporaryBank[0xC000]), program, 0x4000)
+    else:
+        copyMem(addr(temporaryBank[0x8000]), program, 0x8000)
     for i, value in temporaryBank:
         cpuMemory.bank[i] = cast[int](value)
 
@@ -27,7 +31,7 @@ proc reflectValue(address, value: int): void =
 proc reflectBitwise*(address, bitId: int): void =
     var bit = cpuMemory.bank[address] and (1 shl bitId)
     if bit == 0 :
-        cpuMemory.bank[address] = (cpuMemory.bank[address] or 1) shl bitId        
+        cpuMemory.bank[address] = cpuMemory.bank[address] or (1 shl bitId)   
     else :
         cpuMemory.bank[address] = cpuMemory.bank[address] and not (1 shl bitId)
     ppu.transmitToRegister(address, cpuMemory.bank[address])
@@ -56,22 +60,22 @@ proc mmioRead*(address: int): int =
             echo "Invalid address"
             return 0
 
+# return the next 16-bit address after the
+# current instruction
 proc getMemoryShortAt*(address: int): int =
     var lowByte = cpuMemory.bank[address]
     var highByte = cpuMemory.bank[address + 1] shl 8
     return highByte or lowByte
 
+# out of emulation context
 proc getMemoryAddressAt*(address: int): pointer =
     return addr(cpuMemory.bank[address])
-
-proc checkFromDebug*(address: int): int =
-    return cpuMemory.bank[address]
 
 proc initMem*(): void = 
     new(cpuMemory)
     # 65536 bytes in total
     cpuMemory.bank = newSeq[int](0x10000)
     # load program in NES memory
-    setProgram(addr(nesRom.prgBytes[0]))
+    setProgram(addr(nesRom.prgBytes[0]), len(nesRom.prgBytes))
     # manual vblank switch
     reflectBitwise(0x2002, 7)

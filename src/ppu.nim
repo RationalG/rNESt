@@ -29,11 +29,18 @@ type
     PPUMemoryObj* = object of RootObj
         bank: seq[int]
 
+    PixelObj* = object of RootObj
+        x, y: int
+        r, g, b: int
+
 var nesPpu* : PPUObj
 var ppuMask : MaskObj
 var ppuMemory : PPUMemoryObj
 var ppuScroller : ScrollerObj
 var ppuController : ControllerObj
+
+# rendering
+var pixelBuffer : seq[PixelObj]
 
 # update controllers flags from memory content
 proc updateController*(value: int): void =
@@ -147,6 +154,8 @@ proc initPpu*(): void =
     nesPpu.spriteMemory = newSeq[int](0x100)
     # load chr in PPU memory
     setChr(addr(nesRom.chrBytes[0]))
+    # allocate buffer
+    pixelBuffer = newSeq[PixelObj](256*240)
 
 proc update*(): void =
     nesPpu.scanline += 1

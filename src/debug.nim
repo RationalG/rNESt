@@ -1,8 +1,10 @@
 import terminal, strutils, typetraits, typeinfo
 
+# print opcode & addressing mode of the current instruction
 proc emitOutput*(message: string): void =
     echo message & "\n"
 
+# allow step-by-step execution
 proc pause(): void = 
     var step = false
     while step == false:
@@ -19,7 +21,7 @@ proc debug*[CPUObj](cpu: CPUObj, opcode: string, mode: string): void =
     var res = "\t--CPU--" 
     for name, value in cpu.fieldPairs:
         when value is int:
-          res.add("\n\t" & name & " value is : " & $value)
+          res.add("\n\t" & name & " value is : " & value.toHex(4))
     echo res
 
     pause()
