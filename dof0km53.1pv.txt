@@ -1,0 +1,97 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	src/nes.exe
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 3 and 20 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	deleted:    roms/mario_bros/mario.asm
+#	deleted:    roms/mario_bros/mario.nes
+#	deleted:    roms/nestest/nestest.nes
+#	deleted:    roms/super_mario_bros/smb.asm
+#	deleted:    roms/super_mario_bros/smb.chr
+#	deleted:    roms/super_mario_bros/smb.nes
+#	deleted:    roms/super_mario_bros/smb.nes.deb
+#	deleted:    roms/super_mario_bros/smb.prg
+#	deleted:    roms/super_mario_bros/smb_dis.asm
+#	deleted:    src/SDL.dll
+#	deleted:    src/SDL_gfx.dll
+#	deleted:    src/SDL_ttf.dll
+#	modified:   src/cpu.nim
+#	modified:   src/debug.nim
+#	deleted:    src/libfreetype-6.dll
+#	modified:   src/mem.nim
+#	deleted:    src/nes.exe
+#	modified:   src/nes.nim
+#	deleted:    src/nimcache/cpu.c
+#	deleted:    src/nimcache/cpu.o
+#	deleted:    src/nimcache/debug.c
+#	deleted:    src/nimcache/debug.o
+#	deleted:    src/nimcache/hex.c
+#	deleted:    src/nimcache/hex.o
+#	deleted:    src/nimcache/mem.c
+#	deleted:    src/nimcache/mem.o
+#	deleted:    src/nimcache/nes.c
+#	deleted:    src/nimcache/nes.o
+#	deleted:    src/nimcache/ppu.c
+#	deleted:    src/nimcache/ppu.o
+#	deleted:    src/nimcache/rom.c
+#	deleted:    src/nimcache/rom.o
+#	deleted:    src/nimcache/screen.c
+#	deleted:    src/nimcache/screen.o
+#	deleted:    src/nimcache/stdlib_colors.c
+#	deleted:    src/nimcache/stdlib_colors.o
+#	deleted:    src/nimcache/stdlib_hashes.c
+#	deleted:    src/nimcache/stdlib_hashes.o
+#	deleted:    src/nimcache/stdlib_macros.c
+#	deleted:    src/nimcache/stdlib_macros.o
+#	deleted:    src/nimcache/stdlib_math.c
+#	deleted:    src/nimcache/stdlib_math.o
+#	deleted:    src/nimcache/stdlib_os.c
+#	deleted:    src/nimcache/stdlib_os.o
+#	deleted:    src/nimcache/stdlib_parseutils.c
+#	deleted:    src/nimcache/stdlib_parseutils.o
+#	deleted:    src/nimcache/stdlib_queues.c
+#	deleted:    src/nimcache/stdlib_queues.o
+#	deleted:    src/nimcache/stdlib_sdl.c
+#	deleted:    src/nimcache/stdlib_sdl.o
+#	deleted:    src/nimcache/stdlib_streams.c
+#	deleted:    src/nimcache/stdlib_streams.o
+#	deleted:    src/nimcache/stdlib_strutils.c
+#	deleted:    src/nimcache/stdlib_strutils.o
+#	deleted:    src/nimcache/stdlib_system.c
+#	deleted:    src/nimcache/stdlib_system.o
+#	deleted:    src/nimcache/stdlib_tables.c
+#	deleted:    src/nimcache/stdlib_tables.o
+#	deleted:    src/nimcache/stdlib_terminal.c
+#	deleted:    src/nimcache/stdlib_terminal.o
+#	deleted:    src/nimcache/stdlib_times.c
+#	deleted:    src/nimcache/stdlib_times.o
+#	deleted:    src/nimcache/stdlib_typeinfo.c
+#	deleted:    src/nimcache/stdlib_typeinfo.o
+#	deleted:    src/nimcache/stdlib_typetraits.c
+#	deleted:    src/nimcache/stdlib_typetraits.o
+#	deleted:    src/nimcache/stdlib_unsigned.c
+#	deleted:    src/nimcache/stdlib_unsigned.o
+#	deleted:    src/nimcache/stdlib_windows.c
+#	deleted:    src/nimcache/stdlib_windows.o
+#	deleted:    src/nimcache/stdlib_winlean.c
+#	deleted:    src/nimcache/stdlib_winlean.o
+#	modified:   src/ppu.nim
+#	deleted:    src/zlib1.dll
+#
+
