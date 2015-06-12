@@ -1,4 +1,4 @@
-import ppu, debug, rom
+import ppu, rom
     
 type
     CPUMemoryRef* = ref CpuMemoryObj
@@ -28,11 +28,10 @@ proc reflectValue(address, value: int): void =
 # allows an illegal write to 0x2002 which is a read-only memory location
 # this proc is intended to apply bitwise operation on ppu registers outside
 # the context of a NES program
-proc reflectBitwise*(address, bitId: int): void =
-    var bit = cpuMemory.bank[address] and (1 shl bitId)
-    if bit == 0 :
+proc reflectBitwise*(address, bitId: int, onSet: bool): void =
+    if onSet:
         cpuMemory.bank[address] = cpuMemory.bank[address] or (1 shl bitId)   
-    else :
+    else:
         cpuMemory.bank[address] = cpuMemory.bank[address] and not (1 shl bitId)
     ppu.transmitToRegister(address, cpuMemory.bank[address])
 
@@ -71,6 +70,9 @@ proc getMemoryShortAt*(address: int): int =
 proc getMemoryAddressAt*(address: int): pointer =
     return addr(cpuMemory.bank[address])
 
+proc getNmiSignal*(): int =
+    result = echoSignal()
+
 proc initMem*(): void = 
     new(cpuMemory)
     # 65536 bytes in total
@@ -78,4 +80,4 @@ proc initMem*(): void =
     # load program in NES memory
     setProgram(addr(nesRom.prgBytes[0]), len(nesRom.prgBytes))
     # manual vblank switch
-    reflectBitwise(0x2002, 7)
+    reflectBitwise(0x2002, 7, true)

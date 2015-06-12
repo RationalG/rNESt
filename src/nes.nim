@@ -1,5 +1,5 @@
 import os, streams, strutils, parseutils, macros
-import rom, cpu, ppu, mem, screen
+import rom, cpu, ppu, mem
 
 const
     SCANLINES_PER_FRAME = 262

@@ -3,92 +3,106 @@ import mem, debug
 
 type
     CPUObj* = object of RootObj
-        a, x, y, s, pc: int
-        i, z, c, b, d, n, v : int
-        opcodeCycles : int
+        a, x, y, s, pc, ps: int      
+        procCycles, signal : int
         addrAcc, addrImm : bool
 
 const
+    NMI_SIGNAL = 0x0A04
+    IRQ_SIGNAL = 0x0A05
     VECTOR_NMI = 0xFFFA
     VECTOR_IRQ = 0xFFFE
-    VECTOR_RESET = 0xFFFC
+    VECTOR_RST = 0xFFFC
     DEBUGGER_ENABLED = true
 
 var nesCpu* : CPUObj
-
-proc interruptNMI(): void =
-  nesCpu.pc = getMemoryShortAt(VECTOR_NMI)
-
-proc interruptIRQ(): void =
-  nesCpu.pc = getMemoryShortAt(VECTOR_IRQ)
-
-proc interruptReset(): void =
-  nesCpu.pc = getMemoryShortAt(VECTOR_RESET)
 
 proc pushOnStackRegister(value: int): void =
     mmioWrite(nesCpu.s, value)
     nesCpu.s -= 1
 
 proc pullFromStackRegister(): int =
-    result = mmioRead(nesCpu.s)
-    mmioWrite(nesCpu.s, 0)
+    result = mmioRead(nesCpu.s + 1)
+    mmioWrite(nesCpu.s + 1, 0)
     nesCpu.s += 1
+
+proc storeReturnAddress(address: int, minus = 0): void =
+    var lowByte = (address) and 0xFF
+    var highByte = (address) shr 8
+    pushOnStackRegister(lowByte - minus)
+    pushOnStackRegister(highByte)
+
+proc interruptNMI(): void =
+    storeReturnAddress(nesCpu.pc)
+    nesCpu.pc = getMemoryShortAt(VECTOR_NMI)
+
+proc interruptIRQ(): void =
+    storeReturnAddress(nesCpu.pc)
+    nesCpu.pc = getMemoryShortAt(VECTOR_IRQ)
+
+proc interruptReset(): void =
+    nesCpu.pc = getMemoryShortAt(VECTOR_RST)
+
+proc handleSignal(signal: int): void =
+    case signal:
+        of NMI_SIGNAL: 
+            interruptNMI()
+        of IRQ_SIGNAL: 
+            interruptIRQ()
+        else: 
+            return
 
 proc evaluateZero(value: int): void =
     if value == 0:
-        nesCpu.z = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 1)
     else:
-        nesCpu.z = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 1)
 
 proc evaluateNegative(value: int): void = 
     if (value and 0x80) == 0x80:
-        nesCpu.n = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 7)
     else:
-        nesCpu.n = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 7)
 
 proc evaluateCarry(value: int): void =
     if (value and 0x100) == 0x80:
-        nesCpu.c = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 0)
     else:
-        nesCpu.c = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 0)
 
 proc evaluateOverflow(regValue, memValue, sum: int): void =
     if ((not(regValue xor memValue)) and (nesCpu.a xor sum) and 0x80) == 0x80:
-        nesCpu.v = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 6)
     else:
-        nesCpu.v = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 7)
+
 
 proc opBrk(vByte: int): void =
-    var lowByte = (nesCpu.pc - 1) and 0xFF
-    var highByte = (nesCpu.pc - 1) shl 8
-    pushOnStackRegister(lowByte)
-    pushOnStackRegister(highByte)
-    var status = nesCpu.c + nesCpu.z + nesCpu.i +
-        nesCpu.d + nesCpu.v + nesCpu.n + nesCpu.b
-    pushOnStackRegister(status)
-    nesCpu.b = 1
+    storeReturnAddress(nesCpu.pc - 1)
+    pushOnStackRegister(nesCpu.ps)
+    nesCpu.ps = nesCpu.ps or (1 shl 4)
     nesCpu.pc = getMemoryShortAt(VECTOR_IRQ)
 
 proc opSec(vByte: int): void =
-    nesCpu.c = 1
+    nesCpu.ps = nesCpu.ps or (1 shl 0)
 
 proc opSed(vByte: int): void =
-    nesCpu.d = 1
+    nesCpu.ps = nesCpu.ps or (1 shl 3)
 
 proc opCld(vByte: int): void =
-    nesCpu.d = 0
+    nesCpu.ps = nesCpu.ps and not (1 shl 3)
 
 proc opSei(vByte: int): void =
-    nesCpu.i = 1
+    nesCpu.ps = nesCpu.ps or (1 shl 2)
 
 proc opCli(vByte: int): void =
-    nesCpu.i = 0
+    nesCpu.ps = nesCpu.ps and not (1 shl 2)
 
 proc opClc(vByte: int): void =
-    nesCpu.c = 0
+    nesCpu.ps = nesCpu.ps and not (1 shl 0)
 
 proc opClv(vByte: int): void =
-    nesCpu.v = 0
+    nesCpu.ps = nesCpu.ps and not (1 shl 6)
 
 proc opNop(vByte: int): void =
     return
@@ -168,68 +182,73 @@ proc opDey(vByte: int): void =
 
 proc opBcc(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.c == 0:
+    var bitValue = (nesCpu.ps shr 0) and 1
+    if bitValue == 0:
         nesCpu.pc += unsigned
 
 proc opBcs(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.c != 0:
+    var bitValue = (nesCpu.ps shr 0) and 1
+    if bitValue != 0:
         nesCpu.pc += unsigned
 
 proc opBeq(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.z != 0:
+    var bitValue = (nesCpu.ps shr 1) and 1
+    if bitValue != 0:
         nesCpu.pc += unsigned
 
 proc opBmi(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.n != 0:
+    var bitValue = (nesCpu.ps shr 7) and 1
+    if bitValue != 0:
         nesCpu.pc += unsigned
 
 proc opBne(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.z == 0:
+    var bitValue = (nesCpu.ps shr 1) and 1
+    if bitValue == 0:
         nesCpu.pc += unsigned
 
 proc opBpl(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.n == 0:
+    var bitValue = (nesCpu.ps shr 7) and 1
+    if bitValue == 0:
         nesCpu.pc += unsigned    
 
 proc opBvc(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.v == 0:
+    var bitValue = (nesCpu.ps shr 6) and 1
+    if bitValue == 0:
         nesCpu.pc += unsigned
 
 proc opBvs(vByte: int): void =
     var unsigned : int8 = cast[int8](vByte)
-    if nesCpu.v != 0:
+    var bitValue = (nesCpu.ps shr 6) and 1
+    if bitValue != 0:
         nesCpu.pc += unsigned
 
 proc opJmp(vByte: int): void =
     nes_cpu.pc = vByte
 
 proc opJsr(vByte: int): void =
-    var lowByte = (nesCpu.pc - 1) and 0xFF
-    var highByte = (nesCpu.pc - 1) shl 8
-    pushOnStackRegister(lowByte)
-    pushOnStackRegister(highByte)
+    storeReturnAddress(nesCpu.pc - 1, 1)
     nesCpu.pc = vByte
 
 proc opCpx(vByte: int): void =
     if nesCpu.x >= vByte:
-        nesCpu.c = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 1)
     else: 
-        nesCpu.c = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 1)
 
     evaluateZero(nesCpu.x)
     evaluateNegative(nesCpu.x)
 
 proc opCpy(vByte: int): void =
     if nesCpu.y >= vByte:
-        nesCpu.c = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 1)
     else: 
-        nesCpu.c = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 1)
 
     evaluateZero(nesCpu.y)
     evaluateNegative(nesCpu.y)
@@ -241,9 +260,9 @@ proc opTya(vByte: int): void =
 
 proc opCmp(vByte: int): void =
     if nesCpu.a >= vByte:
-        nesCpu.c = 1
+        nesCpu.ps = nesCpu.ps or (1 shl 1)
     else: 
-        nesCpu.c = 0
+        nesCpu.ps = nesCpu.ps and not (1 shl 1)
 
     evaluateZero(nesCpu.a)
     evaluateNegative(nesCpu.a)
@@ -252,36 +271,27 @@ proc opPha(vByte: int): void =
     pushOnStackRegister(nesCpu.a)
 
 proc opPhp(vByte: int): void =
-    var status = nesCpu.c + nesCpu.z + nesCpu.i +
-        nesCpu.d + nesCpu.v + nesCpu.n + nesCpu.b
-    pushOnStackRegister(status)
+    pushOnStackRegister(nesCpu.ps)
 
 proc opPla(vByte: int): void =
-    nesCpu.a = pullFromStackRegister()
+    nesCpu.a = pullFromStackRegister().toU8
     evaluateZero(nesCpu.a)
     evaluateNegative(nesCpu.a)
 
 proc opPlp(vByte: int): void =
-    var value = mmioRead(nesCpu.s)
-    nesCpu.c = value and 1
-    nesCpu.z = (value shr 1) and 1
-    nesCpu.i = (value shr 2) and 1
-    nesCpu.d = (value shr 3) and 1
-    nesCpu.v = (value shr 6) and 1
-    nesCpu.n = (value shr 7) and 1
-
+    nesCpu.ps = mmioRead(nesCpu.s)
+    
 proc opRti(vByte: int): void =
-    var value = pullFromStackRegister()
-    nesCpu.c = value and 1
-    nesCpu.z = (value shr 1) and 1
-    nesCpu.i = (value shr 2) and 1
-    nesCpu.d = (value shr 3) and 1
-    nesCpu.v = (value shr 6) and 1
-    nesCpu.n = (value shr 7) and 1
-    nesCpu.pc = pullFromStackRegister()
+    nesCpu.ps = pullFromStackRegister()
+    var highByte = pullFromStackRegister()
+    var lowByte = pullFromStackRegister() - 1
+    nesCpu.pc = (highByte shl 8) or lowByte
 
 proc opRts(vByte: int): void =
-    nesCpu.pc = pullFromStackRegister() - 1
+    var highByte = pullFromStackRegister()
+    var lowByte = pullFromStackRegister() - 1
+    nesCpu.pc = (highByte shl 8) or lowByte
+    nesCpu.pc += 3
 
 proc opInc(vByte: int): void =
     var value = mmioRead(vByte) + 1
@@ -303,20 +313,24 @@ proc opBit(vByte: int): void =
     var value = mmioRead(vByte)
     var mask = nesCpu.a and value
     evaluateZero(mask)
-    nesCpu.v = (value shr 6) and 1
-    nesCpu.n = (value shr 7) and 1
+    var nBit = (value shr 6) and 1
+    var oBit = (value shr 7) and 1
+    nesCpu.ps = nesCpu.ps xor (-nBit xor nesCpu.ps) and (1 shl 6)
+    nesCpu.ps = nesCpu.ps xor (-oBit xor nesCpu.ps) and (1 shl 7)
 
 proc opAsl(vByte: int): void =
     var flagTrigger : int
 
     if nesCpu.addrAcc:
-        nesCpu.c = (nesCpu.a shr 7) and 1
+        var carry = (nesCpu.a shr 7) and 1
+        nesCpu.ps = nesCpu.ps xor (-carry xor nesCpu.ps) and (1 shl 0)
         nesCpu.a = nesCpu.a shl 1
         nesCpu.a = nesCpu.a or (1 shl 0)
         flagTrigger = nesCpu.a
     else:
         var value = mmioRead(vByte)
-        nesCpu.c = (value shr 7) and 1
+        var carry = (value shr 7) and 1
+        nesCpu.ps = nesCpu.ps xor (-carry xor nesCpu.ps) and (1 shl 0)
         value = value shl 1
         value = value or (1 shl 0)
         flagTrigger = value
@@ -344,7 +358,8 @@ proc opAnd(vByte: int): void =
 
 proc opSbc(vByte: int): void =
     var value = mmioRead(vByte)
-    var temp = nesCpu.a - value - (1 - nesCpu.c)
+    var carry = (nesCpu.ps shr 0) and 1
+    var temp = nesCpu.a - value - (1 - carry)
     evaluateCarry(temp)
     evaluateOverflow(nesCpu.a, value, temp)
     nesCpu.a = temp and 0xFF   
@@ -353,7 +368,8 @@ proc opSbc(vByte: int): void =
 
 proc opAdc(vByte: int): void =
     var value = mmioRead(vByte)
-    var temp = nesCpu.a + value + nesCpu.c
+    var carry = (nesCpu.ps shr 0) and 1
+    var temp = nesCpu.a + value + carry
     evaluateCarry(temp)
     evaluateOverflow(nesCpu.a, value, temp)
     nesCpu.a = temp and 0xFF   
@@ -361,21 +377,23 @@ proc opAdc(vByte: int): void =
     evaluateNegative(nesCpu.a)
 
 proc opRol(vByte: int): void =
-    var temp, oldBit, result : int
+    var temp, carry, oldBit, result : int
 
     if nesCpu.addrAcc:
         oldBit = (nesCpu.a shr 7) and 1
         temp = nesCpu.a shl 1 
-        temp = temp xor (-nesCpu.c xor temp) and (1 shl 0)
-        nesCpu.c = oldBit
+        carry = (nesCpu.ps shl 0) and 1
+        temp = temp xor (-carry xor temp) and (1 shl 0)
+        nesCpu.ps = nesCpu.ps xor ((-oldBit xor nesCpu.ps) and (1 shl 0))
         nesCpu.a = temp and 0xFF
         result = nesCpu.a
     else:
         var value = mmioRead(vByte)
         oldBit = (value shr 7) and 1
         temp = value shl 1 
-        temp = temp xor (-nesCpu.c xor temp) and (1 shl 0)
-        nesCpu.c = oldBit
+        carry = (nesCpu.ps shl 0) and 1
+        temp = temp xor (-carry xor temp) and (1 shl 0)
+        nesCpu.ps = nesCpu.ps xor ((-oldBit xor nesCpu.ps) and (1 shl 0))
         value = temp and 0xFF
         mmioWrite(vByte, value)
         result = value
@@ -385,21 +403,23 @@ proc opRol(vByte: int): void =
 
 
 proc opRor(vByte: int): void =
-    var temp, oldBit, result : int
+    var temp, oldBit, result, carry : int
 
     if nesCpu.addrAcc:
         oldBit = (nesCpu.a shr 0) and 1
         temp = nesCpu.a shr 1 
-        temp = temp xor (-nesCpu.c xor temp) and (1 shl 7)
-        nesCpu.c = oldBit
+        carry = (nesCpu.ps shl 0) and 1
+        temp = temp xor (-carry xor temp) and (1 shl 7)
+        nesCpu.ps = nesCpu.ps xor ((-oldBit xor nesCpu.ps) and (1 shl 0))
         nesCpu.a = temp and 0xFF
         result = nesCpu.a
     else:
         var value = mmioRead(vByte)
         oldBit = (value shr 0) and 1
         temp = value shr 1 
-        temp = temp xor (-nesCpu.c xor temp) and (1 shl 7)
-        nesCpu.c = oldBit
+        carry = (nesCpu.ps shl 0) and 1
+        temp = temp xor (-carry xor temp) and (1 shl 7)
+        nesCpu.ps = nesCpu.ps xor ((-oldBit xor nesCpu.ps) and (1 shl 0))
         value = temp and 0xFF
         mmioWrite(vByte, value)
         result = value
@@ -408,19 +428,22 @@ proc opRor(vByte: int): void =
     evaluateNegative(result)
 
 proc opLsr(vByte: int): void =
+    var carry : int
     if nesCpu.addrAcc:
-        nesCpu.c = nesCpu.a and 1
+        carry = nesCpu.a and 1
+        nesCpu.ps = nesCpu.ps xor ((-carry xor nesCpu.ps) and (1 shl 0))
         nesCpu.a = nesCpu.a shr 1
         nesCpu.a = nesCpu.a and 0xFF
     else:
         var value = mmioRead(vByte)
-        nesCpu.c = value and 1
+        carry = value and 1
+        nesCpu.ps = nesCpu.ps xor ((-carry xor nesCpu.ps) and (1 shl 0))
         nesCpu.a = value shr 1
         value = value and 0xFF
         mmioWrite(vByte, value)
 
     evaluateZero(nesCpu.a)
-    evaluateNegative(nesCpu.n)
+    evaluateNegative(nesCpu.a)
 
 proc zeropage(): int {.discardable.} =
     result = mmioRead(nesCpu.pc + 1)
@@ -486,7 +509,7 @@ proc immediate(): int {.discardable.} =
 
 let 
     # 6502 MOS instructions set
-    opcodesDispatcher =
+    procsDispatcher =
         {"LDA":opLda, "LDX":opLdx, "LDY":opLdy, "STA":opSta, 
          "STY":opSty, "TAX":opTax, "TAY":opTay, "TSX":opTsx,
          "ADC":opAdc, "DEC":opDec, "DEX":opDex, "DEY":opDey, 
@@ -509,7 +532,7 @@ let
          "~**":indirect, "*~*":indirectIndexedX, "**~":indirectIndexedY,
          "~/@":implicit, "@/~":accumulator, "@~/":relative, "***":immediate}.toTable
     
-    # is accessed by specifying an opcode as index  
+    # is accessed by specifying an proc as index  
     instructionsTable = 
         @["BRK", "ORA", "???", "???", "???", "ORA", "ASL", "???", # 00-07
           "PHP", "ORA", "ASL", "???", "???", "ORA", "ASL", "???", # 08-0F
@@ -556,19 +579,19 @@ let
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #18-1F
           "@**", "*~*", "???", "???", "/**", "/**", "/**", "???", #20-27
           "~/@", "***", "@/~", "???", "@**", "@**", "@**", "???", #28-2F
-          "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #30-37
+          "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #30-37
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #38-3F
           "~/@", "*~*", "???", "???", "???", "/**", "/**", "???", #40-47
           "~/@", "***", "@/~", "???", "@**", "@**", "@**", "???", #48-4F
-          "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #50-57
+          "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #50-57
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #58-5F
           "~/@", "*~*", "???", "???", "???", "/**", "/**", "???", #60-67
           "~/@", "***", "@/~", "???", "~**", "@**", "@**", "???", #68-6F
-          "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #70-77
+          "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #70-77
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #78-7F
           "???", "*~*", "???", "???", "/**", "/**", "/**", "???", #80-87
           "~/@", "???", "~/@", "???", "@**", "@**", "@**", "???", #88-8F
-          "~/@", "**~", "???", "???", "*/*", "*/*", "**/", "???", #90-97
+          "@~/", "**~", "???", "???", "*/*", "*/*", "**/", "???", #90-97
           "~/@", "**@", "~/@", "???", "???", "*@*", "???", "???", #98-9F
           "***", "*~*", "***", "???", "/**", "/**", "/**", "???", #A0-A7
           "~/@", "***", "~/@", "???", "@**", "@**", "@**", "???", #A8-AF
@@ -576,11 +599,11 @@ let
           "~/@", "**@", "~/@", "???", "*@*", "*@*", "**@", "???", #B8-BF
           "***", "*~*", "???", "???", "/**", "/**", "/**", "???", #C0-C7
           "~/@", "***", "~/@", "???", "@**", "@**", "@**", "???", #C8-CF
-          "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #D0-D7
+          "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #D0-D7
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???", #D8-DF
           "***", "*~*", "???", "???", "/**", "/**", "/**", "???", #E0-07
           "~/@", "***", "~/@", "???", "@**", "@**", "@**", "???", #E8-EF
-          "~/@", "**~", "???", "???", "???", "*/*", "*/*", "???", #F0-F7    
+          "@~/", "**~", "???", "???", "???", "*/*", "*/*", "???", #F0-F7    
           "~/@", "**@", "???", "???", "???", "*@*", "*@*", "???"] #F8-FF
 
     # instructions cycles consumption
@@ -610,19 +633,29 @@ proc initCpu*(): void =
 
 proc update*(cpuCycles, divisor: int): void =
     var cycles = (cpuCycles/divisor).toInt
+    
+    var signal = getNmiSignal()
+    if signal != 0 : 
+        handleSignal(signal)
 
     while cycles > 0:
         var opcode = mmioRead(nesCpu.pc)
         var operation = instructionsTable[opcode]
         var mode = addrModes[opcode]  
         var fetchedByte = addrModesDispatcher[mode]()
-        opcodesDispatcher[operation](fetchedByte)
-        nesCpu.opcodeCycles += cyclesTable[opcode]
+        procsDispatcher[operation](fetchedByte)
+        nesCpu.procCycles += cyclesTable[opcode]
         nesCpu.addrAcc = false
         nesCpu.addrImm = false
         cycles -= cyclesTable[opcode]
 
         if DEBUGGER_ENABLED == true :
-            nesCpu.debug(operation, mode)
+            var partialMem, partialStack : Queue[int]
+            partialMem = initQueue[int]()
+            partialStack = initQueue[int]()
+            for i in 0..2:
+                partialMem.add(mmioRead(nesCpu.pc - i))
+                partialStack.add(mmioRead(nesCpu.s + i))
+            nesCpu.debug(operation, mode, fetchedByte, partialMem, partialStack)
         if cycles <= 0 :
             echo "cpu phase terminated"

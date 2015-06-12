@@ -1,4 +1,4 @@
-import terminal, strutils, typetraits, typeinfo
+import terminal, strutils, typetraits, typeinfo, queues
 
 # print opcode & addressing mode of the current instruction
 proc emitOutput*(message: string): void =
@@ -15,14 +15,24 @@ proc pause(): void =
             step = true
 
 # restricted to cpu
-proc debug*[CPUObj](cpu: CPUObj, opcode: string, mode: string): void =
-    emitOutput(opcode & " " & mode)
+proc debug*[CPUObj](cpu: CPUObj, opcode, mode: string, value: int, mem, stack: Queue[int]): void =
+    var res = "\t--CPU--"
+    var table = "\n|--|--|--|"
+    var partialMem = mem
+    var partialStack = stack
+    var memValuesChain, stackValuesChain = ""
+    emitOutput(opcode & " " & mode & " "  & value.toHex(4))
 
-    var res = "\t--CPU--" 
     for name, value in cpu.fieldPairs:
         when value is int:
           res.add("\n\t" & name & " value is : " & value.toHex(4))
     echo res
+
+    for i in 0..2:
+        memValuesChain.add("|" & $dequeue(partialMem).toHex(2))
+        stackValuesChain.add("|" & $dequeue(partialStack).toHex(2))
+
+    echo table & "\nMEMORY\n" & memValuesChain & table
 
     pause()
 
@@ -35,4 +45,3 @@ proc debug*[T](processor: T): void =
     echo res
 
     pause()
-

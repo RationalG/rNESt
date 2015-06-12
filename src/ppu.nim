@@ -1,13 +1,9 @@
 import strutils
-import debug, rom, mem
-
-const
-    VBLANK_START = 241
-    VBLANK_END = 262
+import debug, rom
 
 type
     PPUObj* = object of RootObj
-        unlocked: bool
+        signal: int
         controller, mask, status: int
         oamAddress, oamData, oamDMA: int
         vramAddress, vramData: int
@@ -157,6 +153,15 @@ proc initPpu*(): void =
     # allocate buffer
     pixelBuffer = newSeq[PixelObj](256*240)
 
+proc toggleVerticalBlank(onSet: bool): void =
+    if onSet:
+        nesPpu.status = nesPpu.status or (1 shl 7)
+    else:
+        nesPpu.status = nesPpu.status and not (1 shl 7)
+
+proc echoSignal*(): int =
+    result = nesPpu.signal
+
 proc update*(): void =
     nesPpu.scanline += 1
 
@@ -165,4 +170,3 @@ proc update*(): void =
 
     if isEnabledSprites():
         renderSprites()
-
