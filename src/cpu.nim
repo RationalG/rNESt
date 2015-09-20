@@ -532,7 +532,7 @@ let
          "~**":indirect, "*~*":indirectIndexedX, "**~":indirectIndexedY,
          "~/@":implicit, "@/~":accumulator, "@~/":relative, "***":immediate}.toTable
     
-    # is accessed by specifying an proc as index  
+    # is accessed by specifying a proc as index  
     instructionsTable = 
         @["BRK", "ORA", "???", "???", "???", "ORA", "ASL", "???", # 00-07
           "PHP", "ORA", "ASL", "???", "???", "ORA", "ASL", "???", # 08-0F
